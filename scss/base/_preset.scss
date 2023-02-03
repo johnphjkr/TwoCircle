@@ -1,0 +1,15 @@
+html{
+  font-size:10px;
+}
+
+*,
+*:after,
+*:before {   
+   box-sizing: border-box;
+}
+
+.inner {
+max-width: 134rem;
+margin: 0 auto;
+padding: 0 3rem;
+}
