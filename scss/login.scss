@@ -13,6 +13,11 @@
   cursor: pointer;
 }
 
+a{
+  text-decoration: none;
+  color: var(--font-color);
+}
+
 .login_section{
   &_inner{
     position: relative;
