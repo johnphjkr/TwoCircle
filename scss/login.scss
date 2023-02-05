@@ -1,0 +1,63 @@
+@import './abstracts/variable';
+
+
+@import './base/preset';
+
+.btn{
+  background-color: var(--white-color);
+  font-size: 1.8rem;
+  font-weight: var(--font-bold);
+  width: 44rem;
+  height: 6rem;
+  border: none;
+  cursor: pointer;
+}
+
+.login_section{
+  .inner{
+    margin-top: 9rem;
+    margin-bottom: 6rem;
+    text-align: center;
+    .login_section--title{
+      font-size: 2.65rem;
+      font-weight: var(--font-bold);
+      padding-bottom: 3.5rem;
+    }
+    .login_form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &--id,
+      &--pw{
+        font-size: 1.8rem;
+        width: 44rem;
+        height: 6rem;
+        padding: 0 1rem;
+        &::placeholder{
+          color:var(--gray-color)
+        }
+        &:focus{
+          border: 1px solid var(--pink-color);
+          outline: none;
+        }
+        &:focus::placeholder{
+          color: transparent;
+        }
+      }
+      &--id{
+        margin-bottom: 1.8rem;
+      }
+      &--pw{
+        margin-bottom: 5.5rem;
+      }
+      &--btn{
+        color: var(--white-color);
+        background-color: var(--pink-color);
+        margin-bottom: 1.8rem;
+      }
+    }
+    .signup-btn{
+      border: 1px solid var(--black-color);
+    }
+  }
+}
