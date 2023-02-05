@@ -29,6 +29,7 @@
       align-items: center;
       &--id,
       &--pw{
+        border: 1px solid var(--gray-color);
         font-size: 1.8rem;
         width: 44rem;
         height: 6rem;
@@ -56,7 +57,7 @@
         margin-bottom: 1.8rem;
       }
     }
-    .signup-btn{
+    .signup--btn{
       border: 1px solid var(--black-color);
     }
   }
