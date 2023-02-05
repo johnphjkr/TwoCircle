@@ -13,8 +13,7 @@ html{
 *,
 *:after,
 *:before {
-     
-   box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body{
@@ -23,6 +22,6 @@ body{
 
 .inner {
 max-width: 134rem;
-margin: 0 auto;
+margin:0 auto;
 padding: 0 3rem;
 }
