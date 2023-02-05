@@ -14,10 +14,13 @@
 }
 
 .login_section{
-  .inner{
+  &_inner{
+    position: relative;
+    max-width: 44rem;
+    margin: 0 auto;
+    text-align: center;
     margin-top: 9rem;
     margin-bottom: 6rem;
-    text-align: center;
     .login_section--title{
       font-size: 2.65rem;
       font-weight: var(--font-bold);
@@ -48,8 +51,18 @@
       &--id{
         margin-bottom: 1.8rem;
       }
+      .icon--person{
+        position: absolute;
+        right: 1.5rem;
+        top: 8rem;
+      }
       &--pw{
         margin-bottom: 5.5rem;
+      }
+      .icon--lock{
+        position: absolute;
+        right: 1.5rem;
+        top: 16rem;
       }
       &--btn{
         color: var(--white-color);
@@ -57,8 +70,10 @@
         margin-bottom: 1.8rem;
       }
     }
-    .signup--btn{
+    .login_section_signup{
+      margin: 0 auto;
       border: 1px solid var(--black-color);
+      line-height: 6rem;
     }
   }
 }
