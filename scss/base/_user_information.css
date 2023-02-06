@@ -1,6 +1,8 @@
 body {
   display: flex;
   flex-direction: column;
+  width: 128rem;
+  margin: 0 auto;
 }
 body span {
   font-size: 3rem;
