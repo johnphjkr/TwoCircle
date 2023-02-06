@@ -7,11 +7,12 @@ body {
     span {
         font-size: 3rem;
         margin-bottom: 1rem;
+        color: #FF597B;
     }
 }
 
 .basic_user_information {
-    border-top: solid black;
+    border-top: solid #FF597B;
     display: flex;
     flex-direction: column;
     margin-bottom: 5rem;
@@ -19,6 +20,7 @@ body {
     span {
         font-size: 2rem;
         width: 10rem;
+        color: black;
     }
 
     button {
@@ -153,7 +155,7 @@ body {
 }
 
 .additional_user_information {
-    border-top: solid black;
+    border-top: solid #FF597B;
     display: flex;
     flex-direction: column;
 
@@ -161,6 +163,7 @@ body {
         margin-top: 2rem;
         width: 10rem;
         font-size: 2rem;
+        color: black;
     }
 
     .additional_user_information_birthdate {

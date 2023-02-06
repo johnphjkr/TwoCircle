@@ -7,10 +7,11 @@ body {
 body span {
   font-size: 3rem;
   margin-bottom: 1rem;
+  color: #FF597B;
 }
 
 .basic_user_information {
-  border-top: solid black;
+  border-top: solid #FF597B;
   display: flex;
   flex-direction: column;
   margin-bottom: 5rem;
@@ -18,6 +19,7 @@ body span {
 .basic_user_information span {
   font-size: 2rem;
   width: 10rem;
+  color: black;
 }
 .basic_user_information button {
   display: inline-block;
@@ -125,7 +127,7 @@ body span {
 }
 
 .additional_user_information {
-  border-top: solid black;
+  border-top: solid #FF597B;
   display: flex;
   flex-direction: column;
 }
@@ -133,6 +135,7 @@ body span {
   margin-top: 2rem;
   width: 10rem;
   font-size: 2rem;
+  color: black;
 }
 .additional_user_information .additional_user_information_birthdate span {
   display: inline-block;
