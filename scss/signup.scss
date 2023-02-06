@@ -17,7 +17,7 @@
 .signup_section{
   &_inner{
     position: relative;
-    max-width: 60rem;
+    max-width: 64rem;
     margin: 0 auto;
     text-align: center;
     margin-top: 9rem;
@@ -47,20 +47,33 @@
           height: 5.5rem;
           padding: 0 1rem;
           border: 1px solid var(--gray-color);
+          &:focus{
+            outline: none;
+          }
           &:focus::placeholder{
             color:transparent;
           }
         }
       }
+      &_id{
+        &--check{
+          cursor: pointer;
+          font-size: 1.4rem;
+          width: 10rem;
+          height: 5.5rem;
+          margin-left: 1rem;
+          background-color: var(--pink-color);
+          color: var(--white-color);
+          border: none;
+        }
+      }
       &_pw{
         &--input:focus{
-          outline: none;
           border: 1px solid var(--pink-color);
         }
       }
       &_check{
         &--input:focus{
-          outline: none;
           border: 1px solid var(--pink-color);
         }
       }
