@@ -1,3 +1,213 @@
 @import './abstracts/variable';
 @import './base/preset';
 
+@mixin filterBtn {
+  border: 1px solid var(--gray-color);
+  background-color: var(--white-color);
+  font-size: 12px;
+  height: 35px;
+  width: 80px;
+  margin: 0 -2px;
+}
+
+@mixin windowDefault {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+}
+
+@mixin windowSort {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin listBar {
+  content: '';
+  position: absolute;
+  width: 1000px;
+  height: 1px;
+  background-color: var(--pink-color);
+}
+
+.material-symbols-outlined {
+  display: flex;
+  background-color: var(--white-color);
+  font-size: 17px;
+}
+
+.wrap {
+  width: 1280px;
+  height: 100vh;
+  display: flex;
+  font-size: 15px;
+  font-weight: var(--font-basic);
+
+  .container {
+    display: flex;
+
+    // 메뉴
+    .container_menu {
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+    }
+
+    .container_menu>div {
+      @include windowDefault;
+      height: 150px;
+      font-size: 25px;
+      font-weight: var(--font-bold);
+
+      .menu--my_list {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px;
+        font-size: 15px;
+        font-weight: var(--font-basic);
+      }
+    }
+  }
+
+  // 구매 정보
+  .container_content {
+    display: flex;
+    flex-direction: column;
+    width: 1080px;
+
+    .container_content_title {
+      padding: 20px;
+      margin-left: 50px;
+
+      p {
+        color: var(--gray-color);
+
+        strong {
+          color: var(--font-color);
+        }
+      }
+    }
+
+    // 필터
+    .container_content_delivery {
+      @include windowDefault;
+
+      .delivery--type {
+        height: 70px;
+        margin-left: 50px;
+
+        .delivery--type_text {
+          color: var(--gray-color);
+          margin-bottom: 10px;
+        }
+      }
+
+      .delivery--type>button {
+        @include filterBtn;
+      }
+
+      .delivery--filter {
+        display: flex;
+        margin-left: 50px;
+
+        .delivery--filter_month {
+          height: 70px;
+          display: flex;
+          align-items: center;
+        }
+
+        .delivery--filter_month>button {
+          @include filterBtn;
+          width: 84px;
+        }
+
+        .delivery--filter_calendar {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          margin-left: 190px;
+
+          .calendar--start,
+          .calendar--end {
+            width: 180px;
+            display: flex;
+            align-items: center;
+            height: 35px;
+            padding: 0 10px 0 17px;
+            border: 1px solid var(--gray-color);
+
+            button {
+              padding-left: 40px;
+              border: transparent;
+              background-color: var(--white-color);
+            }
+          }
+
+          .calendar--middle {
+            display: flex;
+            height: 35px;
+            align-items: center;
+            padding: 0 10px;
+          }
+
+          .delivery--filter_calendar--btn {
+            background-color: var(--pink-color);
+            height: 32px;
+            width: 50px;
+            margin-left: 10px;
+            border: none;
+            color: var(--white-color);
+          }
+        }
+      }
+    }
+
+    // 구매 리스트
+    .container_content_list {
+      display: flex;
+      flex-direction: column;
+
+      .list--bar {
+        @include windowSort;
+        height: 50px;
+      }
+
+      .list--bar::before {
+        @include listBar;
+        margin-bottom: 50px;
+      }
+
+      .list--bar::after {
+        @include listBar;
+        margin-top: 50px;
+      }
+
+      .list--bar>div {
+        @include windowSort;
+        font-size: 18px;
+      }
+
+      @for $i from 1 through 5 {
+        .list--bar>div:nth-child(#{$i}) {
+          width: 200px;
+        }
+      }
+
+      .list--item {
+        @include windowSort;
+        height: 50px;
+      }
+
+      .list--item>div {
+        @include windowSort;
+        font-size: 18px;
+      }
+
+      @for $i from 1 through 5 {
+        .list--item>div:nth-child(#{$i}) {
+          width: 200px;
+        }
+      }
+    }
+  }
+}
