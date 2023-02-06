@@ -1,0 +1,140 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+body span {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.basic_user_information {
+  border-top: solid black;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+}
+.basic_user_information span {
+  font-size: 2rem;
+  width: 10rem;
+}
+.basic_user_information button {
+  display: inline-block;
+  background-color: white;
+  border: 0.1rem solid lightgray;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 10rem;
+  font-weight: 600;
+}
+.basic_user_information .basic_user_information_picture {
+  margin-top: 2rem;
+  display: flex;
+  border-bottom: solid 0.1rem lightgray;
+}
+.basic_user_information .basic_user_information_picture span {
+  display: inline-block;
+  width: 20rem;
+}
+.basic_user_information .basic_user_information_picture .basic_user_information_picture--img_section {
+  display: flex;
+  flex-direction: column;
+}
+.basic_user_information .basic_user_information_picture .basic_user_information_picture--img_section .basic_user_information_picture--img {
+  width: 5rem;
+  height: 5rem;
+}
+.basic_user_information .basic_user_information_picture .basic_user_information_picture--img_section span {
+  width: 50rem;
+}
+.basic_user_information .basic_user_information_picture button {
+  display: inline-block;
+  height: 2.5rem;
+}
+.basic_user_information .basic_user_information_id {
+  margin-top: 1rem;
+  border-bottom: solid 0.1rem lightgray;
+}
+.basic_user_information .basic_user_information_id span {
+  display: inline-block;
+  width: 20rem;
+}
+.basic_user_information .basic_user_information_id .basic_user_information_id--span {
+  width: 50rem;
+}
+.basic_user_information .basic_user_information_pw {
+  display: flex;
+  margin-top: 1rem;
+  border-bottom: solid 0.1rem lightgray;
+}
+.basic_user_information .basic_user_information_pw span {
+  display: inline-block;
+  width: 20rem;
+}
+.basic_user_information .basic_user_information_pw .basic_user_information_pw--span {
+  width: 50rem;
+}
+.basic_user_information .basic_user_information_name {
+  display: flex;
+  margin-top: 1rem;
+  border-bottom: solid 0.1rem lightgray;
+}
+.basic_user_information .basic_user_information_name span {
+  display: inline-block;
+  width: 20rem;
+}
+.basic_user_information .basic_user_information_name .basic_user_information_name--span {
+  width: 50rem;
+}
+.basic_user_information .basic_user_information_nickname {
+  display: flex;
+  margin-top: 1rem;
+  border-bottom: solid 0.1rem lightgray;
+}
+.basic_user_information .basic_user_information_nickname span {
+  display: inline-block;
+  width: 20rem;
+}
+.basic_user_information .basic_user_information_nickname .basic_user_information_nickname--span {
+  width: 50rem;
+}
+.basic_user_information .basic_user_information_email {
+  display: flex;
+  margin-top: 1rem;
+  border-bottom: solid 0.1rem lightgray;
+}
+.basic_user_information .basic_user_information_email span {
+  display: inline-block;
+  width: 20rem;
+}
+.basic_user_information .basic_user_information_email .basic_user_information_email--span {
+  width: 50rem;
+}
+.basic_user_information .basic_user_information_phonenumber {
+  display: flex;
+  margin-top: 1rem;
+  border-bottom: solid 0.1rem lightgray;
+}
+.basic_user_information .basic_user_information_phonenumber span {
+  display: inline-block;
+  width: 20rem;
+}
+.basic_user_information .basic_user_information_phonenumber .basic_user_information_phonenumber--span {
+  width: 50rem;
+}
+
+.additional_user_information {
+  border-top: solid black;
+  display: flex;
+  flex-direction: column;
+}
+.additional_user_information span {
+  margin-top: 2rem;
+  width: 10rem;
+  font-size: 2rem;
+}
+.additional_user_information .additional_user_information_birthdate span {
+  display: inline-block;
+  width: 20rem;
+}
+
+/*# sourceMappingURL=_user_information.css.map */
