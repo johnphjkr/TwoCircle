@@ -3,10 +3,12 @@
 
 @import './base/preset';
 
+// 중요 표시!
 .asterisk{
   color: var(--pink-color);
 }
 
+// 에러 메세지!
 .error{
   font-size: 1.4rem;
   font-weight: var(--font-bold);
@@ -14,6 +16,7 @@
   color: var(--pink-color);
 }
 
+// 회원가입 섹션
 .signup_section{
   &_inner{
     position: relative;
@@ -22,12 +25,15 @@
     text-align: center;
     margin-top: 9rem;
     margin-bottom: 6rem;
+    // 회원가입 제목
     .signup_section--title{
       font-size: 2.65rem;
       font-weight: var(--font-bold);
       padding-bottom: 3.5rem;
     }
+    // 회원가입 폼
     .signup_form{
+      // 공통 스타일
       &_name,
       &_id,
       &_pw,
@@ -55,6 +61,7 @@
           }
         }
       }
+      // 아이디
       &_id{
         &--check{
           cursor: pointer;
@@ -67,16 +74,19 @@
           border: none;
         }
       }
+      // 비밀번호
       &_pw{
         &--input:focus{
           border: 1px solid var(--pink-color);
         }
       }
+      // 비밀번호 확인
       &_check{
         &--input:focus{
           border: 1px solid var(--pink-color);
         }
       }
+      // 프로필
       &_profil{
         display: flex;
         flex-wrap: wrap;
@@ -96,6 +106,7 @@
           margin: 2.2rem 0 8rem 13rem;
         }
       }
+      // 가입하기 버튼
       &--btn{
         color: var(--white-color);
         background-color: var(--pink-color);

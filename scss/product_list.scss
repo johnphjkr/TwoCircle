@@ -3,12 +3,14 @@
 
 @import './base/preset';
 
+// 카테고리 제목
 .category{
   font-size: 3.2rem;
   font-weight: var(--font-bold);
   padding:9rem 0 5rem 0;
 }
 
+// 솔드아웃!! 제고없음!
 .soldout{
   &::after{
     content: "SOLD OUT";
@@ -25,7 +27,7 @@
     line-height: 30.87rem;
   }
 }
-
+// 상품 리스트
 .products{
   line-height: 1.8rem;
   &_lists{
@@ -34,6 +36,7 @@
     gap: 1.5rem;
     .product{
       position: relative;
+      // 상품 썸네일 이미지
       &--img{
         width: 30.87rem;
         height: 30.87rem;
@@ -47,16 +50,19 @@
           transform: scale(1.05);
         }
       }
+      // 상품 제목
       &_name{
         color: var(--font-color);
         font-size: 1.6rem;
         font-weight: var(--font-bold);
         margin-top: 0.7rem;
       }
+      // 상품 코드
       &_code{
         color: var(--gray-color);
         font-size: 1.2rem;
       }
+      // 상품 설명
       &_discription{
         width: 30.87rem;
         height: 3.8rem;
@@ -65,6 +71,7 @@
         padding-right: 2.8rem;
         word-wrap: break-word;
       }
+      // 상품 가격 및 할인
       &_price{
         font-weight: var(--font-bold);
         font-size: 1.8rem;
@@ -76,7 +83,7 @@
     }
   }
 }
-
+// 찜하기 아이콘
 .icons{
   i{
     cursor: pointer;
