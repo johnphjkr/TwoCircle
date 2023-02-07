@@ -1,0 +1,62 @@
+@import './abstracts/variable';
+
+
+@import './base/preset';
+
+.category{
+  font-size: 3.2rem;
+  font-weight: var(--font-bold);
+  padding:9rem 0 5rem 0;
+}
+
+.product{
+  line-height: 1.8rem;
+  &_lists{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    .product{
+      img{
+        width: 30.87rem;
+        height: 30.87rem;
+      }
+    }
+  }
+  &_name{
+    color: var(--font-color);
+    font-size: 1.6rem;
+    font-weight: var(--font-bold);
+    margin-top: 0.7rem;
+  }
+  &_code{
+    color: var(--gray-color);
+    font-size: 1.2rem;
+  }
+  &_discription{
+    width: 30.87rem;
+    height: 3.8rem;
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    padding-right: 2.8rem;
+    word-wrap: break-word;
+  }
+  &_price{
+    font-weight: var(--font-bold);
+    font-size: 1.8rem;
+    &_sale{
+      color: var(--pink-color);
+      margin-right: 0.65rem;
+    }
+  }
+}
+
+.icons{
+  i{
+    cursor: pointer;
+    font-size: 2.2rem;
+    margin: 0.5rem 0 4rem 0;
+  }
+  .fa-solid{
+    color: var(--pink-color);
+  }
+}
