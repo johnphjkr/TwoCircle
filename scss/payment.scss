@@ -1,0 +1,168 @@
+@import './abstracts/variable';
+@import './base/preset';
+
+#wrap {
+  display: flex;
+  width: 1280px;
+  height: 100vh;
+  justify-content: center;
+  margin: 0 auto;
+  font-size: 1.5rem;
+
+  .container {
+    display: flex;
+
+    .main {
+      display: flex;
+
+      .inner {
+        display: flex;
+        max-width: 134rem;
+        margin: 0 auto;
+        padding: 0 3rem;
+
+        .inner_orderInfo {
+          background-color: var(--lightgray-color);
+          display: flex;
+          flex-direction: column;
+          width: 70rem;
+
+          .orderInfo_title {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            margin-left: 2rem;
+            height: 4rem;           
+          }
+
+          .orderInfo_navBar {
+            display: flex;
+            justify-content: center;
+            border-top: 0.2rem solid var(--pink-color);
+            border-bottom: 0.2rem solid var(--pink-color);
+          }
+
+          .orderInfo_navBar>div {
+            width: 17rem;
+            padding: 1rem 3rem;
+          }
+
+          .orderInfo_list {
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+
+            .list--image {
+              display: flex;
+
+              img {
+                width: 10rem;
+                height: 10rem;
+              }
+            }
+          }
+
+          .orderInfo_list>div {
+            width: 15rem;
+          }
+
+          .orderInfo_name {
+            display: flex;
+            font-size: 2rem;
+            height: 5rem;
+            margin-top: 3rem;
+            margin-left: 2rem;
+          }
+
+          .orderInfo_email {
+            display: flex;
+            font-size: 2rem;
+            height: 5rem;
+            margin-left: 2rem;
+          }
+          
+          .orderInfo_account {
+            display: flex;
+            font-size: 2rem;
+            height: 5rem;
+            margin-left: 2rem;
+            align-items: center;
+            .account--text{
+              display: flex;
+              margin-right: 1rem;
+              align-items: center;
+              width: 5rem;
+
+            }
+
+            .account--select {
+              display: flex;
+              width: 40em;
+              height: 3rem;
+              margin-left:1rem;
+              
+            }
+            .account--search{
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 3rem;
+              width: 12rem;
+              margin: 0 2rem;
+              background-color: var(--pink-color);
+              color: var(--white-color);
+              border: transparent;
+              
+            }
+          }
+
+        }
+
+        .inner_summary {
+          display: flex;
+          flex-direction: column;
+          width: 30rem;
+          height: 30rem;
+          margin-left: 3rem;
+          background-color: var(--lightgray-color);
+          padding: 1.5rem;
+          margin-top: 12rem;
+
+          .summary_info {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 20rem;
+            
+            .info--totalDiscount{
+              border-bottom: 0.2rem solid var(--pink-color);
+              padding-bottom: 3rem;
+            }                       
+          }
+          .summary_info>div{
+            display: flex;           
+            height: 3rem;
+          }
+          .summary_btn{
+            display: flex;
+            flex-direction: column;
+            
+            .btn--payment{             
+              background-color: var(--pink-color);
+              color: var(--white-color);
+              border: transparent;
+              height: 4rem;
+              margin: 2rem 0;
+              cursor: pointer;
+            }
+            .btn--cancel{
+              height: 4rem;
+              cursor: pointer;
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
