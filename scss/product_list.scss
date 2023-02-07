@@ -9,7 +9,25 @@
   padding:9rem 0 5rem 0;
 }
 
+.soldout{
+  &::after{
+    content: "SOLD OUT";
+    display: block;
+    width: 30.87rem;
+    height: 30.87rem;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    position: absolute;
+    bottom: 12.43rem;
+    font-size: 3.2rem;
+    font-weight: var(--font-bold);
+    color: var(--white-color);
+    text-align: center;
+    line-height: 30.87rem;
+  }
+}
+
 .product{
+  position: relative;
   line-height: 1.8rem;
   &_lists{
     display: flex;
