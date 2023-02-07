@@ -8,6 +8,7 @@
   height: 35px;
   width: 80px;
   margin: 0 -2px;
+  cursor: pointer;
 }
 
 @mixin windowDefault {
@@ -34,6 +35,7 @@
   display: flex;
   background-color: var(--white-color);
   font-size: 17px;
+  cursor: pointer;
 }
 
 .wrap {
@@ -42,6 +44,7 @@
   display: flex;
   font-size: 15px;
   font-weight: var(--font-basic);
+  margin: 0 auto;
 
   .container {
     display: flex;
@@ -65,6 +68,12 @@
         padding: 0 10px;
         font-size: 15px;
         font-weight: var(--font-basic);
+        cursor: pointer;
+
+        a {
+          text-decoration: none;
+          color: var(--font-color);
+        }
       }
     }
   }
@@ -104,6 +113,12 @@
 
       .delivery--type>button {
         @include filterBtn;
+        transition: .7s;
+      }
+
+      .delivery--type>button:hover {
+        background-color: var(--pink-color);
+        border-color: var(--pink-color);
       }
 
       .delivery--filter {
@@ -119,6 +134,12 @@
         .delivery--filter_month>button {
           @include filterBtn;
           width: 84px;
+          transition: .7s;
+        }
+
+        .delivery--filter_month>button:hover {
+          background-color: var(--pink-color);
+          border-color: var(--pink-color);
         }
 
         .delivery--filter_calendar {
@@ -157,6 +178,7 @@
             margin-left: 10px;
             border: none;
             color: var(--white-color);
+            cursor: pointer;
           }
         }
       }
@@ -206,6 +228,100 @@
       @for $i from 1 through 5 {
         .list--item>div:nth-child(#{$i}) {
           width: 200px;
+        }
+      }
+    }
+
+    // 상세 정보 창
+    .container_content_modal {
+      @include windowSort;
+      position: absolute;
+      top: 200px;
+      z-index: 2;
+      width: 1080px;
+      height: 400px;
+      background-color: var(--gray-color);
+      border-radius: 15px;
+      flex-direction: column;
+      // display: none;
+
+      .modal {
+        display: flex;
+        width: 1060px;
+        height: 30px;
+        margin-bottom: 15px;
+
+        .modal--orderDate {
+          display: flex;
+          margin-left: 20px;
+          width: 500px;
+        }
+
+        .modal--cancel {
+          @include windowSort;
+          width: 40px;
+          margin-left: 450px;
+          cursor: pointer;
+          border: transparent;
+          border-radius: 10px;
+          transition: .7s;
+        }
+
+        .modal--cancel:hover {
+          color: var(--white-color);
+          background-color: var(--pink-color);
+        }
+      }
+
+      .modal_inner {
+        @include windowSort;
+        background-color: var(--lightgray-color);
+        width: 980px;
+        height: 300px;
+        border-radius: 15px;
+
+        .modal_inner--image {
+          display: flex;
+          width: 200px;
+          height: 200px;
+        }
+
+        .modal_inner_box {
+          display: flex;
+          flex-direction: column;
+          width: 600px;
+
+          .box--productName,
+          .box--totalPrice,
+          .box--totalQauntity {
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            height: 70px;
+          }
+        }
+
+        .modal_inner_btn {
+          width: 100px;
+          display: flex;
+          flex-direction: column;
+
+          .btn--ok,
+          .btn--cancel {
+            @include windowSort;
+            margin: 20px 0;
+            border: 2px solid var(--pink-color);
+            border-radius: 15px;
+            height: 40px;
+            transition: .7s;
+          }
+
+          .btn--ok:hover,
+          .btn--cancel:hover {
+            background-color: var(--pink-color);
+            border-color: var(--pink-color);
+            color: var(--white-color);
+          }
         }
       }
     }
