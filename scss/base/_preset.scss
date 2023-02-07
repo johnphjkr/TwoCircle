@@ -11,8 +11,18 @@ html{
 
 *,
 *:after,
+<<<<<<< HEAD
+*:before {
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+=======
 *:before {   
   box-sizing: border-box;
+>>>>>>> upstream/develop
 }
 
 body {
@@ -20,6 +30,12 @@ body {
   font-family: 'Pretendard-Regular';
 }
 
+<<<<<<< HEAD
+.inner {
+max-width: 134rem;
+margin:0 auto;
+padding: 0 3rem;
+=======
 a {
   color: var(--font-color);
   text-decoration: none;
@@ -257,4 +273,5 @@ footer {
       border-top: 1px solid var(--lightgray-color);
     }
   }
+>>>>>>> upstream/develop
 }
