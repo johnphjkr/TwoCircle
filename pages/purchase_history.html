@@ -6,9 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>투써클(TWO CIRCLE)</title>
-  <!-- scss -->
+  <!-- google fonts -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <!-- scss -->
   <link rel="stylesheet" href="/scss/purchase_history.scss">
 </head>
 
@@ -18,24 +19,24 @@
       <!-- 메뉴 -->
       <div class="container_menu">
         <div class="menu--my">My
-          <div class="menu--my_list">1</div>
-          <div class="menu--my_list">2</div>
-          <div class="menu--my_list">3</div>
+          <div class="menu--my_list"><a href="#">1</a></div>
+          <div class="menu--my_list"><a href="#">2</a></div>
+          <div class="menu--my_list"><a href="#">3</a></div>
         </div>
         <div class="menu--account">계정관리
-          <div class="menu--my_list">1</div>
-          <div class="menu--my_list">2</div>
-          <div class="menu--my_list">3</div>
+          <div class="menu--my_list"><a href="#">1</a></div>
+          <div class="menu--my_list"><a href="#">2</a></div>
+          <div class="menu--my_list"><a href="#">3</a></div>
         </div>
         <div class="menu--purchase">구매내역
-          <div class="menu--my_list">1</div>
-          <div class="menu--my_list">2</div>
-          <div class="menu--my_list">3</div>
+          <div class="menu--my_list"><a href="#">1</a></div>
+          <div class="menu--my_list"><a href="#">2</a></div>
+          <div class="menu--my_list"><a href="#">3</a></div>
         </div>
         <div class="menu--product">상품내역
-          <div class="menu--my_list">1</div>
-          <div class="menu--my_list">2</div>
-          <div class="menu--my_list">3</div>
+          <div class="menu--my_list"><a href="#">1</a></div>
+          <div class="menu--my_list"><a href="#">2</a></div>
+          <div class="menu--my_list"><a href="#">3</a></div>
         </div>
       </div>
       <!-- 구매 정보 -->
@@ -91,23 +92,30 @@
             <div class="list--bar_payMethod">결제방법</div>
           </div>
           <div class="list--item">
-            <div class="list--item_productInfo">1</div>
+            <div class="list--item_productInfo">이미지</div>
             <div class="list--itme_orderNumber">1</div>
-            <div class="list--item_payAmount">1</div>
-            <div class="list--item_orderDate">1</div>
-            <div class="list--item_payMethod">1</div>
+            <div class="list--item_payAmount">10000원</div>
+            <div class="list--item_orderDate">2023-01-05</div>
+            <div class="list--item_payMethod">카드</div>
           </div>
         </div>
         <!-- 상세 정보 창 -->
         <div class="container_content_modal">
-          <div class="modal--orderDate"></div>
+          <div class="modal">
+            <div class="modal--orderDate">주문날짜</div>
+            <button class="modal--cancel">x</button>
+          </div>
           <div class="modal_inner">
-            <div class="modal_inner--image"></div>
-            <div class="modal_inner--productName"></div>
-            <div class="modal_inner--totalPrice"></div>
-            <div class="modal_inner--totalQauntity"></div>
-            <button>구매확정</button>
-            <button>구매취소</button>
+            <div class="modal_inner--image"><img src="/image/g10.jpg" alt="선글라스"></div>
+            <div class="modal_inner_box">
+              <div class="box--productName">상품이름</div>
+              <div class="box--totalPrice">총 가격</div>
+              <div class="box--totalQauntity">총 수량</div>
+            </div>
+            <div class="modal_inner_btn">
+              <button class="btn--ok">구매확정</button>
+              <button class="btn--cancel">구매취소</button>
+            </div>
           </div>
         </div>
       </div>
