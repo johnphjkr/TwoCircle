@@ -6,11 +6,60 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>투써클(TWO CIRCLE)</title>
+  <!-- google fonts -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <!-- scss -->
+  <link rel="stylesheet" href="/scss/payment.scss">
 </head>
 
 <body>
-  <div class="wrap">
-    <div class="container"></div>
+  <div id="wrap">
+    <header></header>
+    <div class="container">
+      <div class="main">
+        <div class="inner">
+          <section class="inner_orderInfo">
+            <div class="orderInfo_title">주문상품</div>
+            <div class="orderInfo_navBar">
+              <div class="navBar--productInfo">상품정보</div>
+              <div class="navBar--option">옵션</div>
+              <div class="navBar--price">가격</div>
+              <div class="navBar--quantity">수량</div>
+              <div class="navBar--totalPrice">총 금액</div>
+            </div>
+            <div class="orderInfo_list">
+              <div class="list--image"><img src="/image/g10.jpg" alt="선글라스"></div>
+              <div class="list--productInfo">선글라스</div>
+              <div class="list--option">12mm</div>
+              <div class="list--price">10000원</div>
+              <div class="list--quantity">2</div>
+              <div class="list--totalPrice">200000원</div>
+            </div>
+            <div class="orderInfo_name">이름</div>
+            <div class="orderInfo_email">이메일</div>
+            <div class="orderInfo_account">
+              <div class="account--text">계좌선택</div> 
+              <select class="account--select"></select>
+              <button class="account--search">계좌잔액조회</button>
+            </div>
+          </section>
+          <section class="inner_summary">
+            <div class="summary_info">
+              <div class="info--paymentInfo">결제정보</div>
+              <div class="info--totalPrice">총 상품금액</div>
+              <div class="info--totalDiscount">총 할인금액</div>
+              <div class="info--totalPayment">총 결제금액</div>
+            </div>
+            <div class="summary_btn">
+              <button class="btn--payment">결제하기</button>
+              <button class="btn--cancel">취소</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <footer></footer>
   </div>
 </body>
 
