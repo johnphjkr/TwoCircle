@@ -65,32 +65,78 @@
         margin: 0 auto;
         padding: 0 3rem;
         display: flex;
+      }
 
-        // 메뉴
-        .container_menu {
-          display: flex;
-          flex-direction: column;
-          width: 12.5rem;
-          margin-top: 3rem;
+      // 메뉴
+      .nav {
+        grid-area: nav;
+        width: 23rem;
+
+        .header {
+          width: 23rem;
+
+          &_title {
+            font-size: 3.2rem;
+            font-weight: var(--font-bold);
+          }
         }
 
-        .container_menu>div {
-          @include windowDefault;
-          height: 12rem;
-          font-size: 2.5rem;
-          font-weight: var(--font-bold);
+        &_shopping-info {
+          height: 15rem;
 
-          .menu--my_list {
-            display: flex;
-            flex-direction: column;
-            padding: 0 0.625rem;
-            font-size: 1.5rem;
+          .shopping-info_title {
+            font-size: 2rem;
+            font-weight: var(--font-bold);
+            margin-top: 5rem;
+            margin-bottom: 4rem;
+          }
+
+          .shopping-info_list {
+            font-size: 1.4rem;
             font-weight: var(--font-basic);
-            cursor: pointer;
 
-            a {
-              text-decoration: none;
-              color: var(--font-color);
+            .item {
+              &_purchase {
+                margin-bottom: 2rem;
+              }
+
+              &_order {
+                margin-bottom: 2rem;
+              }
+
+              &_change {
+                margin-bottom: 2rem;
+              }
+
+              &_wish-list {
+                margin-bottom: 2rem;
+              }
+            }
+          }
+        }
+
+        &_user-info {
+          height: 15rem;
+
+          .user-info_title {
+            font-size: 2rem;
+            font-weight: var(--font-bold);
+            margin-top: 7rem;
+            margin-bottom: 4rem;
+          }
+
+          .user-info_list {
+            font-size: 1.4rem;
+            font-weight: var(--font-basic);
+
+            .item {
+              &_info-change {
+                margin-bottom: 2rem;
+              }
+
+              &_info-account {
+                margin-bottom: 2rem;
+              }
             }
           }
         }
@@ -115,62 +161,46 @@
           }
         }
 
+
         // 필터
         .container_content_delivery {
           @include windowDefault;
 
-          .delivery--type {
-            height: 7rem;
-            margin-left: 3.125rem;
-
-            .delivery--type_text {
-              color: var(--gray-color);
-              margin-bottom: 0.625rem;
-            }
+          .delivery_type_text {
+            color: var(--gray-color);
+            margin: 0 0 0.2rem 3.125rem;
           }
 
-          .delivery--type>button {
-            @include filterBtn;
-            transition: .7s;
-          }
-
-          .delivery--type>button:hover {
-            @include btnColorChange;
-          }
-
-          .delivery--filter {
+          .delivery_filter {
             display: flex;
             margin-left: 3.125rem;
             height: 7rem;
 
-            .delivery--filter_month {
+            .delivery_filter_month {
               height: 4.375rem;
               display: flex;
               align-items: center;
             }
 
-            .delivery--filter_month>button {
+            .delivery_filter_month>button {
               @include filterBtn;
               width: 8.3rem;
               transition: .7s;
               margin-top: 4rem;
-
             }
 
-            .delivery--filter_month>button:hover {
+            .delivery_filter_month>button:hover {
               @include btnColorChange;
             }
 
-            .delivery--filter_calendar {
+            .delivery_filter_calendar {
               display: flex;
               align-items: center;
               width: 45rem;
-              margin-left: 12rem;
-              margin-top: 2rem;
+              margin: 2rem 0 0 27rem;
 
-
-              .calendar--start,
-              .calendar--end {
+              .calendar_start,
+              .calendar_end {
                 width: 18rem;
                 display: flex;
                 align-items: center;
@@ -185,14 +215,14 @@
                 }
               }
 
-              .calendar--middle {
+              .calendar_middle {
                 display: flex;
                 height: 2.188rem;
                 align-items: center;
                 padding: 0 0.625rem;
               }
 
-              .delivery--filter_calendar--btn {
+              .delivery_filter_calendar_btn {
                 background-color: var(--pink-color);
                 height: 4rem;
                 width: 6rem;
@@ -209,41 +239,54 @@
         .container_content_list {
           display: flex;
           flex-direction: column;
+          width: inherit;
+          padding-bottom: 5rem;
 
-          .list--bar {
+          .list_bar {
             @include windowSort;
             height: 5rem;
             margin-top: 4rem;
-            width: 90rem;
+            width: inherit;
             border-top: 2px solid var(--pink-color);
             border-bottom: 2px solid var(--pink-color);
             margin-left: 4rem;
           }
 
-          .list--bar>div {
+          .list_bar>div {
+            @include windowSort;
+            font-size: 1.8rem;
+          }
+
+          @for $i from 1 through 5 {
+            .list_bar>div:nth-child(#{$i}) {
+              width: inherit;
+            }
+          }
+
+          .list_item {
+            @include windowSort;
+            width: inherit;
+            height: 10rem;
+            margin: 2rem 0 1rem 4rem;
+
+            .list_item_productInfo {
+              display: flex;
+
+              img {
+                width: 9rem;
+                height: 9rem;
+              }
+            }
+          }
+
+          .list_item>div {
             @include windowSort;
             font-size: 1.5rem;
           }
 
           @for $i from 1 through 5 {
-            .list--bar>div:nth-child(#{$i}) {
-              width: 20rem;
-            }
-          }
-
-          .list--item {
-            @include windowSort;
-            height: 3.125rem;
-          }
-
-          .list--item>div {
-            @include windowSort;
-            font-size: 1.3rem;
-          }
-
-          @for $i from 1 through 5 {
-            .list--item>div:nth-child(#{$i}) {
-              width: 20rem;
+            .list_item>div:nth-child(#{$i}) {
+              width: inherit;
             }
           }
         }
@@ -267,13 +310,13 @@
             height: 2rem;
             margin-bottom: 2rem;
 
-            .modal--orderDate {
+            .modal_orderDate {
               display: flex;
               margin-left: 1.25rem;
               width: 31.25rem;
             }
 
-            .modal--cancel {
+            .modal_cancel {
               @include windowSort;
               width: 5rem;
               height: 2.5rem;
@@ -284,7 +327,7 @@
               transition: .7s;
             }
 
-            .modal--cancel:hover {
+            .modal_cancel:hover {
               color: var(--white-color);
               background-color: var(--pink-color);
             }
@@ -298,7 +341,7 @@
             height: 30rem;
             border-radius: 0.938rem;
 
-            .modal_inner--image {
+            .modal_inner_image {
               margin-left: 4rem;
               display: flex;
               width: 15rem;
@@ -311,9 +354,9 @@
               width: 57rem;
               margin-left: 4rem;
 
-              .box--productName,
-              .box--totalPrice,
-              .box--totalQauntity {
+              .box_productName,
+              .box_totalPrice,
+              .box_totalQauntity {
                 display: flex;
                 align-items: center;
                 padding-left: 1.25rem;
@@ -326,8 +369,8 @@
               display: flex;
               flex-direction: column;
 
-              .btn--ok,
-              .btn--cancel {
+              .btn_ok,
+              .btn_cancel {
                 @include windowSort;
                 margin: 1.25rem 0;
                 border: 2px solid var(--pink-color);
@@ -336,8 +379,8 @@
                 transition: .7s;
               }
 
-              .btn--ok:hover,
-              .btn--cancel:hover {
+              .btn_ok:hover,
+              .btn_cancel:hover {
                 background-color: var(--pink-color);
                 border-color: var(--pink-color);
                 color: var(--white-color);
