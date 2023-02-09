@@ -1,132 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+  <head>
+    <meta charset="UTF_8" />
+    <meta http_equiv="X_UA_Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device_width, initial_scale=1.0" />
+
     <title>투써클(TWO CIRCLE)</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/reset_css@5.0.1/reset.min.css"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="/scss/style.scss" />
+    <link rel="stylesheet" href="/scss/my_page.scss" />
 
     <script type="module" defer src="/js/main.js"></script>
-</head>
-<body>
+  </head>
+
+  <body>
     <div id="wrap">
-        <header></header>
-        <div class="container">
-            <section class="mypage-section">
-                <div class="inner">
-                   <div class="title-area">
-                       
-                        <h2 class="title-area__title">
-                         마이페이지
-                           <i class="title-area__title__sub">
-                             MY PAGE
-                           </i>
-                       </h2>
-                   </div>
-                   <div class="mypage-section__user-info-area">
-                    
-                    <h4 class="mypage-section__user-info-area__title">
-                        <span class="mypage-section__user-info-area__title_user-name">
-                            OOO
-                        </span>
-                    </h4>
-                    
-                    <div class="mypage-section__user-info-area__user-membership-area">
-                        멤버십 등급 
-                        <a href="" class="mypage-section__user-info-area__user-membership-area__membership">
-                            일반회원
-                        </a>
-                        입니다.
-                    </div>
-                    <ul class="mypage-section__user-info-area__benefits-deposit-list">
-                      <li class="mypage-section__user-info-area__benefits-deposit-list__item">
-                        
-                        <span class="mypage-section__user-info-area__benefits-deposit-list__item__coupon">
-                          쿠폰
-                        </span>
-                        
-                        <span class="mypage-section__user-info-area__benefits-deposit-list__item__amount">
-                          2
-                        </span>
+      <header></header>
+      <div class="container">
+        <section class="mypage">
+          <div class="inner mypage_inner">
+            <div class="main">
+              <div class="info user_info">
+                <div class="user_info_name">
+                  <span class="user_name">안녕하세요. <br />OOO </span>
+                </div>
+              </div>
+
+              <div class="progress order_progress">
+                <div class="title_area">
+                  <span class="title">
+                    진행 중인 주문
+                  </span>
+                </div>
+
+                <div class="order_list_area">
+                  <div class="list_wrap">
+                    <ul class="list">
+                      <li class="item">
+                        <span class="waiting_deposit">입금대기</span>
+                        <span class="amount">0</span>
                       </li>
-                      <li class="mypage-section__user-info-area__benefits-deposit-list__item">
-                        <span class="mypage-section__user-info-area__benefits-deposit-list__item__reserves">
-                          적립금
-                        </span>
-                        <span class="mypage-section__user-info-area__benefits-deposit-list__item__amount">
-                          0
-                        </span>
+                      <li class="item">
+                        <span class="complete_payment">결제완료</span>
+                        <span class="amount">0</span>
                       </li>
-                      <li class="mypage-section__user-info-area__benefits-deposit-list__item">
-                        <span class="mypage-section__user-info-area__benefits-deposit-list__item__deposit">
-                          예치금
-                        </span>
-                        <span class="mypage-section__user-info-area__benefits-deposit-list__item__amount">
-                          0
-                        </span>
+                      <li class="item">
+                        <span class="product_preparation">상품준비중</span>
+                        <span class="amount">0</span>
+                      </li>
+                      <li class="item">
+                        <span class="in_delivery">배송중</span>
+                        <span class="amount">0</span>
+                      </li>
+                      <li class="item">
+                        <span class="delivery_complete">배송완료</span>
+                        <span class="amount">0</span>
+                      </li>
+                      <li class="item">
+                        <span class="mypage_purchase_confirmation"
+                          >구매확정</span
+                        >
+                        <span class="amount">0</span>
                       </li>
                     </ul>
-                   </div>
-
-									 <div class="mypage-section__order-in-progress-area">
-										<div class="mypage-section__order-in-progress-area__title-area">
-											<span class="mypage-section__order-in-progress-area__title-area__title">
-												진행 중인 주문
-											</span>
-										</div>
-
-										<ul class="mypage-section__order-in-progress-area__list">
-											<li class="mypage-section__order-in-progress-area__list__item">
-												<span class="mypage-section__order-in-progress-area__list__item__waiting-for-deposit">입금대기</span>
-												<span class="mypage-section__order-in-progress-area__list__item__amount">0</span>
-											</li>
-											<li class="mypage-section__order-in-progress-area__list__item">
-												<span class="mypage-section__order-in-progress-area__list__item__complete-payment">결제완료</span>
-												<span class="mypage-section__order-in-progress-area__list__item__amount">0</span>
-											</li>
-											<li class="mypage-section__order-in-progress-area__list__item">
-												<span class="mypage-section__order-in-progress-area__list__item__product-preparation">상품준비중</span>
-												<span class="mypage-section__order-in-progress-area__list__item__amount">0</span>
-											</li>
-											<li class="mypage-section__order-in-progress-area__list__item">
-												<span class="mypage-section__order-in-progress-area__list__item__in-delivery">배송중</span>
-												<span class="mypage-section__order-in-progress-area__list__item__amount">0</span>
-											</li>
-											<li class="mypage-section__order-in-progress-area__list__item">
-												<span class="mypage-section__order-in-progress-area__list__item__delivery-complete">배송완료</span>
-												<span class="mypage-section__order-in-progress-area__list__item__amount">0</span>
-											</li>
-											<li class="mypage-section__order-in-progress-area__list__item">
-												<span class="mypage-section__order-in-progress-area__list__item__purchase-confirmation">구매확정</span>
-												<span class="mypage-section__order-in-progress-area__list__item__amount">0</span>
-											</li>
-											
-										</ul>
-
-                    <ul class="mypage-section__order-in-progress-area__amount-list">
-											<li class="mypage-section__order-in-progress-area__amount-list__item">
-												<span>취소</span>
-												<span class="mypage-section__order-in-progress-area__amount-list__item__amount">0</span>
-											</li>
-											<li class="mypage-section__order-in-progress-area__amount-list__item">
-												<span>교환</span>
-												<span class="mypage-section__order-in-progress-area__amount-list__item__amount">0</span>
-											</li>
-											<li class="mypage-section__order-in-progress-area__amount-list__item">
-												<span>반품</span>
-												<span class="mypage-section__order-in-progress-area__amount-list__item__amount">0</span>
-											</li>
-										</ul>
-									</div>
+                  </div>
                 </div>
-            </section>
-            <footer></footer>
-        </div>
+              </div>
+
+              <div class="purchase recent_purchase">
+                <div class="title_area">
+                  <span class="title">
+                    최근 주문 정보</span>
+                </div>
+                <div class="list_area">
+                  <div class="list_info">
+                    <div class="date_order_number">날짜 / 주문번호</div>
+                    <div class="product_name">상품명 / 옵션</div>
+                    <div class="product_price">금액 / 수량</div>
+                    <div class="order_status">주문 상태</div>
+                  </div>
+
+                  <ul class="recent_purchase_list">
+                    <li>
+                      <div class="date_order_number">
+                        <div class="date">2023.02.06</div>
+                        <div class="order_number">23000264743619</div>
+                      </div>
+
+                      <div class="product_item">
+                        <div class="product_item_img">
+                          <img
+                            src="/image/image1 (13).jpg"
+                            alt=""
+                            class="img" />
+                        </div>
+                        <div class="product_item_wrap">
+                          <span class="product_item_name"
+                            >블랙 54mm BASIC C1 베이직 동글이 안경테</span
+                          >
+                          <div class="product_item__option">옵션: 클리너</div>
+                        </div>
+                      </div>
+                      <div class="price_amount">
+                        <div class="price_amount__wrap">
+                          <span class="price">25000원 / 1개</span>
+                        </div>
+                      </div>
+                      <div class="status">
+                        <div class="status__wrap">
+                          <span class="status_current">배송 준비중</span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="latest_view">
+                <div class="latest_view_header">
+                  <span class="latest_view_title">최근 본 상품</span>
+                </div>
+                <div class="latest_view_list_wrap">
+                  <ul class="list">
+                    <li class="list_item">
+                      <div class="list_item_card">
+                        <a href="">
+                          <div class="img_wrap">
+                            <img
+                              src="/image/image1 (13).jpg"
+                              alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테" />
+                          </div>
+                          <div class="list_item_info">
+                            <div class="info_sub_wrap">
+                              <span class="sub_title"
+                                >ROUNZ BASIC<br />
+                                ROUNZ BASIC C1</span
+                              >
+                            </div>
+                            <div class="info_title_wrap">
+                              <span class="title"
+                                >블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이
+                                안경테</span
+                              >
+                            </div>
+                            <div class="info_price_wrap">
+                              <span class="discount">44%</span>
+                              <span class="price">25,000원</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list_item">
+                      <div class="list_item_card">
+                        <a href="">
+                          <div class="img_wrap">
+                            <img
+                              src="/image/image1 (13).jpg"
+                              alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테" />
+                          </div>
+                          <div class="list_item_info">
+                            <div class="info_sub_wrap">
+                              <span class="sub_title"
+                                >ROUNZ BASIC<br />ROUNZ BASIC C1</span
+                              >
+                            </div>
+                            <div class="info_title_wrap">
+                              <span class="title"
+                                >블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이
+                                안경테</span
+                              >
+                            </div>
+                            <div class="info_price_wrap">
+                              <span class="price">25,000원</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list_item">
+                      <div class="list_item_card">
+                        <a href="">
+                          <div class="img_wrap">
+                            <img
+                              src="/image/image1 (13).jpg"
+                              alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테" />
+                          </div>
+                          <div class="list_item_info">
+                            <div class="info_sub_wrap">
+                              <span class="sub_title"
+                                >ROUNZ BASIC <br />ROUNZ BASIC C1</span
+                              >
+                            </div>
+                            <div class="info_title_wrap">
+                              <span class="title"
+                                >블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이
+                                안경테</span
+                              >
+                            </div>
+                            <div class="info_price_wrap">
+                              <span class="discount">44%</span>
+                              <span class="price">25,000원</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                    <li class="list_item">
+                      <div class="list_item_card">
+                        <a href="">
+                          <div class="img_wrap">
+                            <img
+                              src="/image/image1 (13).jpg"
+                              alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테" />
+                          </div>
+                          <div class="list_item_info">
+                            <div class="info_sub_wrap">
+                              <span class="sub_title"
+                                >ROUNZ BASIC<br />ROUNZ BASIC C1</span
+                              >
+                            </div>
+                            <div class="info_title_wrap">
+                              <span class="title"
+                                >블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이
+                                안경테</span
+                              >
+                            </div>
+                            <div class="info_price_wrap">
+                              <span class="price">25,000원</span>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <nav class="area nav">
+              <div class="header">
+                <h2 class="header_title">마이페이지</h2>
+              </div>
+
+              <div class="nav_shipping_info">
+                <div class="shipping_info_title">쇼핑 정보</div>
+                <ul class="shipping_info_list">
+                  <li class="item">
+                    <div class="item_purchase">구매 목록 / 배송조회</div>
+                    <div class="item_wish_list">찜리스트</div>
+                  </li>
+                </ul>
+              </div>
+
+
+              <div class="nav_user_info">
+                <div class="user_info_title">회원 정보</div>
+                <ul class="user_info_list">
+                  <li class="item">
+                    <div class="item_info_change">회원 정보 변경</div>
+                    <div class="item_info_account">계좌 관리</div>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </section>
+      </div>
+      <footer></footer>
     </div>
-    
-</body>
-</html> 
+  </body>
+</html>
