@@ -1,167 +1,156 @@
+@import "./abstracts/variable";
+@import "./base/preset";
 
 .wish_inner {
   .wish_wrap {
     width: 99rem;
-		margin: 0 auto;
-		.wish_header{
-			margin-top: 4rem;
-			.header {
-				font-size: 3.2rem;
-				font-weight: var(--font-bold);
-				padding: 6.1rem 0 5.4rem;
-			}
-		
-		}
-	
-		.wish_area {
-			.list_area {
-				
-				.list_info {
+    margin: 0 auto;
+    .wish_header {
+      margin-top: 4rem;
+      .header {
+        font-size: 3.2rem;
+        font-weight: var(--font-bold);
+        padding: 6.1rem 0 5.4rem;
+      }
+    }
 
-					border-top: 0.2rem solid var(--font-color);
-					border-bottom: 0.1rem solid var(--font-color);
-					padding: 1.8rem 0 ;
-					.info_wrap {
+    .wish_area {
+      .list_area {
+        .list_info {
+          border-top: 0.2rem solid var(--font-color);
+          border-bottom: 0.1rem solid var(--font-color);
+          padding: 1.8rem 0;
+          .info_wrap {
             display: flex;
-						font-size: 1.6rem;
-						padding:  0;
-          
-           .checkbox_wrap{
-						width: 25%;
-						
-					 }
+            font-size: 1.6rem;
+            padding: 0;
 
-					 .option_product {
-						 width: 25%;
-						 text-align: center;
-					 }
+            .checkbox_wrap {
+              width: 25%;
+            }
 
-					 .amount {
-						  text-align: center;
-							width: 25%;
-					 }
+            .option_product {
+              width: 25%;
+              text-align: center;
+            }
 
-					 .order_price {
-						 text-align: center;
-						 width: 25%;
-					 }
+            .amount {
+              text-align: center;
+              width: 25%;
+            }
 
-					}
-	
-				
-				}
-	
-				.wish_list {
-					height: 20rem;
-					padding-top: 2rem;
-					padding-left: 0;
-					
-					.item {
-						list-style:none;
-   					padding-left:0px;
-						.wish_card {
-							display: flex;
-							align-items: center;
+            .order_price {
+              text-align: center;
+              width: 25%;
+            }
+          }
+        }
+
+        .wish_list {
+          height: 20rem;
+          padding-top: 2rem;
+          padding-left: 0;
+
+          .item {
+            list-style: none;
+            padding-left: 0px;
+            .wish_card {
+              display: flex;
+              align-items: center;
               padding-bottom: 1rem;
-							border-bottom: 0.1rem solid var(--font-color); 
-							text-align: center;
-							.img_wrap {
-							
-						    width: 25%;
-								height: 12rem;
-								img {
-									height: 12rem;
-								}
-							}
-	
-							.product_name_wrap {
-						    
-								width: 25%;
-								padding: 1rem;
-								word-break: keep-all;
-								.name {
-									font-size: 1.6rem;
-								}
-							}
-	
-							.product_total_wrap {
-							
-	               width: 25%;
-								.decrease_btn {
-									font-size: 1.6rem;
-									border: 1px solid var(--font-color);
-									padding: 1rem 1.5rem;
-									width: 4rem;
-									background-color: transparent;
-								}
-	
-								.amount {
-									font-size: 1.6rem;
-	
-									padding: 1rem 1.5rem;
-								}
-	
-							}
-	
-							.price_wrap {
-	              width: 25%;
-								.price {
-									font-size: 1.6rem;
-								}
-							}
-						}
-					}
-				}
-			}
-	
-		
-		}
-	
-		.btn_area {
-			display: flex;
-			justify-content: end;
-			margin-top: 2rem;
-			margin-left: 82.9rem;
-			.delete_btn_wrap {
-				width: 20rem;
-				margin-right: 2rem;
-	
-				.delete_btn {
-					border: 0.2px solid var(--font-color);
-					background-color: transparent;
-					color: var(--font-color);
-					font-weight: var(--font-basic);
-					font-size: 1.8rem;
-					padding: 1rem 2rem;
-					width: 20rem;
-					height: 6rem;
+              border-bottom: 0.1rem solid var(--font-color);
+              text-align: center;
+              .img_wrap {
+                width: 25%;
+                height: 12rem;
+                img {
+                  height: 12rem;
+                }
+              }
 
-					&:hover {
+              .product_name_wrap {
+                width: 25%;
+                padding: 1rem;
+                word-break: keep-all;
+                .name {
+                  font-size: 1.6rem;
+                }
+              }
+
+              .product_total_wrap {
+                width: 25%;
+                .decrease_btn {
+                  font-size: 1.6rem;
+                  border: 1px solid var(--font-color);
+                  padding: 1rem 1.5rem;
+                  width: 4rem;
+                  background-color: transparent;
+                }
+
+                .amount {
+                  font-size: 1.6rem;
+
+                  padding: 1rem 1.5rem;
+                }
+              }
+
+              .price_wrap {
+                width: 25%;
+                .price {
+                  font-size: 1.6rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .btn_area {
+      display: flex;
+      justify-content: end;
+      margin-top: 2rem;
+      margin-left: 82.9rem;
+      .delete_btn_wrap {
+        width: 20rem;
+        margin-right: 2rem;
+
+        .delete_btn {
+          border: 0.2px solid var(--font-color);
+          background-color: transparent;
+          color: var(--font-color);
+          font-weight: var(--font-basic);
+          font-size: 1.8rem;
+          padding: 1rem 2rem;
+          width: 20rem;
+          height: 6rem;
+
+          &:hover {
             border: 0.2rem solid var(--pink-color);
             color: var(--pink-color);
             font-weight: var(--font-bold);
           }
-				}
-			}
-			.purchase_btn_wrap {
-				.purchase_btn {
-					border: 0.2px solid transparent;
-					background-color: var(--pink-color);
-					color: var(--white-color);
-					font-weight: var(--font-bold);
-					font-size: 1.8rem;
-					padding: 1rem 2rem;
-					width: 20rem;
-					height: 6rem;
+        }
+      }
+      .purchase_btn_wrap {
+        .purchase_btn {
+          border: 0.2px solid transparent;
+          background-color: var(--pink-color);
+          color: var(--white-color);
+          font-weight: var(--font-bold);
+          font-size: 1.8rem;
+          padding: 1rem 2rem;
+          width: 20rem;
+          height: 6rem;
 
-					&:hover {
+          &:hover {
             border: 0.2rem solid var(--pink-color);
             background-color: transparent;
             color: var(--pink-color);
-						transition-delay: 1;
+            transition-delay: 1;
           }
-				}
-			}
-		}
-	}
+        }
+      }
+    }
+  }
 }
