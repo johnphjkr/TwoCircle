@@ -1,13 +1,38 @@
 @import './abstracts/variable';
 @import './base/preset';
 
+@mixin window_default {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin title {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: var(--font-bold);
+  margin: 3rem 0 0 3rem;
+  padding-bottom: 1rem;
+  height: 4rem;
+  border-bottom: 0.2rem solid var(--pink-color);
+}
+
+@mixin order_info_style {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  height: 5rem;
+  margin-bottom: 1rem;
+}
+
 #wrap {
   display: flex;
   width: 1280px;
   height: 100vh;
   justify-content: center;
-  margin: 0 auto;
   font-size: 1.5rem;
+  margin: 0 auto;
 
   .container {
     display: flex;
@@ -18,149 +43,166 @@
       .inner {
         display: flex;
         max-width: 134rem;
-        margin: 0 auto;
         padding: 0 3rem;
 
-        .inner_orderInfo {
-          background-color: var(--lightgray-color);
+        // 주문정보
+        .inner_orderinfo {
           display: flex;
           flex-direction: column;
           width: 70rem;
 
-          .orderInfo_title {
-            display: flex;
-            align-items: center;
-            font-size: 1.8rem;
-            margin-left: 2rem;
-            height: 4rem;           
+          // 주문상품 상단 바
+          .orderinfo_title_navbar {
+            @include title;
           }
 
-          .orderInfo_navBar {
-            display: flex;
-            justify-content: center;
-            border-top: 0.2rem solid var(--pink-color);
-            border-bottom: 0.2rem solid var(--pink-color);
+          .orderinfo_navbar {
+            @include window_default;
           }
 
-          .orderInfo_navBar>div {
-            width: 17rem;
-            padding: 1rem 3rem;
+          .orderinfo_navbar>div {
+            @include window_default;
+            width: 15rem;
+            padding: 1.5rem 0;
           }
 
-          .orderInfo_list {
+          // 주문상품 리스트
+          .orderinfo_list {
             display: flex;
             justify-content: center;
-            padding: 1rem;
+            margin-bottom: 2rem;
 
-            .list--image {
+            .list_image {
               display: flex;
 
               img {
-                width: 10rem;
-                height: 10rem;
+                width: 9rem;
+                height: 9rem;
               }
             }
           }
 
-          .orderInfo_list>div {
+          .orderinfo_list>div {
+            @include window_default;
             width: 15rem;
+            margin: 0 auto;
           }
 
-          .orderInfo_name {
-            display: flex;
-            font-size: 2rem;
-            height: 5rem;
-            margin-top: 3rem;
-            margin-left: 2rem;
+          .orderinfo_title_orderer {
+            @include title;
           }
 
-          .orderInfo_email {
+          // 주문자 정보
+          .orderinfo_orderer {
             display: flex;
-            font-size: 2rem;
-            height: 5rem;
-            margin-left: 2rem;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1.5rem 0;
+            margin-left: 3rem;
+            padding-bottom: 20rem;
+
+            .orderinfo_name,
+            .orderinfo_email {
+              @include order_info_style;
+            }
+
+            .orderinfo_account {
+              @include order_info_style;
+
+              .account_text {
+                display: flex;
+                margin-right: 1rem;
+                align-items: center;
+                width: 9rem;
+              }
+
+              .account_select {
+                display: flex;
+                width: 30em;
+                height: 4rem;
+                border-radius: 15px;
+              }
+
+              .account_search {
+                @include window_default;
+                height: 4rem;
+                width: 12rem;
+                margin: 0 2rem;
+                background-color: var(--pink-color);
+                color: var(--white-color);
+                border: transparent;
+                border-radius: 15px;
+              }
+            }
           }
-          
-          .orderInfo_account {
+
+          .account_info {
             display: flex;
-            font-size: 2rem;
-            height: 5rem;
-            margin-left: 2rem;
-            align-items: center;
-            .account--text{
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 2rem;
+
+            .account_info_totalbalance,
+            .account_info_balance {
               display: flex;
-              margin-right: 1rem;
               align-items: center;
-              width: 5rem;
-
-            }
-
-            .account--select {
-              display: flex;
-              width: 40em;
               height: 3rem;
-              margin-left:1rem;
-              
-            }
-            .account--search{
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              height: 3rem;
-              width: 12rem;
-              margin: 0 2rem;
-              background-color: var(--pink-color);
-              color: var(--white-color);
-              border: transparent;
-              
+              margin-bottom: 1rem;
             }
           }
+        }
+      }
+    }
 
+    // 결제정보요약
+    .inner_summary {
+      position: fixed;
+      right: 3rem;
+      display: flex;
+      flex-direction: column;
+      width: 30rem;
+      height: 35rem;
+      margin-left: 80rem;
+      background-color: var(--lightgray-color);
+      padding: 1.5rem;
+      margin-top: 12rem;
+      border-radius: 15px;
+
+      .summary_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 20rem;
+
+        .info_totaldiscount {
+          border-bottom: 0.2rem solid var(--pink-color);
+          padding-bottom: 3rem;
+        }
+      }
+
+      .summary_info>div {
+        display: flex;
+        height: 3rem;
+      }
+
+      .summary_btn {
+        display: flex;
+        flex-direction: column;
+
+        .btn_payment {
+          background-color: var(--pink-color);
+          color: var(--white-color);
+          border: transparent;
+          border-radius: 15px;
+          height: 4rem;
+          margin: 2rem 0;
+          cursor: pointer;
         }
 
-        .inner_summary {
-          display: flex;
-          flex-direction: column;
-          width: 30rem;
-          height: 30rem;
-          margin-left: 3rem;
-          background-color: var(--lightgray-color);
-          padding: 1.5rem;
-          margin-top: 12rem;
-
-          .summary_info {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 20rem;
-            
-            .info--totalDiscount{
-              border-bottom: 0.2rem solid var(--pink-color);
-              padding-bottom: 3rem;
-            }                       
-          }
-          .summary_info>div{
-            display: flex;           
-            height: 3rem;
-          }
-          .summary_btn{
-            display: flex;
-            flex-direction: column;
-            
-            .btn--payment{             
-              background-color: var(--pink-color);
-              color: var(--white-color);
-              border: transparent;
-              height: 4rem;
-              margin: 2rem 0;
-              cursor: pointer;
-            }
-            .btn--cancel{
-              height: 4rem;
-              cursor: pointer;
-            }
-          }
-
+        .btn_cancel {
+          height: 4rem;
+          border-radius: 15px;
+          cursor: pointer;
         }
       }
     }

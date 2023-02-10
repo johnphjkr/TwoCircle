@@ -19,29 +19,31 @@
     <div class="container">
       <div class="main">
         <div class="inner">
+
           <!-- 메뉴 -->
-          <section class="container_menu">
-            <div class="menu--my">My
-              <div class="menu--my_list"><a href="#">1</a></div>
-              <div class="menu--my_list"><a href="#">2</a></div>
-              <div class="menu--my_list"><a href="#">3</a></div>
+          <nav class="area nav">
+            <div class="header">
+              <h2 class="header_title">마이페이지</h2>
+            </div>         
+            <div class="nav_shopping_info">
+              <div class="shopping_info_title">쇼핑 정보</div>
+              <div class="shopping_info_list">
+                <div class="item">
+                  <div class="item_purchase">구매 목록 / 배송조회</div>
+                  <div class="item_wish_list">찜리스트</div>
+                </div>
+              </div>
+            </div>         
+            <div class="nav_user_info">
+              <div class="user_info_title">회원 정보</div>
+              <div class="user_info_list">
+                <ldiv class="item">
+                  <div class="item_info_change">회원 정보 변경</div>
+                  <div class="item_info_account">계좌 관리</div>
+                </ldiv>
+              </div>
             </div>
-            <div class="menu--account">계정관리
-              <div class="menu--my_list"><a href="#">1</a></div>
-              <div class="menu--my_list"><a href="#">2</a></div>
-              <div class="menu--my_list"><a href="#">3</a></div>
-            </div>
-            <div class="menu--purchase">구매내역
-              <div class="menu--my_list"><a href="#">1</a></div>
-              <div class="menu--my_list"><a href="#">2</a></div>
-              <div class="menu--my_list"><a href="#">3</a></div>
-            </div>
-            <div class="menu--product">상품내역
-              <div class="menu--my_list"><a href="#">1</a></div>
-              <div class="menu--my_list"><a href="#">2</a></div>
-              <div class="menu--my_list"><a href="#">3</a></div>
-            </div>
-          </section>
+          </nav>
           <!-- 구매 정보 -->
           <section class="container_content">
             <div class="container_content_title">
@@ -50,76 +52,92 @@
                 <br>신청하신 취소/교환/반품 처리 내역은 <strong>'취소/교환/반품 내역'</strong> 메뉴에서 확인 가능합니다.
               </p>
             </div>
+            
             <!-- 필터 -->
             <section class="container_content_delivery">
-              <div class="delivery--type">
-                <div class="delivery--type_text">배송구분</div>
-                <button>전체</button>
-                <button>택배배송</button>
-                <button>매장픽업</button>
-              </div>
-              <div class="delivery--filter">
-                <div class="delivery--filter_month">
+              <div class="delivery_type_text">배송구분</div>
+              <div class="delivery_filter">
+                <div class="delivery_filter_month">
                   <button>1개월</button>
                   <button>3개월</button>
                   <button>6개월</button>
                   <button>1년</button>
                 </div>
-                <div class="delivery--filter_calendar">
-                  <div class="calendar--start">2023-01-02
+                <div class="delivery_filter_calendar">
+                  <div class="calendar_start">2023-01-02
                     <button>
                       <span class="material-symbols-outlined">
                         calendar_today
                       </span>
                     </button>
                   </div>
-                  <div class="calendar--middle">~</div>
-                  <div class="calendar--end">2023-02-02
+                  <div class="calendar_middle">~</div>
+                  <div class="calendar_end">2023-02-02
                     <button>
                       <span class="material-symbols-outlined">
                         calendar_today
                       </span>
                     </button>
                   </div>
-                  <button class="delivery--filter_calendar--btn">조회</button>
+                  <button class="delivery_filter_calendar_btn">조회</button>
                 </div>
               </div>
             </section>
             <!-- 구매 리스트 -->
             <section class="container_content_list">
-              
-              <div class="list--bar">
-                <div class="list--bar_productInfo">상품정보</div>
-                <div class="list--bar_orderNumber">주문번호</div>
-                <div class="list--bar_payAmount">결제금액</div>
-                <div class="list--bar_orderDate">주문일시</div>
-                <div class="list--bar_payMethod">결제방법</div>
+              <div class="list_bar">
+                <div class="list_bar_productInfo">상품정보</div>
+                <div class="list_bar_orderNumber">주문번호</div>
+                <div class="list_bar_payAmount">결제금액</div>
+                <div class="list_bar_orderDate">주문일시</div>
+                <div class="list_bar_payMethod">결제</div>
               </div>
-              
-              <div class="list--item">
-                <div class="list--item_productInfo">이미지</div>
-                <div class="list--itme_orderNumber">1</div>
-                <div class="list--item_payAmount">10000원</div>
-                <div class="list--item_orderDate">2023-01-05</div>
-                <div class="list--item_payMethod">카드</div>
+
+              <div class="list_item">
+                <div class="list_item_productInfo"><img src="/image/g1.jpg" alt="선글라스"></div>
+                <div class="list_itme_orderNumber">12345</div>
+                <div class="list_item_payAmount">10000원</div>
+                <div class="list_item_orderDate">2023-01-05</div>
+                <div class="list_item_payMethod">국민은행</div>
+              </div>
+              <div class="list_item">
+                <div class="list_item_productInfo"><img src="/image/g1.jpg" alt="선글라스"></div>
+                <div class="list_itme_orderNumber">12345</div>
+                <div class="list_item_payAmount">10000원</div>
+                <div class="list_item_orderDate">2023-01-05</div>
+                <div class="list_item_payMethod">국민은행</div>
+              </div>
+              <div class="list_item">
+                <div class="list_item_productInfo"><img src="/image/g1.jpg" alt="선글라스"></div>
+                <div class="list_itme_orderNumber">12345</div>
+                <div class="list_item_payAmount">10000원</div>
+                <div class="list_item_orderDate">2023-01-05</div>
+                <div class="list_item_payMethod">국민은행</div>
+              </div>
+              <div class="list_item">
+                <div class="list_item_productInfo"><img src="/image/g1.jpg" alt="선글라스"></div>
+                <div class="list_itme_orderNumber">12345</div>
+                <div class="list_item_payAmount">10000원</div>
+                <div class="list_item_orderDate">2023-01-05</div>
+                <div class="list_item_payMethod">국민은행</div>
               </div>
             </section>
             <!-- 상세 정보 창 -->
             <section class="container_content_modal">
               <div class="modal">
-                <div class="modal--orderDate">주문날짜</div>
-                <button class="modal--cancel">x</button>
+                <div class="modal_orderDate">주문날짜</div>
+                <button class="modal_cancel">x</button>
               </div>
               <div class="modal_inner">
-                <div class="modal_inner--image"><img src="../image/g10.jpg" alt="선글라스"></div>
+                <div class="modal_inner_image"><img src="/image/g10.jpg" alt="선글라스"></div>
                 <div class="modal_inner_box">
-                  <div class="box--productName">상품이름</div>
-                  <div class="box--totalPrice">총 가격</div>
-                  <div class="box--totalQauntity">총 수량</div>
+                  <div class="box_productName">상품이름</div>
+                  <div class="box_totalPrice">총 가격</div>
+                  <div class="box_totalQauntity">총 수량</div>
                 </div>
                 <div class="modal_inner_btn">
-                  <button class="btn--ok">구매확정</button>
-                  <button class="btn--cancel">구매취소</button>
+                  <button class="btn_ok">구매확정</button>
+                  <button class="btn_cancel">구매취소</button>
                 </div>
               </div>
             </section>
