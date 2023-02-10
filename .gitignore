@@ -322,6 +322,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,react,vuejs,vim,nextjs,git,gitbook,visualstudiocode,node
-
-package.json
-package-lock.json
