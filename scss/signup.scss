@@ -26,7 +26,7 @@
     margin-top: 9rem;
     margin-bottom: 6rem;
     // 회원가입 제목
-    .signup_section--title{
+    .signup_section_title{
       font-size: 2.65rem;
       font-weight: var(--font-bold);
       padding-bottom: 3.5rem;
@@ -47,7 +47,7 @@
           width: 13rem;
           text-align: start;
         }
-        &--input{
+        &_input{
           font-size: 1.8rem;
           width: 40rem;
           height: 5.5rem;
@@ -63,7 +63,7 @@
       }
       // 아이디
       &_id{
-        &--check{
+        &_check{
           cursor: pointer;
           font-size: 1.4rem;
           width: 10rem;
@@ -76,13 +76,13 @@
       }
       // 비밀번호
       &_pw{
-        &--input:focus{
+        &_input:focus{
           border: 1px solid var(--pink-color);
         }
       }
       // 비밀번호 확인
       &_check{
-        &--input:focus{
+        &_input:focus{
           border: 1px solid var(--pink-color);
         }
       }
@@ -96,10 +96,10 @@
           width: 13rem;
           text-align: start;
         }
-        &--input{
+        &_input{
           width: 40rem;
         }
-        &--img{
+        &_img{
           width: 15rem;
           height: 15rem;
           border: 1px solid var(--gray-color);
@@ -107,7 +107,7 @@
         }
       }
       // 가입하기 버튼
-      &--btn{
+      &_btn{
         color: var(--white-color);
         background-color: var(--pink-color);
         font-size: 1.8rem;
