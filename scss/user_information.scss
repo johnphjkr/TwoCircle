@@ -1,5 +1,6 @@
 @import './abstracts/variable';
 @import './base/preset';
+@import './_up_button';
 
 body {
     display: flex;
@@ -51,7 +52,7 @@ body {
             display: flex;
             flex-direction: column;
 
-            .user_info_picture_img {
+            .user_info_img {
                 width: 5rem;
                 height: 5rem;
             }
