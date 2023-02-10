@@ -11,7 +11,7 @@ body {
     }
 }
 
-.basic_user_information {
+.user_info {
     border-top: solid #FF597B;
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@ body {
 
     }
 
-    .basic_user_information_picture {
+    .user_info_picture {
         margin-top: 2rem;
         display: flex;
         border-bottom: solid 0.1rem lightgray;
@@ -44,11 +44,11 @@ body {
             width: 20rem;
         }
 
-        .basic_user_information_picture--img_section {
+        .user_info_picture_section {
             display: flex;
             flex-direction: column;
 
-            .basic_user_information_picture--img {
+            .user_info_picture_img {
                 width: 5rem;
                 height: 5rem;
             }
@@ -64,7 +64,7 @@ body {
         }
     }
 
-    .basic_user_information_id {
+    .user_info_id {
         margin-top: 1rem;
         border-bottom: solid 0.1rem lightgray;
 
@@ -73,12 +73,12 @@ body {
             width: 20rem;
         }
 
-        .basic_user_information_id--span {
+        .user_info_id_span {
             width: 50rem;
         }
     }
 
-    .basic_user_information_pw {
+    .user_info_pw {
         display: flex;
         margin-top: 1rem;
         border-bottom: solid 0.1rem lightgray;
@@ -88,12 +88,12 @@ body {
             width: 20rem;
         }
 
-        .basic_user_information_pw--span {
+        .user_info_pw_span {
             width: 50rem;
         }
     }
 
-    .basic_user_information_name {
+    .user_info_name {
         display: flex;
         margin-top: 1rem;
         border-bottom: solid 0.1rem lightgray;
@@ -103,7 +103,7 @@ body {
             width: 20rem;
         }
 
-        .basic_user_information_name--span {
+        .user_info_name_span {
             width: 50rem;
         }
     }
