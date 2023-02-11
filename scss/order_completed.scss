@@ -1,0 +1,94 @@
+@import './abstracts/variable';
+@import './base/preset';
+
+#wrap {
+  display: flex;
+  width: 1280px;
+  height: 100vh;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto;
+
+  .container {
+    display: flex;
+
+    .main {
+      display: flex;
+
+      .inner {
+        display: flex;
+        flex-direction: column;
+        max-width: 134rem;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100rem;
+
+        // 상단제목
+        .title {
+          display: flex;
+
+          .title_text {
+            font-size: 3rem;
+            margin: 0 auto;
+          }
+        }
+
+        // 주문내용
+        .content {
+          display: flex;
+          flex-direction: column;
+          margin: 2rem 0;
+
+          .content_name {
+            border-bottom: 2px solid var(--pink-color);
+            padding-bottom: 0.5rem;
+            font-weight: var(--font-bold);
+          }
+
+          .content_bank {
+            margin: 1rem;
+            padding-top: 3rem;
+          }
+
+          .content_ordernum {
+            margin: 1rem;
+          }
+
+          .content_addres {
+            margin: 1rem;
+          }
+
+          .content_method {
+            margin: 1rem;
+          }
+
+          .content_memo {
+            margin: 1rem;
+          }
+
+          .content_btn {
+            display: flex;
+            justify-content: center;
+
+            .content_mypagebtn,
+            .content_homebtn {
+              width: 35rem;
+              margin: 5rem 3rem 1rem 3rem;
+              border-radius: 10px;
+              font-size: 2rem;
+              padding: 0.5rem;
+              cursor: pointer;
+              transition: .7s;
+            }
+
+            .content_mypagebtn:hover,
+            .content_homebtn:hover {
+              background-color: var(--pink-color);
+              color: var(--white-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
