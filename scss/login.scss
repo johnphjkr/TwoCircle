@@ -29,7 +29,7 @@ a{
     margin-top: 9rem;
     margin-bottom: 6rem;
     // 로그인 제목
-    .login_section--title{
+    .login_section_title{
       font-size: 2.65rem;
       font-weight: var(--font-bold);
       padding-bottom: 3.5rem;
@@ -40,8 +40,8 @@ a{
       flex-direction: column;
       align-items: center;
       // 아이디, 비밀번호 공통 스타일
-      &--id,
-      &--pw{
+      &_id,
+      &_pw{
         border: 1px solid var(--gray-color);
         font-size: 1.8rem;
         width: 44rem;
@@ -59,27 +59,27 @@ a{
         }
       }
       // 아이디 입력
-      &--id{
+      &_id{
         margin-bottom: 1.8rem;
       }
       // 아이디 이미지
-      .icon--person{
+      .icon_person{
         position: absolute;
         right: 1.5rem;
         top: 8rem;
       }
       // 비밀번호 입력
-      &--pw{
+      &_pw{
         margin-bottom: 5.5rem;
       }
       // 비밀번호 이미지
-      .icon--lock{
+      .icon_lock{
         position: absolute;
         right: 1.5rem;
         top: 16rem;
       }
       // 버튼
-      &--btn{
+      &_btn{
         color: var(--white-color);
         background-color: var(--pink-color);
         margin-bottom: 1.8rem;
