@@ -1,5 +1,4 @@
-import {url, headers} from "../api/requests"
-
+import { signUp } from "../api/certified/signup_api"
 const signUpForm = document.querySelector(".signup_form")
 
 signUpForm.addEventListener("submit",e=>{
@@ -22,16 +21,27 @@ signUpForm.addEventListener("submit",e=>{
   }
 })
 
-// 회원가입
-async function signUp(method, data){
-  const res = await fetch(url + "/auth/signup",{
-    method,
-    headers,
-    body : JSON.stringify(data)
-  })
-  const json = await res.json()
-  console.log(json)
-}
 
+// 비밀번호 일치 확인
+
+const pw = document.querySelector(".signup_form_pw_input")
+const pwCheck = document.querySelector(".signup_form_check_input")
+
+
+
+pw.addEventListener("keydown",e=>{
+  const err = document.querySelector(".error")
+  const inputBox = document.querySelector(".signup_form_pw_input:focus")  
+  if(e.target.value.length >= 7){
+    err.textContent = "사용 가능한 비밀번호 입니다."
+    err.style.color = "#2DB400"
+    inputBox.style.border="1px solid #2DB400"
+    console.log(e.target.value)
+  }else{
+    err.textContent = "8자 이상의 비밀번호를 입력하세요."
+    err.style.color = "var(--pink-color)"
+    inputBox.style.border="1px solid var(--pink-color)"
+  }
+})
 
 
