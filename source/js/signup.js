@@ -1,34 +1,37 @@
-import { signup } from "../api/certified/signup_api";
-const inputNameEl = document.querySelector(".signup_form_name--input");
-const inputEmailEl = document.querySelector(".signup_form_id--input");
-const inputPasswordEl = document.querySelector(".signup_form_pw--input");
-const inputPasswordCheckEl = document.querySelector(
-  ".signup_form_check--input"
-);
-const signupBtnEl = document.querySelector(".signup_form--btn");
-const signupEl = document.querySelector(".signup_form");
+import {url, headers} from "../api/requests"
 
-let displayName = "";
-let id = "";
-let pw = "";
+const signUpForm = document.querySelector(".signup_form")
 
-inputNameEl.addEventListener("input", (e) => {
-  displayName = e.target.value;
-});
+signUpForm.addEventListener("submit",e=>{
+  e.preventDefault()
+  // 비밀번호 확인
+  const pwCheck = e.target[4].value
+  // 전송 할 Body
+  const body = {
+    // 각 Input에 해당하는 Value
+    email : e.target[1].value,
+    password : e.target[3].value,
+    displayName : e.target[0].value,
+    profileImgBase64 : e.target[5].value
+  }
+  // 비밀번호가 일치하면 전송
+  if(body.password.length>=8 && body.password === pwCheck){
+    signUp("POST",body)
+  }else{
+    alert("비밀번호가 옳바르지 않습니다.")
+  }
+})
 
-inputEmailEl.addEventListener("input", (e) => {
-  id = e.target.value;
-});
+// 회원가입
+async function signUp(method, data){
+  const res = await fetch(url + "/auth/signup",{
+    method,
+    headers,
+    body : JSON.stringify(data)
+  })
+  const json = await res.json()
+  console.log(json)
+}
 
-inputPasswordEl.addEventListener("input", (e) => {
-  pw = e.target.value;
-});
 
-inputPasswordCheckEl.addEventListener("input", (e) => {
-  passwordCheck = e.target.value;
-});
 
-signupEl.addEventListener("sumit", async (e) => {
-  e.preventDefault();
-  await signup({ displayName, id, pw });
-});
