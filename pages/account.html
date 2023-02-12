@@ -9,8 +9,8 @@
     <link
       href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
       rel="stylesheet" />
-    <link rel="stylesheet" href="/scss/account.scss" />
-  
+    <link rel="stylesheet" href="/scss/account.css" />
+    <script defer type="module" src="/source/api/account/account_add.js" ></script>
   </head>
   <body>
     <div id="wrap">
@@ -25,28 +25,28 @@
               <div class="title">계좌 추가하기</div>
               <div class="bank_code_wrap">
                 <div class="bank_code">은행코드</div>
-                <select name="" id="" class="bank_code_select">
-                  <option value="">국민은행</option>
-                  <option value="">신한은행</option>
-                  <option value="">우리은행</option>
-                  <option value="">하나은행</option>
-                  <option value="">케이뱅크</option>
-                  <option value="">카카오뱅크</option>
-                  <option value="">NH농협은행</option>
+                <select  class="bank_code_select">
+                  <!-- <option>KB국민은행 [3243]</option>
+                  <option>신한은행 [336]</option>
+                  <option>우리은행 [436]</option>
+                  <option>하나은행 [365]</option>
+                  <option>케이뱅크 [336]</option>
+                  <option>카카오뱅크 [427]</option>
+                  <option>NH농협은행 [3442]</option> -->
                 </select>
               </div>
               <div class="bank_account_wrap">
                 <div class="bank_account">계좌번호</div>
-                <input type="text" />
+                <input type="text"  class="bank_account_input"/>
               </div>
 
               <div class="phone_number_wrap">
                 <div class="phone_number">전화번호</div>
-                <input type="text" />
+                <input type="text" class="phone_number_input"/>
               </div>
               <div class="signature_wrap">
                 <div class="signature">예금주</div>
-                <input type="text" />
+                <input type="text"  class="signature_input"/>
               </div>
 
               <div class="add_btn_wrap">
