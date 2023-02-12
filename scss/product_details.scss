@@ -52,21 +52,23 @@
   .container {
     display: flex;
     margin: 3rem 0;
-    
+
 
     .main {
       display: flex;
+
       img {
-          display: block;
-          width: 100%;
-        }
+        display: block;
+        width: 100%;
+      }
+
       h2 {
-          width: 100%;
-          line-height: 4.6rem;
-          font-size: 3.2rem;
-          font-weight: 700;
-          margin-bottom: 4rem;
-        }
+        width: 100%;
+        line-height: 4.6rem;
+        font-size: 3.2rem;
+        font-weight: 700;
+        margin-bottom: 4rem;
+      }
 
       .main_inner {
         display: flex;
@@ -115,7 +117,7 @@
             display: flex;
             width: 60rem;
 
-            .sunglass {
+            .container_content_productImg {
               margin: auto;
               height: 60rem;
             }
@@ -326,6 +328,20 @@
                 }
               }
             }
+          }
+
+        }
+
+        .photo {
+          display: flex;
+          flex-direction: column;
+          margin: 5rem auto;
+          width: 80rem;
+          justify-content: center;
+
+          .photo_Img {
+            display: flex;
+            justify-content: center; 
           }
         }
       }
