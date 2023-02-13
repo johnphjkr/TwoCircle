@@ -1,21 +1,11 @@
-import { headers, url } from "requests.js";
+import { headers, url } from "../../requests.js";
 
-export async function productDetail(data) {
-  const res = await fetch(url + "/products/:productId", {
+// todo: 제품 id 받아와서 넣기
+export async function productDetail(id) {
+  const res = await fetch(url + "/products/" + id, {
     method: "GET",
     headers,
-    body: JSON.stringify({
-      id: data.id,
-      title: data.title,
-      price: data.price,
-      description: data.description,
-      tags: data.tags,
-      thumbnail: data.thumbnail,
-      photo: data.photo,
-      isSoldOut: data.isSoldOut,
-      discountRate: data.discountRate,
-    }),
   });
   console.log(res);
-  return res.json();
+  return await res.json();
 }
