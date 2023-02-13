@@ -1,5 +1,16 @@
 import { signUp } from "../api/certified/signup_api"
 const signUpForm = document.querySelector(".signup_form")
+const idCheck = document.querySelector(".signup_form_id_check")
+
+idCheck.addEventListener("click",e=>{
+  const body = {
+    email : e.target.previousElementSibling.value,
+    password : "12345678",
+    displayName : "홍길동",
+    profileImgBase64 : ""
+  }
+  signUp("POST",body)
+})
 
 signUpForm.addEventListener("submit",e=>{
   e.preventDefault()
@@ -16,7 +27,7 @@ signUpForm.addEventListener("submit",e=>{
   // 비밀번호가 일치하면 전송
   if(body.password.length>=8 && body.password === pwCheck){
     signUp("POST",body)
-  }else{
+  }else if(body.password){
     alert("비밀번호가 옳바르지 않습니다.")
   }
 })
@@ -28,7 +39,7 @@ const pw = document.querySelector(".signup_form_pw_input")
 const pwCheck = document.querySelector(".signup_form_check_input")
 
 
-
+// 비밀번호
 pw.addEventListener("input",e=>{
   const err = document.querySelector(".signup_form_pw_error")
   const inputBox = document.querySelector(".signup_form_pw_input:focus")  
@@ -44,6 +55,7 @@ pw.addEventListener("input",e=>{
   }
 })
 
+// 비밀번호 일치 여부
 pwCheck.addEventListener("input",e=>{
   const err = document.querySelector(".signup_form_check_error")
   const inputBox = document.querySelector(".signup_form_check_input:focus")
