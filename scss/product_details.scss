@@ -113,11 +113,11 @@
           height: inherit;
 
           // 제품 이미지
-          .product_img {
+          .container_content_productImg {
             display: flex;
             width: 60rem;
 
-            .container_content_productImg {
+            .productImg {
               margin: auto;
               height: 60rem;
             }
@@ -170,10 +170,13 @@
 
             .product_info_price {
               @include productDefault;
+              width: auto;
               height: 5rem;
               font-size: 1.8rem;
               font-weight: var(---font-bold);
-              padding-left: 50rem;
+              margin-right: 1rem;
+              justify-content: end;
+              white-space: nowrap;
             }
 
             // 제품 상세 이름, 제품 수량 추가 or 감소, 제품 가격
