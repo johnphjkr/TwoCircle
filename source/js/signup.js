@@ -29,10 +29,10 @@ const pwCheck = document.querySelector(".signup_form_check_input")
 
 
 
-pw.addEventListener("keydown",e=>{
+pw.addEventListener("input",e=>{
   const err = document.querySelector(".error")
   const inputBox = document.querySelector(".signup_form_pw_input:focus")  
-  if(e.target.value.length >= 7){
+  if(e.target.value.length > 7){
     err.textContent = "사용 가능한 비밀번호 입니다."
     err.style.color = "#2DB400"
     inputBox.style.border="1px solid #2DB400"
