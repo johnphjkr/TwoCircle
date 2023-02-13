@@ -61,19 +61,6 @@
           }
         }
       }
-      // 아이디
-      &_id{
-        &_check{
-          cursor: pointer;
-          font-size: 1.4rem;
-          width: 10rem;
-          height: 5.5rem;
-          margin-left: 1rem;
-          background-color: var(--pink-color);
-          color: var(--white-color);
-          border: none;
-        }
-      }
       // 비밀번호
       &_pw{
         &_input:focus{

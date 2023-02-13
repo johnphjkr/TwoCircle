@@ -1,34 +1,25 @@
 import { signUp } from "../api/certified/signup_api"
 const signUpForm = document.querySelector(".signup_form")
-const idCheck = document.querySelector(".signup_form_id_check")
-
-idCheck.addEventListener("click",e=>{
-  const body = {
-    email : e.target.previousElementSibling.value,
-    password : "12345678",
-    displayName : "홍길동",
-    profileImgBase64 : ""
-  }
-  signUp("POST",body)
-})
 
 signUpForm.addEventListener("submit",e=>{
   e.preventDefault()
   // 비밀번호 확인
-  const pwCheck = e.target[4].value
+  const pwCheck = e.target[3].value
   // 전송 할 Body
   const body = {
     // 각 Input에 해당하는 Value
     email : e.target[1].value,
-    password : e.target[3].value,
+    password : e.target[2].value,
     displayName : e.target[0].value,
-    profileImgBase64 : e.target[5].value
+    profileImgBase64 : e.target[4].value
   }
   // 비밀번호가 일치하면 전송
   if(body.password.length>=8 && body.password === pwCheck){
     signUp("POST",body)
-  }else if(body.password){
+  }else if(body.password.length<7){
     alert("비밀번호가 옳바르지 않습니다.")
+  }else if(body.password.length>=8 && body.password != pwCheck){
+    alert("비밀번호가 일치하지 않습니다.")
   }
 })
 
