@@ -30,7 +30,7 @@ const pwCheck = document.querySelector(".signup_form_check_input")
 
 
 pw.addEventListener("input",e=>{
-  const err = document.querySelector(".error")
+  const err = document.querySelector(".signup_form_pw_error")
   const inputBox = document.querySelector(".signup_form_pw_input:focus")  
   if(e.target.value.length > 7){
     err.textContent = "사용 가능한 비밀번호 입니다."
@@ -39,6 +39,20 @@ pw.addEventListener("input",e=>{
     console.log(e.target.value)
   }else{
     err.textContent = "8자 이상의 비밀번호를 입력하세요."
+    err.style.color = "var(--pink-color)"
+    inputBox.style.border="1px solid var(--pink-color)"
+  }
+})
+
+pwCheck.addEventListener("input",e=>{
+  const err = document.querySelector(".signup_form_check_error")
+  const inputBox = document.querySelector(".signup_form_check_input:focus")
+  if(e.target.value===pw.value){
+    err.textContent = "비밀번호가 일치합니다."
+    err.style.color = "#2DB400"
+    inputBox.style.border="1px solid #2DB400"
+  }else{
+    err.textContent = "비빌번호가 일치하지 않습니다!"
     err.style.color = "var(--pink-color)"
     inputBox.style.border="1px solid var(--pink-color)"
   }
