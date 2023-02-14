@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>투써클(TWO CIRCLE)</title>
     <link rel="stylesheet" href="../scss/user_information.scss">
+    <script type="module" defer src="../source/js/user_info.js"></script>
 </head>
 
 <!-- up 버튼 -->
@@ -25,6 +26,7 @@
                 <span>회원님을 알릴 수 있는 사진을 등록해 주세요.</span>
                 <span>등록된 사진은 회원님의 게시물이나 댓글들에 사용됩니다.</span>
             </div>
+            <input type="file" class="upload_img" accept="image/*">
             <button class="user_info_picture_btn">사진 변경</button>
         </div>
         <div class="user_info_id">
@@ -41,27 +43,13 @@
             <span class="user_info_name_span">홍길동</span>
             <button class="user_info_name_btn">이름수정</button>
         </div>
-        <div class="basic_user_information_nickname">
-            <span>닉네임</span>
-            <span class="basic_user_information_nickname--span">닉네임 예시</span>
-            <button class="basic_user_information_nickname--btn">닉네임 변경</button>
-        </div>
-        <div class="basic_user_information_email">
-            <span>이메일</span>
-            <span class="basic_user_information_email--span">example@naver.com</span>
-            <button class="basic_user_information_email--btn">이메일 변경</button>
-        </div>
-        <div class="basic_user_information_phonenumber">
-            <span>휴대전화</span>
-            <span class="basic_user_information_phonenumber--span">010-****-1234</span>
-            <button class="basic_user_information_phonenumber--btn">휴대전화 변경</button>
-        </div>
     </div>
-    <span>추가 회원정보</span>
-    <div class="additional_user_information">
-        <div class="additional_user_information_birthdate">
-            <span>생년월일</span>
-            <span class="additional_user_information_birthdate--span">2000-01-01</span>
+    <div class="change_modal"></div>
+    <span>계좌정보</span>
+    <div class="account_information">
+        <div class="account_information_list">
+            <span>OO은행</span>
+            <span class="account_information_span">2000-01-01</span>
         </div>
     </div>
 
