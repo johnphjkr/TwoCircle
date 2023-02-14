@@ -1,0 +1,206 @@
+@import './abstracts/variable';
+@import './base/preset';
+@import './_up_button';
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 128rem;
+    margin: 0 auto;
+
+    span {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #FF597B;
+    }
+}
+
+.user_info {
+    border-top: solid #FF597B;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+
+    span {
+        font-size: 2rem;
+        width: 10rem;
+        color: black;
+    }
+
+    button {
+        display: inline-block;
+        background-color: white;
+        border: 0.1rem solid lightgray;
+        cursor: pointer;
+        height: 2.5rem;
+        width: 10rem;
+        font-weight: 600;
+
+    }
+
+    .user_info_picture {
+        margin-top: 2rem;
+        display: flex;
+        border-bottom: solid 0.1rem lightgray;
+
+        span {
+            display: inline-block;
+            width: 20rem;
+        }
+
+        .user_info_picture_section {
+            display: flex;
+            flex-direction: column;
+
+            .user_info_img {
+                width: 7rem;
+                height: 7rem;
+                margin-bottom: 1rem;
+            }
+
+            span {
+                width: 50rem;
+            }
+        }
+
+        .upload_img {
+            display: none;
+        }
+
+        button {
+            display: inline-block;
+            height: 2.5rem;
+        }
+    }
+
+    .user_info_id {
+        margin-top: 1rem;
+        border-bottom: solid 0.1rem lightgray;
+
+        span {
+            display: inline-block;
+            width: 20rem;
+        }
+
+        .user_info_id_span {
+            width: 50rem;
+        }
+    }
+
+    .user_info_pw {
+        display: flex;
+        margin-top: 1rem;
+        border-bottom: solid 0.1rem lightgray;
+
+        span {
+            display: inline-block;
+            width: 20rem;
+        }
+
+        .user_info_pw_span {
+            width: 50rem;
+        }
+    }
+
+    .user_info_name {
+        display: flex;
+        margin-top: 1rem;
+        border-bottom: solid 0.1rem lightgray;
+
+        span {
+            display: inline-block;
+            width: 20rem;
+        }
+
+        .user_info_name_span {
+            width: 50rem;
+        }
+    }
+}
+
+//이름변경 모달창
+.change_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    background: rgba(0, 0, 0, 0.8);
+
+    .change_modal_box {
+        position: absolute;
+        background-color: white;
+        width: 60rem;
+        height: 40rem;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        h1 {
+            font-size: 4rem;
+        }
+
+        span {
+            font-size: 2rem;
+            color: black;
+        }
+
+        .new_name {
+            width: 40rem;
+            height: 4rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            border: 0.1rem solid lightgray;
+        }
+
+        .new_name_section_btn {
+            justify-content: center;
+            display: flex;
+            padding: 3rem;
+            gap: 1rem;
+
+            .change_cancel_btn {
+                background-color: white;
+                border: 0.1rem solid lightgray;
+                cursor: pointer;
+                width: 8rem;
+                height: 4rem;
+            }
+
+            .change_ok_btn {
+                background-color: #FF597B;
+                border: solid #FF597B;
+                color: white;
+                cursor: pointer;
+                width: 8rem;
+                height: 4rem;
+            }
+        }
+    }
+}
+
+.account_information {
+    border-top: solid #FF597B;
+    display: flex;
+    flex-direction: column;
+
+    span {
+        margin-top: 2rem;
+        width: 10rem;
+        font-size: 2rem;
+        color: black;
+    }
+
+    .account_information_list {
+        span {
+            display: inline-block;
+            width: 20rem;
+        }
+    }
+
+}
