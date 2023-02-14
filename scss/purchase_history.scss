@@ -49,7 +49,7 @@
 #wrap {
   color: var(--font-color);
   font-weight: var(--font-basic);
-  font-size: 0.938rem;
+  font-size: 1.5rem;
   display: flex;
   flex-direction: column;
   width: 1280px;
@@ -285,6 +285,20 @@
                   width: 9rem;
                   height: 9rem;
                 }
+              }
+              .list_item_btn{
+                display:flex;
+                
+                .btn_ok,
+                .btn_cancel{
+                  border: transparent;
+                  background-color: var(--pink-color);
+                  border-radius: 10px;
+                  color: var(--white-color);
+                  width: 8rem;
+                  height: 3rem;
+                  margin: 0 auto;
+                }               
               }
             }
 
