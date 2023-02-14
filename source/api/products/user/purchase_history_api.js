@@ -1,6 +1,6 @@
 import { headers, url } from "../../requests.js";
 
-export async function payment(data) {
+export async function purchaseHistory() {
   const res = await fetch(url + "/products/transactions/details", {
     method: "GET",
     headers: {
