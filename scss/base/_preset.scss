@@ -1,12 +1,12 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
 
-html{
-  font-size:10px;
+html {
+  font-size: 10px;
 }
 
 *,
 *:after,
-*:before {   
+*:before {
   box-sizing: border-box;
 }
 
@@ -49,10 +49,11 @@ header {
     display: flex;
     justify-content: right;
   }
-  
+
   &_right {
-    > div {
+    >div {
       display: flex;
+
       :first-child::after {
         display: inline-block;
         content: "";
@@ -65,6 +66,7 @@ header {
 
     .header_logout {
       display: none;
+
       :last-child {
         cursor: pointer;
       }
@@ -74,6 +76,7 @@ header {
 
 .header {
   padding: 10px 0;
+
   .inner {
     display: flex;
     justify-content: space-between;
@@ -82,6 +85,7 @@ header {
 
   .logo {
     min-width: 20rem;
+
     img {
       width: 11rem;
     }
@@ -93,7 +97,7 @@ header {
     justify-content: space-between;
     width: 48rem;
     background: var(--lightgray-color);
-    
+
     input {
       width: 100%;
       height: 4.8rem;
@@ -102,6 +106,7 @@ header {
       padding: 1.2rem;
       background: transparent;
       font-size: 1.4rem;
+
       &:focus {
         border: 1px solid #000;
         background: #fff;
@@ -121,10 +126,13 @@ header {
     display: flex;
     min-width: 20rem;
     justify-content: right;
+
     li {
       margin-left: 1.3rem;
+
       a {
         position: relative;
+
         span {
           position: absolute;
           left: 2rem;
@@ -144,19 +152,24 @@ header {
 nav {
   border-top: 1px solid var(--lightgray-color);
   border-bottom: 1px solid var(--lightgray-color);
+
   .nav {
     display: flex;
     justify-content: space-between;
     text-align: center;
     font-weight: 700;
+
     li {
       width: 20%;
+
       a {
         position: relative;
         display: block;
         line-height: 5.6rem;
+
         &:hover {
           color: var(--pink-color);
+
           &:after {
             position: absolute;
             bottom: 0;
@@ -175,24 +188,28 @@ nav {
 // footer
 footer {
   border-top: 1px solid var(--lightgray-color);
+
   .footer_container {
     padding: 4rem 0 5rem;
     line-height: 2.4rem;
     color: #535762;
     font-size: 1.2rem;
     font-weight: 300;
+
     .inner {
       display: flex;
       justify-content: space-between;
 
       .footer_left {
-        > p {
+        >p {
           margin-bottom: 1rem;
+
           a {
-          font-weight: 700;
-          margin-right: 1rem;
+            font-weight: 700;
+            margin-right: 1rem;
           }
-        } 
+        }
+
         .footer_txt {
           * {
             margin-right: 1rem;
@@ -205,6 +222,7 @@ footer {
         flex-wrap: wrap;
         justify-content: right;
         max-width: 40rem;
+
         .footer_cs {
           margin-right: 2rem;
         }
@@ -215,30 +233,38 @@ footer {
 
         .footer_sns {
           display: flex;
+
           li {
             width: 3.2rem;
             height: 3.2rem;
             margin-right: 1rem;
+
             img {
               width: 100%;
             }
+
             a {
               display: block;
               height: 3.2rem;
-              background: url(../image/bg_fb.png) 0 0 / cover;
+              background: url(../../image/bg_fb.png) 0 0 / cover;
+
               &:hover {
-                background: url(../image/bg_fb_on.png) 0 0 / cover;
+                background: url(../../image/bg_fb_on.png) 0 0 / cover;
               }
+
               &.insta {
-                background-image: url(../image/bg_insta.png);
+                background-image: url(../../image/bg_insta.png);
+
                 &:hover {
-                  background-image: url(../image/bg_insta_on.png);
+                  background-image: url(../../image/bg_insta_on.png);
                 }
               }
+
               &.git {
-                background-image: url(../image/bg_git.png);
+                background-image: url(../../image/bg_git.png);
+
                 &:hover {
-                  background-image: url(../image/bg_git_on.png);
+                  background-image: url(../../image/bg_git_on.png);
                 }
               }
             }
@@ -250,6 +276,7 @@ footer {
           font-weight: 700;
           margin-bottom: 1rem;
         }
+
         h4 {
           font-size: 2.2rem;
           margin-bottom: 1rem;
@@ -262,6 +289,7 @@ footer {
     font-size: 12px;
     color: var(--gray-color);
     text-align: center;
+
     .inner {
       padding: 2rem 0;
       border-top: 1px solid var(--lightgray-color);

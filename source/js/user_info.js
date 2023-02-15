@@ -1,4 +1,5 @@
 import { userupdate } from "../api/certified/userupdate_api";
+import { authCheck } from "../api/certified/authcheck_api";
 
 const imgUploadEl = document.querySelector(".upload_img");
 const newProfileEl = document.querySelector(".user_info_img");
@@ -6,9 +7,30 @@ const picChangeBtnEl = document.querySelector(".user_info_picture_btn");
 const pwChangeBtnEl = document.querySelector(".user_info_pw_btn");
 const nameChangeBtnEl = document.querySelector(".user_info_name_btn");
 const changeModalEl = document.querySelector(".change_modal");
+const idEl = document.querySelector(".user_info_id_span");
+const nameEl = document.querySelector(".user_info_name_span");
 
 let displayName = "";
 let profileImgBase64 = "";
+
+let id = "";
+let name = "";
+let image = "";
+
+window.onload = async function () {
+    const res = await authCheck();
+    //const json = await res.json();
+    id = res.email;
+    console.log(id);
+    name = res.displayName;
+    console.log(name);
+    image = res.profileImg;
+    idEl.innerText = id;
+    nameEl.innerText = name;
+    if (image != null) {
+        newProfileEl.src = image;
+    }
+}
 
 function modalOn() {
     changeModalEl.style.display = "flex";
@@ -43,7 +65,7 @@ picChangeBtnEl.addEventListener("click", (e) => {
 
 pwChangeBtnEl.addEventListener("click", (e) => {
     //비밀번호 변경 페이지로 이동
-    window.location.href = '../pages/password_change.html';
+    window.location.href = '../../pages/password_change.html';
 });
 
 nameChangeBtnEl.addEventListener("click", async (e) => {
@@ -64,11 +86,13 @@ nameChangeBtnEl.addEventListener("click", async (e) => {
     const inputNameEl = document.querySelector(".new_name");
     inputNameEl.addEventListener("input", (e) => {
         displayName = e.target.value;
+        console.log(displayName);
     });
     changeCancelBtnEl.addEventListener("click", modalOff);
 
     changeOkBtnEl.addEventListener("click", async (e) => {
         await userupdate({ displayName });
+        nameEl.innerText = displayName;
         modalOff();
     });
 
