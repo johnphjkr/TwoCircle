@@ -84,14 +84,24 @@
           text-align: start;
         }
         &_input{
-          width: 40rem;
+          width: 15rem;
+          margin-right: 25rem;
+        }
+        &_alert{
+          margin:1.2rem 4rem 0 13rem;
         }
         &_img{
           width: 15rem;
-          height: 15rem;
+          height: 16rem;
           border: 1px solid var(--gray-color);
-          margin: 2.2rem 0 8rem 13rem;
+          margin: 2rem 0 8rem 13rem;
+          overflow: hidden;
+          img{
+            width: 15rem;
+            height: 16rem;
+          }
         }
+        
       }
       // 가입하기 버튼
       &_btn{
