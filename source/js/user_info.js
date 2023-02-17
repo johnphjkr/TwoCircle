@@ -1,5 +1,6 @@
 import { userupdate } from "../api/certified/userupdate_api";
 import { authCheck } from "../api/certified/authcheck_api";
+import { checkAccount } from "../api/account/account_add_check";
 
 const imgUploadEl = document.querySelector(".upload_img");
 const newProfileEl = document.querySelector(".user_info_img");
@@ -9,6 +10,7 @@ const nameChangeBtnEl = document.querySelector(".user_info_name_btn");
 const changeModalEl = document.querySelector(".change_modal");
 const idEl = document.querySelector(".user_info_id_span");
 const nameEl = document.querySelector(".user_info_name_span");
+const accountInformationEl = document.querySelector(".account_information_list");
 
 let displayName = "";
 let profileImgBase64 = "";
@@ -16,10 +18,10 @@ let profileImgBase64 = "";
 let id = "";
 let name = "";
 let image = "";
+let user_accounts = "";
 
 window.onload = async function () {
     const res = await authCheck();
-    //const json = await res.json();
     id = res.email;
     console.log(id);
     name = res.displayName;
@@ -30,6 +32,25 @@ window.onload = async function () {
     if (image != null) {
         newProfileEl.src = image;
     }
+    const res2 = await checkAccount();
+    //const json = await res2.json();
+    user_accounts = res2.accounts;
+
+    const accountEls = user_accounts.map(function (account) {
+        const accountEl = document.createElement('div');
+        accountEl.classList.add("account_information_el");
+        const nameEl = document.createElement('span');
+        const accountNumberEl = document.createElement('span');
+        accountNumberEl.classList.add("account_information_span");
+
+        nameEl.textContent = account.bankName;
+        accountNumberEl.textContent = account.accountNumber;
+        accountEl.append(nameEl, accountNumberEl);
+        accountInformationEl.appendChild(accountEl);
+
+        return accountEl;
+    })
+
 }
 
 function modalOn() {
