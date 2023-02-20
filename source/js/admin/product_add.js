@@ -30,8 +30,10 @@ textEl.addEventListener('input', e => {
   text = e.target.value;
 });
 tagEl.addEventListener('input', e => {
-  tag = e.target.value;
+  console.log(e.target.value.split(', '));
+  tag = e.target.value.split(', ');
 });
+
 thumbnailEl.addEventListener('change', event => {
   const file = thumbnailEl.files[0];
   const reader = new FileReader();
@@ -45,8 +47,8 @@ thumbnailEl.addEventListener('change', event => {
       <img src="${thumbnailImgBase64}" alt="썸네일" />
     `;
   });
-
 });
+
 photoEl.addEventListener('change', event => {
   const file = photoEl.files[0];
   const reader = new FileReader();
@@ -54,8 +56,13 @@ photoEl.addEventListener('change', event => {
   reader.addEventListener('load', e => {
     // console.log(e.target.result);
     photoImgBase64 = e.target.result;
+    const img = document.querySelector('.detail_img');
+    img.innerHTML = /* html */ `
+      <img src="${photoImgBase64}" alt="상세이미지" />
+    `;
   });
 });
+
 discountEl.addEventListener('input', e => {
   discount = e.target.value;
   if (isNaN(discount)) {

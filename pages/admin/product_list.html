@@ -10,11 +10,25 @@
       defer
       src="../../source/js/admin/product_list.js"
     ></script>
+    <style>
+      li img {
+        width: 100px;
+      }
+    </style>
   </head>
   <body>
     <div id="wrap">
       <div class="container">
         <div class="product_admin_list">
+          <div class="all_check">
+            <label for="all">
+              <input type="checkbox" id="all" />
+              <span>전체선택</span>
+            </label>
+            <button type="button" class="select_delete">
+              선택항목 삭제하기
+            </button>
+          </div>
           <ul class="product_admin_ul"></ul>
         </div>
       </div>
