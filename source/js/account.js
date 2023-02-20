@@ -23,63 +23,48 @@ let accountInfo = {
   signature: false,
 };
 
-/**은행 등록후 계좌 조회 정보 담는 객체*/
-let accountList = {
-  totalBalance: null,
-  accounts: [],
-};
 
-/** 은행 명 및 코드*/
-let bankCodeNum = {
-  [`은행을 선택해주세요`]: "",
-  [`KB국민은행 [3243]`]: "004",
-  [`신한은행 [336]`]: "088",
-  [`우리은행 [436]`]: "020",
-  [`하나은행 [365]`]: "081",
-  [`케이뱅크 [336]`]: "089",
-  [`카카오뱅크 [427]`]: "090",
-  [`NH농협은행 [3442]`]: "011",
-};
 
-/**선택 가능한 은행 조회 정보 객체*/
-let bank = {
-  name: "",
-  code: "",
-  digits: [],
-  disabled: false,
-};
+(async () => {
+  const banks = await ableAccount();
+  // renderAbleBank(banks)
+  renderOption(banks)
+  
+})();
+
 
 /**option 생성및 라벨과 은행코드 삽입*/
-const createOption = () => {
-  const optionList = Array.from(Object.entries(bankCodeNum)).map(
-    ([bankCompany, bankCode]) => {
-      const option = document.createElement("option");
-      option.label = bankCompany;
-      option.value = bankCode;
-      return option;
+function renderOption(banks) {
+  const optionList  = banks.map((bank) => {
+    const optionEl = document.createElement('option')
+    optionEl.value = bank.code
+    optionEl.textContent = bank.name
+    if(bank.disabled){
+      optionEl.disabled = true
     }
-  );
+    return optionEl;
+  })
+  selectEl.append(...optionList)
+}
 
-  selectEl.append(...optionList);
-  // console.log({ optionList });
-};
 
-createOption();
 
 /**셀렉트 option 이벤트 함수*/
 selectEl.addEventListener("change", (e) => {
-  console.log(e.target.value);
   accountInfo.bankCode = e.target.value;
+  
 });
 
 /** 계좌번호 입력 이벤트 함수*/
-accountInputEl.addEventListener("input", () => {
-  accountInfo.accountNumber = accountInputEl.value;
+accountInputEl.addEventListener("input", (e) => {
+  accountInfo.accountNumber = e.target.value;
+  
 });
 
-/** 계좌번호 입력 이벤트 함수*/
-phoneInputEl.addEventListener("input", () => {
-  accountInfo.phoneNumber = phoneInputEl.value;
+/**전화번호 입력 이벤트 함수*/
+phoneInputEl.addEventListener("input", (e) => {
+  accountInfo.phoneNumber = e.target.value;
+  validatePhoneTest(accountInfo.phoneNumber);
 });
 
 /** 서명 입력 이벤트 함수*/
@@ -108,13 +93,6 @@ closeBtnEl.addEventListener("click", () => {
   modal.classList.add("_hidden");
 });
 
-/**즉시 실행함수 */
-(async () => {
-  const accounts = await checkAccount();
-  renderAccount(accounts);
-  renderTotalBalance(accounts);
-})();
-
 /**계좌 등록후 정보 총 계좌 금액 렌더링 */
 function renderTotalBalance(accounts) {
   const totalDivEl = document.createElement("div");
@@ -127,7 +105,15 @@ function renderTotalBalance(accounts) {
   divEl.prepend(totalDivEl);
 }
 
+/**즉시 실행함수 */
+(async () => {
+  const accounts = await checkAccount();
+  renderAccount(accounts);
+  renderTotalBalance(accounts);
+})();
+
 /**계좌 등록후 정보 화면에 계좌 정보 랜더링 하는 함수 */
+
 function renderAccount({ accounts }) {
   const listEl = document.createElement("ul");
   const liEls = accounts.map((account) => {
@@ -191,3 +177,33 @@ function renderModal(account) {
     await deleteAccount(deleteCheckInfo);
   });
 }
+
+/**유효성 검사 */
+
+const validatePhoneTest = (data) => {
+  const validateWrap = document.querySelector(".validate_text");
+  const validateText = document.createElement("span");
+  const regExp = /(^01.{1})([0-9]{4})([0-9]{4})/g;
+
+  validateText.classList.add("red");
+  validateWrap.innerHTML = "";
+
+  if (regExp.test(data)) {
+    validateText.textContent = "옳바른 전화번호 입니다.";
+    validateWrap.append(validateText);
+    validateText.classList.add("green");
+    validateText.classList.remove("red");
+  } else {
+    validateText.textContent = "잘못된 전화번호 입니다.";
+    validateWrap.append(validateText);
+  }
+
+};
+
+
+
+
+
+
+
+
