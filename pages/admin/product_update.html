@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>제품 추가</title>
+    <title>제품 수정</title>
     <script
       type="module"
       defer
-      src="../../source/js/admin/product_add.js"
+      src="../../source/js/admin/product_update.js"
     ></script>
   </head>
   <body>
@@ -33,19 +33,23 @@
           </div>
           <div>
             <p>제품 사진</p>
-            <input type="file" class="product_thumbnail" />
-            <div class="img"></div>
+            <input type="file" class="product_update_img" />
+            <div class="product_img"></div>
           </div>
           <div>
             <p>제품 상세 사진</p>
-            <input type="file" class="product_photo" />
-            <div class="detail_img"></div>
+            <input type="file" class="detail_update_img" />
+            <div class="product_detail_img"></div>
+          </div>
+          <div>
+            <p>매진</p>
+            <button type="button" class="soldout">판매중</button>
           </div>
           <div>
             <p>제품 할인율</p>
             <input type="text" class="product_discount" />
           </div>
-          <button type="button" class="product_registration">제품등록</button>
+          <button type="button" class="product_update">제품수정</button>
         </div>
       </div>
     </div>
