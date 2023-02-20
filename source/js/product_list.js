@@ -1,7 +1,5 @@
 import { searchProduct } from "../api/products/user/product_search"
 
-
-
 (async () => {
   const body = {
     "searchText" : "",
@@ -9,10 +7,10 @@ import { searchProduct } from "../api/products/user/product_search"
   }  
   const search = await searchProduct(body);
   rendProduct(search)
+  console.log(search)
 })()
 
 // 상품목록 렌더링 과정
-
 function rendProduct(product) {
   product.map(function(e){
     const ulEl = document.querySelector(".products_lists")
@@ -26,7 +24,7 @@ function rendProduct(product) {
     const priceEl = document.createElement("p")
     const spanEl = document.createElement("span")
     const iconEl = document.createElement("div")
-    
+    // 제목과 코드 분류
     const titleCode = e.title.split("/")
     // 상세페이지 링크
     aEl.setAttribute("href","javascript:void(0)")
@@ -62,10 +60,23 @@ function rendProduct(product) {
     // 찜 아이콘
     iconEl.classList.add("icons")
     iconEl.innerHTML = "<i class='fa-regular fa-heart'></i>"
+
+    iconEl.addEventListener("click",(e)=>{
+      const iEl = e.target
+      console.log(e)
+      if(iEl.classList.contains("fa-regular")){
+        iEl.classList.replace("fa-regular","fa-solid")
+      }else{
+        iEl.classList.replace("fa-solid","fa-regular")
+      }
+    })
+    function sub(){
+      m
+    }
+    // EL 밀어넣기
     aEl.append(divEl,pEl,codeEl,disEl,priceEl)
     liEl.append(aEl,iconEl)
     ulEl.append(liEl)
   })
   
 }
-
