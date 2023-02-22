@@ -1,100 +1,114 @@
-@import './abstracts/variable';
+@import '../abstracts/variable';
 
 
-@import './base/preset';
+@import '../base/preset';
 
 // 중요 표시!
-.asterisk{
+.asterisk {
   color: var(--pink-color);
 }
 
 // 에러 메세지!
-.error{
+.error {
   font-size: 1.4rem;
   font-weight: var(--font-bold);
-  margin:0.5rem 0 0 13rem;
+  margin: 0.5rem 0 0 13rem;
   color: var(--pink-color);
 }
 
 // 회원가입 섹션
-.signup_section{
-  &_inner{
+.signup_section {
+  &_inner {
     position: relative;
     max-width: 64rem;
     margin: 0 auto;
     text-align: center;
     margin-top: 9rem;
     margin-bottom: 6rem;
+
     // 회원가입 제목
-    .signup_section_title{
+    .signup_section_title {
       font-size: 2.65rem;
       font-weight: var(--font-bold);
       padding-bottom: 3.5rem;
     }
+
     // 회원가입 폼
-    .signup_form{
+    .signup_form {
+
       // 공통 스타일
       &_name,
       &_id,
       &_pw,
-      &_check{
+      &_check {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        margin-bottom:2.2rem;
-        h3{
+        margin-bottom: 2.2rem;
+
+        h3 {
           font-size: 1.8rem;
           width: 13rem;
           text-align: start;
         }
-        &_input{
+
+        &_input {
           font-size: 1.8rem;
           width: 40rem;
           height: 5.5rem;
           padding: 0 1rem;
           border: 1px solid var(--gray-color);
-          &:focus{
+
+          &:focus {
             outline: none;
           }
-          &:focus::placeholder{
-            color:transparent;
+
+          &:focus::placeholder {
+            color: transparent;
           }
         }
       }
+
       // 비밀번호
-      &_pw{
-        &_input:focus{
+      &_pw {
+        &_input:focus {
           border: 1px solid var(--pink-color);
         }
       }
+
       // 비밀번호 확인
-      &_check{
-        &_input:focus{
+      &_check {
+        &_input:focus {
           border: 1px solid var(--pink-color);
         }
       }
+
       // 프로필
-      &_profil{
+      &_profil {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        h3{
+
+        h3 {
           font-size: 1.8rem;
           width: 13rem;
           text-align: start;
         }
-        &_input{
+
+        &_input {
           width: 40rem;
         }
-        &_img{
+
+        &_img {
           width: 15rem;
           height: 15rem;
           border: 1px solid var(--gray-color);
           margin: 2.2rem 0 8rem 13rem;
         }
       }
+
       // 가입하기 버튼
-      &_btn{
+      &_btn {
         color: var(--white-color);
         background-color: var(--pink-color);
         font-size: 1.8rem;
@@ -105,11 +119,12 @@
         cursor: pointer;
         transition: .2s;
         margin-bottom: 6rem;
-        &:hover{
+
+        &:hover {
           background-color: var(--white-color);
           border: 1px solid var(--pink-color);
           color: var(--pink-color);
-        } 
+        }
       }
     }
   }
