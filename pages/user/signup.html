@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>투써클(TWO CIRCLE)</title>
+  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../scss/signup.scss">
+  <script type="module" defer src="../source/js/signup.js"></script>
+</head>
+<body>
+  <section id="signup"class="signup_section">
+    <div class="signup_section_inner">
+      <!-- 회원가입 제목 -->
+      <h1 class="signup_section_title">회원가입</h1>
+      <!-- 회원가입 폼 -->
+      <form class="signup_form">
+        <!-- 이름 -->
+        <div class="signup_form_name">
+          <h3>이름<span class="asterisk">*</span></h3>
+          <input type="text" class="signup_form_name_input" placeholder="홍길동">
+        </div>
+        <!-- 아이디(이메일) -->
+        <div class="signup_form_id">
+          <h3>이메일<span class="asterisk">*</span></h3>
+          <input type="text" class="signup_form_id_input" placeholder="TwoCircle@team5.com">
+        </div>
+        <!-- 비밀번호 -->
+        <div class="signup_form_pw">
+          <h3>비밀번호<span class="asterisk">*</span></h3>
+          <input type="password" class="signup_form_pw_input"
+          placeholder="최소 8자 이상">
+          <span class="signup_form_pw_error error">8자 이상의 비밀번호를 입력하세요.</span>
+        </div>
+        <!-- 비밀번호 확인 -->
+        <div class="signup_form_check">
+          <h3>비밀번호 확인<span class="asterisk">*</span></h3>
+          <input type="password" class="signup_form_check_input" placeholder="비밀번호를 다시 입력해주세요.">
+          <span class="signup_form_check_error error">!.비밀번호가 일치하지 않습니다.</span>
+        </div>
+        <!-- 프로필 -->
+        <div class="signup_form_profil">
+          <h3>프로필</h3>
+          <input type="file" class="signup_form_profil_input">
+          <figure class="signup_form_profil_img"></figure>
+        </div>
+        <!-- 가입하기 버튼 -->
+        <button class="signup_form_btn">가입하기</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

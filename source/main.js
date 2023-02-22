@@ -1,5 +1,6 @@
 const banner = new Swiper('.banner', {
-  rewind: true,
+  loop:true,
+  autoplay:true,
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
