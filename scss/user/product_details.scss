@@ -1,6 +1,6 @@
-@import './abstracts/variable';
-@import './base/preset';
-@import './base/up_button';
+@import '../abstracts/variable';
+@import '../base/preset';
+@import '../base/up_button';
 
 @mixin productDefault {
   display: flex;
@@ -38,6 +38,7 @@
   font-size: 1.8rem;
 }
 
+
 #wrap {
   color: var(--font-color);
   font-weight: var(--font-basic);
@@ -49,7 +50,7 @@
   justify-content: center;
   margin: 0 auto;
 
-  .container {
+  .wrap_container {
     display: flex;
     margin: 3rem 0;
 
@@ -344,7 +345,7 @@
 
           .photo_Img {
             display: flex;
-            justify-content: center; 
+            justify-content: center;
           }
         }
       }

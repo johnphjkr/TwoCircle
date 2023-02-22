@@ -1,5 +1,5 @@
-@import './abstracts/variable';
-@import'./base/preset';
+@import "./abstracts/variable";
+@import "./base/preset";
 
 .dimmed_layer {
   position: fixed;
@@ -41,7 +41,6 @@
       background-color: transparent;
       font-size: 3rem;
       cursor: pointer;
-
     }
     .title {
       margin-top: 2rem;
@@ -59,13 +58,11 @@
       .bank_code {
         text-align: center;
         margin-right: 2rem;
-        
       }
       .bank_code_select {
-       width: 23rem;
-       text-align: center;
-       padding: 0.8rem 0;
-       
+        width: 23rem;
+        text-align: center;
+        padding: 0.8rem 0;
       }
     }
 
@@ -75,6 +72,7 @@
       align-items: center;
       width: 100%;
       margin-bottom: 3rem;
+      flex-wrap: wrap;
       .bank_account {
         text-align: center;
         margin-right: 2rem;
@@ -90,13 +88,31 @@
       align-items: center;
       width: 100%;
       margin-bottom: 3rem;
+      flex-wrap: wrap;
       .phone_number {
         text-align: center;
         margin-right: 2rem;
       }
       input {
         padding: 0.8rem 3rem;
+       
       }
+
+      .validate_text {
+       margin-left: 2.5rem;
+       text-align: end;
+       width: 23rem;
+      }
+      .red {
+        color: var(--pink-color);
+      }
+
+      .green {
+       color: #2DB400;
+      }
+
+
+    
     }
     .signature_wrap {
       display: flex;
@@ -107,10 +123,21 @@
       .signature {
         text-align: center;
         margin-right: 3.5rem;
-       
       }
       input {
         padding: 0.8rem 3rem;
+      }
+      
+      .validate_text {
+        padding-top: 2rem;
+      }
+
+      .red {
+        color: var(--pink-color);
+      }
+
+      .green {
+        color: #2DB400;
       }
     }
 
@@ -118,24 +145,23 @@
       margin-top: 5rem;
       .add_btn {
         border: 0.2px solid transparent;
-					background-color: var(--pink-color);
-					color: var(--white-color);
-					font-weight: var(--font-bold);
-					font-size: 1.8rem;
-					padding: 1rem 2rem;
-					width: 33rem;
-					height: 6rem;
+        background-color: var(--pink-color);
+        color: var(--white-color);
+        font-weight: var(--font-bold);
+        font-size: 1.8rem;
+        padding: 1rem 2rem;
+        width: 33rem;
+        height: 6rem;
 
-					&:hover {
-            border: 0.2rem solid var(--pink-color);
-            background-color: transparent;
-            color: var(--pink-color);
-						transition-delay: 1;
-          }
+        &:hover {
+          border: 0.2rem solid var(--pink-color);
+          background-color: transparent;
+          color: var(--pink-color);
+          transition-delay: 1;
         }
-   
+      }
     }
-  } 
+  }
 }
 
 .account_inner {
@@ -160,29 +186,33 @@
         margin-bottom: 3rem;
       }
     }
-
+    .account_info_wrap {
+      font-size: 1.6rem;
+      .total_balance {
+        margin-bottom: 1.6rem;
+        text-align: end;
+      }
+    }
     .user_account_info {
       border: 0.2rem solid var(--lightgray-color);
       width: 99rem;
       height: 20rem;
       padding: 4rem 3rem;
-      margin: 0 auto;
-        
-        .bank_name {
-          font-size: 1.6rem;
-          margin-bottom: 3rem;
-        }
-   
-        .account_holder {
-          font-size: 1.6rem;
-          margin-bottom: 3rem;
-        }
-  
-        .account_number {
-          font-size: 1.6rem;
+      margin: 0 auto 2rem;
 
-        }
-     
+      .bank_name {
+        font-size: 1.6rem;
+        margin-bottom: 3rem;
+      }
+
+      .account_holder {
+        font-size: 1.6rem;
+        margin-bottom: 3rem;
+      }
+
+      .account_number {
+        font-size: 1.6rem;
+      }
     }
 
     .btn_wrap {
@@ -230,6 +260,25 @@
           }
         }
       }
+    }
+  }
+}
+
+.account {
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3);
+
+    /* 임시 지정 */
+    width: 50rem;
+    height: 40rem;
+    input {
+      margin: 2rem;
+      padding: 0.8rem 3rem;
     }
   }
 }
