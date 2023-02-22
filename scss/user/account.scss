@@ -72,6 +72,7 @@
       align-items: center;
       width: 100%;
       margin-bottom: 3rem;
+      flex-wrap: wrap;
       .bank_account {
         text-align: center;
         margin-right: 2rem;
@@ -87,13 +88,31 @@
       align-items: center;
       width: 100%;
       margin-bottom: 3rem;
+      flex-wrap: wrap;
       .phone_number {
         text-align: center;
         margin-right: 2rem;
       }
       input {
         padding: 0.8rem 3rem;
+       
       }
+
+      .validate_text {
+       margin-left: 2.5rem;
+       text-align: end;
+       width: 23rem;
+      }
+      .red {
+        color: var(--pink-color);
+      }
+
+      .green {
+       color: #2DB400;
+      }
+
+
+    
     }
     .signature_wrap {
       display: flex;
@@ -107,6 +126,18 @@
       }
       input {
         padding: 0.8rem 3rem;
+      }
+      
+      .validate_text {
+        padding-top: 2rem;
+      }
+
+      .red {
+        color: var(--pink-color);
+      }
+
+      .green {
+        color: #2DB400;
       }
     }
 
