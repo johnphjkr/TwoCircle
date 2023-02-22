@@ -70,9 +70,6 @@ function rendProduct(product) {
         iEl.classList.replace("fa-solid","fa-regular")
       }
     })
-    function sub(){
-      m
-    }
     // EL 밀어넣기
     aEl.append(divEl,pEl,codeEl,disEl,priceEl)
     liEl.append(aEl,iconEl)

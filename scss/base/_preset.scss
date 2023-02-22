@@ -34,10 +34,12 @@ a {
 
 // header
 header {
+  top: 0;
   position: fixed;
   background: #fff;
   width: 100%;
   z-index: 2;
+  top: 0;
 }
 
 .header_top {
@@ -108,12 +110,14 @@ header {
       }
     }
 
-    span {
+    .search_icon {
       position: absolute;
       right: 0;
       height: 4.8rem;
       padding: 1rem 1.2rem;
       cursor: pointer;
+      background: url(../../image/search_icon.svg);
+      background-repeat: no-repeat;
     }
   }
 
@@ -225,9 +229,15 @@ footer {
             a {
               display: block;
               height: 3.2rem;
+<<<<<<< HEAD
               background: url(../../image/bg_fb.png) 0 0 / cover;
               &:hover {
                 background: url(../../image/bg_fb_on.png) 0 0 / cover;
+=======
+              background-image: url(../../image/bg_fb.png) 0 0 / cover;
+              &:hover {
+                background-image: url(../../image/bg_fb_on.png) 0 0 / cover;
+>>>>>>> upstream/develop
               }
               &.insta {
                 background-image: url(../../image/bg_insta.png);
