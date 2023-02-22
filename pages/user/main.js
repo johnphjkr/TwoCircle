@@ -13,7 +13,7 @@ export function mainRender() {
           <section class="swiper banner">
             <ul class="swiper-wrapper">
               <li class="swiper-slide">
-                <img src="./image/image1 (11).jpg" alt="배너" />
+                <img src="./image/U1 (11).jpg" alt="배너" />
               </li>
               <li class="swiper-slide">
                 <img src="./image/U1 (12).jpg" alt="배너" />
