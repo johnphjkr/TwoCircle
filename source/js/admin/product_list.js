@@ -27,6 +27,7 @@ function renderList(data) {
 
     return liEl;
   });
+  listEl.innerHTML = '';
   listEl.append(...liEls);
 }
 
@@ -40,5 +41,17 @@ labelEl.addEventListener('change', function () {
   });
 });
 
-deleteBtn.addEventListener('click', function () {
+deleteBtn.addEventListener('click', async function () {
+  const checkboxs = document.getElementsByName('check');
+  const choseDelete = async () => {
+    for (const checkbox of checkboxs) {
+      if (checkbox.checked) {
+        // console.log(checkbox.dataset.id);
+        await productDelete(checkbox.dataset.id);
+      }
+    }
+    const list = await productList();
+    renderList(list);
+  };
+  choseDelete();
 });
