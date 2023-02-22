@@ -70,9 +70,9 @@ discountEl.addEventListener('input', e => {
   }
 });
 
-registrationBtn.addEventListener('click', () => {
+registrationBtn.addEventListener('click', async () => {
   // console.log(name, price, text, tag, thumbnailImgBase64, photoImgBase64, discount);
-  productAdd({
+  await productAdd({
     title: name,
     price: price,
     description: text,
@@ -81,4 +81,6 @@ registrationBtn.addEventListener('click', () => {
     photoBase64: photoImgBase64,
     discountRate: discount
   });
+
+  window.location.href = './product_list.html';
 });
