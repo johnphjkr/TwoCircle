@@ -11,12 +11,9 @@
   <!-- CSS -->
   <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="./scss/style.scss" />
-  <link rel="stylesheet" href="./scss/main.scss" />
-
-  <!-- JAVASCIRPT -->
+  <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <script type="module" defer src="./source/main.js"></script>
+  <script defer src="./source/route.js"></script>
 </head>
 
 <body>
@@ -26,7 +23,7 @@
         <div class="inner">
           <div class="header_top_right">
             <div class="header_login">
-              <a href="#">로그인</a>
+              <a href="/login" data-navigo>로그인</a>
               <a href="#">회원가입</a>
             </div>
             <div class="header_logout">
@@ -39,30 +36,30 @@
       <div class="header">
         <div class="inner">
           <h1 class="logo">
-            <a href="#">
-              <img src="./image/logo.png" alt="two circle" />
+            <a href="/">
+              <img class="header_logo" src="./static/logo.png" alt="로고" />
             </a>
           </h1>
           <div class="search">
             <input type="text" />
-            <span><img src="./image/search_icon.svg" alt="검색" /></span>
+            <img class="search_icon" src="./static/search_icon.svg"></img>
           </div>
           <ul class="header_right">
             <li>
               <a href="#">
-                <img src="./image/mypage_icon.svg" alt="마이페이지" />
+                <img src="./static/mypage_icon.svg" alt="마이페이지" />
               </a>
             </li>
             <li>
               <a href="#">
                 <span>0</span>
-                <img src="./image/cart_icon.svg" alt="장바구니" />
+                <img src="./static/cart_icon.svg" alt="장바구니" />
               </a>
             </li>
             <li>
               <a href="#">
                 <span>0</span>
-                <img src="./image/heart_icon.svg" alt="찜하기" />
+                <img src="./static/heart_icon.svg" alt="찜하기" />
               </a>
             </li>
           </ul>
@@ -90,159 +87,12 @@
         </div>
       </nav>
     </header>
-    <div class="container">
-      <div class="main">
-        <section class="swiper banner">
-          <ul class="swiper-wrapper">
-            <li class="swiper-slide">
-              <img src="./image/U1 (11).jpg" alt="배너" />
-            </li>
-            <li class="swiper-slide">
-              <img src="./image/U1 (12).jpg" alt="배너" />
-            </li>
-            <li class="swiper-slide">
-              <img src="./image/U1 (13).jpg" alt="배너" />
-            </li>
-          </ul>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-        </section>
-        <div class="inner">
-          <section class="list_section">
-            <h2>지금 가장 한한 상품</h2>
-            <div class="list_main">
-              <img src="./image/K1 (13).jpg" alt="메인 이미지" />
-            </div>
-            <ul class="list_product">
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-            </ul>
-          </section>
-          <section class="list_brand">
-            <h2>인기 브랜드</h2>
-            <div class="swiper brand">
-              <ul class="swiper-wrapper brand_ul">
-                <li class="swiper-slide">
-                  <div class="brand_img">
-                    <img src="./image/K1 (1).jpg" alt="브랜드" />
-                  </div>
-                  <div class="brand_text">
-                    <p>ASHCROFT</p>
-                    <span>CLASSES</span>
-                  </div>
-                </li>
-                <li class="swiper-slide">
-                  <div class="brand_img">
-                    <img src="./image/K1 (1).jpg" alt="브랜드" />
-                  </div>
-                  <div class="brand_text">
-                    <p>ASHCROFT</p>
-                    <span>CLASSES</span>
-                  </div>
-                </li>
-                <li class="swiper-slide">
-                  <div class="brand_img">
-                    <img src="./image/K1 (1).jpg" alt="브랜드" />
-                  </div>
-                  <div class="brand_text">
-                    <p>ASHCROFT</p>
-                    <span>CLASSES</span>
-                  </div>
-                </li>
-                <li class="swiper-slide">
-                  <div class="brand_img">
-                    <img src="./image/K1 (1).jpg" alt="브랜드" />
-                  </div>
-                  <div class="brand_text">
-                    <p>ASHCROFT</p>
-                    <span>CLASSES</span>
-                  </div>
-                </li>
-                <li class="swiper-slide">
-                  <div class="brand_img">
-                    <img src="./image/K1 (1).jpg" alt="브랜드" />
-                  </div>
-                  <div class="brand_text">
-                    <p>ASHCROFT</p>
-                    <span>CLASSES</span>
-                  </div>
-                </li>
-                <li class="swiper-slide">
-                  <div class="brand_img">
-                    <img src="./image/K1 (1).jpg" alt="브랜드" />
-                  </div>
-                  <div class="brand_text">
-                    <p>ASHCROFT</p>
-                    <span>CLASSES</span>
-                  </div>
-                </li>
-              </ul>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-            </div>
-          </section>
-          <section class="list_section">
-            <h2>전문가의 선택, MD 추천 상품</h2>
-            <ul class="list_product">
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-            </ul>
-            <div class="list_main">
-              <img src="./image/K1 (13).jpg" alt="" />
-            </div>
-          </section>
-          <section class="new_section">
-            <h2>새로운 발견, 신상품</h2>
-            <ul class="list_product">
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-              <li><img src="./image/image1 (14).jpg" alt="더미" /></li>
-            </ul>
-          </section>
-          <section class="plan_section">
-            <h2>기획전</h2>
-            <ul class="plan_list">
-              <li>
-                <img src="./image/K1 (9).jpg" alt="기획" />
-              </li>
-              <li>
-                <img src="./image/K1 (9).jpg" alt="기획" />
-              </li>
-              <li>
-                <img src="./image/K1 (9).jpg" alt="기획" />
-              </li>
-              <li>
-                <img src="./image/K1 (9).jpg" alt="기획" />
-              </li>
-              <li>
-                <img src="./image/K1 (9).jpg" alt="기획" />
-              </li>
-              <li>
-                <img src="./image/K1 (9).jpg" alt="기획" />
-              </li>
-            </ul>
-          </section>
-        </div>
-      </div>
-    </div>
+    <div id="app"></div>
     <footer>
       <div class="footer_container">
         <div class="inner">
           <div class="footer_left">
-            <h2><img src="./image/logo.png" alt="" /></h2>
+            <h2><img src="./static/logo.png" alt="" /></h2>
             <p>
               <a href="#">개인정보처리방침</a>
               <a href="#">이용약관</a>
@@ -287,16 +137,16 @@
             <div class="footer_sns_box">
               <h3>SNS</h3>
               <ul class="footer_sns">
-                <li>
-                  <img src="./image/kcp_icon.png" alt="" />
+                <li class="product_list_item">
+                  <img src="./static/kcp_icon.png" alt="" />
                 </li>
-                <li>
+                <li class="product_list_item">
                   <a href="https://www.facebook.com" class="facebook"> </a>
                 </li>
-                <li>
+                <li class="product_list_item">
                   <a href="https://www.instagram.com" class="insta"> </a>
                 </li>
-                <li>
+                <li class="product_list_item">
                   <a href="https://github.com/TwoCircle-Team5/TwoCircle" class="git">
                   </a>
                 </li>
@@ -313,5 +163,4 @@
     </footer>
   </div>
 </body>
-
 </html>

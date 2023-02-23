@@ -8,6 +8,5 @@ export async function allProduct() {
       masterKey: true,
     },
   });
-  console.log(res);
   return await res.json();
 }

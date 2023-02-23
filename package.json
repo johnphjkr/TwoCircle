@@ -1,25 +1,29 @@
 {
-  "name": "api-twocircle",
+  "name": "twocircle",
   "version": "1.0.0",
-  "description": "주어진 API를 분석해 어떤 프로젝트를 진행/완성할 것인지 팀 단위로 자유롭게 결정하고 만들어보세요.",
-  "main": "index.js",
+  "description": "- HTML, Scss, JavaScript\r - Bundler: Parcel",
+  "source": "index.html",
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nevacat/API-TwoCircle.git"
+    "url": "git+https://github.com/hyeon17/TwoCircle.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Nevacat/API-TwoCircle/issues"
+    "url": "https://github.com/hyeon17/TwoCircle/issues"
   },
-  "homepage": "https://github.com/Nevacat/API-TwoCircle#readme",
+  "homepage": "https://github.com/hyeon17/TwoCircle#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
-    "sass": "^1.58.0"
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "sass": "^1.58.3"
+  },
+  "dependencies": {
+    "navigo": "^8.11.1"
   }
 }
