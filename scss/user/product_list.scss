@@ -1,7 +1,7 @@
-@import './abstracts/variable';
+@import '../abstracts/variable';
 
 
-@import './base/preset';
+@import '../base/preset';
 
 // 카테고리 제목
 .category{
@@ -59,6 +59,7 @@
       }
       // 상품 코드
       &_code{
+        height: 1.2rem;
         color: var(--gray-color);
         font-size: 1.2rem;
       }
