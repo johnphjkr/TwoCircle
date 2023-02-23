@@ -38,7 +38,6 @@ pw.addEventListener("input",e=>{
     err.textContent = "사용 가능한 비밀번호 입니다."
     err.style.color = "#2DB400"
     inputBox.style.border="1px solid #2DB400"
-    console.log(e.target.value)
   }else{
     err.textContent = "8자 이상의 비밀번호를 입력하세요."
     err.style.color = "var(--pink-color)"
@@ -61,4 +60,23 @@ pwCheck.addEventListener("input",e=>{
   }
 })
 
+// 이미지 파일 업로드
 
+const inputImgEl = document.querySelector(".signup_form_profil_input[type='file']")
+const figureEl = document.querySelector(".signup_form_profil_img")
+inputImgEl.addEventListener("change", ()=>{
+  const file = inputImgEl.files[0]
+  figureEl.innerHTML = ""
+  if(file.size <= 1000000){
+    figureEl.style.border = "1px solid #2DB400"
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.addEventListener("load",e=>{
+      const imgEl = document.createElement("img")
+      imgEl.src = e.target.result
+      figureEl.append(imgEl)
+    }) 
+  }else{
+    figureEl.style.border = "1px solid var(--pink-color)"
+  }
+})

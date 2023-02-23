@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>투써클(TWO CIRCLE)</title>
-  <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../scss/login.scss">
-  <script type="module" defer src="../source/js/login.js"></script>
-</head>
-<body>
-  <section id="login"class="login_section">
+import "../../scss/user/login.scss";
+
+export function loginRender() {
+  const app = document.querySelector("#app");
+  app.innerHTML = /* html */ `
+  <section id="login" class="login_section">
     <div class="login_section_inner">
       <!-- 로그인 제목 -->
       <h1 class="login_section_title">로그인</h1>
@@ -18,12 +11,12 @@
         <!-- 이메일 입력 -->
         <input type="text" class="login_form_id" placeholder="email">
         <i class="icon_person">
-          <img src="../image/icon-person.png" alt="">
+          <img src="../../image/icon-person.png" alt="">
         </i>
         <!-- 비빌번호 입력 -->
         <input type="password" class="login_form_pw" placeholder="password">
         <i class="icon_lock">
-          <img src="../image/icon-lock.png" alt="">
+          <img src="../../image/icon-lock.png" alt="">
         </i>
         <!-- 로그인 버튼 -->
         <button class="login_form_btn btn">로그인</button>
@@ -34,5 +27,5 @@
       </div>
     </div>
   </section>
-</body>
-</html>
+  `;
+}
