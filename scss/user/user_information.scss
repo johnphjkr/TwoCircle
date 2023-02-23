@@ -1,6 +1,6 @@
-@import './abstracts/variable';
-@import './base/preset';
-@import './_up_button';
+@import '../abstracts/variable';
+@import '../base/preset';
+@import '../base/_up_button';
 
 body {
     display: flex;
