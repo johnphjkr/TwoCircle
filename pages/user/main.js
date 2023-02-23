@@ -29,7 +29,7 @@ export function mainRender() {
             <section class="list_section">
               <h2>지금 가장 한한 상품</h2>
               <div class="list_main">
-                <img class="list_main_img" />
+                <img src="./image/K1 (13).jpg" alt="이미지" />
               </div>
               <ul class="list_product"></ul>
             </section>
