@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html",
-    "test": "parcel ./pages/user/user_information.html"
+    "test": "parcel ./pages/user/user_information.html",
+    "test2": "parcel ./pages/user/purchase_history.html"
   },
   "repository": {
     "type": "git",
