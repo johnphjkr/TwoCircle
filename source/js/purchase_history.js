@@ -5,10 +5,15 @@ import { purchaseHistory } from "../api/products/user/purchase_history_api";
 import { purchaseOk } from "../api/products/user/purchase_ok_api";
 import { purchaseCancel } from "../api/products/user/purchase_cancel_api";
 
+const listItemContainerEl = document.querySelector(".list_item_container");
 const listItemSelectEl = document.querySelector(".list_item_list_select");
 const listItemConfirmEl = document.querySelector(".list_item_list_confirm");
 const listItemCancelEl = document.querySelector(".list_item_list_cancel");
 const itemModalEl = document.querySelector(".container_content_modal");
+const dateFilter1MonthEl = document.querySelector(".delivery_filter_month_1");
+const dateFilter3MonthEl = document.querySelector(".delivery_filter_month_3");
+const dateFilter6MonthEl = document.querySelector(".delivery_filter_month_6");
+const dateFilter12MonthEl = document.querySelector(".delivery_filter_month_12");
 
 let product_title = "";
 let product_price = 0;
@@ -17,13 +22,86 @@ let deal_done = false;
 let deal_canceled = false;
 let list_items = "";
 let detailId = "";
+let filtered_items = "";
+let days = 100000000; // 날짜 필터용 (기본은 무한이므로 큰 숫자로)
 
+window.onload = renderItemList();
 
-window.onload = async function renderItemList() {
+function toggleMonthFilter(filter_days) {
+    if (this.classList.contains("active")) {
+        days = 100000000;
+        this.classList.remove("active");
+        this.style.cssText = "";
+    }
+    else {
+        days = filter_days;
+        this.classList.add("active");
+        this.style.cssText = "background-color: #FF597B; border-color: #FF597B; color: #FFFFFF;";
+    }
+    renderItemList();
+}
+dateFilter1MonthEl.removeEventListener("click", toggleMonthFilter);
+dateFilter1MonthEl.addEventListener("click", function () {
+    toggleMonthFilter.call(this, 30);
+});
+
+dateFilter3MonthEl.removeEventListener("click", toggleMonthFilter);
+dateFilter3MonthEl.addEventListener("click", function () {
+    toggleMonthFilter.call(this, 90);
+});
+
+dateFilter6MonthEl.removeEventListener("click", toggleMonthFilter);
+dateFilter6MonthEl.addEventListener("click", function () {
+    toggleMonthFilter.call(this, 180);
+});
+
+dateFilter12MonthEl.removeEventListener("click", toggleMonthFilter);
+dateFilter12MonthEl.addEventListener("click", function () {
+    toggleMonthFilter.call(this, 365);
+});
+
+function getdate(date) {
+    const new_date = new Date(date);
+    var kor_date = new_date.toLocaleString("ko-KR");
+
+    return kor_date;
+}
+
+function modalOn() {
+    itemModalEl.style.display = "flex";
+}
+
+function modalOff() {
+    itemModalEl.style.display = "none";
+    itemModalEl.innerHTML = "";
+}
+
+function dateFilter(filtered_items, days) {
+    const oneDay = 24 * 60 * 60 * 1000;
+    const now_date = new Date();
+    const filteredItems = filtered_items.filter(filtered_item => {
+        const pay_date = new Date(filtered_item.timePaid);
+        const timeDiff = Math.abs(now_date.getTime() - pay_date.getTime());
+        const dayDiff = Math.ceil(timeDiff / oneDay);
+        return dayDiff <= days;
+    });
+    return filteredItems;
+}
+
+function statusFilter() {
+
+}
+
+async function renderItemList() {
+    listItemSelectEl.innerHTML = '';
+    listItemConfirmEl.innerHTML = '';
+    listItemCancelEl.innerHTML = '';
     const res = await purchaseHistory();
     list_items = res;
 
-    const liEls = list_items.map(function (item) {
+    filtered_items = dateFilter(list_items, days);
+
+    const liEls = filtered_items.map(function (item) {
         const listItemEl = document.createElement('div');
 
 
@@ -118,20 +196,4 @@ window.onload = async function renderItemList() {
         return listItemEl;
     })
 
-}
-
-function getdate(date) {
-    const new_date = new Date(date);
-    var kor_date = new_date.toLocaleString("ko-KR");
-
-    return kor_date;
-}
-
-function modalOn() {
-    itemModalEl.style.display = "flex";
-}
-
-function modalOff() {
-    itemModalEl.style.display = "none";
-    itemModalEl.innerHTML = "";
 }
