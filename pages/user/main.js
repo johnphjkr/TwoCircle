@@ -1,6 +1,3 @@
-import "../../scss/style.scss";
-import "../../scss/user/main.scss";
-
 import { allProduct } from "../../source/api/products/admin/allProduct_api.js";
 // import { productItem } from "../../source/js/product_details.js";
 import { router } from "../../source/route.js";
