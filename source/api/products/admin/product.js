@@ -1,7 +1,7 @@
 import { headers, url } from "../../requests.js";
 
-export async function product() {
-  const res = await fetch(url + "/products/", {
+export async function product(id) {
+  const res = await fetch(url + "/products/" + id, {
     method: "GET",
     headers
   });

@@ -19,23 +19,28 @@
   }
 }
 
+
 .list_section {
   width: 100%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
   .list_main {
     width: 33%;
     overflow: hidden;
   }
+
   .list_product {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 65.5%;
+
     li {
       width: 32%;
       background: var(--lightgray-color);
+
       &:nth-child(4),
       &:nth-child(5),
       &:nth-child(6) {
@@ -49,23 +54,28 @@
   .brand_ul {
     display: flex;
     justify-content: space-between;
+
     li {
       width: 19rem;
+
       .brand_img {
         width: 19rem;
         margin: 0 auto;
         border-radius: 50%;
         overflow: hidden;
       }
+
       .brand_text {
         text-align: center;
         margin-top: 1.2rem;
         line-height: 1.6rem;
+
         p {
           font-size: 1.4rem;
           font-weight: 700;
           margin-bottom: 0.3rem;
         }
+
         span {
           font-size: 1.2rem;
           font-weight: 300;
@@ -81,6 +91,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
     li {
       width: 24%;
       height: 50rem;
@@ -95,6 +106,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
     li {
       width: 31.5%;
       margin-bottom: 3.5rem;

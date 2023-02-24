@@ -12,7 +12,7 @@ export async function login(method, data){
   console.log(json)
   if(res.status === 200){
     alert("로그인 성공!")
-    localStorage.setItem("token", JSON.stringify(json.accessToken))
+    localStorage.setItem("accessToken", JSON.stringify(json.accessToken))
   }else{
     alert("아이디와 비밀번호가 일치하지 않습니다.!")
   }
