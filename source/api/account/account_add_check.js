@@ -12,9 +12,9 @@ export async function checkAccount(data) {
     method: "GET",
     headers: {
       ...headers,
-      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc2NjE0MDQxLCJleHAiOjE2NzY3MDA0NDEsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.7ruW6YnbgNLDQKfemTWDSLPsV4LEuEq6EelDtLcRmMk `,
     },
-    
+
   });
   const json = await res.json();
   return json
