@@ -1,5 +1,3 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css");
-
 html {
   font-size: 10px;
 }
@@ -29,20 +27,10 @@ a {
 
 #app {
   min-height: 39.44rem;
-  padding-top: 17rem;
-
-  // .container {
-  //   min-height: 39.44rem;
-  //   padding-top: 17rem;
-  // }
+  padding-top: 17rem
 }
 
-
-
-
-// header
 header {
-  top: 0;
   position: fixed;
   background: #fff;
   width: 100%;
@@ -257,22 +245,22 @@ footer {
             a {
               display: block;
               height: 3.2rem;
-              // background: url(../../image/bg_fb.png) 0 0 / cover;
-              // &:hover {
-              //   background: url(../../image/bg_fb_on.png) 0 0 / cover;
-              // }
-              // &.insta {
-              //   background-image: url(../../image/bg_insta.png);
-              //   &:hover {
-              //     background-image: url(../../image/bg_insta_on.png);
-              //   }
-              // }
-              // &.git {
-              //   background-image: url(../../image/bg_git.png);
-              //   &:hover {
-              //     background-image: url(../../image/bg_git_on.png);
-              //   }
-              // }
+              background: url(/image/bg_fb.png) 0 0 / cover;
+              &:hover {
+                background: url(/image/bg_fb_on.png) 0 0 / cover;
+              }
+              &.insta {
+                background-image: url(/image/bg_insta.png);
+                &:hover {
+                  background-image: url(/image/bg_insta_on.png);
+                }
+              }
+              &.git {
+                background-image: url(/image/bg_git.png);
+                &:hover {
+                  background-image: url(/image/bg_git_on.png);
+                }
+              }
             }
           }
         }

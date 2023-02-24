@@ -5,7 +5,7 @@ export async function purchaseHistory() {
     method: "GET",
     headers: {
       ...headers,
-      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc3MTQyODU0LCJleHAiOjE2NzcyMjkyNTQsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.inBksaxKm8DBy8zfCcoRw5rgrJ9BGyMdDQ-sfunPBhs`,
     },
   });
   return await res.json();
