@@ -179,26 +179,21 @@ function renderModal(account) {
 }
 
 /**유효성 검사 */
-
 const validatePhoneTest = (data) => {
   const validateWrap = document.querySelector(".validate_text");
   const validateText = document.createElement("span");
   const regExp = /(^01.{1})([0-9]{4})([0-9]{4})/g;
 
-  validateText.classList.add("red");
   validateWrap.innerHTML = "";
 
-  if (regExp.test(data)) {
-    validateText.textContent = "옳바른 전화번호 입니다.";
-    validateWrap.append(validateText);
-    validateText.classList.add("green");
-    validateText.classList.remove("red");
-  } else {
-    validateText.textContent = "잘못된 전화번호 입니다.";
-    validateWrap.append(validateText);
-  }
-
-};
+  const isValid = regExp.test(data);
+  
+  const message = isValid ? '올바른 전화번호 형식 입니다.' : '잘못된 전화번호 형식 입니다.';
+  validateText.classList.toggle('red', !isValid);
+  validateText.classList.toggle('green', isValid);
+  validateText.textContent = message;
+  validateWrap.append(validateText);
+}
 
 
 

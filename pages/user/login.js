@@ -1,4 +1,3 @@
-import "../../scss/user/login.scss";
 import {login} from "../../source/api/certified/login_api"
 
 
