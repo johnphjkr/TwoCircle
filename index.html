@@ -11,10 +11,13 @@
   <!-- CSS -->
   <link href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
-
+  <link rel ="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="./scss/style.scss">
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-  <script type="module" src="./source/route.js"></script>
+  <script defer src="./source/route.js"></script>
 </head>
 
 <body>
@@ -25,7 +28,7 @@
           <div class="header_top_right">
             <div class="header_login">
               <a href="/login" data-navigo>로그인</a>
-              <a href="#">회원가입</a>
+              <a href="/signup" data-navigo>회원가입</a>
             </div>
             <div class="header_logout">
               <p>ㅇㅇㅇ님, 안녕하세요</p>
@@ -37,7 +40,7 @@
       <div class="header">
         <div class="inner">
           <h1 class="logo">
-            <a href="#">
+            <a href="/">
               <img class="header_logo" src="./image/logo.png" alt="로고" />
             </a>
           </h1>
@@ -47,18 +50,18 @@
           </div>
           <ul class="header_right">
             <li>
-              <a href="#">
+              <a id="mypageBtn" href="mypage" data-navigo>
                 <img src="./image/mypage_icon.svg" alt="마이페이지" />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/cart">
                 <span>0</span>
                 <img src="./image/cart_icon.svg" alt="장바구니" />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/mypage/wish" data-navigo>
                 <span>0</span>
                 <img src="./image/heart_icon.svg" alt="찜하기" />
               </a>
@@ -164,4 +167,5 @@
     </footer>
   </div>
 </body>
+
 </html>

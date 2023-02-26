@@ -5,7 +5,8 @@
   "source": "index.html",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "dev:3000": "parcel --port 3000 index.html"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/hyeon17/TwoCircle#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
+    "parcel-plugin-static-files-copy": "^2.6.0",
     "sass": "^1.58.3"
   },
   "dependencies": {

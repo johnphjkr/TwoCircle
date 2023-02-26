@@ -1,16 +1,16 @@
 import { headers, url } from "../requests.js";
 
-export async function authCheck(data) {
+export async function authCheck(accessToken) {
+  if(!accessToken){
+    return null
+  } 
   const res = await fetch(url + "/auth/me", {
     method: "POST",
     headers: {
       ...headers,
-      authorization: `Bearer ${Response.headers.getItem("accessToken")}`,
-    },
-    body: JSON.stringify({
-      email: data.email,
-      password: data.password,
-    })
+      Authorization: `Bearer ${accessToken}`,
+    }
   })
-  return res.json();
+  if(res.status !== 200) return null;
+  return await res.json();
 }

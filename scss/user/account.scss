@@ -1,5 +1,3 @@
-@import "./abstracts/variable";
-@import "./base/preset";
 
 .dimmed_layer {
   position: fixed;
@@ -42,6 +40,7 @@
       font-size: 3rem;
       cursor: pointer;
     }
+
     .title {
       margin-top: 2rem;
       margin-bottom: 8rem;
@@ -49,16 +48,19 @@
       text-align: center;
       font-weight: var(--font-bold);
     }
+
     .bank_code_wrap {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-bottom: 3rem;
       width: 100%;
+
       .bank_code {
         text-align: center;
         margin-right: 2rem;
       }
+
       .bank_code_select {
         width: 23rem;
         text-align: center;
@@ -77,6 +79,7 @@
         text-align: center;
         margin-right: 2rem;
       }
+
       input {
         padding: 0.8rem 3rem;
       }
@@ -93,6 +96,7 @@
         text-align: center;
         margin-right: 2rem;
       }
+
       input {
         padding: 0.8rem 3rem;
        
@@ -114,16 +118,19 @@
 
     
     }
+
     .signature_wrap {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
       margin-bottom: 3rem;
+
       .signature {
         text-align: center;
         margin-right: 3.5rem;
       }
+
       input {
         padding: 0.8rem 3rem;
       }
@@ -143,6 +150,7 @@
 
     .add_btn_wrap {
       margin-top: 5rem;
+
       .add_btn {
         border: 0.2px solid transparent;
         background-color: var(--pink-color);
@@ -169,8 +177,10 @@
     margin: 0 auto;
     width: 99rem;
     height: 100vh;
+
     .account_header {
       margin-top: 4rem;
+
       .header {
         font-size: 3.2rem;
         font-weight: var(--font-bold);
@@ -186,13 +196,16 @@
         margin-bottom: 3rem;
       }
     }
+
     .account_info_wrap {
       font-size: 1.6rem;
+
       .total_balance {
         margin-bottom: 1.6rem;
         text-align: end;
       }
     }
+
     .user_account_info {
       border: 0.2rem solid var(--lightgray-color);
       width: 99rem;
@@ -220,6 +233,7 @@
       justify-content: end;
       margin-left: 82.9rem;
       margin-top: 2rem;
+
       .account_change_btn_wrap {
         .account_change_btn {
           border: 0.2px solid var(--font-color);
@@ -276,6 +290,7 @@
     /* 임시 지정 */
     width: 50rem;
     height: 40rem;
+
     input {
       margin: 2rem;
       padding: 0.8rem 3rem;
