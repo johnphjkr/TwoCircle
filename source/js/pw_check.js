@@ -1,3 +1,5 @@
+import { login } from "../api/certified/login_api";
+
 const inputPwEl = document.querySelector(".pw_check_section_input");
 const pwCheckBtnEl = document.querySelector(".pw_check_section_btn");
 
