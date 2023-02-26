@@ -178,6 +178,7 @@ function statusFilter(status) {
             status3FilterEl.style.cssText = "background-color: #FF597B; border-color: #FF597B; color: #FFFFFF;";
             break;
     }
+    renderItemList();
 }
 
 //시간 정렬
@@ -189,6 +190,10 @@ async function renderItemList() {
     listItemSelectEl.innerHTML = '';
     listItemConfirmEl.innerHTML = '';
     listItemCancelEl.innerHTML = '';
+    listItemContainerEl.appendChild(listItemSelectEl);
+    listItemContainerEl.appendChild(listItemConfirmEl);
+    listItemContainerEl.appendChild(listItemCancelEl);
+    listItemContainerEl.appendChild(paginationContainer);
     const res = await purchaseHistory();
     list_items = res;
 
@@ -289,8 +294,22 @@ async function renderItemList() {
 
         return listItemEl;
     })
+    switch (status) {
+        case 1:
+            break;
+        case 2:
+            listItemContainerEl.removeChild(listItemSelectEl);
+            listItemContainerEl.removeChild(listItemCancelEl);
+            break;
+        case 3:
+            listItemContainerEl.removeChild(listItemSelectEl);
+            listItemContainerEl.removeChild(listItemConfirmEl);
+            break;
+    }
+
     const listItems = listItemContainerEl.querySelectorAll('ul li');
     console.log(listItems);
+
     updatePagination(listItems.length, itemsPerPage, currentPage);
     displayPage(currentPage, itemsPerPage);
 
