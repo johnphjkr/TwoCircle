@@ -8,7 +8,7 @@ import { loginRender } from "../pages/user/login.js";
 import { signupRender } from "../pages/user/signup";
 import { navRender, mypageRender } from "../pages/user/mypage";
 import { wishRender } from "../pages/user/wish_list";
-import { pruchaseRender } from "../pages/user/purchase_history";
+import { purchaseRender } from "../pages/user/purchase_history";
 import { cartRender } from "../pages/user/cart";
 import { productDetailRender } from "../pages/user/product_details.js";
 import { paymentRender } from "../pages/user/payment.js";
@@ -51,10 +51,14 @@ router
       wishRender();
     },
     "mypage/purchase": () => {
-      pruchaseRender();
+      navRender();
+      purchaseRender();
     },
     "/product_details/:id": (data) => {
       productDetailRender(data);
+    },
+    "/payment": () => {
+      paymentRender();
     },
   })
   .resolve();

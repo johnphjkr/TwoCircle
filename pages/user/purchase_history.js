@@ -1,7 +1,7 @@
-export function pruchaseRender() {
+export function purchaseRender() {
   const mypage = document.querySelector("#mypage");
   mypage.innerHTML = /*html*/ `
-  <section class="container_content">
+  <div class="purchase_history">
     <div class="container_content_title">
       <h2>주문/배송 조회</h2>
       <p>주문 내역을 클릭하면 상세 내역을 확인 하실 수 있으며, 주문 상태에 따라 <strong>취소/교환/반품 신청이 가능</strong> 합니다.
@@ -52,7 +52,7 @@ export function pruchaseRender() {
       <!-- 구매 리스트 아이템 -->
       <div class="list_item_container">
         <ul class="list_item_list_select">
-          <!-- <div class="list_item">
+          <div class="list_item">
           <div class="list_item_productInfo"><img src="/image/g1.jpg" alt="선글라스"></div>
           <div class="list_itme_orderNumber">고글</div>
           <div class="list_item_payAmount">10000원</div>
@@ -61,7 +61,7 @@ export function pruchaseRender() {
             <button class="btn_ok">확정</button>
             <button class="btn_cancel">취소</button>
           </div>
-        </div> -->
+        </div>
         </ul>
 
         <ul class="list_item_list_confirm"></ul>
@@ -69,25 +69,5 @@ export function pruchaseRender() {
       </div>
 
     </section>
-
-    <!-- 상세 정보 창 -->
-    <section class="container_content_modal">
-      <div class="modal">
-        <div class="modal_orderDate">주문날짜</div>
-        <button class="modal_cancel">x</button>
-      </div>
-      <div class="modal_inner">
-        <div class="modal_inner_image"><img src="/image/g10.jpg" alt="선글라스"></div>
-        <div class="modal_inner_box">
-          <div class="box_productName">상품이름</div>
-          <div class="box_totalPrice">총 가격</div>
-          <div class="box_totalQauntity">총 수량</div>
-        </div>
-        <div class="modal_inner_btn">
-          <button class="btn_ok">구매확정</button>
-          <button class="btn_cancel">구매취소</button>
-        </div>
-      </div>
-    </section>
-  </section>`;
+</div>`;
 }

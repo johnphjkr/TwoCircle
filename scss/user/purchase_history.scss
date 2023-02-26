@@ -42,378 +42,291 @@
   padding-left: 2rem;
 }
 
-#wrap {
 
-  .container {
-    // display: flex;
-    // margin: 3rem 0;
+img {
+  display: block;
+  width: 100%;
+}
 
-    .main {
-      // display: flex;
-      // margin: 3rem auto;
+h2 {
+  width: 100%;
+  line-height: 4.6rem;
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 4rem;
+}
 
-      img {
-        display: block;
-        width: 100%;
+// 구매 정보
+.purchase_history {
+  display: flex;
+  flex-direction: column;
+  width: 105rem;
+
+  .container_content_title {
+    padding: 1.25rem;
+    margin-left: 3.125rem;
+
+    p {
+      color: var(--gray-color);
+
+      strong {
+        color: var(--font-color);
       }
+    }
+  }
 
-      h2 {
-        width: 100%;
-        line-height: 4.6rem;
-        font-size: 3.2rem;
-        font-weight: 700;
-        margin-bottom: 4rem;
-      }
+  // 필터
+  .container_content_delivery {
+    @include windowDefault;
 
-      .main_inner {
+    .delivery_type_text {
+      color: var(--gray-color);
+      margin: 0 0 0.2rem 3.125rem;
+    }
+
+    .delivery_filter {
+      display: flex;
+      margin-left: 3.125rem;
+      height: 7rem;
+
+      .delivery_filter_month {
+        height: 4.375rem;
         display: flex;
-        max-width: 134rem;
-        padding: 0 3rem;
+        align-items: center;
+      }
 
+      .delivery_filter_month>button {
+        @include filterBtn;
+        width: 8.3rem;
+        transition: .7s;
+        margin-top: 4rem;
+      }
 
-        // 메뉴
-        .nav {
-          width: 23rem;
-          border: none;
+      .delivery_filter_month>button:hover {
+        @include btnColorChange;
+      }
 
-          .header {
-            width: 23rem;
+      .delivery_filter_calendar {
+        display: flex;
+        align-items: center;
+        width: 45rem;
+        margin: 2rem 0 0 27rem;
 
-            .header_title {
-              font-size: 3.2rem;
-              font-weight: var(--font-bold);
-            }
-          }
+        .calendar_start,
+        .calendar_end {
+          font-size: 1.4rem;
+          width: 18rem;
+          display: flex;
+          align-items: center;
+          height: 4rem;
+          padding-left: 2rem;
+          border: 0.063rem solid var(--gray-color);
 
-          .nav_shopping_info {
-            height: 15rem;
-
-            .shopping_info_title {
-              font-size: 2rem;
-              font-weight: var(--font-bold);
-              margin-top: 5rem;
-              margin-bottom: 4rem;
-            }
-
-            .shopping_info_list {
-              font-size: 1.4rem;
-              font-weight: var(--font-basic);
-
-              .item {
-                .item_purchase {
-                  margin-bottom: 2rem;
-                }
-
-                .item_wish_list {
-                  margin-bottom: 2rem;
-                }
-              }
-            }
-          }
-
-          .nav_user_info {
-            height: 15rem;
-
-            .user_info_title {
-              font-size: 2rem;
-              font-weight: var(--font-bold);
-              margin-top: 7rem;
-              margin-bottom: 4rem;
-            }
-
-            .user_info_list {
-              font-size: 1.4rem;
-              font-weight: var(--font-basic);
-
-              .item {
-                .item_info_change {
-                  margin-bottom: 2rem;
-                }
-
-                .item_info_account {
-                  margin-bottom: 2rem;
-                }
-              }
-            }
+          button {
+            padding-left: 2.5rem;
+            border: transparent;
+            background-color: var(--white-color);
           }
         }
 
-        // 구매 정보
-        .container_content {
+        .calendar_middle {
           display: flex;
-          flex-direction: column;
-          width: 105rem;
+          height: 2.188rem;
+          align-items: center;
+          padding: 0 0.625rem;
+        }
 
-          .container_content_title {
-            padding: 1.25rem;
-            margin-left: 3.125rem;
+        .delivery_filter_calendar_btn {
+          background-color: var(--pink-color);
+          height: 4rem;
+          width: 6rem;
+          margin-left: 1rem;
+          border: none;
+          color: var(--white-color);
+          cursor: pointer;
+        }
+      }
+    }
+  }
 
-            p {
-              color: var(--gray-color);
+  // 구매 리스트
+  .container_content_list {
+    display: flex;
+    flex-direction: column;
+    width: inherit;
+    padding-bottom: 5rem;
 
-              strong {
-                color: var(--font-color);
-              }
-            }
-          }
+    .list_bar {
+      @include windowSort;
+      height: 5rem;
+      margin-top: 4rem;
+      width: inherit;
+      border-top: 2px solid var(--pink-color);
+      border-bottom: 2px solid var(--pink-color);
+      margin-left: 4rem;
+    }
 
+    .list_bar>div {
+      @include windowSort;
+      font-size: 1.8rem;
+    }
 
-          // 필터
-          .container_content_delivery {
-            @include windowDefault;
+    @for $i from 1 through 5 {
+      .list_bar>div:nth-child(#{$i}) {
+        width: inherit;
+      }
+    }
 
-            .delivery_type_text {
-              color: var(--gray-color);
-              margin: 0 0 0.2rem 3.125rem;
-            }
+    .list_item_container {
+      width: inherit;
 
-            .delivery_filter {
-              display: flex;
-              margin-left: 3.125rem;
-              height: 7rem;
+      .list_item_list_select,
+      .list_item_list_confirm,
+      .list_item_list_cancel {
+        width: inherit;
 
-              .delivery_filter_month {
-                height: 4.375rem;
-                display: flex;
-                align-items: center;
-              }
+        .list_item {
+          @include windowSort;
+          width: inherit;
+          height: 10rem;
+          margin: 2rem 0 1rem 4rem;
 
-              .delivery_filter_month>button {
-                @include filterBtn;
-                width: 8.3rem;
-                transition: .7s;
-                margin-top: 4rem;
-              }
-
-              .delivery_filter_month>button:hover {
-                @include btnColorChange;
-              }
-
-              .delivery_filter_calendar {
-                display: flex;
-                align-items: center;
-                width: 45rem;
-                margin: 2rem 0 0 27rem;
-
-                .calendar_start,
-                .calendar_end {
-                  width: 18rem;
-                  display: flex;
-                  align-items: center;
-                  height: 4rem;
-                  padding-left: 2rem;
-                  border: 0.063rem solid var(--gray-color);
-
-                  button {
-                    padding-left: 2.5rem;
-                    border: transparent;
-                    background-color: var(--white-color);
-                  }
-                }
-
-                .calendar_middle {
-                  display: flex;
-                  height: 2.188rem;
-                  align-items: center;
-                  padding: 0 0.625rem;
-                }
-
-                .delivery_filter_calendar_btn {
-                  background-color: var(--pink-color);
-                  height: 4rem;
-                  width: 6rem;
-                  margin-left: 1rem;
-                  border: none;
-                  color: var(--white-color);
-                  cursor: pointer;
-                }
-              }
-            }
-          }
-
-          // 구매 리스트
-          .container_content_list {
+          .list_item_productInfo {
             display: flex;
-            flex-direction: column;
-            width: inherit;
-            padding-bottom: 5rem;
 
-            .list_bar {
-              @include windowSort;
-              height: 5rem;
-              margin-top: 4rem;
-              width: inherit;
-              border-top: 2px solid var(--pink-color);
-              border-bottom: 2px solid var(--pink-color);
-              margin-left: 4rem;
-            }
-
-            .list_bar>div {
-              @include windowSort;
-              font-size: 1.8rem;
-            }
-
-            @for $i from 1 through 5 {
-              .list_bar>div:nth-child(#{$i}) {
-                width: inherit;
-              }
-            }
-
-            .list_item_container {
-              width: inherit;
-
-              .list_item_list_select,
-              .list_item_list_confirm,
-              .list_item_list_cancel {
-                width: inherit;
-
-                .list_item {
-                  @include windowSort;
-                  width: inherit;
-                  height: 10rem;
-                  margin: 2rem 0 1rem 4rem;
-
-                  .list_item_productInfo {
-                    display: flex;
-
-                    img {
-                      width: 9rem;
-                      height: 9rem;
-                    }
-                  }
-
-                  .list_item_btn {
-                    display: flex;
-
-
-                    .btn_ok,
-                    .btn_cancel {
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      border: transparent;
-                      background-color: var(--pink-color);
-                      border-radius: 10px;
-                      color: var(--white-color);
-                      width: 8rem;
-                      height: 3rem;
-                      margin: 0 auto;
-                      cursor: pointer;
-                    }
-                  }
-                }
-              }
-
-              .list_item>div {
-                @include windowSort;
-                font-size: 1.5rem;
-              }
-
-              @for $i from 1 through 5 {
-                .list_item>div:nth-child(#{$i}) {
-                  width: inherit;
-                }
-              }
+            img {
+              width: 9rem;
+              height: 9rem;
             }
           }
 
-          // 상세 정보 창
-          .container_content_modal {
-            @include windowSort;
-            position: absolute;
-            top: 20rem;
-            z-index: 2;
-            width: 105rem;
-            height: 40rem;
-            background-color: var(--gray-color);
-            border-radius: 0.938rem;
-            flex-direction: column;
-            display: none;
+          .list_item_btn {
+            display: flex;
 
-            .modal {
-              display: flex;
-              width: 90rem;
-              height: 2rem;
-              margin-bottom: 2rem;
-
-              .modal_orderDate {
-                display: flex;
-                margin-left: 1.25rem;
-                width: 31.25rem;
-              }
-
-              .modal_cancel {
-                @include windowSort;
-                width: 5rem;
-                height: 2.5rem;
-                margin-left: 55rem;
-                cursor: pointer;
-                border: transparent;
-                border-radius: 0.625rem;
-                transition: .7s;
-              }
-
-              .modal_cancel:hover {
-                color: var(--white-color);
-                background-color: var(--pink-color);
-              }
-            }
-
-            .modal_inner {
+            .btn_ok,
+            .btn_cancel {
               display: flex;
               align-items: center;
-              background-color: var(--lightgray-color);
-              width: 95rem;
-              height: 30rem;
-              border-radius: 0.938rem;
-
-              .modal_inner_image {
-                margin-left: 4rem;
-                display: flex;
-                width: 15rem;
-                height: 15rem;
-              }
-
-              .modal_inner_box {
-                display: flex;
-                flex-direction: column;
-                width: 57rem;
-                margin-left: 4rem;
-
-                .box_productName,
-                .box_totalPrice,
-                .box_totalQauntity {
-                  display: flex;
-                  align-items: center;
-                  padding-left: 1.25rem;
-                  height: 4.375rem;
-                }
-              }
-
-              .modal_inner_btn {
-                width: 10rem;
-                display: flex;
-                flex-direction: column;
-
-                .btn_ok,
-                .btn_cancel {
-                  @include windowSort;
-                  margin: 1.25rem 0;
-                  border: 2px solid var(--pink-color);
-                  border-radius: 0.938rem;
-                  height: 4rem;
-                  transition: .7s;
-                }
-
-                .btn_ok:hover,
-                .btn_cancel:hover {
-                  background-color: var(--pink-color);
-                  border-color: var(--pink-color);
-                  color: var(--white-color);
-                }
-              }
+              justify-content: center;
+              border: transparent;
+              background-color: var(--pink-color);
+              border-radius: 10px;
+              color: var(--white-color);
+              width: 8rem;
+              height: 3rem;
+              margin: 0 auto;
+              cursor: pointer;
             }
           }
+        }
+      }
+
+      .list_item>div {
+        @include windowSort;
+        font-size: 1.5rem;
+      }
+
+      @for $i from 1 through 5 {
+        .list_item>div:nth-child(#{$i}) {
+          width: inherit;
+        }
+      }
+    }
+  }
+
+  // 상세 정보 창
+  .container_content_modal {
+    @include windowSort;
+    position: absolute;
+    top: 20rem;
+    z-index: 2;
+    width: 105rem;
+    height: 40rem;
+    background-color: var(--gray-color);
+    border-radius: 0.938rem;
+    flex-direction: column;
+    display: none;
+
+    .modal {
+      display: flex;
+      width: 90rem;
+      height: 2rem;
+      margin-bottom: 2rem;
+
+      .modal_orderDate {
+        display: flex;
+        margin-left: 1.25rem;
+        width: 31.25rem;
+      }
+
+      .modal_cancel {
+        @include windowSort;
+        width: 5rem;
+        height: 2.5rem;
+        margin-left: 55rem;
+        cursor: pointer;
+        border: transparent;
+        border-radius: 0.625rem;
+        transition: .7s;
+      }
+
+      .modal_cancel:hover {
+        color: var(--white-color);
+        background-color: var(--pink-color);
+      }
+    }
+
+    .modal_inner {
+      display: flex;
+      align-items: center;
+      background-color: var(--lightgray-color);
+      width: 95rem;
+      height: 30rem;
+      border-radius: 0.938rem;
+
+      .modal_inner_image {
+        margin-left: 4rem;
+        display: flex;
+        width: 15rem;
+        height: 15rem;
+      }
+
+      .modal_inner_box {
+        display: flex;
+        flex-direction: column;
+        width: 57rem;
+        margin-left: 4rem;
+
+        .box_productName,
+        .box_totalPrice,
+        .box_totalQauntity {
+          display: flex;
+          align-items: center;
+          padding-left: 1.25rem;
+          height: 4.375rem;
+        }
+      }
+
+      .modal_inner_btn {
+        width: 10rem;
+        display: flex;
+        flex-direction: column;
+
+        .btn_ok,
+        .btn_cancel {
+          @include windowSort;
+          margin: 1.25rem 0;
+          border: 2px solid var(--pink-color);
+          border-radius: 0.938rem;
+          height: 4rem;
+          transition: .7s;
+        }
+
+        .btn_ok:hover,
+        .btn_cancel:hover {
+          background-color: var(--pink-color);
+          border-color: var(--pink-color);
+          color: var(--white-color);
         }
       }
     }
