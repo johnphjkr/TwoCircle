@@ -10,6 +10,9 @@ import { navRender, mypageRender } from "../pages/user/mypage";
 import { wishRender } from "../pages/user/wish_list";
 import { pruchaseRender } from "../pages/user/purchase_history";
 import { cartRender } from "../pages/user/cart";
+import { productDetailRender } from "../pages/user/product_details.js";
+import { paymentRender } from "../pages/user/payment.js";
+import { orderCompletedRender } from "../pages/user/order_completed.js";
 import { accountRender } from "../pages/user/account";
 import { productListRender } from "../pages/user/product_list.js";
 import { productRender } from "./js/product_list.js";
@@ -74,7 +77,11 @@ router
     "product_search/:id":(match) => {
       productListRender(match.data.id)
       productRender(match.data.id,[])
+    },
+    "/order_completed": () => {
+      orderCompletedRender();
     }
+
   })
   .resolve();
 

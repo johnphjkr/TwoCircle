@@ -1,4 +1,6 @@
 import { payment } from "../../source/api/products/user/payment_api.js";
+import { login } from "../../source/api/certified/login_api";
+import { router } from "../../source/route.js";
 
 // 렌더링
 export async function paymentRender() {
@@ -18,49 +20,6 @@ export async function paymentRender() {
               <div class="navbar_price">가격</div>
               <div class="navbar_quantity">수량</div>
               <div class="navbar_totalprice">총 금액</div>
-            </div>
-            <!-- 주문상품 리스트 -->
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
             </div>
             <!-- 주문자 정보 -->
             <div class="orderinfo_title_orderer">주문자 정보</div>
@@ -96,4 +55,31 @@ export async function paymentRender() {
     </div>
   </div>
   `;
+
+  const orderNavBarEl = document.querySelector(".orderinfo_navbar");
+  const item = JSON.parse(localStorage.getItem("basket"));
+  let lists = [...item];
+
+  const liEl = lists.map((list) => {
+    const orderInfoListEl = document.createElement("div");
+    const listImage = document.createElement("div");
+    const listOption = document.createElement("div");
+    const listPrice = document.createElement("div");
+    const listQuantity = document.createElement("div");
+    const listTotalPrice = document.createElement("div");
+    orderInfoListEl.classList.add("orderinfo_list");
+    listImage.classList.add(".list_image");
+    listOption.classList.add(".list_option");
+    listPrice.classList.add(".list_price");
+    listQuantity.classList.add(".list_quantity");
+    listTotalPrice.classList.add(".list_totalprice");
+    listImage.innerHTML = `<img src="${list.thumbnail}" alt="아이템">`;
+    listOption.innerHTML = `${list.description}`;
+    listPrice.innerHTML = `${list.price}`;
+    listQuantity.innerHTML = `${list.count}`;
+    listTotalPrice.innerHTML = `${list.totalPrice}`;
+    orderInfoListEl.append(listImage, listOption, listPrice, listQuantity, listTotalPrice);
+    return orderInfoListEl;
+  });
+  orderNavBarEl.after(...liEl);
 }
