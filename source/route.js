@@ -1,6 +1,8 @@
 import Navigo from "navigo";
 
 import { authCheck } from "./api/certified/authcheck_api.js";
+import { login } from "./js/header_change";
+import { logout } from "./api/certified/logout_api.js";
 
 // 페이지
 import { mainRender } from "../pages/user/main.js";
@@ -18,9 +20,11 @@ import { productListRender } from "../pages/user/product_list.js";
 import { productRender } from "./js/product_list.js";
 export const router = new Navigo("/");
 
+const router = new Navigo("/");
+
 router.hooks({
   before: async (done, match) => {
-    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+    const accessToken = JSON.parse(localStorage.getItem('accessToken'));
     const auth = await authCheck(accessToken);
     const onlyUserPages = ["mypage", "mypage/wish", "cart", "account"];
     if (onlyUserPages.includes(match.url) && !auth) {
@@ -32,6 +36,28 @@ router.hooks({
       done();
 
     }
+    
+    // 로그인 로그아웃시 헤더 변경
+    const loginEl = document.querySelector('.header_login');
+    const logoutEl = document.querySelector('.header_logout');
+    const loginNameEl = document.querySelector('.login_name');
+    const logoutBtn = document.querySelector('.logout_btn');
+    if (auth) {
+      console.log('[auth sucess]', { user: auth });
+      loginEl.style.display = 'none';
+      logoutEl.style.display = 'flex';
+      loginNameEl.innerHTML = `${auth.displayName}님, 안녕하세요`;
+      logoutBtn.addEventListener('click', async () => {
+        await logout(accessToken);
+        localStorage.removeItem("accessToken");
+        loginEl.style.display = 'flex';
+        logoutEl.style.display = 'none';
+      });
+    } else {
+      loginEl.style.display = 'flex';
+      logoutEl.style.display = 'none';
+    }
+    // router.navigate("/");
     done();
   },
   after: (match) => {
@@ -92,4 +118,3 @@ search.addEventListener("submit",(e)=>{
   e.preventDefault()
   router.navigate(`product_search/${searchInput.value}`)
 })
-
