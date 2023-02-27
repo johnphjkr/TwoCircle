@@ -52,15 +52,9 @@ pwChangeOkBtnEl.addEventListener("click", async (e) => {
         password: pw_check
     }
 
-    try {
-        loginResult = await login("POST", body, login_check);
-        login_check = loginResult;
-    }
-    catch (error) {
+    const json = await login("POST", body);
 
-    }
-
-    if (login_check === true) {
+    if (json.status === 200) {
         console.log("비밀번호 확인 성공!")
         if (newPassword != newPassword_check) {
             alert("비밀번호 확인이 잘못되었습니다.");
