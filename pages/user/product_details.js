@@ -1,4 +1,5 @@
 import { productDetail } from "../../source/api/products/common/product_detail_api.js";
+import { router } from "../../source/route.js";
 
 export async function productDetailRender(data) {
   const id = await productDetail(data.data.id);
@@ -36,7 +37,7 @@ export async function productDetailRender(data) {
                   </span>
                 </div>
               </section>
-              <div class="product_info_discount">${id.discountRate}</div>
+              <div class="product_info_discount">할인율 ${id.discountRate}%</div>
               <!-- 제품 상세 이름, 제품 수량 추가 or 감소, 제품 가격 -->
               <section class="product_info_quantity">
                 <div class="product_info_quantity_box">
@@ -94,7 +95,6 @@ export async function productDetailRender(data) {
   const basketBtnEl = document.querySelector(".btn_basket");
   const purchaseBtnEl = document.querySelector(".productInfo_btn_purchase");
   const itemPriceEl = document.querySelector(".option_content_price");
-  const discountRateEl = document.querySelector(".product_info_discount");
   const heartEl = document.querySelector(".favorite_icon");
   let soldOut = true;
 
@@ -127,24 +127,26 @@ export async function productDetailRender(data) {
   // 품절유무
   soldOut ? (stockEl.innerHTML = "재고있음") : (stockEl.innerHTML = "품절");
 
+
   // 장바구니
   basketBtnEl.addEventListener("click", async () => {
-    const basket = {
-      id: id.id,
-      price: countTotalPriceEl.textContent,
-      count: countEl.value,
-      thumbnail: id.thumbnail,
-    };
-    localStorage.setItem("basket", JSON.stringify(basket));
+    const itemEl = id;
+    let basketEl = JSON.parse(localStorage.getItem("basket"));
+    if (basketEl === null) {
+      basketEl = [];
+    }
+    basketEl.push(itemEl);
+    localStorage.setItem("basket", JSON.stringify(basketEl));
   });
 
   purchaseBtnEl.addEventListener("click", async () => {
-    const lists = {
-      id: id.id,
-      price: countTotalPriceEl.textContent,
-      count: countEl.value,
-      thumbnail: id.thumbnail,
-    };
-    localStorage.setItem("lists", JSON.stringify(lists));
+    const itemEl = id;
+    let lists = JSON.parse(localStorage.getItem("basket"));
+    if (lists === null) {
+      lists = [];
+    }
+    lists.push(itemEl);
+    localStorage.setItem("basket", JSON.stringify(lists));
+    router.navigate("/payment");
   });
 }
