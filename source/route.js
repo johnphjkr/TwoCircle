@@ -1,7 +1,6 @@
 import Navigo from "navigo";
 
 import { authCheck } from "./api/certified/authcheck_api.js";
-import { login } from "./js/header_change";
 import { logout } from "./api/certified/logout_api.js";
 
 // 페이지
@@ -18,9 +17,9 @@ import { orderCompletedRender } from "../pages/user/order_completed.js";
 import { accountRender } from "../pages/user/account";
 import { productListRender } from "../pages/user/product_list.js";
 import { productRender } from "./js/product_list.js";
-export const router = new Navigo("/");
 
-const router = new Navigo("/");
+
+export const router = new Navigo("/");
 
 router.hooks({
   before: async (done, match) => {
