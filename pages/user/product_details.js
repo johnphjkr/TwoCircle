@@ -130,17 +130,36 @@ export async function productDetailRender(data) {
 
   // 장바구니
   basketBtnEl.addEventListener("click", async () => {
-    const itemEl = id;
+    const itemEl = {
+      id: id.id,
+      count: countEl.value,
+      price: id.price,
+      totalPrice: countTotalPriceEl.textContent,
+      thumbnail: id.thumbnail,
+      title: id.title,
+      discountRate: id.discountRate,
+      description: id.description,
+    };
     let basketEl = JSON.parse(localStorage.getItem("basket"));
     if (basketEl === null) {
       basketEl = [];
     }
     basketEl.push(itemEl);
     localStorage.setItem("basket", JSON.stringify(basketEl));
+    
   });
 
   purchaseBtnEl.addEventListener("click", async () => {
-    const itemEl = id;
+    const itemEl = {
+      id: id.id,
+      count: countEl.value,
+      price: id.price,
+      totalPrice: countTotalPriceEl.textContent,
+      thumbnail: id.thumbnail,
+      title: id.title,
+      discountRate: id.discountRate,
+      description: id.description,
+    };
     let lists = JSON.parse(localStorage.getItem("basket"));
     if (lists === null) {
       lists = [];
