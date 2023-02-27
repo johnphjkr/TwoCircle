@@ -11,6 +11,9 @@ export async function authCheck(accessToken) {
       Authorization: `Bearer ${accessToken}`,
     }
   })
-  if(res.status !== 200) return null;
+  if(res.status !== 200) {
+    localStorage.removeItem("accessToken")
+    return null;
+  }
   return await res.json();
 }

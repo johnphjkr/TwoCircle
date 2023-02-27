@@ -8,20 +8,29 @@ import { loginRender } from "../pages/user/login.js";
 import { signupRender } from "../pages/user/signup";
 import { navRender, mypageRender } from "../pages/user/mypage";
 import { wishRender } from "../pages/user/wish_list";
-import { purchaseRender } from "../pages/user/purchase_history";
+import { pruchaseRender } from "../pages/user/purchase_history";
 import { cartRender } from "../pages/user/cart";
 import { productDetailRender } from "../pages/user/product_details.js";
 import { paymentRender } from "../pages/user/payment.js";
 import { orderCompletedRender } from "../pages/user/order_completed.js";
-
-const router = new Navigo("/");
+import { accountRender } from "../pages/user/account";
+import { productListRender } from "../pages/user/product_list.js";
+import { productRender } from "./js/product_list.js";
+export const router = new Navigo("/");
 
 router.hooks({
   before: async (done, match) => {
     const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const auth = await authCheck(accessToken);
-    if (auth) {
-      console.log("[auth sucess]", { user: auth });
+    const onlyUserPages = ["mypage", "mypage/wish", "cart", "account"];
+    if (onlyUserPages.includes(match.url) && !auth) {
+      router.navigate("login");
+      done();
+    }
+    if ((match.url === "login" || match.url === "signup") && auth) {
+      router.navigate("");
+      done();
+
     }
     done();
   },
@@ -34,16 +43,17 @@ router
     "/": () => {
       mainRender();
     },
-    login: () => {
+
+    "login": () => {
       loginRender();
     },
-    signup: () => {
+    "signup": () => {
       signupRender();
     },
-    cart: () => {
+    "cart": () => {
       cartRender();
     },
-    mypage: () => {
+    "mypage": () => {
       navRender();
       mypageRender();
     },
@@ -53,18 +63,33 @@ router
     },
     "mypage/purchase": () => {
       navRender();
-      purchaseRender();
+      pruchaseRender();
     },
-    "/product_details/:id": (data) => {
-      productDetailRender(data);
+    "mypage/account": () => {
+      navRender();
+      accountRender();
     },
-    "/payment": () => {
-      paymentRender();
+    "product_list/:id": (match) => {
+      
+      productListRender(match.data.id)
+      productRender("",[match.data.id])
+    },
+    "product_search/:id":(match) => {
+      productListRender(match.data.id)
+      productRender(match.data.id,[])
     },
     "/order_completed": () => {
       orderCompletedRender();
-    },
+    }
+
   })
   .resolve();
 
-export { router };
+const search = document.querySelector(".search");
+const searchInput = document.querySelector(".search input")
+
+search.addEventListener("submit",(e)=>{
+  e.preventDefault()
+  router.navigate(`product_search/${searchInput.value}`)
+})
+
