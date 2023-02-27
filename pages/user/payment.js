@@ -1,7 +1,10 @@
 import { payment } from "../../source/api/products/user/payment_api.js";
+import { login } from "../../source/api/certified/login_api";
+import { router } from "../../source/route.js";
 
 // 렌더링
 export async function paymentRender() {
+  const item = JSON.parse(localStorage.getItem("basket"));
   const app = document.querySelector("#app");
   app.innerHTML = /* html */ `
 <div id="wrap">
@@ -20,48 +23,7 @@ export async function paymentRender() {
               <div class="navbar_totalprice">총 금액</div>
             </div>
             <!-- 주문상품 리스트 -->
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
-            <div class="orderinfo_list">
-              <div class="list_image"><img src="/image/g1.jpg" alt="선글라스"></div>
-              <div class="list_option">12mm 선글라스</div>
-              <div class="list_price">10000원</div>
-              <div class="list_quantity">2</div>
-              <div class="list_totalprice">200000원</div>
-            </div>
+            <div class="orderinfo_list"></div>
             <!-- 주문자 정보 -->
             <div class="orderinfo_title_orderer">주문자 정보</div>
             <div class="orderinfo_orderer">
@@ -96,4 +58,17 @@ export async function paymentRender() {
     </div>
   </div>
   `;
+
+  console.log(item.length);
+  const orderInfoListEl = document.querySelector(".orderinfo_list");
+ 
+  orderInfoListEl.innerHTML = /*html*/ `
+              <div class="list_image"><img src="${item[0].thumbnail}" alt="아이템"></div>
+              <div class="list_option">${item[0].description}</div>
+              <div class="list_price">${item[0].price}</div>
+              <div class="list_quantity">${item[0].count}</div>
+              <div class="list_totalprice">${item[0].totalprice}</div>
+  `;
+
+  // todo: 여러개 넣어야함
 }
