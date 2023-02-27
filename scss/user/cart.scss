@@ -1,6 +1,3 @@
-@import "./abstracts/variable";
-@import "./base/preset";
-
 .cart_inner {
   .cart_wrap {
     width: 99rem;
@@ -97,9 +94,10 @@
         .cart_list {
           list-style: none;
           padding-left: 0;
-          height: 20rem;
+
           padding-top: 2rem;
           &_item {
+            padding: 2rem 0;
             .cart_card {
               display: flex;
               align-items: center;
