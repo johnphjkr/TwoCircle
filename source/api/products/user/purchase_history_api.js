@@ -5,7 +5,7 @@ export async function purchaseHistory() {
     method: "GET",
     headers: {
       ...headers,
-      authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc3MjcxNjY0LCJleHAiOjE2NzczNTgwNjQsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.XCP-ZvCOXAmBXQY_DktEdiO3bjSIj8e9vgkHC047ftM`,
+      authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc3NDI4Nzc2LCJleHAiOjE2Nzc1MTUxNzYsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.C6lytkg6WkEKGXKOHNGkP18DHFl-dR3C2cHhx5ivh-Y`,
     },
   });
   return await res.json();

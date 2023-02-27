@@ -5,7 +5,7 @@ export async function authCheck() {
     method: "POST",
     headers: {
       ...headers,
-      authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc2NDUwNTg2LCJleHAiOjE2NzY1MzY5ODYsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.UeOmAnqLS8SYNw9O-SO-h10OUNF8q8AQV4C_WIVWM6Q `,
+      authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc3NDg0MzM4LCJleHAiOjE2Nzc1NzA3MzgsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.sdnZE2B_739pRIrAHD3OuV0TlVUJGx0Jc_Liqo-XcWQ `,
     }
     // body: JSON.stringify({
     //   email: data.email,
