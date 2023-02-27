@@ -4,7 +4,6 @@ import { router } from "../../source/route.js";
 
 // 렌더링
 export async function paymentRender() {
-  const item = JSON.parse(localStorage.getItem("basket"));
   const app = document.querySelector("#app");
   app.innerHTML = /* html */ `
 <div id="wrap">
@@ -22,8 +21,6 @@ export async function paymentRender() {
               <div class="navbar_quantity">수량</div>
               <div class="navbar_totalprice">총 금액</div>
             </div>
-            <!-- 주문상품 리스트 -->
-            <div class="orderinfo_list"></div>
             <!-- 주문자 정보 -->
             <div class="orderinfo_title_orderer">주문자 정보</div>
             <div class="orderinfo_orderer">
@@ -59,16 +56,30 @@ export async function paymentRender() {
   </div>
   `;
 
-  console.log(item.length);
-  const orderInfoListEl = document.querySelector(".orderinfo_list");
- 
-  orderInfoListEl.innerHTML = /*html*/ `
-              <div class="list_image"><img src="${item[0].thumbnail}" alt="아이템"></div>
-              <div class="list_option">${item[0].description}</div>
-              <div class="list_price">${item[0].price}</div>
-              <div class="list_quantity">${item[0].count}</div>
-              <div class="list_totalprice">${item[0].totalprice}</div>
-  `;
+  const orderNavBarEl = document.querySelector(".orderinfo_navbar");
+  const item = JSON.parse(localStorage.getItem("basket"));
+  let lists = [...item];
 
-  // todo: 여러개 넣어야함
+  const liEl = lists.map((list) => {
+    const orderInfoListEl = document.createElement("div");
+    const listImage = document.createElement("div");
+    const listOption = document.createElement("div");
+    const listPrice = document.createElement("div");
+    const listQuantity = document.createElement("div");
+    const listTotalPrice = document.createElement("div");
+    orderInfoListEl.classList.add("orderinfo_list");
+    listImage.classList.add(".list_image");
+    listOption.classList.add(".list_option");
+    listPrice.classList.add(".list_price");
+    listQuantity.classList.add(".list_quantity");
+    listTotalPrice.classList.add(".list_totalprice");
+    listImage.innerHTML = `<img src="${list.thumbnail}" alt="아이템">`;
+    listOption.innerHTML = `${list.description}`;
+    listPrice.innerHTML = `${list.price}`;
+    listQuantity.innerHTML = `${list.count}`;
+    listTotalPrice.innerHTML = `${list.totalPrice}`;
+    orderInfoListEl.append(listImage, listOption, listPrice, listQuantity, listTotalPrice);
+    return orderInfoListEl;
+  });
+  orderNavBarEl.after(...liEl);
 }
