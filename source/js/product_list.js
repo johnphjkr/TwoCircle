@@ -1,19 +1,19 @@
 import { searchProduct } from "../api/products/user/product_search"
 
-(async () => {
+export async function productRender(searchs, tag){
   const body = {
-    "searchText" : "",
-    "searchTags" : ""
+    "searchText" : searchs,
+    "searchTags" : [...tag]
   }  
   const search = await searchProduct(body);
   rendProduct(search)
   console.log(search)
-})()
+}
 
 // 상품목록 렌더링 과정
 function rendProduct(product) {
+  const ulEl = document.querySelector(".products_lists")
   product.map(function(e){
-    const ulEl = document.querySelector(".products_lists")
     const liEl = document.createElement("li")
     const aEl = document.createElement("a")
     const divEl = document.createElement("div")
@@ -75,5 +75,4 @@ function rendProduct(product) {
     liEl.append(aEl,iconEl)
     ulEl.append(liEl)
   })
-  
 }
