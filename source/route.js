@@ -27,12 +27,12 @@ router.hooks({
     if ((match.url === "login" || match.url === "signup") && auth) {
       router.navigate("");
       done();
+
     }
     done();
   },
   after: (match) => {
     window.scroll(0, 0);
-    console.log(match.user);
   },
 });
 router
@@ -40,6 +40,7 @@ router
     "/": () => {
       mainRender();
     },
+
     "login": () => {
       loginRender();
     },
@@ -84,3 +85,4 @@ search.addEventListener("submit",(e)=>{
   e.preventDefault()
   router.navigate(`product_search/${searchInput.value}`)
 })
+

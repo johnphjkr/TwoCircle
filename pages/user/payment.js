@@ -1,11 +1,13 @@
-import { payment } from "../api/products/user/payment_api.js";
+import { payment } from "../../source/api/products/user/payment_api.js";
 
 // 렌더링
-export const paymentRender = /*html*/ `
+export async function paymentRender() {
+  const app = document.querySelector("#app");
+  app.innerHTML = /* html */ `
 <div id="wrap">
     <div class="wrap_container">
-      <div class="main">
-        <div class="main_inner">
+      <div class="payment">
+        <div class="payment_inner">
           <!-- 주문정보 -->
           <section class="inner_orderinfo">
             <!-- 주문 상품 상단 바 -->
@@ -94,3 +96,4 @@ export const paymentRender = /*html*/ `
     </div>
   </div>
   `;
+}
