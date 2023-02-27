@@ -1,12 +1,12 @@
 .user_info_inner {
     display: flex;
     flex-direction: column;
-    width: 80rem;
+    width: 128rem;
     margin: 0 auto;
 
 
     span {
-        font-size: 2rem;
+        font-size: 3rem;
         margin-bottom: 1rem;
         color: #FF597B;
     }
@@ -18,10 +18,9 @@
         flex-direction: column;
         margin-bottom: 5rem;
         justify-content: center;
-        //align-items: center;
 
         span {
-            font-size: 1.5rem;
+            font-size: 2rem;
             width: 10rem;
             color: black;
         }
@@ -32,9 +31,12 @@
             border: 0.1rem solid lightgray;
             cursor: pointer;
             height: 2.5rem;
-            width: 8rem;
+            width: 10rem;
             font-weight: 600;
+            margin-left: 3rem;
 
+            margin: auto;
+            margin-bottom: 1rem;
         }
 
         .user_info_picture {
@@ -58,7 +60,7 @@
                 }
 
                 span {
-                    width: 50rem;
+                    width: 80rem;
                 }
             }
 
@@ -69,6 +71,7 @@
             button {
                 display: inline-block;
                 height: 2.5rem;
+                margin: auto;
             }
         }
 
@@ -82,7 +85,7 @@
             }
 
             .user_info_id_span {
-                width: 50rem;
+                width: 80rem;
             }
         }
 
@@ -97,7 +100,7 @@
             }
 
             .user_info_pw_span {
-                width: 50rem;
+                width: 80rem;
             }
         }
 
@@ -112,7 +115,7 @@
             }
 
             .user_info_name_span {
-                width: 50rem;
+                width: 80rem;
             }
         }
     }
@@ -138,9 +141,11 @@
             display: flex;
             align-items: center;
             flex-direction: column;
+            justify-content: center;
 
             h1 {
                 font-size: 4rem;
+                margin-bottom: 2rem;
             }
 
             span {
@@ -191,7 +196,7 @@
         span {
             margin-top: 2rem;
             width: 10rem;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: black;
         }
 
