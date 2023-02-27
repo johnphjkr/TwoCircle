@@ -12,6 +12,7 @@ import { purchaseRender } from "../pages/user/purchase_history";
 import { cartRender } from "../pages/user/cart";
 import { productDetailRender } from "../pages/user/product_details.js";
 import { paymentRender } from "../pages/user/payment.js";
+import { orderCompletedRender } from "../pages/user/order_completed.js";
 
 const router = new Navigo("/");
 
@@ -59,6 +60,9 @@ router
     },
     "/payment": () => {
       paymentRender();
+    },
+    "/order_completed": () => {
+      orderCompletedRender();
     },
   })
   .resolve();
