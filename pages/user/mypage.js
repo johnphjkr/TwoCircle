@@ -23,7 +23,7 @@ export function navRender() {
           <ul class="user_info_list">
             <li class="item">
               <a class="item_info_change" href="/changeInfo">회원 정보 변경</a>
-              <a class="item_info_account" href="/accont">계좌 관리</a>
+              <a class="item_info_account" href="/mypage/account">계좌 관리</a>
             </li>
           </ul>
         </div>
