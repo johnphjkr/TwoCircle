@@ -2,16 +2,16 @@ const ulEl = document.querySelector(".cart_list");
 const totalCheckbox = document.querySelector(".info_total_checkbox");
 const cancelBtn = document.querySelector(".cancel_btn");
 const purchaseBtn = document.querySelector(".purchase_btn");
+const totalPriceArea = document.querySelector(".cart_total_price_area");
 
 // const basket = [
-
 //   {
 //     id: "2nRsLKuvEQ5YMLE8XxVR",
 //     title: "안경일까요?",
 //     price: 30000,
 //     description: "가성비맞나?",
 //     tags: "수정, 완료?, ㅇㅇ",
-//     amount:1,
+//     count: 1,
 //     thumbnail:
 //       "https://storage.googleapis.com/heropy-api/vVkKbQCvYnv065930.jpg",
 //     isSoldOut: true,
@@ -22,7 +22,7 @@ const purchaseBtn = document.querySelector(".purchase_btn");
 //     title: "MacBook Pro 15",
 //     price: 336000,
 //     description: "맥북 프로",
-//     amount:1,
+//     count: 1,
 //     tags: ["가전", "노트북", "컴퓨터"],
 //     thumbnail:
 //       "https://storage.googleapis.com/heropy-api/vvKxwCnYv1v123002.jpg",
@@ -34,18 +34,17 @@ const purchaseBtn = document.querySelector(".purchase_btn");
 //     title: "좋은안경",
 //     price: 1234500,
 //     description: "안경입니다",
-//     amount:1,
+//     count: 1,
 //     tags: ["home", "안경", "좋은안경"],
 //     thumbnail: null,
 //     isSoldOut: false,
 //     discountRate: 20,
 //   },
-
 // ];
 
 // localStorage.setItem("basket", JSON.stringify(basket));
 
-// 핸들러함수 만들기
+/**장바구니 로컬스토리지에 저장된 데이터 갖고오는 변수*/
 const basketItem = JSON.parse(localStorage.getItem("basket"));
 
 cancelBtn.addEventListener("click", () => {
@@ -74,19 +73,40 @@ totalCheckbox.addEventListener("change", (e) => {
   });
 });
 
+purchaseBtn.addEventListener("click", () => {
+  let cartItemList = [...basketItem];
+
+  const cartAmount = Array.from(
+    document.querySelectorAll(".cart_card .amount")
+  ).map((count) => count.textContent);
+  const cartPrice = Array.from(
+    document.querySelectorAll(".cart_card .price")
+  ).map((price) => price.textContent);
+
+
+    for(let i = 0; i < cartItemList.length; i++) {
+      
+      cartItemList[i].price = cartPrice[i]
+      cartItemList[i].count = cartAmount[i]
+      
+    }
+  
+  localStorage.setItem("basket", JSON.stringify(cartItemList));
+});
 // async function getCartItems () {
 //   return JSON.parse(localStorage.getItem("basket"));
 // }
 
-// console.log( getCartItems ())
-
 // async function render() {
 
 //   getCartItems().then(cartItems => {
-
+//   console.log(cartItems)
 //   })
 // }
 
+// render()
+
+/**장바구니 리스트 렌더링 함수 */
 const renderCartList = () => {
   const liEls = basketItem.map((item) => {
     const liEl = document.createElement("li");
@@ -111,17 +131,37 @@ const renderCartList = () => {
                         </div>
                         <div class="product_total_wrap">
                           <button class="decrease_btn">-</button>
-                          <span class="amount">${item.amount}</span>
+                          <span class="amount">${item.count}</span>
                           <button class="increase_btn">+</button>
                         </div>
 
                         <div class="price_wrap">
-                          <span class="price">${item.price.toLocaleString(
-                            "ko-KR"
-                          )}</span>
+                          <span class="price">${item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
                         </div>
                       </div>                            
         `;
+
+    const decreaseBtn = liEl.querySelector(".decrease_btn");
+    const increaseBtn = liEl.querySelector(".increase_btn");
+    const amountEl = liEl.querySelector(".amount");
+    const priceEl = liEl.querySelector(".price");
+    let amount = item.amount;
+    const price = item.price;
+
+    decreaseBtn.addEventListener("click", () => {
+      amount -= 1;
+      amountEl.textContent = amount;
+      priceEl.textContent = amount * price;
+      getToTalPrice();
+    });
+
+    increaseBtn.addEventListener("click", () => {
+      amount += 1;
+      amountEl.textContent = amount;
+      priceEl.textContent = amount * price;
+      getToTalPrice();
+    });
+
     return liEl;
   });
   ulEl.innerHTML = "";
@@ -130,13 +170,45 @@ const renderCartList = () => {
 
 renderCartList();
 
-const decreaseBtn = ulEl.querySelector(".decrease_btn");
-const increaseBtn = ulEl.querySelector(".increase_btn");
+/**장바구니 총합계 렌더링 함수*/
+const renderTotalPrice = () => {
+  const divEl = document.createElement("div");
+  divEl.classList = "area_wrap";
+  divEl.innerHTML = /*html*/ `
+                    <div class="cart_order_price">
+                      <span class="order_price_text">주문금액</span>
+                      <span class="price"></span>
+                    </div>
+                    <div class="cart_delivery_fee">
+                      <span class="delivery_fee_text">배송비</span>
+                      <span class="fee">0원</span>
+                    </div>
+                    <div class="cart_total_price">
+                      <span class="total_price_text">총 결제금액</span>
+                      <span class="price"></span>
+                    </div>
+                  </div>`;
+  totalPriceArea.append(divEl);
+};
 
-decreaseBtn.addEventListener('click', () => {
-  console.log('감소버튼 입니다.')
-})
+renderTotalPrice();
 
-increaseBtn.addEventListener('click', () => {
-  console.log('증가버튼 입니다')
-})
+/** 장바구니 총 합계 구하는 함수*/
+function getToTalPrice() {
+  let total = 0;
+  let orderToTalPrice = totalPriceArea.querySelector(
+    ".cart_order_price .price"
+  );
+  let cartToTalPrice = totalPriceArea.querySelector(".cart_total_price .price");
+
+  const liEls = ulEl.querySelectorAll(".cart_list_item  .price");
+
+  for (let price = 0; price < liEls.length; price++) {
+    let priceText = parseInt(liEls[price].textContent);
+    total += priceText;
+  }
+  orderToTalPrice.textContent = total;
+  cartToTalPrice.textContent = total;
+}
+
+getToTalPrice();
