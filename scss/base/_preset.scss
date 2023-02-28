@@ -245,20 +245,20 @@ footer {
             a {
               display: block;
               height: 3.2rem;
-              background: url(/image/bg_fb.png) 0 0 / cover;
+              background: url(../static/image/bg_fb.png) 0 0 / cover;
               &:hover {
-                background: url(/image/bg_fb_on.png) 0 0 / cover;
+                background: url(../static/image/bg_fb_on.png) 0 0 / cover;
               }
               &.insta {
-                background-image: url(/image/bg_insta.png);
+                background-image: url(../static/image/bg_insta.png);
                 &:hover {
-                  background-image: url(/image/bg_insta_on.png);
+                  background-image: url(../static/image/bg_insta_on.png);
                 }
               }
               &.git {
-                background-image: url(/image/bg_git.png);
+                background-image: url(../static/image/bg_git.png);
                 &:hover {
-                  background-image: url(/image/bg_git_on.png);
+                  background-image: url(../static/image/bg_git_on.png);
                 }
               }
             }
