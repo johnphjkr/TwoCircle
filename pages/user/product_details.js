@@ -37,7 +37,9 @@ export async function productDetailRender(data) {
                   </span>
                 </div>
               </section>
-              <div class="product_info_discount">할인율 ${id.discountRate}%</div>
+              <div class="product_info_discount">할인율 ${
+                id.discountRate
+              }%</div>
               <!-- 제품 상세 이름, 제품 수량 추가 or 감소, 제품 가격 -->
               <section class="product_info_quantity">
                 <div class="product_info_quantity_box">
@@ -48,14 +50,16 @@ export async function productDetailRender(data) {
                       <div class="count"></div>
                       <button class="btn_plus">+</button>
                     </div>
-                    <div class="option_content_price">${id.price}</div>
+                    <div class="option_content_price">${id.price}원</div>
                   </div>
                 </div>
               </section>
               <!-- 총 상품 가격 -->
               <section class="product_info_count">
                 <div class="count_totaltext">총 상품금액</div>
-                <div class="count_totalprice">${id.price}원</div>
+                <div class="count_totalprice">
+                ${id.price * ((100 - id.discountRate) * 0.01)}원
+                </div>
               </section>
               <!-- 찜, 장바구니, 구매 버튼 -->
               <section class="product_info_btn">
@@ -96,8 +100,11 @@ export async function productDetailRender(data) {
   const purchaseBtnEl = document.querySelector(".productInfo_btn_purchase");
   const itemPriceEl = document.querySelector(".option_content_price");
   const heartEl = document.querySelector(".favorite_icon");
+  const bigTagEl = document.querySelector(".bigtag");
+  const midTagEl = document.querySelector(".midtag");
+  const smallTagEl = document.querySelector(".smalltag");
   let soldOut = true;
-
+  let countTotalPrice = id.price * ((100 - id.discountRate) * 0.01);
   countEl.value = 1;
   countEl.innerHTML = countEl.value;
 
@@ -106,16 +113,18 @@ export async function productDetailRender(data) {
     if (countEl.value > 1) {
       countEl.value--;
       countEl.innerHTML = countEl.value;
-      countTotalPriceEl.innerHTML =
-        countEl.value * Number(itemPriceEl.textContent) + "원";
+      countTotalPrice =
+        countEl.value * id.price * ((100 - id.discountRate) * 0.01);
+      countTotalPriceEl.innerHTML = countTotalPrice.toString() + "원";
     }
   });
 
   plusBtnEl.addEventListener("click", async () => {
     countEl.value++;
     countEl.innerHTML = countEl.value;
-    countTotalPriceEl.innerHTML =
-      countEl.value * Number(itemPriceEl.textContent) + "원";
+    countTotalPrice =
+      countEl.value * id.price * ((100 - id.discountRate) * 0.01);
+    countTotalPriceEl.innerHTML = countTotalPrice.toString() + "원";
   });
   // 찜 버튼
   let heartBtn = false;
@@ -127,6 +136,23 @@ export async function productDetailRender(data) {
   // 품절유무
   soldOut ? (stockEl.innerHTML = "재고있음") : (stockEl.innerHTML = "품절");
 
+  if (id.tags[2] === undefined) {
+    smallTagEl.style.display = "none";
+    midTagEl.innerHTML = `${id.tags[1]}`;
+    bigTagEl.innerHTML = `${id.tags[0]} >`;
+    midTagEl.style.color = "#181818";
+  }
+  if (id.tags[1] === undefined) {
+    smallTagEl.style.display = "none";
+    midTagEl.style.display = "none";
+    bigTagEl.innerHTML = `${id.tags[0]}`;
+    bigTagEl.style.color = "#181818";
+  }
+  if (id.tags[0] === undefined) {
+    smallTagEl.style.display = "none";
+    midTagEl.style.display = "none";
+    bigTagEl.style.display = "none";
+  }
 
   // 장바구니
   basketBtnEl.addEventListener("click", async () => {
@@ -134,7 +160,7 @@ export async function productDetailRender(data) {
       id: id.id,
       count: countEl.value,
       price: id.price,
-      totalPrice: countTotalPriceEl.textContent,
+      totalPrice: countTotalPrice,
       thumbnail: id.thumbnail,
       title: id.title,
       discountRate: id.discountRate,
@@ -145,8 +171,9 @@ export async function productDetailRender(data) {
       basketEl = [];
     }
     basketEl.push(itemEl);
+
+    // todo: 장바구니에 담을때 동일한 아이디가 있으면 count만 증가시키기, 구매도 마찬가지
     localStorage.setItem("basket", JSON.stringify(basketEl));
-    
   });
 
   purchaseBtnEl.addEventListener("click", async () => {
@@ -154,7 +181,7 @@ export async function productDetailRender(data) {
       id: id.id,
       count: countEl.value,
       price: id.price,
-      totalPrice: countTotalPriceEl.textContent,
+      totalPrice: countTotalPrice,
       thumbnail: id.thumbnail,
       title: id.title,
       discountRate: id.discountRate,
