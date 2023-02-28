@@ -42,121 +42,24 @@
   padding-left: 2rem;
 }
 
-#wrap {
+// 구매 정보
+.purchase_history {
+  display: flex;
+  flex-direction: column;
+  width: 105rem;
 
-  .container {
-    // display: flex;
-    // margin: 3rem 0;
+  .container_content_title {
+    padding: 1.25rem;
+    margin-left: 3.125rem;
 
-    .main {
-      // display: flex;
-      // margin: 3rem auto;
+    p {
+      color: var(--gray-color);
 
-      img {
-        display: block;
-        width: 100%;
+      strong {
+        color: var(--font-color);
       }
-
-      h2 {
-        width: 100%;
-        line-height: 4.6rem;
-        font-size: 3.2rem;
-        font-weight: 700;
-        margin-bottom: 4rem;
-      }
-
-      .main_inner {
-        display: flex;
-        max-width: 134rem;
-        padding: 0 3rem;
-
-
-        // 메뉴
-        .nav {
-          width: 23rem;
-          border: none;
-
-          .header {
-            width: 23rem;
-
-            .header_title {
-              font-size: 3.2rem;
-              font-weight: var(--font-bold);
-            }
-          }
-
-          .nav_shopping_info {
-            height: 15rem;
-
-            .shopping_info_title {
-              font-size: 2rem;
-              font-weight: var(--font-bold);
-              margin-top: 5rem;
-              margin-bottom: 4rem;
-            }
-
-            .shopping_info_list {
-              font-size: 1.4rem;
-              font-weight: var(--font-basic);
-
-              .item {
-                .item_purchase {
-                  margin-bottom: 2rem;
-                }
-
-                .item_wish_list {
-                  margin-bottom: 2rem;
-                }
-              }
-            }
-          }
-
-          .nav_user_info {
-            height: 15rem;
-
-            .user_info_title {
-              font-size: 2rem;
-              font-weight: var(--font-bold);
-              margin-top: 7rem;
-              margin-bottom: 4rem;
-            }
-
-            .user_info_list {
-              font-size: 1.4rem;
-              font-weight: var(--font-basic);
-
-              .item {
-                .item_info_change {
-                  margin-bottom: 2rem;
-                }
-
-                .item_info_account {
-                  margin-bottom: 2rem;
-                }
-              }
-            }
-          }
-        }
-
-        // 구매 정보
-        .container_content {
-          display: flex;
-          flex-direction: column;
-          width: 105rem;
-
-          .container_content_title {
-            padding: 1.25rem;
-            margin-left: 3.125rem;
-
-            p {
-              color: var(--gray-color);
-
-              strong {
-                color: var(--font-color);
-              }
-            }
-          }
-
+    }
+  }
 
           // 필터
                     .container_content_delivery {
@@ -421,103 +324,99 @@
                       }
                     }
 
-          // 상세 정보 창
-          .container_content_modal {
-            @include windowSort;
-            position: absolute;
-            top: 20rem;
-            z-index: 2;
-            width: 105rem;
-            height: 40rem;
-            background-color: var(--gray-color);
-            border-radius: 0.938rem;
-            flex-direction: column;
-            display: none;
+  // 상세 정보 창
+  .container_content_modal {
+    @include windowSort;
+    position: absolute;
+    top: 20rem;
+    z-index: 2;
+    width: 105rem;
+    height: 40rem;
+    background-color: var(--gray-color);
+    border-radius: 0.938rem;
+    flex-direction: column;
+    display: none;
 
-            .modal {
-              display: flex;
-              width: 90rem;
-              height: 2rem;
-              margin-bottom: 2rem;
+    .modal {
+      display: flex;
+      width: 90rem;
+      height: 2rem;
+      margin-bottom: 2rem;
 
-              .modal_orderDate {
-                display: flex;
-                margin-left: 1.25rem;
-                width: 31.25rem;
-              }
+      .modal_orderDate {
+        display: flex;
+        margin-left: 1.25rem;
+        width: 31.25rem;
+      }
 
-              .modal_cancel {
-                @include windowSort;
-                width: 5rem;
-                height: 2.5rem;
-                margin-left: 55rem;
-                cursor: pointer;
-                border: transparent;
-                border-radius: 0.625rem;
-                transition: .7s;
-              }
+      .modal_cancel {
+        @include windowSort;
+        width: 5rem;
+        height: 2.5rem;
+        margin-left: 55rem;
+        cursor: pointer;
+        border: transparent;
+        border-radius: 0.625rem;
+        transition: .7s;
+      }
 
-              .modal_cancel:hover {
-                color: var(--white-color);
-                background-color: var(--pink-color);
-              }
-            }
+      .modal_cancel:hover {
+        color: var(--white-color);
+        background-color: var(--pink-color);
+      }
+    }
 
-            .modal_inner {
-              display: flex;
-              align-items: center;
-              background-color: var(--lightgray-color);
-              width: 95rem;
-              height: 30rem;
-              border-radius: 0.938rem;
+    .modal_inner {
+      display: flex;
+      align-items: center;
+      background-color: var(--lightgray-color);
+      width: 95rem;
+      height: 30rem;
+      border-radius: 0.938rem;
 
-              .modal_inner_image {
-                margin-left: 4rem;
-                display: flex;
-                width: 15rem;
-                height: 15rem;
-              }
+      .modal_inner_image {
+        margin-left: 4rem;
+        display: flex;
+        width: 15rem;
+        height: 15rem;
+      }
 
-              .modal_inner_box {
-                display: flex;
-                flex-direction: column;
-                width: 57rem;
-                margin-left: 4rem;
+      .modal_inner_box {
+        display: flex;
+        flex-direction: column;
+        width: 57rem;
+        margin-left: 4rem;
 
-                .box_productName,
-                .box_totalPrice,
-                .box_totalQauntity {
-                  display: flex;
-                  align-items: center;
-                  padding-left: 1.25rem;
-                  height: 4.375rem;
-                }
-              }
+        .box_productName,
+        .box_totalPrice,
+        .box_totalQauntity {
+          display: flex;
+          align-items: center;
+          padding-left: 1.25rem;
+          height: 4.375rem;
+        }
+      }
 
-              .modal_inner_btn {
-                width: 10rem;
-                display: flex;
-                flex-direction: column;
+      .modal_inner_btn {
+        width: 10rem;
+        display: flex;
+        flex-direction: column;
 
-                .btn_ok,
-                .btn_cancel {
-                  @include windowSort;
-                  margin: 1.25rem 0;
-                  border: 2px solid var(--pink-color);
-                  border-radius: 0.938rem;
-                  height: 4rem;
-                  transition: .7s;
-                }
+        .btn_ok,
+        .btn_cancel {
+          @include windowSort;
+          margin: 1.25rem 0;
+          border: 2px solid var(--pink-color);
+          border-radius: 0.938rem;
+          height: 4rem;
+          transition: .7s;
+        }
 
-                .btn_ok:hover,
-                .btn_cancel:hover {
-                  background-color: var(--pink-color);
-                  border-color: var(--pink-color);
-                  color: var(--white-color);
-                }
-              }
-            }
-          }
+        .btn_ok:hover,
+        .btn_cancel:hover {
+          background-color: var(--pink-color);
+          border-color: var(--pink-color);
+          color: var(--white-color);
         }
       }
     }

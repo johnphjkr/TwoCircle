@@ -31,9 +31,9 @@
     margin: 3rem 0;
     justify-content: center;
     
-    .main {
+    .payment {
       display: flex;
-
+      
       img {
         display: block;
         width: 100%;
@@ -47,12 +47,12 @@
         margin-bottom: 4rem;
       }
 
-      .main_inner {
+      .payment_inner {
         display: flex;
         max-width: 134rem;
         margin: 0 auto;
         padding: 0 3rem;
-
+      
         // 주문정보
         .inner_orderinfo {
           display: flex;

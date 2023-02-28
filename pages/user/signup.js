@@ -51,6 +51,8 @@ export function signupRender(){
 
   const signUpForm = document.querySelector(".signup_form")
 
+  let profileImgBase64 = ""
+
   signUpForm.addEventListener("submit",e=>{
     e.preventDefault()
     // 비밀번호 확인
@@ -61,7 +63,7 @@ export function signupRender(){
       email : e.target[1].value,
       password : e.target[2].value,
       displayName : e.target[0].value,
-      profileImgBase64 : e.target[4].value
+      profileImgBase64
     }
     // 비밀번호가 일치하면 전송
     if(body.password.length>=8 && body.password === pwCheck){
@@ -124,6 +126,7 @@ export function signupRender(){
       reader.addEventListener("load",e=>{
         const imgEl = document.createElement("img")
         imgEl.src = e.target.result
+        profileImgBase64 = e.target.result
         figureEl.append(imgEl)
       }) 
     }else{
