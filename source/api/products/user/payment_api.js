@@ -1,15 +1,17 @@
 import { headers, url } from "../../requests.js";
 
-export async function payment(data) {
+export async function payment(productId, accountId) {
   const res = await fetch(url + "/products/buy", {
     method: "POST",
     headers: {
       ...headers,
-      authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      Authorization: `Bearer ${JSON.parse(
+        localStorage.getItem("accessToken")
+      )}`,
     },
     body: JSON.stringify({
-      productId: data.productId,
-      accountId: data.accountId,
+      productId: productId.id,
+      accountId: accountId.id,
     }),
   });
   return await res.json();

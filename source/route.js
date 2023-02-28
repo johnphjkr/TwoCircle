@@ -69,16 +69,16 @@ router
       mainRender();
     },
 
-    "login": () => {
+    login: () => {
       loginRender();
     },
-    "signup": () => {
+    signup: () => {
       signupRender();
     },
-    "cart": () => {
+    cart: () => {
       cartRender();
     },
-    "mypage": () => {
+    mypage: () => {
       navRender();
       mypageRender();
     },
@@ -95,18 +95,25 @@ router
       accountRender();
     },
     "product_list/:id": (match) => {
-      
-      productListRender(match.data.id)
-      productRender("",[match.data.id])
+      productListRender(match.data.id);
+      productRender("", [match.data.id]);
     },
-    "product_search/:id":(match) => {
-      productListRender(match.data.id)
-      productRender(match.data.id,[])
+    "product_search/:id": (match) => {
+      productListRender(match.data.id);
+      productRender(match.data.id, []);
     },
     "/order_completed": () => {
       orderCompletedRender();
-    }
-
+    },
+    "product_details/:id": (match) => {
+      productDetailRender(match);
+    },
+    "/payment": () => {
+      paymentRender();
+    },
+    "/order_completed": () => {
+      orderCompletedRender();
+    },
   })
   .resolve();
 
