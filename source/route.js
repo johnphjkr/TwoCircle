@@ -17,6 +17,7 @@ import { orderCompletedRender } from "../pages/user/order_completed.js";
 import { accountRender } from "../pages/user/account";
 import { productListRender } from "../pages/user/product_list.js";
 import { productRender } from "./js/product_list.js";
+import { userInfoRender } from "../pages/user/user_information.js";
 
 
 export const router = new Navigo("/");
@@ -26,6 +27,7 @@ router.hooks({
     const accessToken = JSON.parse(localStorage.getItem('accessToken'));
     const auth = await authCheck(accessToken);
     const onlyUserPages = ["mypage", "mypage/wish", "cart", "account"];
+    const checkInfo = ["mypage/changeInfo","mypage/account"]
     if (onlyUserPages.includes(match.url) && !auth) {
       router.navigate("login");
       done();
@@ -33,7 +35,10 @@ router.hooks({
     if ((match.url === "login" || match.url === "signup") && auth) {
       router.navigate("");
       done();
-
+    }
+    if(checkInfo.includes(match.url) && !auth){
+      router.navigate("비밀번호 확인") === true
+      done()
     }
     
     // 로그인 로그아웃시 헤더 변경
@@ -90,6 +95,9 @@ router
       navRender();
       purchaseRender();
     },
+    "mypage/changeInfo":() =>{
+      userInfoRender()
+    },
     "mypage/account": () => {
       navRender();
       accountRender();
@@ -113,7 +121,7 @@ router
     },
     "/order_completed": () => {
       orderCompletedRender();
-    },
+    }
   })
   .resolve();
 
