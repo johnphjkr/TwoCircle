@@ -1,24 +1,13 @@
-@import './abstracts/variable';
-@import './base/preset';
-
 #wrap {
-  color: var(--font-color);
-  font-weight: var(--font-basic);
-  font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  width: 1280px;
-  height: 100%;
-  justify-content: center;
-  margin: 0 auto;
+  
 
   .container {
-    display: flex;
-    margin: 3rem 0;
-    justify-content: center;
+    // display: flex;
+    // margin: 3rem 0;
+    // justify-content: center;
 
-    .main {
-      display: flex;
+    .order_completed {
+      // display: flex;
 
       img {
         display: block;
@@ -33,7 +22,7 @@
         margin-bottom: 4rem;
       }
 
-      .main_inner {
+      .order_completed_inner {
         display: flex;
         flex-direction: column;
         justify-content: center;

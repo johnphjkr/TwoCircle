@@ -1,4 +1,5 @@
-import "../../scss/user/login.scss";
+import { login } from "../../source/api/certified/login_api"
+
 
 export function loginRender() {
   const app = document.querySelector("#app");
@@ -28,4 +29,17 @@ export function loginRender() {
     </div>
   </section>
   `;
+
+  // 로그인 기능 
+
+  const loginForm = document.querySelector(".login_form")
+
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+    const body = {
+      email: e.target[0].value,
+      password: e.target[1].value
+    }
+    login("POST", body)
+  })
 }

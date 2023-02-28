@@ -1,6 +1,3 @@
-import "../../scss/style.scss";
-import "../../scss/user/main.scss";
-
 import { allProduct } from "../../source/api/products/admin/allProduct_api.js";
 // import { productItem } from "../../source/js/product_details.js";
 import { router } from "../../source/route.js";
@@ -26,10 +23,10 @@ export function mainRender() {
             <div class="swiper-button-next"></div>
           </section>
           <div class="inner">
-            <section class="list_section">
-              <h2>지금 가장 한한 상품</h2>
+            <section class="best_list list_section">
+              <h2>지금 가장 핫한 상품</h2>
               <div class="list_main">
-                <img class="list_main_img" />
+                <img src="./image/K1 (13).jpg" alt="이미지" />
               </div>
               <ul class="list_product"></ul>
             </section>
@@ -96,7 +93,7 @@ export function mainRender() {
                 <div class="swiper-button-next"></div>
               </div>
             </section>
-            <section class="list_section">
+            <section class="md_list list_section">
               <h2>전문가의 선택, MD 추천 상품</h2>
               <ul class="list_product"></ul>
               <div class="list_main">
@@ -158,13 +155,13 @@ export function mainRender() {
   })();
 
   async function mainItem(datas) {
-    const ulList = document.querySelector(".list_product");
+    const ulList = document.querySelector(".best_list .list_product");
 
     const liEl = datas.map((data) => {
       const listEl = document.createElement("li");
-      listEl.classList.add("product_list_item");
+      // listEl.classList.add("product_list_item");
       if (data.thumbnail == null) {
-        listEl.innerHTML = `<img src="" alt="이미지"/>`;
+        listEl.innerHTML = `<img src="https://via.placeholder.com/200x200?text=NO+IMAGE" alt="이미지없음"/>`;
       } else {
         listEl.innerHTML = `<img src="${data.thumbnail}" alt="이미지"/>`;
       }

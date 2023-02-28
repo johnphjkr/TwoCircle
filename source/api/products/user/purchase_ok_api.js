@@ -5,7 +5,7 @@ export async function purchaseOk(data) {
         method: "POST",
         headers: {
             ...headers,
-            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc3MTQyODU0LCJleHAiOjE2NzcyMjkyNTQsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.inBksaxKm8DBy8zfCcoRw5rgrJ9BGyMdDQ-sfunPBhs`,
+            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc3NTkxODcxLCJleHAiOjE2Nzc2NzgyNzEsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.NL9cARl0Qmii2h8mIY030VyX6IpL4cGzkYWsQHhWU3A`,
         },
         body: JSON.stringify({
             detailId: data.detailId

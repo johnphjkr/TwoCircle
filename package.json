@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "parcel index.html",
     "build": "parcel build index.html",
-    "test": "parcel ./pages/user/user_information.html"
+    "dev:3000": "parcel --port 3000 index.html"
   },
   "repository": {
     "type": "git",

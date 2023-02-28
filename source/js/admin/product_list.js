@@ -1,4 +1,4 @@
-import { productList } from "../../api/products/admin/product_list.js";
+import { allProduct } from "../../api/products/admin/allProduct_api.js";
 import { productDelete } from "../../api/products/admin/product_delete.js";
 
 const listEl = document.querySelector('.product_admin_ul');
@@ -6,7 +6,7 @@ const labelEl = document.querySelector('label');
 const deleteBtn = document.querySelector('.select_delete');
 
 (async () => {
-  const data = await productList();
+  const data = await allProduct();
   renderList(data);
 })();
 
