@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF_8" />
+    <meta http_equiv="X_UA_Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device_width, initial_scale=1.0" />
+    <title>투써클(TWO CIRCLE)</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/reset_css@5.0.1/reset.min.css"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="../../scss/style.scss" />
+    <script type="module" defer src="../../source/js/cart.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <header></header>
+      <div class="container">
+        <section class="cart">
+          <div class="inner cart_inner">
+            <div class="cart_wrap">
+              <div class="cart_header">
+                <h2 class="header">장바구니</h2>
+                <div class="card_list_area">
+                  <ul class="card_list">
+                    <li class="item">장바구니</li>
+                    <li class="item">주문 / 결제</li>
+                    <li class="item">주문 완료</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="cart_area">
+                <div class="cart_area_list_area">
+                  <div class="list_info">
+                    <div class="info_wrap">
+                      <div class="checkbox_wrap">
+                        <input type="checkbox" class="info_total_checkbox" />
+                      </div>
+                      <div class="info_option_product">상품 / 옵션 정보</div>
+                      <div class="info_amount">수량</div>
+                      <div class="info_price">주문금액</div>
+                    </div>
+                  </div>
+                  <ul class="cart_list"></ul>
+                </div>
+                <div class="cart_total_price_area">
+                  
+                </div>
+              </div>
+              <div class="btn_area">
+                <div class="cancel_btn_wrap">
+                  <button class="cancel_btn">상품 취소하기</button>
+                </div>
+                <div class="purchase_btn_wrap">
+                  <button class="purchase_btn">구매하기</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer></footer>
+    </div>
+  </body>
+</html>
