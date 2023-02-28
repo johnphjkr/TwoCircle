@@ -5,7 +5,7 @@ export async function userupdate(data) {
     method: "PUT",
     headers: {
       ...headers,
-      authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc3MTQyODU0LCJleHAiOjE2NzcyMjkyNTQsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.inBksaxKm8DBy8zfCcoRw5rgrJ9BGyMdDQ-sfunPBhs `,
+      authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc3NTkyNTA4LCJleHAiOjE2Nzc2Nzg5MDgsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.-7tsxBXDcpqRNGNVsa9Nj3GPi0wXkIqcHOhNy5snixo `,
     },
     body: JSON.stringify({
       displayName: data.displayName,
