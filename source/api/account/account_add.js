@@ -8,7 +8,7 @@ export async function addAccount(data) {
     method: "POST",
     headers: {
       ...headers,
-      authorization:  `Bearer ${JSON.parse(localStorage.getItem("accessToken"))}`,
+      authorization: `Bearer ${JSON.parse(localStorage.getItem("accessToken"))}`,
     },
     body: JSON.stringify({
       bankCode: data.bankCode,
