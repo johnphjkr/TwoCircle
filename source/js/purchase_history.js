@@ -187,6 +187,7 @@ function sortByDate() {
 }
 //렌더링
 async function renderItemList() {
+    showLoading();
     listItemSelectEl.innerHTML = '';
     listItemConfirmEl.innerHTML = '';
     listItemCancelEl.innerHTML = '';
@@ -236,10 +237,12 @@ async function renderItemList() {
 
 
         titleEl.textContent = item.product.title;
-        priceEl.textContent = item.product.price;
+        priceEl.textContent = item.product.price + " 원";
         timeEl.textContent = getdate(item.timePaid);
-
-        listItemEl.append(imgEl, titleEl, priceEl, timeEl, btnEl);
+        const productInfoEl = document.createElement('div');
+        productInfoEl.classList.add("list_item_info");
+        productInfoEl.append(imgEl, titleEl);
+        listItemEl.append(timeEl, productInfoEl, priceEl, btnEl);
 
         if (deal_canceled == true && deal_done == false) {
             btnEl.textContent = "구매 취소";
@@ -291,7 +294,7 @@ async function renderItemList() {
             listItemSelectEl.appendChild(listItemEl);
         }
 
-
+        hideLoading();
         return listItemEl;
     })
     switch (status) {
@@ -367,3 +370,12 @@ paginationContainer.addEventListener('click', (event) => {
         link.classList.add('active-link');
     }
 });
+
+//로딩
+function showLoading() {
+    document.getElementsByClassName('layerPopup')[0].style.display = 'block';
+}
+
+function hideLoading() {
+    document.getElementsByClassName('layerPopup')[0].style.display = 'none';
+}

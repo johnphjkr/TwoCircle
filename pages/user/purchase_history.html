@@ -165,15 +165,18 @@
             <!-- 구매 리스트 상단 바 -->
             <section class="container_content_list">
               <div class="list_bar">
-                <div class="list_bar_productInfo">상품정보</div>
-                <div class="list_bar_orderNumber">상품이름</div>
-                <div class="list_bar_payAmount">결제금액</div>
                 <div class="list_bar_orderDate">주문일시</div>
-                <div class="list_bar_payMethod">확인/취소</div>
+                <div class="list_bar_productInfo">상품정보</div>
+                <!--<div class="list_bar_orderNumber">상품이름</div>-->
+                <div class="list_bar_payAmount">결제금액</div>
+                <div class="list_bar_payMethod">주문 상태</div>
               </div>
 
               <!-- 구매 리스트 아이템 -->
               <div class="list_item_container">
+                <div class="layerPopup">
+                  <div class="spinner"></div>
+                </div>
                 <ul class="list_item_list_select">
                   <!-- <div class="list_item">
                   <div class="list_item_productInfo"><img src="/image/g1.jpg" alt="선글라스"></div>
