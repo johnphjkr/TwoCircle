@@ -1,4 +1,12 @@
+import { authCheck } from "../../source/api/certified/authcheck_api.js";
+import { checkAccount } from "../../source/api/account/account_add_check.js";
+
 export async function orderCompletedRender() {
+  const auth = await authCheck(JSON.parse(localStorage.getItem("accessToken")));
+  const account = await checkAccount(auth);
+  let bank = [...account.accounts];
+  const item = JSON.parse(localStorage.getItem("basket"));
+  
   const app = document.querySelector("#app");
   app.innerHTML = /* html */ `
   <div id="wrap">
@@ -12,11 +20,11 @@ export async function orderCompletedRender() {
           <!-- 주문내용 -->
           <section class="content">
             <div class="content_name">주문정보</div>
-            <div class="content_bank">은행</div>
-            <div class="content_ordernum">주문번호</div>
-            <div class="content_addres">배송지</div>
-            <div class="content_method">배송방법</div>
-            <div class="content_memo">배송메모</div>
+            <div class="content_bank">주문자</div>
+            <div class="content_ordernum">주문일자</div>
+            <div class="content_addres">결제정보</div>
+            <div class="content_method">00외1건</div>
+            <div class="content_memo">주문 물건 자세히 보기는 마이페이지에서 확인해주세요</div>
             <div class="content_btn">
               <button class="content_mypagebtn">마이페이지</button>
               <button class="content_homebtn">홈으로</button>
@@ -27,4 +35,13 @@ export async function orderCompletedRender() {
     </div>
   </div>
   `;
+
+
+  localStorage.removeItem("basket");
+  localStorage.removeItem("payment");
+  localStorage.removeItem("bank");
+  localStorage.removeItem("arr");
+  
+  
+  
 }

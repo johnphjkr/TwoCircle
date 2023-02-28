@@ -22,8 +22,8 @@ export function navRender() {
           <div class="user_info_title">회원 정보</div>
           <ul class="user_info_list">
             <li class="item">
-              <a class="item_info_change" href="/changeInfo">회원 정보 변경</a>
-              <a class="item_info_account" href="/mypage/account">계좌 관리</a>
+              <a class="item_info_change" href="/changeInfo" data-navigo>회원 정보 변경</a>
+              <a class="item_info_account" href="/mypage/account" data-navigo>계좌 관리</a>
             </li>
           </ul>
         </div>
