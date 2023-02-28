@@ -82,7 +82,7 @@ export async function productDetailRender(data) {
             </section>
           </section>
           <div class="photo">
-            <img sec="${id.photo}" alt="상세이미지">
+            <img src="${id.photo}" alt="상세이미지">
           </div>
         </div>
       </div>
