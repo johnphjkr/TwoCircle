@@ -1,6 +1,4 @@
-import { allProduct } from "../../source/api/products/admin/allProduct_api.js";
-// import { productItem } from "../../source/js/product_details.js";
-import { router } from "../../source/route.js";
+import { searchProduct } from "../../source/api/products/user/product_search.js";
 
 export function mainRender() {
   const app = document.querySelector("#app");
@@ -149,35 +147,55 @@ export function mainRender() {
     },
   });
 
+  async function productImport(tag) {
+    const body = {
+      "searchTags": [...tag]
+    };
+    const datas = await searchProduct(body);
+    // mainProduct(datas);
+    return datas;
+  }
+
   (async () => {
-    const datas = await allProduct();
-    mainItem(datas);
+    const bestList = await productImport(["best"]);
+    const mdList = await productImport(["md"]);
+    const newList = await productImport(["new"]);
+
+    const bestEl = document.querySelector('.best_list .list_product');
+    const mdEl = document.querySelector('.md_list .list_product');
+    const newEl = document.querySelector('.new_section .list_product');
+    mainProduct(bestList, bestEl, 6);
+    mainProduct(mdList, mdEl, 6);
+    mainProduct(newList, newEl, 12);
   })();
 
-  async function mainItem(datas) {
-    const ulList = document.querySelector(".best_list .list_product");
+  function mainProduct(datas, ulEl, num) {
+    const liEls = datas.filter((data, index) => index < num).map((data) => {
+      const liEl = document.createElement('li');
+      liEl.dataset.id = data.id;
+      const titleCode = data.title.split('/');
 
-    const liEl = datas.map((data) => {
-      const listEl = document.createElement("li");
-      // listEl.classList.add("product_list_item");
-      if (data.thumbnail == null) {
-        listEl.innerHTML = `<img src="https://via.placeholder.com/200x200?text=NO+IMAGE" alt="이미지없음"/>`;
-      } else {
-        listEl.innerHTML = `<img src="${data.thumbnail}" alt="이미지"/>`;
-      }
+      liEl.innerHTML = /* html */ `
+        <a href="/product_details/${data.id}" class="product">
+          <div class="product_img">
+            <img src=${data.thumbnail ? data.thumbnail : 'https://via.placeholder.com/200x200?text=NO+IMAGE'} alt="product">
+          </div>
+          <p class="product_name">${titleCode[0]}</p>
+          <p class="product_code">${titleCode[1] !== undefined ? titleCode[1] : titleCode[0]}</p>
+          <p class="product_discription">${data.description}</p>
+          <p class="product_price">
+            ${data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 
+            ${data.discountRate ? `<span class="product_price_sale">${data.discountRate}%</span>` : ""}
+          </p>
+        </a>
+        <div class="icons">
+          <i class="fa-regular fa-heart"></i>
+        </div>
+      `;
 
-      listEl.addEventListener("click", () => {
-        localStorage.setItem("id", JSON.stringify(data.id));
-        // router.navigate(`/product_details/${data.id}`);
-      });
-
-      return listEl;
+      return liEl;
     });
-    liEl.forEach((item) => {
-      ulList.append(item);
-    });
+    ulEl.innerHTML = '';
+    ulEl.append(...liEls);
   }
 }
-//  function routeDetailPage(id) {
-//    router.navigate(`/product/detail/${id}`);
-//  }
