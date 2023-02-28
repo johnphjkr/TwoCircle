@@ -82,5 +82,5 @@ registrationBtn.addEventListener('click', async () => {
     discountRate: discount
   });
 
-  window.location.href = './product_list.html';
+  window.location.href = './admin_product_list.html';
 });
