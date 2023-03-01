@@ -9,8 +9,8 @@ export async function orderCompletedRender() {
   
   const app = document.querySelector("#app");
   app.innerHTML = /* html */ `
-  <div id="wrap">
-    <div class="container">
+  <div id="wrap_order_completed">
+    <div class="container_order_completed">
       <div class="order_completed">
         <div class="order_completed_inner">
           <!-- 상단 제목 -->
@@ -35,13 +35,7 @@ export async function orderCompletedRender() {
     </div>
   </div>
   `;
-
-
   localStorage.removeItem("basket");
   localStorage.removeItem("payment");
   localStorage.removeItem("bank");
-  localStorage.removeItem("arr");
-  
-  
-  
 }
