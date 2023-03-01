@@ -1,45 +1,5 @@
 
 
-// const basket = [
-//   {
-//     id: "2nRsLKuvEQ5YMLE8XxVR",
-//     title: "안경일까요?",
-//     price: 30000,
-//     description: "가성비맞나?",
-//     tags: "수정, 완료?, ㅇㅇ",
-//     count: 1,
-//     thumbnail:
-//       "https://storage.googleapis.com/heropy-api/vVkKbQCvYnv065930.jpg",
-//     isSoldOut: true,
-//     discountRate: "10",
-//   },
-//   {
-//     id: "7yrX7CgUJf3kPydnlSSL",
-//     title: "MacBook Pro 15",
-//     price: 336000,
-//     description: "맥북 프로",
-//     count: 1,
-//     tags: ["가전", "노트북", "컴퓨터"],
-//     thumbnail:
-//       "https://storage.googleapis.com/heropy-api/vvKxwCnYv1v123002.jpg",
-//     isSoldOut: false,
-//     discountRate: 0,
-//   },
-//   {
-//     id: "9IBIa3wihE39BlKDAdNH",
-//     title: "좋은안경",
-//     price: 1234500,
-//     description: "안경입니다",
-//     count: 1,
-//     tags: ["home", "안경", "좋은안경"],
-//     thumbnail: null,
-//     isSoldOut: false,
-//     discountRate: 20,
-//   },
-// ];
-
-// localStorage.setItem("basket", JSON.stringify(basket));
-
 /**장바구니 로컬스토리지에 저장된 데이터 갖고오는 변수*/
 
 export function cartHandler(){
@@ -97,18 +57,6 @@ export function cartHandler(){
 }
 
 
-// async function getCartItems () {
-//   return JSON.parse(localStorage.getItem("basket"));
-// }
-
-// async function render() {
-
-//   getCartItems().then(cartItems => {
-//   console.log(cartItems)
-//   })
-// }
-
-// render()
 
 /**장바구니 리스트 렌더링 함수 */
 export const renderCartList = () => {
@@ -142,7 +90,7 @@ export const renderCartList = () => {
                         </div>
 
                         <div class="price_wrap">
-                          <span class="price">${item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+                          <span class="price">${item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</span>
                         </div>
                       </div>                            
         `;
@@ -157,7 +105,7 @@ export const renderCartList = () => {
     decreaseBtn.addEventListener("click", () => {
       amount -= 1;
       amountEl.textContent = amount;
-      priceEl.textContent = amount * price;
+      priceEl.textContent = `${(amount * price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원`;
       getToTalPrice();
     });
 
@@ -165,7 +113,7 @@ export const renderCartList = () => {
       console.log(amount)
       amount += 1;
       amountEl.textContent = amount;
-      priceEl.textContent = amount * price;
+      priceEl.textContent = `${(amount * price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원`;
       getToTalPrice();
     });
 
