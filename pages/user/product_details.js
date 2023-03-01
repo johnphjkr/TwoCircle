@@ -5,7 +5,6 @@ export async function productDetailRender(data) {
   const id = await productDetail(data.data.id);
   const app = document.querySelector("#app");
   app.innerHTML = /* html */ `
-<div id="wrap">
     <div class="wrap_container">
       <div class="product_detail">
         <div class="product_detail_inner">
@@ -87,7 +86,6 @@ export async function productDetailRender(data) {
         </div>
       </div>
     </div>
-  </div>
 `;
 
   const stockEl = document.querySelector(".stock_text");
