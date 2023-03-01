@@ -62,6 +62,7 @@ export const renderCartList = () => {
 
     liEl.dataset.id = item.id;
     liEl.classList = "cart_list_item";
+   
     liEl.innerHTML = /*html*/ `
                     <div class="cart_card">
                         <div class="want_checkbox_wrap">
@@ -86,7 +87,7 @@ export const renderCartList = () => {
 
                         <div class="price_wrap">
                           <span class="price">${item.totalPrice.toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</span>
+  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</span>
                         </div>
                       </div>                            
         `;
@@ -96,7 +97,7 @@ export const renderCartList = () => {
     return liEl;
   });
 
-  renderTotalPrice();
+  renderTotalPrice()
   ulEl.innerHTML = "";
   ulEl.append(...liEls);
   ulEl.addEventListener('click',clickHandler)
@@ -171,10 +172,10 @@ const decrease = (liEls) => {
   const amountEl = liEls.querySelector(".amount");
   const priceEl = liEls.querySelector(".price");
   let amount = targetItem.count 
-  
+  const isDiscount = targetItem.discountRate
 
 
-     if (amount > 1) {
+     if (amount > 1 && isDiscount) {
         amount -= 1;
         amountEl.textContent = amount;
         priceEl.textContent = `${(amount * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100)).toString()
@@ -183,9 +184,17 @@ const decrease = (liEls) => {
         targetItem.totalPrice =  targetItem.count * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100);
         localStorage.setItem('basket',JSON.stringify(basketItem))  
         
+     }else if (amount > 1 && isDiscount === '') {
+      amount -= 1;
+        amountEl.textContent = amount;
+        priceEl.textContent = `${(amount * targetItem.price).toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`;
+        targetItem.count = amount 
+        targetItem.totalPrice =  targetItem.count * targetItem.price;
+        localStorage.setItem('basket',JSON.stringify(basketItem))  
      }
-     renderTotalPrice()
-  
+   
+     getToTalPrice()
 }
 const increase = (liEls) => {
   
@@ -196,15 +205,26 @@ const increase = (liEls) => {
   const amountEl = liEls.querySelector(".amount");
   const priceEl = liEls.querySelector(".price");
   let amount = targetItem.count 
+  const isDiscount = targetItem.discountRate
 
-      
-      amount += 1;
-      amountEl.textContent = amount;
-      priceEl.textContent = `${(amount * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100)).toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`;
-      targetItem.count = amount 
-      targetItem.totalPrice = targetItem.count * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100);
-      localStorage.setItem('basket',JSON.stringify(basketItem)) 
-  
-      renderTotalPrice()
+      if(isDiscount) {
+
+        amount += 1;
+        amountEl.textContent = amount;
+        priceEl.textContent = `${(amount * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100)).toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
+        targetItem.count = amount 
+        targetItem.totalPrice = targetItem.count * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100);
+        localStorage.setItem('basket',JSON.stringify(basketItem)) 
+      }else if (isDiscount === '') {
+        amount += 1;
+        amountEl.textContent = amount;
+        priceEl.textContent = `${(amount * targetItem.price).toString()
+          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`;
+        targetItem.count = amount 
+        targetItem.totalPrice =  targetItem.count * targetItem.price;
+        localStorage.setItem('basket',JSON.stringify(basketItem))  
+      }
+   getToTalPrice()
+   
 }
