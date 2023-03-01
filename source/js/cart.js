@@ -6,7 +6,7 @@ export function cartHandler() {
   const cancelBtn = document.querySelector(".cancel_btn");
   const purchaseBtn = document.querySelector(".purchase_btn");
   const basketItem = JSON.parse(localStorage.getItem("basket"));
-  cancelBtn.addEventListener("click", () => {
+  cancelBtn?.addEventListener("click", () => {
     let cartItemList = [...basketItem];
 
     const selectedItemList = Array.from(
@@ -34,7 +34,7 @@ export function cartHandler() {
     });
   });
 
-  purchaseBtn.addEventListener("click", () => {
+  purchaseBtn?.addEventListener("click", () => {
     let cartItemList = [...basketItem];
 
     const cartAmount = Array.from(
@@ -55,58 +55,72 @@ export function cartHandler() {
 
 /**장바구니 리스트 렌더링 함수 */
 export const renderCartList = () => {
+  
   const ulEl = document.querySelector(".cart_list");
   const basketItem = JSON.parse(localStorage.getItem("basket"));
-  const liEls = basketItem.map((item) => {
-    const liEl = document.createElement("li");
+  const isEmpty = basketItem === null
+  const emptyLiEl = document.createElement("div");
+  emptyLiEl.innerHTML =/*html*/ `
+                                 <div>장바구니가 비었습니다.</div>`
+  if(isEmpty) {
+    ulEl.append(emptyLiEl)
+    return
+  }                             
+    const liEls = basketItem.map((item) => {
+      const liEl = document.createElement("li");
+  
+      liEl.dataset.id = item.id;
+      liEl.classList = "cart_list_item";
+     
+      liEl.innerHTML = /*html*/ `
+                      <div class="cart_card">
+                          <div class="want_checkbox_wrap">
+                            <input type="checkbox" class="want_checkbox" />
+                          </div>
+                          <div class="img_wrap">
+                            <img
+                              src=${item.thumbnail}
+                              alt=""
+                              class="card_img" />
+                          </div>
+                          <div class="product_name_wrap">
+                            <span class="name"
+                              >${item.title}</span
+                            >
+                          </div>
+                          <div class="product_total_wrap">
+                            <button class="decrease_btn">-</button>
+                            <span class="amount">${item.count}</span>
+                            <button class="increase_btn">+</button>
+                          </div>
+  
+                          <div class="price_wrap">
+                            <span class="price">${Intl.NumberFormat("KO-KR").format(item.totalPrice)}원</span>
+                          </div>
+                        </div>                            
+          `;
+  
+  
+  
+      return liEl;
+    });
+    ulEl.innerHTML = "";
+    ulEl.append(...liEls);
 
-    liEl.dataset.id = item.id;
-    liEl.classList = "cart_list_item";
-   
-    liEl.innerHTML = /*html*/ `
-                    <div class="cart_card">
-                        <div class="want_checkbox_wrap">
-                          <input type="checkbox" class="want_checkbox" />
-                        </div>
-                        <div class="img_wrap">
-                          <img
-                            src=${item.thumbnail}
-                            alt=""
-                            class="card_img" />
-                        </div>
-                        <div class="product_name_wrap">
-                          <span class="name"
-                            >${item.title}</span
-                          >
-                        </div>
-                        <div class="product_total_wrap">
-                          <button class="decrease_btn">-</button>
-                          <span class="amount">${item.count}</span>
-                          <button class="increase_btn">+</button>
-                        </div>
-
-                        <div class="price_wrap">
-                          <span class="price">${item.totalPrice.toString()
-  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</span>
-                        </div>
-                      </div>                            
-        `;
-
-
-
-    return liEl;
-  });
 
   renderTotalPrice()
-  ulEl.innerHTML = "";
-  ulEl.append(...liEls);
   ulEl.addEventListener('click',clickHandler)
 };
 
 
 /**장바구니 총합계 렌더링 함수*/
 const renderTotalPrice = () => {
+
+  const basketItem = JSON.parse(localStorage.getItem("basket"));
   const totalPriceArea = document.querySelector(".cart_total_price_area");
+  const isEmpty = basketItem === null
+  if(!isEmpty&&basketItem.length !== 0 ) {
+  totalPriceArea.classList.remove('_hidden')
   const divEl = document.createElement("div");
   divEl.classList = "area_wrap";
   divEl.innerHTML = /*html*/ `
@@ -124,28 +138,32 @@ const renderTotalPrice = () => {
                     </div>
                   </div>`;
   totalPriceArea.append(divEl);
+  }
   getToTalPrice();
 };
 
 /** 장바구니 총 합계 구하는 함수*/
 function getToTalPrice() {
+  
   const basketItem = JSON.parse(localStorage.getItem("basket"));
 
-  const initPrice = basketItem.reduce((prev, cur) => {
-    return prev + cur.totalPrice;
-  }, 0);
+    const totalPriceArea = document.querySelector(".cart_total_price_area");
 
-  const totalPriceArea = document.querySelector(".cart_total_price_area");
-  let total = initPrice;
-  let orderToTalPrice = totalPriceArea.querySelector(
-    ".cart_order_price .price"
-  );
-  let cartToTalPrice = totalPriceArea.querySelector(".cart_total_price .price");
+    const initPrice = basketItem.reduce((prev, cur) => {
+      return prev + cur.totalPrice;
+    }, 0);
+  
+    let total = initPrice;
+  
+    let orderToTalPrice = totalPriceArea.querySelector(
+      ".cart_order_price .price"
+    );
+   
+    let cartToTalPrice = totalPriceArea.querySelector(".cart_total_price .price");
+  
+    orderToTalPrice.textContent = `${Intl.NumberFormat("KO-KR").format(total)}원`;
+    cartToTalPrice.textContent = `${Intl.NumberFormat("KO-KR").format(total)}원`
 
-  orderToTalPrice.textContent = `${total.toString()
-  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`;
-  cartToTalPrice.textContent = `${total.toString()
-  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`;
 }
 
 
@@ -178,17 +196,16 @@ const decrease = (liEls) => {
      if (amount > 1 && isDiscount) {
         amount -= 1;
         amountEl.textContent = amount;
-        priceEl.textContent = `${(amount * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100)).toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`;
+        const productPrice =  amount * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100)
+        priceEl.textContent = `${Intl.NumberFormat("KO-KR").format(productPrice)}원`;
         targetItem.count = amount 
-        targetItem.totalPrice =  targetItem.count * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100);
+        targetItem.totalPrice =  productPrice;
         localStorage.setItem('basket',JSON.stringify(basketItem))  
         
      }else if (amount > 1 && isDiscount === '') {
       amount -= 1;
         amountEl.textContent = amount;
-        priceEl.textContent = `${(amount * targetItem.price).toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`;
+        priceEl.textContent = `${(amount * targetItem.price)}원`;
         targetItem.count = amount 
         targetItem.totalPrice =  targetItem.count * targetItem.price;
         localStorage.setItem('basket',JSON.stringify(basketItem))  
@@ -210,17 +227,17 @@ const increase = (liEls) => {
       if(isDiscount) {
 
         amount += 1;
+        const productPrice =  amount * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100)
         amountEl.textContent = amount;
-        priceEl.textContent = `${(amount * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100)).toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
+        priceEl.textContent = `${Intl.NumberFormat("KO-KR").format(productPrice)}원`
         targetItem.count = amount 
-        targetItem.totalPrice = targetItem.count * (targetItem.price-targetItem.price*Number(targetItem.discountRate)/100);
+        targetItem.totalPrice = productPrice
         localStorage.setItem('basket',JSON.stringify(basketItem)) 
       }else if (isDiscount === '') {
         amount += 1;
+        const productPrice = amount * targetItem.price
         amountEl.textContent = amount;
-        priceEl.textContent = `${(amount * targetItem.price).toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`;
+        priceEl.textContent = `${Intl.NumberFormat("KO-KR").format(productPrice)}원`;
         targetItem.count = amount 
         targetItem.totalPrice =  targetItem.count * targetItem.price;
         localStorage.setItem('basket',JSON.stringify(basketItem))  
