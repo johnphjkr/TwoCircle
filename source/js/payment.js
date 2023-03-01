@@ -88,7 +88,7 @@ export async function paymentHandler() {
   const totalPriceEl = document.querySelector(".info_totalprice");
   const totalPaymentEl = document.querySelector(".info_totalpayment");
   const totalDiscountEl = document.querySelector(".info_totaldiscount");
-  const discount = (((originSum - sum) / originSum) * 100).toFixed(1);
+  const discount = Math.round((((originSum - sum) / originSum) * 100));
   totalPriceEl.innerHTML = `총 구매금액 ${originSum
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₩`;
