@@ -1,5 +1,5 @@
 import { productDetail } from "../../source/api/products/common/product_detail_api.js";
-import { router } from "../../source/route.js";
+import { productDetailHandler } from "../../source/js/product_details.js";
 
 export async function productDetailRender(data) {
   const id = await productDetail(data.data.id);
@@ -21,7 +21,10 @@ export async function productDetailRender(data) {
           </div>
             <!-- 제품 정보 -->
             <section class="product_info">
-              <div class="product_info_title">${id.title}</div>
+              <div class="product_info_title">${id.title.replace(
+                /\/.*/,
+                ""
+              )}</div>
               <!-- 평점, 찜 유뮤, share -->
               <section class="product_info_option">
                 <div class="option_stock">
@@ -31,14 +34,12 @@ export async function productDetailRender(data) {
                   <p class="stock_text"></p>
                 </div>
                 <div class="option_share">
-                  <span class="share_icon material-symbols-outlined">
+                  <a href="https://github.com/TwoCircle-Team5/TwoCircle"><span class="share_icon material-symbols-outlined">
                     share
-                  </span>
+                  </span></a>
                 </div>
               </section>
-              <div class="product_info_discount">할인율 ${
-                id.discountRate
-              }%</div>
+              <div class="product_info_discount"></div>
               <!-- 제품 상세 이름, 제품 수량 추가 or 감소, 제품 가격 -->
               <section class="product_info_quantity">
                 <div class="product_info_quantity_box">
@@ -49,7 +50,13 @@ export async function productDetailRender(data) {
                       <div class="count"></div>
                       <button class="btn_plus">+</button>
                     </div>
-                    <div class="option_content_price">${id.price}원</div>
+                    <div class="option_price">
+                      <div class="option_content_price">${id.price
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₩
+                      </div>
+                      <div class="option_content_discount"></div>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -57,17 +64,15 @@ export async function productDetailRender(data) {
               <section class="product_info_count">
                 <div class="count_totaltext">총 상품금액</div>
                 <div class="count_totalprice">
-                ${id.price * ((100 - id.discountRate) * 0.01)}원
+                ${Math.round(id.price * ((100 - id.discountRate) * 0.01))
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₩
                 </div>
               </section>
               <!-- 찜, 장바구니, 구매 버튼 -->
               <section class="product_info_btn">
                 <div class="info_btn_heart">
-                  <button class="btn_heart">
-                    <span class="favorite_icon material-symbols-outlined">
-                      favorite
-                    </span>찜
-                  </button>
+                  <button class="btn_heart"></button>
                 </div>
                 <div class="info_btn_basket">
                   <button class="btn_basket">
@@ -87,110 +92,5 @@ export async function productDetailRender(data) {
       </div>
     </div>
 `;
-
-  const stockEl = document.querySelector(".stock_text");
-  let countTotalPriceEl = document.querySelector(".count_totalprice");
-  let countEl = document.querySelector(".count");
-  const minusBtnEl = document.querySelector(".btn_minus");
-  const plusBtnEl = document.querySelector(".btn_plus");
-  let heartBtnEl = document.querySelector(".btn_heart");
-  const basketBtnEl = document.querySelector(".btn_basket");
-  const purchaseBtnEl = document.querySelector(".productInfo_btn_purchase");
-  const itemPriceEl = document.querySelector(".option_content_price");
-  const heartEl = document.querySelector(".favorite_icon");
-  const bigTagEl = document.querySelector(".bigtag");
-  const midTagEl = document.querySelector(".midtag");
-  const smallTagEl = document.querySelector(".smalltag");
-  let soldOut = true;
-  let countTotalPrice = id.price * ((100 - id.discountRate) * 0.01);
-  countEl.value = 1;
-  countEl.innerHTML = countEl.value;
-
-  // 수량 버튼
-  minusBtnEl.addEventListener("click", async () => {
-    if (countEl.value > 1) {
-      countEl.value--;
-      countEl.innerHTML = countEl.value;
-      countTotalPrice =
-        countEl.value * id.price * ((100 - id.discountRate) * 0.01);
-      countTotalPriceEl.innerHTML = countTotalPrice.toString() + "원";
-    }
-  });
-
-  plusBtnEl.addEventListener("click", async () => {
-    countEl.value++;
-    countEl.innerHTML = countEl.value;
-    countTotalPrice =
-      countEl.value * id.price * ((100 - id.discountRate) * 0.01);
-    countTotalPriceEl.innerHTML = countTotalPrice.toString() + "원";
-  });
-  // 찜 버튼
-  let heartBtn = false;
-  heartBtnEl.addEventListener("click", async () => {
-    heartBtn = !heartBtn;
-    heartEl.style.color = heartBtn ? "red" : "black";
-  });
-
-  // 품절유무
-  soldOut ? (stockEl.innerHTML = "재고있음") : (stockEl.innerHTML = "품절");
-
-  if (id.tags[2] === undefined) {
-    smallTagEl.style.display = "none";
-    midTagEl.innerHTML = `${id.tags[1]}`;
-    bigTagEl.innerHTML = `${id.tags[0]} >`;
-    midTagEl.style.color = "#181818";
-  }
-  if (id.tags[1] === undefined) {
-    smallTagEl.style.display = "none";
-    midTagEl.style.display = "none";
-    bigTagEl.innerHTML = `${id.tags[0]}`;
-    bigTagEl.style.color = "#181818";
-  }
-  if (id.tags[0] === undefined) {
-    smallTagEl.style.display = "none";
-    midTagEl.style.display = "none";
-    bigTagEl.style.display = "none";
-  }
-
-  // 장바구니
-  basketBtnEl.addEventListener("click", async () => {
-    const itemEl = {
-      id: id.id,
-      count: countEl.value,
-      price: id.price,
-      totalPrice: countTotalPrice,
-      thumbnail: id.thumbnail,
-      title: id.title,
-      discountRate: id.discountRate,
-      description: id.description,
-    };
-    let basketEl = JSON.parse(localStorage.getItem("basket"));
-    if (basketEl === null) {
-      basketEl = [];
-    }
-    basketEl.push(itemEl);
-
-    // todo: 장바구니에 담을때 동일한 아이디가 있으면 count만 증가시키기, 구매도 마찬가지
-    localStorage.setItem("basket", JSON.stringify(basketEl));
-  });
-
-  purchaseBtnEl.addEventListener("click", async () => {
-    const itemEl = {
-      id: id.id,
-      count: countEl.value,
-      price: id.price,
-      totalPrice: countTotalPrice,
-      thumbnail: id.thumbnail,
-      title: id.title,
-      discountRate: id.discountRate,
-      description: id.description,
-    };
-    let lists = JSON.parse(localStorage.getItem("basket"));
-    if (lists === null) {
-      lists = [];
-    }
-    lists.push(itemEl);
-    localStorage.setItem("basket", JSON.stringify(lists));
-    router.navigate("/payment");
-  });
+  productDetailHandler(id);
 }
