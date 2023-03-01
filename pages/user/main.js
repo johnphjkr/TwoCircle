@@ -1,6 +1,4 @@
-import { allProduct } from "../../source/api/products/admin/allProduct_api.js";
-// import { productItem } from "../../source/js/product_details.js";
-import { router } from "../../source/route.js";
+import { mainListRender } from "../../source/js/main.js";
 
 export function mainRender() {
   const app = document.querySelector("#app");
@@ -129,55 +127,6 @@ export function mainRender() {
             </section>
           </div>
         </div>
-      </div>
-`;
-
-  const banner = new Swiper(".banner", {
-    loop: true,
-    autoplay: true,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-
-  const brand = new Swiper(".brand", {
-    slidesPerView: 4,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-
-  (async () => {
-    const datas = await allProduct();
-    mainItem(datas);
-  })();
-
-  async function mainItem(datas) {
-    const ulList = document.querySelector(".best_list .list_product");
-
-    const liEl = datas.map((data) => {
-      const listEl = document.createElement("li");
-      // listEl.classList.add("product_list_item");
-      if (data.thumbnail == null) {
-        listEl.innerHTML = `<img src="https://via.placeholder.com/200x200?text=NO+IMAGE" alt="이미지없음"/>`;
-      } else {
-        listEl.innerHTML = `<img src="${data.thumbnail}" alt="이미지"/>`;
-      }
-
-      listEl.addEventListener("click", () => {
-        localStorage.setItem("id", JSON.stringify(data.id));
-        // router.navigate(`/product_details/${data.id}`);
-      });
-
-      return listEl;
-    });
-    liEl.forEach((item) => {
-      ulList.append(item);
-    });
-  }
+      </div>`;
+      mainListRender()
 }
-//  function routeDetailPage(id) {
-//    router.navigate(`/product/detail/${id}`);
-//  }

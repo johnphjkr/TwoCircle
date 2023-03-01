@@ -1,7 +1,9 @@
+import { purchaseHandler } from "../../source/js/purchase_history";
+
 export function purchaseRender() {
   const mypage = document.querySelector("#mypage");
   mypage.innerHTML = /*html*/ `
-  <div class="purchase_history">
+  <div class="container_content purchase_history">
     <div class="container_content_title">
       <h2 class="content_h2">주문/배송 조회</h2>
       <p>주문 내역을 클릭하면 상세 내역을 확인 하실 수 있으며, 주문 상태에 따라 <strong>취소/교환/반품 신청이 가능</strong> 합니다.
@@ -69,5 +71,6 @@ export function purchaseRender() {
       </div>
 
     </section>
-</div>`;
+  </div>`;
+  purchaseHandler()
 }

@@ -39,7 +39,6 @@
     display: flex;
     margin: 3rem 0;
 
-
     .product_detail {
       display: flex;
 
@@ -239,12 +238,28 @@
                     }
                   }
 
-                  .option_content_price {
+                  .option_price {
                     display: flex;
-                    width: 43rem;
-                    justify-content: end;
-                    margin-right: 1.5rem;
-                    font-weight: var(---font-bold);
+                    flex-direction: column;
+                    margin-bottom: 1rem;
+
+                    .option_content_price {
+                      display: flex;
+                      width: 43rem;
+                      justify-content: end;
+                      margin-right: 1.5rem;
+                      font-weight: var(---font-bold);
+                      color: var(--gray-color);
+                      text-decoration: line-through;
+                    }
+
+                    .option_content_discount {
+                      display: flex;
+                      width: 43rem;
+                      justify-content: end;
+                      margin: 1rem 1.5rem 0 0;
+                      font-weight: var(---font-bold);
+                    }
                   }
                 }
               }
@@ -294,6 +309,29 @@
                   background-color: var(--white-color);
                   border: 0.063rem solid var(--gray-color);
                   padding-left: 0;
+
+                  .favorite_icons {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 0 auto;
+                    .favorite_text{
+                      margin-left: 1rem;
+                    }
+
+                    .favorite {
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    }
+
+                    .fa-solid {
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      color: var(--pink-color);
+                    }
+                  }
                 }
               }
 
