@@ -58,7 +58,6 @@ function rendProduct(products) {
       
       iEl.classList.toggle('fa-regular', isCartItem)
       iEl.classList.toggle('fa-solid', !isCartItem)
-      console.log(isCartItem)
       if(isCartItem) {
         wishList = wishList.filter(wishItem => wishItem.id !== product.id);
         localStorage.setItem("wish", JSON.stringify(wishList));
