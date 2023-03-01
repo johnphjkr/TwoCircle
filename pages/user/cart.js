@@ -2,6 +2,18 @@ import { cartHandler, renderCartList } from "../../source/js/cart"
 
 export function cartRender(){
   const app =document.querySelector("#app")
+  const basketItem = JSON.parse(localStorage.getItem("basket"));
+  const isEmpty = basketItem === null || basketItem.length === 0 
+  const btnAreaEl = document.createElement('div')
+  btnAreaEl.className = 'btn_area'
+  btnAreaEl.innerHTML = /*html*/`
+                      <div class="cancel_btn_wrap">
+                      <button class="cancel_btn">상품 취소하기</button>
+                    </div>
+                    <div class="purchase_btn_wrap">
+                      <button class="purchase_btn">구매하기</button>
+                    </div>
+                        `
   app.innerHTML=/*html*/`
   <section class="cart">
     <div class="inner cart_inner">
@@ -16,7 +28,8 @@ export function cartRender(){
             </ul>
           </div>
         </div>
-
+        <div>x</div>
+<div>
         <div class="cart_area">
           <div class="cart_area_list_area">
             <div class="list_info">
@@ -33,30 +46,11 @@ export function cartRender(){
               
             </ul>
           </div>
-          <div class="cart_total_price_area">
-            <!-- <div class="area_wrap">
-              <div class="cart_order_price">
-                <span class="order_price_text">주문금액</span>
-                <span class="price">25,000원</span>
-              </div>
-              <div class="cart_delivery_fee">
-                <span class="delivery_fee_text">배송비</span>
-                <span class="fee">0원</span>
-              </div>
-              <div class="cart_total_price">
-                <span class="total_price_text">총 결제금액</span>
-                <span class="price">25,000원</span>
-              </div>
-            </div> -->
+          <div class="cart_total_price_area ">
+ 
           </div>
-        </div>
-        <div class="btn_area">
-          <div class="cancel_btn_wrap">
-            <button class="cancel_btn">상품 취소하기</button>
-          </div>
-          <div class="purchase_btn_wrap">
-            <button class="purchase_btn">구매하기</button>
-          </div>
+          ${!isEmpty? btnAreaEl.outerHTML: ''}
+</div>
         </div>
       </div>
     </div>
