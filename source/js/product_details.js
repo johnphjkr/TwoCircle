@@ -117,7 +117,7 @@ export async function productDetailHandler(id) {
       totalPrice: countTotalPrice,
       thumbnail: id.thumbnail,
       title: id.title,
-      discountRate: id.discountRate,
+      discountRate: Number(id.discountRate),
       description: id.description,
     };
     let basketEl = JSON.parse(localStorage.getItem("basket"));
@@ -144,7 +144,7 @@ export async function productDetailHandler(id) {
       totalPrice: countTotalPrice,
       thumbnail: id.thumbnail,
       title: id.title,
-      discountRate: id.discountRate,
+      discountRate: Number(id.discountRate),
       description: id.description,
     };
     let basketEl = JSON.parse(localStorage.getItem("basket"));
