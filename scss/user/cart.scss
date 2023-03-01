@@ -94,6 +94,8 @@
         .cart_list {
           list-style: none;
           padding-left: 0;
+          height: 50rem;
+          overflow: auto;
 
           padding-top: 2rem;
           &_item {
