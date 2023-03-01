@@ -1,3 +1,5 @@
+import { purchaseHandler } from "../../source/js/purchase_history";
+
 export function purchaseRender() {
   const mypage = document.querySelector("#mypage");
   mypage.innerHTML = /*html*/ `
@@ -69,5 +71,6 @@ export function purchaseRender() {
       </div>
 
     </section>
-</div>`;
+  </div>`;
+  purchaseHandler()
 }
