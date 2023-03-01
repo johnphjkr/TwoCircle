@@ -25,6 +25,26 @@ a {
   padding: 0 3rem;
 }
 
+
+.skeleton {
+  background: var(--lightgray-color) linear-gradient(100deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 60%);
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1.2s loading ease infinite;
+  @keyframes loading {
+    to {
+      background-position-x: -20%;
+    }
+  }
+}
+
+
+
+
+
 #app {
   min-height: 39.44rem;
   padding-top: 17rem
@@ -85,7 +105,8 @@ header {
     min-width: 20rem;
 
     img {
-      width: 11rem;
+      width: 15rem;
+      height: 6rem;
     }
   }
 
