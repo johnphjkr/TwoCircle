@@ -161,22 +161,7 @@
       .cart_total_price_area {
         background-color: var(--more-lightgray-color);
         height: 21rem;
-        &::before {
-          content: "";
-          display: block;
-          height: 0.1rem;
-          background-color: var(--lightgray-color);
-          margin-top: 2rem;
-          margin-bottom: 2rem;
-        }
-
-        &::after {
-          content: "";
-          display: block;
-          height: 0.1rem;
-          background-color: var(--lightgray-color);
-          margin-top: 3.9rem;
-        }
+       
 
         .area_wrap {
           display: flex;
