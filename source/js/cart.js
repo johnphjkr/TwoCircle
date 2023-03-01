@@ -90,7 +90,7 @@ export const renderCartList = () => {
                         </div>
 
                         <div class="price_wrap">
-                          <span class="price">${item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</span>
+                          <span class="price">${item.price}원</span>
                         </div>
                       </div>                            
         `;
@@ -103,18 +103,25 @@ export const renderCartList = () => {
     const price = item.price;
 
     decreaseBtn.addEventListener("click", () => {
-      amount -= 1;
-      amountEl.textContent = amount;
-      priceEl.textContent = `${(amount * price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원`;
-      getToTalPrice();
+      if(amount >1) {
+
+        amount -= 1;
+        amountEl.textContent = amount;
+        priceEl.textContent = amount * price;
+        getToTalPrice();
+        
+      }
+    
     });
 
     increaseBtn.addEventListener("click", () => {
       console.log(amount)
       amount += 1;
       amountEl.textContent = amount;
-      priceEl.textContent = `${(amount * price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원`;
+      priceEl.textContent = amount * price;
+      
       getToTalPrice();
+      
     });
 
     return liEl;
