@@ -74,10 +74,10 @@ export function cartHandler() {
 /**장바구니 리스트 렌더링 함수 */
 export const renderCartList = () => {
   
+  const ulEl = document.querySelector(".cart_list");
   const basketItem = JSON.parse(localStorage.getItem("basket"));
   const isEmpty = basketItem === null || basketItem.length === 0 
   
-  const ulEl = document.querySelector(".cart_list");
     if(!isEmpty){
 
       const liEls = basketItem.map((item) => {
