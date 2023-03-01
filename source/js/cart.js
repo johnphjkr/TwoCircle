@@ -8,7 +8,7 @@ export function cartHandler() {
   const basketItem = JSON.parse(localStorage.getItem("basket"));
   cancelBtn?.addEventListener("click", () => {
     let cartItemList = [...basketItem];
-
+    
     const selectedItemList = Array.from(
       document.querySelectorAll(".want_checkbox:checked")
     ).map(
@@ -21,7 +21,7 @@ export function cartHandler() {
     localStorage.setItem("basket", JSON.stringify(cartItemList));
   });
 
-  totalCheckbox.addEventListener("change", (e) => {
+  totalCheckbox?.addEventListener("change", (e) => {
     const checkBox = ulEl.querySelectorAll(".want_checkbox");
     const { checked } = e.target;
 
@@ -37,79 +37,93 @@ export function cartHandler() {
   purchaseBtn?.addEventListener("click", () => {
     let cartItemList = [...basketItem];
 
-    const cartAmount = Array.from(
-      document.querySelectorAll(".cart_card .amount")
-    ).map((count) => count.textContent);
-    const cartPrice = Array.from(
-      document.querySelectorAll(".cart_card .price")
-    ).map((price) => price.textContent);
+    const isChecked = Array.from(
+      document.querySelectorAll(".want_checkbox:checked")
+    )
+   
+    const selectedItemList = Array.from(
+      document.querySelectorAll(".want_checkbox:checked")
+    ).map(
+      (selectedInput) => {
+        const id = selectedInput.closest(".cart_list_item").dataset.id;
+        return basketItem.find(item => item.id === id)
+      }
+    );
 
-    for (let i = 0; i < cartItemList.length; i++) {
-      cartItemList[i].price = cartPrice[i];
-      cartItemList[i].count = cartAmount[i];
+    // console.log(selectedItemList)
+    
+    localStorage.setItem("basket", JSON.stringify(selectedItemList));
+
+    if(!isChecked) {
+
+      const unSelectedItemList = Array.from(
+        document.querySelectorAll(".want_checkbox")
+      ).map(
+        (Unselected) => Unselected.closest(".cart_list_item").dataset.id
+      );
+      unSelectedItemList.forEach((id) => {
+        cartItemList = cartItemList.filter((cartItem) => { cartItem.id !== id})
+  
+        localStorage.setItem("basket",JSON.stringify(cartItemList))
+      })
     }
-
-    localStorage.setItem("basket", JSON.stringify(cartItemList));
+  
   });
 }
 
 /**장바구니 리스트 렌더링 함수 */
 export const renderCartList = () => {
   
-  const ulEl = document.querySelector(".cart_list");
   const basketItem = JSON.parse(localStorage.getItem("basket"));
-  const isEmpty = basketItem === null
-  const emptyLiEl = document.createElement("div");
-  emptyLiEl.innerHTML =/*html*/ `
-                                 <div>장바구니가 비었습니다.</div>`
-  if(isEmpty) {
-    ulEl.append(emptyLiEl)
-    return
-  }                             
-    const liEls = basketItem.map((item) => {
-      const liEl = document.createElement("li");
+  const isEmpty = basketItem === null || basketItem.length === 0 
   
-      liEl.dataset.id = item.id;
-      liEl.classList = "cart_list_item";
-     
-      liEl.innerHTML = /*html*/ `
-                      <div class="cart_card">
-                          <div class="want_checkbox_wrap">
-                            <input type="checkbox" class="want_checkbox" />
-                          </div>
-                          <div class="img_wrap">
-                            <img
-                              src=${item.thumbnail}
-                              alt=""
-                              class="card_img" />
-                          </div>
-                          <div class="product_name_wrap">
-                            <span class="name"
-                              >${item.title}</span
-                            >
-                          </div>
-                          <div class="product_total_wrap">
-                            <button class="decrease_btn">-</button>
-                            <span class="amount">${item.count}</span>
-                            <button class="increase_btn">+</button>
-                          </div>
-  
-                          <div class="price_wrap">
-                            <span class="price">${Intl.NumberFormat("KO-KR").format(item.totalPrice)}원</span>
-                          </div>
-                        </div>                            
-          `;
-  
-  
-  
-      return liEl;
-    });
-    ulEl.innerHTML = "";
-    ulEl.append(...liEls);
+  const ulEl = document.querySelector(".cart_list");
+    if(!isEmpty){
 
+      const liEls = basketItem.map((item) => {
+        const liEl = document.createElement("li");
+    
+        liEl.dataset.id = item?.id;
+        liEl.classList = "cart_list_item";
+       
+        liEl.innerHTML = /*html*/ `
+                        <div class="cart_card">
+                            <div class="want_checkbox_wrap">
+                              <input type="checkbox" class="want_checkbox" />
+                            </div>
+                            <div class="img_wrap">
+                              <img
+                                src=${item.thumbnail}
+                                alt=""
+                                class="card_img" />
+                            </div>
+                            <div class="product_name_wrap">
+                              <span class="name"
+                                >${item.title}</span
+                              >
+                            </div>
+                            <div class="product_total_wrap">
+                              <button class="decrease_btn">-</button>
+                              <span class="amount">${item.count}</span>
+                              <button class="increase_btn">+</button>
+                            </div>
+    
+                            <div class="price_wrap">
+                              <span class="price">${Intl.NumberFormat("KO-KR").format(item.totalPrice)}원</span>
+                            </div>
+                          </div>                            
+            `;
+    
+    
+    
+        return liEl;
+      });
+      ulEl.innerHTML = "";
+      ulEl.append(...liEls);
+    }                      
 
   renderTotalPrice()
-  ulEl.addEventListener('click',clickHandler)
+  ulEl?.addEventListener('click',clickHandler)
 };
 
 
@@ -118,8 +132,8 @@ const renderTotalPrice = () => {
 
   const basketItem = JSON.parse(localStorage.getItem("basket"));
   const totalPriceArea = document.querySelector(".cart_total_price_area");
-  const isEmpty = basketItem === null
-  if(!isEmpty&&basketItem.length !== 0 ) {
+  const isEmpty = basketItem === null ||basketItem.length === 0
+  if(!isEmpty) {
   totalPriceArea.classList.remove('_hidden')
   const divEl = document.createElement("div");
   divEl.classList = "area_wrap";
@@ -144,8 +158,9 @@ const renderTotalPrice = () => {
 
 /** 장바구니 총 합계 구하는 함수*/
 function getToTalPrice() {
-  
   const basketItem = JSON.parse(localStorage.getItem("basket"));
+  const isEmpty = basketItem === null || basketItem.length === 0 
+  if(!isEmpty) {
 
     const totalPriceArea = document.querySelector(".cart_total_price_area");
 
@@ -163,6 +178,7 @@ function getToTalPrice() {
   
     orderToTalPrice.textContent = `${Intl.NumberFormat("KO-KR").format(total)}원`;
     cartToTalPrice.textContent = `${Intl.NumberFormat("KO-KR").format(total)}원`
+  }
 
 }
 
@@ -179,13 +195,14 @@ const  clickHandler = (e) => {
  if(e.target.matches('.increase_btn')) {
     increase(liEls)
  }
+
 }
 
 const decrease = (liEls) => {
   
   const basketItem = JSON.parse(localStorage.getItem("basket"));
   const targetId = liEls.dataset.id;
-  const targetItem = basketItem.find(item => item.id === targetId)
+  const targetItem = basketItem.find(item => item?.id === targetId)
   const decreaseBtn = liEls.querySelector(".decrease_btn")
   const amountEl = liEls.querySelector(".amount");
   const priceEl = liEls.querySelector(".price");
@@ -217,7 +234,7 @@ const increase = (liEls) => {
   
   const basketItem = JSON.parse(localStorage.getItem("basket"));
   const targetId = liEls.dataset.id;
-  const targetItem = basketItem.find(item => item.id === targetId)
+  const targetItem = basketItem.find(item => item?.id === targetId)
   const increaseBtn = liEls.querySelector(".increase_btn")
   const amountEl = liEls.querySelector(".amount");
   const priceEl = liEls.querySelector(".price");
@@ -245,3 +262,4 @@ const increase = (liEls) => {
    getToTalPrice()
    
 }
+
