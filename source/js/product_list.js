@@ -98,23 +98,6 @@ function rendProduct(products) {
       if(isCartItem) {
         wishList = wishList.filter(wishItem => wishItem.id !== product.id);
 
-                    </p>
-                  </a>
-                  <div class="icons">
-                    <i class="${isCartItem ? 'fa-solid':'fa-regular'} fa-heart"></i>
-                  </div>`;
-      const iconsEl = liEl.querySelector(".icons");
-                    
-      iconsEl.addEventListener("click", (e) => {
-        const iEl = e.target;
-        
-        const isCartItem = wishList.find(wishItem => wishItem.id === product.id);
-        
-        iEl.classList.toggle('fa-regular', isCartItem)
-        iEl.classList.toggle('fa-solid', !isCartItem)
-        console.log(isCartItem)
-        if(isCartItem) {
-          wishList = wishList.filter(wishItem => wishItem.id !== product.id);
           localStorage.setItem("wish", JSON.stringify(wishList));
           return;
         }
