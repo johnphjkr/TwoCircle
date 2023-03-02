@@ -117,4 +117,4 @@ function rendProduct(products) {
     ulEl.innerHTML = "";
     ulEl.append(...liEls);
   }
-  }
+}

@@ -5,7 +5,7 @@ import { purchaseHistory } from '../api/products/user/purchase_history_api';
 import { purchaseOk } from '../api/products/user/purchase_ok_api';
 import { purchaseCancel } from '../api/products/user/purchase_cancel_api';
 
-export function purchaseHandler() {
+export async function purchaseHandler() {
   const listItemContainerEl = document.querySelector('.list_item_container');
   const listItemSelectEl = document.querySelector('.list_item_list_select');
   const listItemConfirmEl = document.querySelector('.list_item_list_confirm');
@@ -40,10 +40,10 @@ export function purchaseHandler() {
   let currentPage = 1;
   let itemsPerPage = 5;
 
-  window.onload = function () {
-    status1FilterEl.style.cssText = 'background-color: #FF597B; border-color: #FF597B; color: #FFFFFF;';
-    renderItemList();
-  };
+  
+  status1FilterEl.style.cssText = 'background-color: #FF597B; border-color: #FF597B; color: #FFFFFF;';
+  renderItemList();
+  
 
   //구매 상태 필터 이벤트
   status1FilterEl.addEventListener('click', (e) => {
