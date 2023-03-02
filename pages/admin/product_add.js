@@ -1,7 +1,7 @@
-import { productAdd } from "../../source/api/products/admin/product_add"
+import { productAddItem } from "../../source/js/admin/product_add";
 
-export function adminProductAdd(){
-  const wrap = document.querySelector("#wrap")
+export function adminProductAdd() {
+  const wrap = document.querySelector("#wrap");
   wrap.innerHTML = /*html*/`
     <div class="container">
       <div class="admin">
@@ -37,7 +37,7 @@ export function adminProductAdd(){
         </div>
         <button type="button" class="product_registration">제품등록</button>
       </div>
-    </div>`
-    productAdd()
+    </div>`;
+  productAddItem();
 }
 
