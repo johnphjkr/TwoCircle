@@ -66,6 +66,38 @@ function rendProduct(products) {
                         ? `<span class="product_price_sale">${product.discountRate}%</span>`
                         : ""
                     }
+
+                  </div>
+                  <p class="product_name">${titleCode[0]}</p>
+                  <p class="product_code">${
+                    titleCode[1] !== undefined ? titleCode[1] : titleCode[0]
+                  }</p>
+                  <p class="product_discription">${product.description}</p>
+                  <p class="product_price">${product.price
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+                  ${
+                    product.discountRate
+                      ? `<span class="product_price_sale">${product.discountRate}%</span>`
+                      : ""
+                  }
+                  </p>
+                </a>
+                <div class="icons">
+                  <i class="${isCartItem ? 'fa-solid':'fa-regular'} fa-heart"></i>
+                </div>`;
+    const iconsEl = liEl.querySelector(".icons");
+                  
+    iconsEl.addEventListener("click", (e) => {
+      const iEl = e.target;
+      
+      const isCartItem = wishList.find(wishItem => wishItem.id === product.id);
+      
+      iEl.classList.toggle('fa-regular', isCartItem)
+      iEl.classList.toggle('fa-solid', !isCartItem)
+      if(isCartItem) {
+        wishList = wishList.filter(wishItem => wishItem.id !== product.id);
+
                     </p>
                   </a>
                   <div class="icons">
@@ -98,6 +130,7 @@ function rendProduct(products) {
           
         };
         wishList.push(wish)  
+
         localStorage.setItem("wish", JSON.stringify(wishList));
 
       });
