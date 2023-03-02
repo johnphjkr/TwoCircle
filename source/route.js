@@ -31,7 +31,7 @@ router.hooks({
     const accessToken = JSON.parse(localStorage.getItem('accessToken'));
     const auth = await authCheck(accessToken);
     headerRender()
-    const onlyUserPages = ['mypage', 'mypage/wish', 'cart', 'account'];
+    const onlyUserPages = ['mypage', 'mypage/wish', 'account','payment'];
     const checkInfo = ['mypage/changeInfo', 'mypage/account'];
     if (onlyUserPages.includes(match.url) && !auth) {
       router.navigate('login');
@@ -40,8 +40,6 @@ router.hooks({
     if ((match.url === 'login' || match.url === 'signup') && auth) {
       router.navigate('/');
       done();
-    }
-    if (checkInfo.includes(match.url) && auth){
     }
 
     // 로그인 로그아웃시 헤더 변경
@@ -112,16 +110,16 @@ router
       searchListRender(match.data.id);
       productRender(match.data.id, []);
     },
-    '/order_completed': () => {
+    'order_completed': () => {
       orderCompletedRender();
     },
     'product_details/:id': (match) => {
       productDetailRender(match);
     },
-    '/payment': () => {
+    'payment': () => {
       paymentRender();
     },
-    '/order_completed': () => {
+    'order_completed': () => {
       orderCompletedRender();
     },
     "admin": () => {
