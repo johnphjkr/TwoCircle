@@ -34,7 +34,7 @@ export async function productDetailRender(data) {
                   <p class="stock_text"></p>
                 </div>
                 <div class="option_share">
-                  <a href="https://github.com/TwoCircle-Team5/TwoCircle"><span class="share_icon material-symbols-outlined">
+                  <a id="kakaotalk-sharing-btn" href="javascript:shareMessage()"><span class="share_icon material-symbols-outlined">
                     share
                   </span></a>
                 </div>
