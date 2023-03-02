@@ -1,27 +1,26 @@
 import { searchProduct } from "../api/products/user/product_search";
 
-const ulEl = document.querySelector(".products_lists");
 
 export async function productRender(searchs, tag){
   const body = {
-
+    
     "searchText" : searchs,
     "searchTags" : [...tag]
   }  
   const search = await searchProduct(body);
-  rendProduct(search)
   console.log(search)
+  rendProduct(search)
 }
 
 // 상품목록 렌더링 과정
 function rendProduct(products) {
+  const ulEl = document.querySelector(".products_lists");
   let wishList  = localStorage.getItem('wish') ? JSON.parse(localStorage.getItem('wish')) : [];
   const liEls = products.map((product) => {
     const isCartItem = wishList.find(wishItem => wishItem.id === product.id);
     const liEl = document.createElement("li");
     liEl.dataset.id = product.id;
     const titleCode = product.title.split("/");
-    
     liEl.innerHTML = /*html*/ `
                             
                 <a href="/product_details/${product.id}" data-navigo class="product">
@@ -49,10 +48,9 @@ function rendProduct(products) {
                 </a>
                 <div class="icons">
                   <i class="${isCartItem ? 'fa-solid':'fa-regular'} fa-heart"></i>
-                </div>
-                            `;
+                </div>`;
     const iconsEl = liEl.querySelector(".icons");
-  
+                  
     iconsEl.addEventListener("click", (e) => {
       const iEl = e.target;
       
@@ -60,7 +58,6 @@ function rendProduct(products) {
       
       iEl.classList.toggle('fa-regular', isCartItem)
       iEl.classList.toggle('fa-solid', !isCartItem)
-      console.log(isCartItem)
       if(isCartItem) {
         wishList = wishList.filter(wishItem => wishItem.id !== product.id);
         localStorage.setItem("wish", JSON.stringify(wishList));

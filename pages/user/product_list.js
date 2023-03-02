@@ -123,5 +123,6 @@ export function productListRender(category) {
         </li> -->
       </ul>
     </section>
-  </div>`;
+  </div>`
+  productRender('', [category]);
 }
