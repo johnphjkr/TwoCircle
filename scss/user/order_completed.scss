@@ -40,21 +40,21 @@
       flex-direction: column;
       margin: 2rem 0;
 
-      .content_name {
+      .content_title {
         border-bottom: 2px solid var(--pink-color);
         padding-bottom: 0.5rem;
         font-weight: var(--font-bold);
       }
 
-      .content_bank {
+      .content_name {
         margin: 1rem;
         padding-top: 3rem;
       }
 
-      .content_ordernum,
-      .content_addres,
-      .content_method,
-      .content_memo {
+      .content_date,
+      .content_info,
+      .content_list,
+      .content_text {
         margin: 1rem;
       }
 
