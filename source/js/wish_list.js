@@ -3,6 +3,7 @@
 // console.log(wishList)
 
 export function renderWishList(wishList) {
+ 
   const ulEl = document.querySelector('.list');
   const liEls = wishList.map((wish) => {
     const isCartItem = wishList.find((wishItem) => wishItem.id === wish.id);
@@ -17,6 +18,9 @@ export function renderWishList(wishList) {
                         ? `<img src=${'https://via.placeholder.com/200x200?text=NO+IMAGE'} alt="product">`
                         : `<img src=${wish.thumbnail} alt="product">`
                     }
+                    <div class="icons">
+                  <i class="${isCartItem ? 'fa-solid':'fa-regular'} fa-heart"></i>
+                </div>
                   </div>
                   <p class="product_name">${wish.title}</p>
                   <p class="product_code">${wish.title !== undefined ? wish.code : wish.title}</p>
@@ -25,9 +29,7 @@ export function renderWishList(wishList) {
                   ${wish.discountRate ? `<span class="product_sale">${wish.discountRate}%</span>` : ''}
                   </p>
                 </a>
-                <div class="icons">
-                  <i class="${isCartItem ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
-                </div>`;
+                `;
 
     const iconsEl = liEl.querySelector('.icons');
 
