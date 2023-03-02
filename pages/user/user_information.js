@@ -1,3 +1,6 @@
+import { userInfo } from "os";
+import { userInfoHandler } from "../../source/js/user_info";
+
 {/* <!-- up 버튼 -->
 <!-- <div class="up_button">
     <a href="javascript:window.scrollTo({top:0,behavior:'smooth'});"><img class="up_button_img"
@@ -41,6 +44,7 @@ export function userInfoRender(){
       </ul>
     </div>
   </div>`
+  userInfoHandler();
 }
 
 {/* <!--<span>OO은행</span>
