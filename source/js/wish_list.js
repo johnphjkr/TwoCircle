@@ -12,11 +12,10 @@ export function renderWishList(wishList) {
     liEl.innerHTML = /*html*/ `
                       <a href="/product_details/${wish.id}" data-navigo class="wish">
                     <div class="wish_img">
-                    ${
-                      wish.thumbnail === null
-                        ? `<img src=${'https://via.placeholder.com/200x200?text=NO+IMAGE'} alt="product">`
-                        : `<img src=${wish.thumbnail} alt="product">`
-                    }
+                    ${wish.thumbnail === null
+        ? `<img src=${'https://via.placeholder.com/200x200?text=NO+IMAGE'} alt="product">`
+        : `<img src=${wish.thumbnail} alt="product">`
+      }
                   </div>
                   <p class="product_name">${wish.title}</p>
                   <p class="product_code">${wish.title !== undefined ? wish.code : wish.title}</p>
@@ -35,13 +34,17 @@ export function renderWishList(wishList) {
       const iEl = e.target;
 
       const isCartItem = wishList.find((wishItem) => wishItem.id === wish.id);
+      const heartNum = document.querySelector('.heart_num');
 
       iEl.classList.toggle('fa-regular', isCartItem);
       iEl.classList.toggle('fa-solid', !isCartItem);
-      console.log(isCartItem);
+      // console.log(isCartItem);
       if (isCartItem) {
         wishList = wishList.filter((wishItem) => wishItem.id !== wish.id);
         localStorage.setItem('wish', JSON.stringify(wishList));
+        if (localStorage.getItem('wish')) {
+          heartNum.innerText = JSON.parse(localStorage.getItem('wish')).length;
+        }
         renderWishList(wishList);
         return;
       }

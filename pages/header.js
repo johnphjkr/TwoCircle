@@ -1,7 +1,7 @@
 import { router } from "../source/route";
 
-export function headerRender(){
-  const wrap = document.querySelector("#wrap")
+export function headerRender() {
+  const wrap = document.querySelector("#wrap");
   wrap.innerHTML = /*html*/`
   <header>
       <div class="header_top">
@@ -28,24 +28,24 @@ export function headerRender(){
           <form class="search">
             <input type="text" />
             <button>
-              <img class="search_icon" src="../image/search_icon.svg"></img>
+              <img class="search_icon" src="../image/search_icon.svg" alt="검색" />
             </button>
           </form>
           <ul class="header_right">
             <li>
-              <a id="mypageBtn" href="mypage" data-navigo>
+              <a id="mypageBtn" href="/mypage" data-navigo>
                 <img src="../image/mypage_icon.svg" alt="마이페이지" />
               </a>
             </li>
             <li>
               <a href="/cart" data-navigo>
-                <span>0</span>
+                <span class="cart_num">0</span>
                 <img src="../image/cart_icon.svg" alt="장바구니" />
               </a>
             </li>
             <li>
               <a href="/mypage/wish" data-navigo>
-                <span>0</span>
+                <span class="heart_num">0</span>
                 <img src="../image/heart_icon.svg" alt="찜하기" />
               </a>
             </li>
@@ -148,12 +148,25 @@ export function headerRender(){
         </div>
       </div>
     </footer>
-  `
+  `;
+
+  // 검색기능
   const search = document.querySelector('.search');
   const searchInput = document.querySelector('.search input');
-  
+
   search.addEventListener('submit', (e) => {
     e.preventDefault();
     router.navigate(`product_search/${searchInput.value}`);
-  })
+  });
+
+  // 카트, 찜하기 개수
+  const cartNum = document.querySelector('.cart_num');
+  const heartNum = document.querySelector('.heart_num');
+
+  if (localStorage.getItem('basket')) {
+    cartNum.innerText = JSON.parse(localStorage.getItem('basket')).length;
+  }
+  if (localStorage.getItem('wish')) {
+    heartNum.innerText = JSON.parse(localStorage.getItem('wish')).length;
+  }
 }

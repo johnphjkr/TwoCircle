@@ -22,6 +22,7 @@ import { adminPageRender } from '../pages/admin/admin_product_list.js';
 import { adminProductAdd } from '../pages/admin/product_add.js';
 import { pwCheckRender } from '../pages/user/password_check.js';
 import { headerRender } from '../pages/header.js';
+import { searchListRender } from '../pages/user/product_search.js';
 
 export const router = new Navigo('/');
 
@@ -108,7 +109,7 @@ router
       productListRender(match.data.id);
     },
     'product_search/:id': (match) => {
-      productListRender(match.data.id);
+      searchListRender(match.data.id);
       productRender(match.data.id, []);
     },
     '/order_completed': () => {
