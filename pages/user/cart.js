@@ -1,3 +1,5 @@
+import { cartHandler, renderCartList } from "../../source/js/cart"
+
 export function cartRender(){
   const app =document.querySelector("#app")
   app.innerHTML=/*html*/`
@@ -32,7 +34,7 @@ export function cartRender(){
             </ul>
           </div>
           <div class="cart_total_price_area">
-            <div class="area_wrap">
+            <!-- <div class="area_wrap">
               <div class="cart_order_price">
                 <span class="order_price_text">주문금액</span>
                 <span class="price">25,000원</span>
@@ -45,7 +47,7 @@ export function cartRender(){
                 <span class="total_price_text">총 결제금액</span>
                 <span class="price">25,000원</span>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="btn_area">
@@ -59,4 +61,6 @@ export function cartRender(){
       </div>
     </div>
   </section>`
+  renderCartList()
+  cartHandler()
 }

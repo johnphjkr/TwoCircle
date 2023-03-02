@@ -17,6 +17,35 @@
       padding: 10rem 0;
     }
   }
+
+  .swiper-wrqpper {
+    li:first-child {
+      .swiper_text {
+        color: var(--font-color);
+      }
+    }
+  }
+
+  .swiper_text {
+    position: absolute;
+    color: var(--white-color);
+    top: 15%;
+    left: 13.5%;
+    &.text_black {
+      color: var(--font-color);
+    }
+    p {
+      line-height: 6.2rem;
+      font-size: 4.6rem;
+      font-weight: 700;
+    }
+    span {
+      display: block;
+      font-size: 1.9rem;
+      line-height: 3.2rem;
+      padding-top: 1.8rem;
+    }
+  }
 }
 
 
@@ -29,31 +58,34 @@
   .list_main {
     width: 33%;
     overflow: hidden;
+    background: url('/image/K1 (13).jpg') center;
   }
 
   .list_product {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
     width: 65.5%;
+    gap: 2%;
 
     li {
       width: 32%;
-      background: var(--lightgray-color);
-
       &:nth-child(4),
       &:nth-child(5),
       &:nth-child(6) {
-        margin-top: 1.8rem;
+        margin-top: 1.5rem;
       }
     }
   }
 }
 
+.md_list .list_main {
+  background-image: url('/image/hot_sp_benefit.jpg');
+}
+
 .list_brand {
   .brand_ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
     li {
       width: 19rem;
@@ -89,14 +121,10 @@
 .new_section {
   .list_product {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
 
     li {
       width: 24%;
-      height: 50rem;
-      background: var(--lightgray-color);
-      margin-bottom: 1.7rem;
     }
   }
 }

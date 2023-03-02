@@ -1,54 +1,51 @@
 export function navRender() {
-  const app = document.querySelector("#app");
+  const app = document.querySelector('#app');
   app.innerHTML = /*html*/ `
   <section class="mypage">
-    <div class="inner mypage_inner">
-      <nav class="area nav">
+    <div class="inner">
+      <div class="mypage_nav">
         <div class="header">
           <h2 class="header_title">마이페이지</h2>
         </div>
 
-        <div class="nav_shipping_info">
+        <div class="shipping_info_area">
           <div class="shipping_info_title">쇼핑 정보</div>
           <ul class="shipping_info_list">
             <li class="item">
-                <a class="item_purchase" href="/mypage/purchase" data-navigo>구매 목록 / 배송조회</a>
-                <a class="item_wish_list" href="/mypage/wish" data-navigo>찜리스트</a>
+              <a class="item_purchase" href="mypage/purchase" data-navigo>구매 목록 / 배송조회</a>
+              <a class="item_wish_list" href="mypage/wish" data-navigo>찜리스트</a>
             </li>
           </ul>
         </div>
 
-        <div class="nav_user_info">
+        <div class="user_info_area">
           <div class="user_info_title">회원 정보</div>
           <ul class="user_info_list">
             <li class="item">
-              <a class="item_info_change" href="/changeInfo" data-navigo>회원 정보 변경</a>
-              <a class="item_info_account" href="/mypage/account" data-navigo>계좌 관리</a>
+              <a class="item_info_change" href="mypage/changeInfo" data-navigo>회원 정보 변경</a>
+              <a class="item_info_account" href="mypage/account" data-navigo>계좌 관리</a>
             </li>
           </ul>
         </div>
-      </nav>
-      <div id="mypage"></div>
+      </div>
+      <div id="mypage" class="mypage_main"></div>
     </div>
   </section>;`;
 }
 
 export function mypageRender() {
-  const mypage = document.querySelector("#mypage");
+  const mypage = document.querySelector('#mypage');
   mypage.innerHTML = /*html*/ `
-  <div class="main">
-    <div class="info user_info">
-      <div class="user_info_name">
-        <span class="user_name">
-          안녕하세요. <br />
-          OOO{" "}
-        </span>
+  <div>
+    <div class="info_user">
+      <div class="user_name">
+        <span class="name">안녕하세요. <br />OOO </span>
       </div>
     </div>
 
     <div class="progress order_progress">
       <div class="title_area">
-        <span class="title">진행 중인 주문</span>
+        <span class="title"> 진행 중인 주문 </span>
       </div>
 
       <div class="order_list_area">
@@ -75,7 +72,9 @@ export function mypageRender() {
               <span class="amount">0</span>
             </li>
             <li class="item">
-              <span class="mypage_purchase_confirmation">구매확정</span>
+              <span class="mypage_purchase_confirmation"
+                >구매확정</span
+              >
               <span class="amount">0</span>
             </li>
           </ul>
@@ -85,7 +84,7 @@ export function mypageRender() {
 
     <div class="purchase recent_purchase">
       <div class="title_area">
-        <span class="title">최근 주문 정보</span>
+        <span class="title"> 최근 주문 정보</span>
       </div>
       <div class="list_area">
         <div class="list_info">
@@ -104,12 +103,15 @@ export function mypageRender() {
 
             <div class="product_item">
               <div class="product_item_img">
-                <img src="/image/image1 (13).jpg" alt="" class="img" />
+                <img
+                  src="https://via.placeholder.com/200x200?text=NO+IMAGE"
+                  alt=""
+                  class="img" />
               </div>
               <div class="product_item_wrap">
-                <span class="product_item_name">
-                  블랙 54mm BASIC C1 베이직 동글이 안경테
-                </span>
+                <span class="product_item_name"
+                  >블랙 54mm BASIC C1 베이직 동글이 안경테</span
+                >
                 <div class="product_item__option">옵션: 클리너</div>
               </div>
             </div>
@@ -139,22 +141,21 @@ export function mypageRender() {
               <a href="">
                 <div class="img_wrap">
                   <img
-                    src="/image/image1 (13).jpg"
-                    alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테"
-                  />
+                    src="https://via.placeholder.com/200x200?text=NO+IMAGE"
+                    alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테" />
                 </div>
                 <div class="list_item_info">
                   <div class="info_sub_wrap">
-                    <span class="sub_title">
-                      ROUNZ BASIC
-                      <br />
-                      ROUNZ BASIC C1
-                    </span>
+                    <span class="sub_title"
+                      >ROUNZ BASIC<br />
+                      ROUNZ BASIC C1</span
+                    >
                   </div>
                   <div class="info_title_wrap">
-                    <span class="title">
-                      블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테
-                    </span>
+                    <span class="title"
+                      >블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이
+                      안경테</span
+                    >
                   </div>
                   <div class="info_price_wrap">
                     <span class="discount">44%</span>
@@ -169,22 +170,20 @@ export function mypageRender() {
               <a href="">
                 <div class="img_wrap">
                   <img
-                    src="/image/image1 (13).jpg"
-                    alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테"
-                  />
+                    src="https://via.placeholder.com/200x200?text=NO+IMAGE"
+                    alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테" />
                 </div>
                 <div class="list_item_info">
                   <div class="info_sub_wrap">
-                    <span class="sub_title">
-                      ROUNZ BASIC
-                      <br />
-                      ROUNZ BASIC C1
-                    </span>
+                    <span class="sub_title"
+                      >ROUNZ BASIC<br />ROUNZ BASIC C1</span
+                    >
                   </div>
                   <div class="info_title_wrap">
-                    <span class="title">
-                      블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테
-                    </span>
+                    <span class="title"
+                      >블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이
+                      안경테</span
+                    >
                   </div>
                   <div class="info_price_wrap">
                     <span class="price">25,000원</span>
@@ -198,21 +197,20 @@ export function mypageRender() {
               <a href="">
                 <div class="img_wrap">
                   <img
-                    src="/image/image1 (13).jpg"
-                    alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테"
-                  />
+                    src="https://via.placeholder.com/200x200?text=NO+IMAGE"
+                    alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테" />
                 </div>
                 <div class="list_item_info">
                   <div class="info_sub_wrap">
-                    <span class="sub_title">
-                      ROUNZ BASIC <br />
-                      ROUNZ BASIC C1
-                    </span>
+                    <span class="sub_title"
+                      >ROUNZ BASIC <br />ROUNZ BASIC C1</span
+                    >
                   </div>
                   <div class="info_title_wrap">
-                    <span class="title">
-                      블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테
-                    </span>
+                    <span class="title"
+                      >블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이
+                      안경테</span
+                    >
                   </div>
                   <div class="info_price_wrap">
                     <span class="discount">44%</span>
@@ -227,22 +225,20 @@ export function mypageRender() {
               <a href="">
                 <div class="img_wrap">
                   <img
-                    src="/image/image1 (13).jpg"
-                    alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테"
-                  />
+                    src="https://via.placeholder.com/200x200?text=NO+IMAGE"
+                    alt="블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테" />
                 </div>
                 <div class="list_item_info">
                   <div class="info_sub_wrap">
-                    <span class="sub_title">
-                      ROUNZ BASIC
-                      <br />
-                      ROUNZ BASIC C1
-                    </span>
+                    <span class="sub_title"
+                      >ROUNZ BASIC<br />ROUNZ BASIC C1</span
+                    >
                   </div>
                   <div class="info_title_wrap">
-                    <span class="title">
-                      블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이 안경테
-                    </span>
+                    <span class="title"
+                      >블랙 54mm ROUNZ BASIC C1 라운즈베이직 동글이
+                      안경테</span
+                    >
                   </div>
                   <div class="info_price_wrap">
                     <span class="price">25,000원</span>
@@ -254,5 +250,6 @@ export function mypageRender() {
         </ul>
       </div>
     </div>
-  </div>`;
+  </div>
+  `;
 }

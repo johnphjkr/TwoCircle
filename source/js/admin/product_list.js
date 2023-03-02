@@ -1,17 +1,18 @@
+import { async } from "q";
 import { allProduct } from "../../api/products/admin/allProduct_api.js";
 import { productDelete } from "../../api/products/admin/product_delete.js";
 
-const listEl = document.querySelector('.product_admin_ul');
-const labelEl = document.querySelector('label');
-const deleteBtn = document.querySelector('.select_delete');
 
-(async () => {
+export async function adminProductList(){
   const data = await allProduct();
   renderList(data);
-})();
+};
 
 
 function renderList(data) {
+  const listEl = document.querySelector('.product_admin_ul');
+  const labelEl = document.querySelector('label');
+  const deleteBtn = document.querySelector('.select_delete');
   console.log(data);
   const liEls = data.map(prd => {
     const liEl = document.createElement('li');
@@ -29,10 +30,8 @@ function renderList(data) {
   });
   listEl.innerHTML = '';
   listEl.append(...liEls);
-}
-
-
-// 전체체크
+  
+  // 전체체크
 labelEl.addEventListener('change', function () {
   const allCheck = labelEl.querySelector('input');
   const checkboxs = document.getElementsByName('check');
@@ -55,3 +54,6 @@ deleteBtn.addEventListener('click', async function () {
   };
   choseDelete();
 });
+}
+
+
