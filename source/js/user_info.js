@@ -116,7 +116,7 @@ export async function userInfoHandler() {
     const inputNewPwEl = document.querySelector(".new_pw_input");
     const inputNewPwCheckEl = document.querySelector(".new_pw_check_input");
     const pwChangeOkBtnEl = document.querySelector(".pw_change_ok_btn");
-    const pwChangeCancelBtnEl = document.querySelector("pw_change_cancel_btn");
+    const pwChangeCancelBtnEl = document.querySelector(".pw_change_cancel_btn");
 
     let id = "";
     let oldPassword = "";
