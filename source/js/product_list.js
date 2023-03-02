@@ -68,19 +68,6 @@ function rendProduct(products) {
                     }
 
                   </div>
-                  <p class="product_name">${titleCode[0]}</p>
-                  <p class="product_code">${
-                    titleCode[1] !== undefined ? titleCode[1] : titleCode[0]
-                  }</p>
-                  <p class="product_discription">${product.description}</p>
-                  <p class="product_price">${product.price
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
-                  ${
-                    product.discountRate
-                      ? `<span class="product_price_sale">${product.discountRate}%</span>`
-                      : ""
-                  }
                   </p>
                 </a>
                 <div class="icons">
