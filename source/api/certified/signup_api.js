@@ -1,3 +1,4 @@
+import { router } from "../../route"
 import {url, headers} from "../requests"
 
 // 회원가입
@@ -15,6 +16,7 @@ export async function signUp(method, data){
     alert("옳바른 정보를 입력해주세요.")
   }else if(res.status === 200){
     alert("TwoCircle 회원이 되신 것을 환영합니다!")
+    router.navigate("login")
   }
 }
 

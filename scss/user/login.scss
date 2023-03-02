@@ -3,8 +3,8 @@
   background-color: var(--white-color);
   font-size: 1.8rem;
   font-weight: var(--font-bold);
-  width: 44rem;
-  height: 6rem;
+  width: 41rem;
+  height: 5.5rem;
   border: none;
   cursor: pointer;
 }
@@ -42,8 +42,8 @@ a {
       &_pw {
         border: 1px solid var(--gray-color);
         font-size: 1.8rem;
-        width: 44rem;
-        height: 6rem;
+        width: 41rem;
+        height: 5.5rem;
         padding: 0 1rem;
 
         &::placeholder {
@@ -68,8 +68,8 @@ a {
       // 아이디 이미지
       .icon_person {
         position: absolute;
-        right: 1.5rem;
-        top: 8rem;
+        right: 2.6rem;
+        top: 7.8rem;
       }
 
       // 비밀번호 입력
@@ -80,8 +80,8 @@ a {
       // 비밀번호 이미지
       .icon_lock {
         position: absolute;
-        right: 1.5rem;
-        top: 16rem;
+        right: 2.6rem;
+        top: 15.2rem;
       }
 
       // 버튼
