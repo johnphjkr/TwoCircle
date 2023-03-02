@@ -33,7 +33,7 @@ export function headerRender(){
           </form>
           <ul class="header_right">
             <li>
-              <a id="mypageBtn" href="mypage" data-navigo>
+              <a id="mypageBtn" href="/mypage" data-navigo>
                 <img src="../image/mypage_icon.svg" alt="마이페이지" />
               </a>
             </li>

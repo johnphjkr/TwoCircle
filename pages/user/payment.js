@@ -1,12 +1,7 @@
-import { authCheck } from "../../source/api/certified/authcheck_api.js";
-import { checkAccount } from "../../source/api/account/account_add_check.js";
 import { paymentHandler } from "../../source/js/payment.js";
 
 // 렌더링
 export async function paymentRender() {
-  const auth = await authCheck(JSON.parse(localStorage.getItem("accessToken")));
-  const account = await checkAccount(auth);
-  let banks = [...account.accounts];
   const app = document.querySelector("#app");
   app.innerHTML = /* html */ `
   <div id="wrap">
@@ -19,7 +14,7 @@ export async function paymentRender() {
             <div class="orderinfo_title_navbar">주문상품</div>
             <div class="orderinfo_navbar">
               <div class="navbar_productname">상품정보</div>
-              <div class="navbar_option">옵션</div>
+              <div class="navbar_option">상품이름</div>
               <div class="navbar_price">가격</div>
               <div class="navbar_quantity">수량</div>
               <div class="navbar_totalprice">총 금액</div>
@@ -62,5 +57,5 @@ export async function paymentRender() {
     </div>
   </div>
   `;
-  paymentHandler()
+  paymentHandler();
 }
