@@ -53,7 +53,7 @@ export async function productDetailRender(data) {
                     <div class="option_price">
                       <div class="option_content_price">${id.price
                         .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₩
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
                       </div>
                       <div class="option_content_discount"></div>
                     </div>
@@ -66,7 +66,7 @@ export async function productDetailRender(data) {
                 <div class="count_totalprice">
                 ${Math.round(id.price * ((100 - id.discountRate) * 0.01))
                   .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₩
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
                 </div>
               </section>
               <!-- 찜, 장바구니, 구매 버튼 -->

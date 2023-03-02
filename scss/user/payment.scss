@@ -30,10 +30,10 @@
     display: flex;
     margin: 3rem 0;
     justify-content: center;
-    
+
     .payment {
       display: flex;
-      
+
       img {
         display: block;
         width: 100%;
@@ -52,7 +52,7 @@
         max-width: 134rem;
         margin: 0 auto;
         padding: 0 3rem;
-      
+
         // 주문정보
         .inner_orderinfo {
           display: flex;
@@ -88,6 +88,17 @@
                 height: 9rem;
               }
             }
+
+            .price {
+              display: flex;
+              flex-direction: column;
+
+              .list_price {
+                color: var(--gray-color);
+                text-decoration: line-through;
+              }
+            }
+
           }
 
           .orderinfo_list>div {

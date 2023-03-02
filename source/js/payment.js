@@ -7,6 +7,7 @@ export async function paymentHandler() {
   const auth = await authCheck(JSON.parse(localStorage.getItem("accessToken")));
   const account = await checkAccount(auth);
   let banks = [...account.accounts];
+
   // 주문상품
   const orderNavBarEl = document.querySelector(".orderinfo_navbar");
   const item = JSON.parse(localStorage.getItem("basket"));
@@ -17,38 +18,44 @@ export async function paymentHandler() {
     const orderInfoListEl = document.createElement("div");
     const listImage = document.createElement("div");
     const listOption = document.createElement("div");
+    const priceEl = document.createElement("div");
+    const discountPrice = document.createElement("div");
     const listPrice = document.createElement("div");
     const listQuantity = document.createElement("div");
     const listTotalPrice = document.createElement("div");
 
     orderInfoListEl.classList.add("orderinfo_list");
-    listImage.classList.add(".list_image");
-    listOption.classList.add(".list_option");
-    listPrice.classList.add(".list_price");
-    listQuantity.classList.add(".list_quantity");
-    listTotalPrice.classList.add(".list_totalprice");
+    listImage.classList.add("list_image");
+    listOption.classList.add("list_option");
+    discountPrice.classList.add("discount_price");
+    priceEl.classList.add("price");
+    listPrice.classList.add("list_price");
+    listQuantity.classList.add("list_quantity");
+    listTotalPrice.classList.add("list_totalprice");
     listImage.innerHTML = `<img src="${list.thumbnail}" alt="아이템">`;
     listOption.innerHTML = `${list.title.replace(/\/.*/, "")}`;
-    listPrice.innerHTML = `${list.price
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₩`;
+    discountPrice.innerHTML = `${formatPrice(list.discountPrice)}`;
+    listPrice.innerHTML = `${formatPrice(list.price)}`;
     listQuantity.innerHTML = `${list.count}`;
-    listTotalPrice.innerHTML = `${list.totalPrice
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₩`;
+    listTotalPrice.innerHTML = `${formatPrice(list.totalPrice)}`;
     sum += list.totalPrice;
     originSum += list.price * list.count;
 
+    priceEl.append(listPrice, discountPrice);
     orderInfoListEl.append(
       listImage,
       listOption,
-      listPrice,
+      priceEl,
       listQuantity,
       listTotalPrice
     );
     return orderInfoListEl;
   });
   orderNavBarEl.after(...liEl);
+
+  function formatPrice(price) {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원";
+  }
 
   // 주문자 정보
   const orderNameEl = document.querySelector(".orderinfo_name");
@@ -69,16 +76,14 @@ export async function paymentHandler() {
     accountOptionEl.textContent = `${bank.bankName}`;
     accountOptionEl.value = `${bank.id}`;
     accountSelectEl.append(accountOptionEl);
-    accountSearchEl.addEventListener("click", async () => {
+    accountSearchEl.addEventListener("click", () => {
       if (accountSelectEl.value === `${bank.id}`) {
         bankCheck = true;
         localStorage.setItem("bank", JSON.stringify(bank));
         bankNameEl.innerHTML = `은행 ${bank.bankName}`;
         bankCodeEl.innerHTML = `코드 ${bank.bankCode}`;
         accountNumberEl.innerHTML = `계좌번호 ${bank.accountNumber}`;
-        balanceEl.innerHTML = `잔액 ${bank.balance
-          .toString()
-          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₩`;
+        balanceEl.innerHTML = `잔액 ${formatPrice(bank.balance)}`;
       }
     });
     return accountOptionEl, bankNameEl, bankCodeEl, accountNumberEl, balanceEl;
@@ -88,45 +93,35 @@ export async function paymentHandler() {
   const totalPriceEl = document.querySelector(".info_totalprice");
   const totalPaymentEl = document.querySelector(".info_totalpayment");
   const totalDiscountEl = document.querySelector(".info_totaldiscount");
-  const discount = Math.round((((originSum - sum) / originSum) * 100));
-  totalPriceEl.innerHTML = `총 구매금액 ${originSum
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₩`;
-  totalPaymentEl.innerHTML = `총 결제금액 ${sum
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₩`;
-  totalDiscountEl.innerHTML = `총 할인금액 ${discount}%`;
+  totalPriceEl.innerHTML = `총 구매금액 ${formatPrice(originSum)}`;
+  totalPaymentEl.innerHTML = `총 결제금액 ${formatPrice(sum)}`;
+  totalDiscountEl.innerHTML = `총 할인금액 ${Math.round(
+    ((originSum - sum) / originSum) * 100
+  )}%`;
 
   const payBtnEl = document.querySelector(".btn_payment");
-  payBtnEl.addEventListener("click", async () => {
-    if (bankCheck === false) {
+  payBtnEl.addEventListener("click", () => {
+    if (!bankCheck) {
       alert("계좌를 선택해주세요");
       return;
     }
     const arrList = [];
     const paymentList = [...lists];
     const liEl = paymentList.map((list) => {
-      const id = list.id;
-      const title = list.title;
-      const description = list.description;
-      const price = list.price;
-      const totalPrice = list.totalPrice;
-      const thumbnail = list.thumbnail;
+      const order = {
+        id: list.id,
+        title: list.title,
+        description: list.description,
+        price: list.price,
+        totalPrice: list.totalPrice,
+        thumbnail: list.thumbnail,
+      };
 
       if (list.count > 1) {
         for (let i = 0; i < list.count; i++) {
-          const orderList = {
-            id: list.id,
-            title: list.title,
-            description: list.description,
-            price: list.price,
-            totalPrice: list.totalPrice,
-            thumbnail: list.thumbnail,
-          };
-          arrList.push(orderList);
+          arrList.push(order);
         }
       }
-      const order = { id, title, description, price, totalPrice, thumbnail };
       return order;
     });
 

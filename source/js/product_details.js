@@ -1,6 +1,7 @@
 import { router } from "../../source/route.js";
 
 export async function productDetailHandler(id) {
+  // DOM 요소 변수
   const stockEl = document.querySelector(".stock_text");
   let countTotalPriceEl = document.querySelector(".count_totalprice");
   let countEl = document.querySelector(".count");
@@ -14,36 +15,46 @@ export async function productDetailHandler(id) {
   const smallTagEl = document.querySelector(".smalltag");
   const discountEl = document.querySelector(".product_info_discount");
   const discountPriceEl = document.querySelector(".option_content_discount");
-  let soldOut = true;
-  let countTotalPrice = id.price * ((100 - id.discountRate) * 0.01);
-  discountPriceEl.innerHTML =
-    Math.round(id.price * ((100 - id.discountRate) * 0.01))
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₩";
-  countEl.value = 1;
+
+  // 초기화
+  const INITIAL_COUNT_VALUE = 1;
+
+  let countTotalPrice = calculateTotalPrice(
+    id.price,
+    id.discountRate,
+    INITIAL_COUNT_VALUE
+  );
+  const discountPrice = id.price - id.price * (id.discountRate * 0.01);
+
+
+  discountPriceEl.innerHTML = formatPrice(countTotalPrice);
+
+  countEl.value = INITIAL_COUNT_VALUE;
   countEl.innerHTML = countEl.value;
 
-  // 수량 버튼
+  // 수량 버튼 이벤트 리스너
   minusBtnEl.addEventListener("click", () => {
     if (countEl.value > 1) {
       countEl.value--;
       countEl.innerHTML = countEl.value;
-      countTotalPrice = Math.round(
-        countEl.value * id.price * ((100 - id.discountRate) * 0.01)
+      countTotalPrice = calculateTotalPrice(
+        id.price,
+        id.discountRate,
+        countEl.value
       );
-      countTotalPriceEl.innerHTML =
-        countTotalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₩";
+      countTotalPriceEl.innerHTML = formatPrice(countTotalPrice);
     }
   });
 
   plusBtnEl.addEventListener("click", () => {
     countEl.value++;
     countEl.innerHTML = countEl.value;
-    countTotalPrice = Math.round(
-      countEl.value * id.price * ((100 - id.discountRate) * 0.01)
+    countTotalPrice = calculateTotalPrice(
+      id.price,
+      id.discountRate,
+      countEl.value
     );
-    countTotalPriceEl.innerHTML =
-      countTotalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₩";
+    countTotalPriceEl.innerHTML = formatPrice(countTotalPrice);
   });
 
   // 찜 버튼
@@ -68,28 +79,18 @@ export async function productDetailHandler(id) {
       localStorage.setItem("wish", JSON.stringify(wishList));
       return;
     }
-    const wishEl = {
-      id: id.id,
-      price: id.price,
-      thumbnail: id.thumbnail,
-      title: id.title,
-      discountRate: id.discountRate,
-      description: id.description,
-    };
-    wishList.push(wishEl);
+    addItemToStorage(wishList, id);
     localStorage.setItem("wish", JSON.stringify(wishList));
   });
 
-  // 할인 유무
-  if (id.discountRate === "") {
-    discountEl.innerHTML = "할인 불가";
-  } else {
-    discountEl.innerHTML = "할인율 " + `${id.discountRate}` + "%";
-  }
+  // 품절 여부 출력
+  stockEl.innerHTML = id.isSoldOut ? "품절" : "재고 있음";
+  /// 할인율 출력
+  discountEl.innerHTML = id.discountRate
+    ? `할인율 ${id.discountRate}%`
+    : "할인불가";
 
-  // 품절유무
-  soldOut ? (stockEl.innerHTML = "재고있음") : (stockEl.innerHTML = "품절");
-
+  // 태그 유무에 따른 태그 출력
   if (id.tags[2] === undefined) {
     smallTagEl.style.display = "none";
     midTagEl.innerHTML = `${id.tags[1]}`;
@@ -110,61 +111,58 @@ export async function productDetailHandler(id) {
 
   // 장바구니
   basketBtnEl.addEventListener("click", () => {
-    const itemEl = {
-      id: id.id,
-      count: countEl.value,
-      price: id.price,
-      totalPrice: countTotalPrice,
-      thumbnail: id.thumbnail,
-      title: id.title,
-      discountRate: Number(id.discountRate),
-      description: id.description,
-    };
-    let basketEl = JSON.parse(localStorage.getItem("basket"));
-    if (basketEl === null) {
-      basketEl = [];
-    }
+    addToBasket();
 
-    const existId = basketEl.find((item) => item.id === itemEl.id);
-
-    if (existId) {
-      existId.count += parseInt(itemEl.count);
-    } else {
-      basketEl.push(itemEl);
-    }
-    localStorage.setItem("basket", JSON.stringify(basketEl));
     alert("장바구니에 담겼습니다.");
   });
 
+  // 구매하기
   purchaseBtnEl.addEventListener("click", () => {
-    const itemEl = {
-      id: id.id,
-      count: countEl.value,
-      price: id.price,
-      totalPrice: countTotalPrice,
-      thumbnail: id.thumbnail,
-      title: id.title,
-      discountRate: Number(id.discountRate),
-      description: id.description,
-    };
-    let basketEl = JSON.parse(localStorage.getItem("basket"));
-    if (basketEl === null) {
-      basketEl = [];
-    }
-
-    const existId = basketEl.find((item) => item.id === itemEl.id);
-
-    if (existId) {
-      existId.count += parseInt(itemEl.count);
-    } else {
-      basketEl.push(itemEl);
-    }
-    localStorage.setItem("basket", JSON.stringify(basketEl));
-
+    addToBasket();
     if (confirm("구매하시겠습니까?")) {
       router.navigate("/payment");
     } else {
       return;
     }
   });
+
+  function calculateTotalPrice(price, discountRate, count) {
+    const total = price * count * ((100 - discountRate) * 0.01);
+    return Math.round(total);
+  }
+
+  function formatPrice(price) {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "원";
+  }
+
+  function addToBasket() {
+    let getBasketItems = JSON.parse(localStorage.getItem("basket"));
+    if (!getBasketItems) {
+      getBasketItems = [];
+    }
+    const existId = getBasketItems.find((item) => item.id === id.id);
+
+    if (existId) {
+      existId.count += parseInt(countEl.value);
+      existId.totalPrice += countTotalPrice;
+    } else {
+      addItemToStorage(getBasketItems);
+    }
+    localStorage.setItem("basket", JSON.stringify(getBasketItems));
+  }
+
+  function addItemToStorage(getStorage) {
+    const itemEl = {
+      id: id.id,
+      count: countEl.value,
+      price: id.price,
+      totalPrice: countTotalPrice,
+      thumbnail: id.thumbnail,
+      title: id.title,
+      discountRate: Number(id.discountRate),
+      description: id.description,
+      discountPrice: discountPrice,
+    };
+    getStorage.push(itemEl);
+  }
 }
