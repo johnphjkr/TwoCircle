@@ -11,12 +11,12 @@ function sleep (ms=500) {
 }
 
 
-export async function productRender(searchs, tag){
+export async function productRender(searchs, tag) {
   const body = {
-    
-    "searchText" : searchs,
-    "searchTags" : [...tag]
-  }  
+
+    "searchText": searchs,
+    "searchTags": [...tag]
+  };
   const search = await searchProduct(body);
   console.log(search)
   loading()
@@ -68,30 +68,18 @@ function rendProduct(products) {
                     }
 
                   </div>
-                  <p class="product_name">${titleCode[0]}</p>
-                  <p class="product_code">${
-                    titleCode[1] !== undefined ? titleCode[1] : titleCode[0]
-                  }</p>
-                  <p class="product_discription">${product.description}</p>
-                  <p class="product_price">${product.price
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
-                  ${
-                    product.discountRate
-                      ? `<span class="product_price_sale">${product.discountRate}%</span>`
-                      : ""
-                  }
                   </p>
-                </a>
-                <div class="icons">
-                  <i class="${isCartItem ? 'fa-solid':'fa-regular'} fa-heart"></i>
-                </div>`;
+                </a>`;
     const iconsEl = liEl.querySelector(".icons");
-                  
+
     iconsEl.addEventListener("click", (e) => {
+      e.preventDefault();
       const iEl = e.target;
-      
+
       const isCartItem = wishList.find(wishItem => wishItem.id === product.id);
+      
+      // 찜하기 개수
+      const heartNum = document.querySelector('.heart_num');
       
       iEl.classList.toggle('fa-regular', isCartItem)
       iEl.classList.toggle('fa-solid', !isCartItem)
@@ -99,6 +87,7 @@ function rendProduct(products) {
         wishList = wishList.filter(wishItem => wishItem.id !== product.id);
 
           localStorage.setItem("wish", JSON.stringify(wishList));
+          heartNum.innerText = JSON.parse(localStorage.getItem('wish')).length;
           return;
         }
 
@@ -115,10 +104,14 @@ function rendProduct(products) {
         wishList.push(wish)  
 
         localStorage.setItem("wish", JSON.stringify(wishList));
+        if (localStorage.getItem('wish')) {
+          heartNum.innerText = JSON.parse(localStorage.getItem('wish')).length;
+        }
 
       });
 
       return liEl;
+
     });
     dot.style.display = "none"
     ulEl.innerHTML = "";

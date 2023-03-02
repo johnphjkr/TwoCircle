@@ -100,79 +100,84 @@ export async function userInfoHandler() {
                     <h4>다른 아이디/사이트에서 사용한 적 없는 비밀번호</h4>
                     <h4>이전에 사용한 적 없는 비밀번호가 안전합니다.</h4>
                 </div>
-            <div class="pw_change_section">
-                <input class="current_pw_input" placeholder="현재 비밀번호" type="password">
-                <input class="new_pw_input" placeholder="새 비밀번호" type="password">
-                <input class="new_pw_check_input" placeholder="새 비밀번호 확인" type="password">
-                <div class="pw_change_section_btn">
-                    <button class="pw_change_cancel_btn">취소</button>
-                    <button class="pw_change_ok_btn">확인</button>
+                <div class="pw_change_section">
+                    <input class="current_pw_input" placeholder="현재 비밀번호" type="password">
+                    <input class="new_pw_input" placeholder="새 비밀번호" type="password">
+                    <input class="new_pw_check_input" placeholder="새 비밀번호 확인" type="password">
+                    <div class="pw_change_section_btn">
+                        <button class="pw_change_cancel_btn">취소</button>
+                        <button class="pw_change_ok_btn">확인</button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
         </div>
         `
         const inputCurrentPwEl = document.querySelector(".current_pw_input");
-    const inputNewPwEl = document.querySelector(".new_pw_input");
-    const inputNewPwCheckEl = document.querySelector(".new_pw_check_input");
-    const pwChangeOkBtnEl = document.querySelector(".pw_change_ok_btn");
-    const pwChangeCancelBtnEl = document.querySelector(".pw_change_cancel_btn");
+        const inputNewPwEl = document.querySelector(".new_pw_input");
+        const inputNewPwCheckEl = document.querySelector(".new_pw_check_input");
+        const pwChangeOkBtnEl = document.querySelector(".pw_change_ok_btn");
+        const pwChangeCancelBtnEl = document.querySelector(".pw_change_cancel_btn");
 
-    let id = "";
-    let oldPassword = "";
-    let newPassword = "";
-    let newPassword_check = "";
-    let pw_check = "";
-    let pwChangeDone = false;
+        let id = "";
+        let oldPassword = "";
+        let newPassword = "";
+        let newPassword_check = "";
+        let pw_check = "";
+        let pwChangeDone = false;
 
-    inputCurrentPwEl.addEventListener("input", (e) => {
-        pw_check = e.target.value;
-        console.log(pw_check);
-    });
+        inputCurrentPwEl.addEventListener("input", (e) => {
+            pw_check = e.target.value;
+            console.log(pw_check);
+        });
 
-    inputNewPwEl.addEventListener("input", (e) => {
-        newPassword = e.target.value;
-        console.log(newPassword);
-    });
+        inputNewPwEl.addEventListener("input", (e) => {
+            newPassword = e.target.value;
+            console.log(newPassword);
+        });
 
-    inputNewPwCheckEl.addEventListener("input", (e) => {
-        newPassword_check = e.target.value;
-        console.log(newPassword_check);
-    });
+        inputNewPwCheckEl.addEventListener("input", (e) => {
+            newPassword_check = e.target.value;
+            console.log(newPassword_check);
+        });
 
-    pwChangeOkBtnEl.addEventListener("click", async (e) => {
-        e.preventDefault();
-        const accessToken = JSON.parse(localStorage.getItem('accessToken'));
-        const res = await authCheck(accessToken);
-        id = res.email;
-        console.log(id);
+        pwChangeOkBtnEl.addEventListener("click", async (e) => {
+            e.preventDefault();
+            const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+            const res = await authCheck(accessToken);
+            id = res.email;
+            console.log(id);
 
-        const body = {
-            email: id,
-            password: pw_check
-        }
+            const body = {
+                email: id,
+                password: pw_check
+            }
 
-        const json = await pwCheckApi("POST", body);
+            const json = await pwCheckApi("POST", body);
 
-        if (json.status === 200) {
-            console.log("비밀번호 확인 성공!")
-            if (newPassword != newPassword_check) {
-                alert("비밀번호 확인이 잘못되었습니다.");
+            if (json.status === 200) {
+                console.log("비밀번호 확인 성공!")
+                if (newPassword != newPassword_check) {
+                    alert("비밀번호 확인이 잘못되었습니다.");
+                }
+                else {
+                    oldPassword = pw_check;
+                    await userupdate({ oldPassword, newPassword });
+                    alert("비밀번호 변경이 완료되었습니다.");
+                    modalOff();
+                }
             }
             else {
-                oldPassword = pw_check;
-                await userupdate({ oldPassword, newPassword });
-                alert("비밀번호 변경이 완료되었습니다.");
+                alert("기존 비밀번호가 틀렸습니다.");
+            }
+        });
+        pwChangeCancelBtnEl.addEventListener("click", async (e) => {
+            modalOff();
+        });
+        window.onclick = function (event) {
+            if (event.target == changeModalEl) {
                 modalOff();
             }
         }
-        else {
-            alert("기존 비밀번호가 틀렸습니다.");
-        }
-    });
-    pwChangeCancelBtnEl.addEventListener("click", async (e) => {
-        modalOff();
-    });
     });
 
     nameChangeBtnEl.addEventListener("click", async (e) => {
@@ -202,6 +207,10 @@ export async function userInfoHandler() {
             nameEl.innerText = displayName;
             modalOff();
         });
-
+        window.onclick = function (event) {
+            if (event.target == changeModalEl) {
+                modalOff();
+            }
+        }
     });
 }
