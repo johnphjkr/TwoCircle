@@ -1,6 +1,6 @@
 import { productAdd } from "../../api/products/admin/product_add.js";
 
-export function ProductAdd(){
+export function productAddItem() {
   const nameEl = document.querySelector('.product_name');
   const priceEl = document.querySelector('.product_price');
   const textEl = document.querySelector('.product_text');
@@ -83,7 +83,7 @@ export function ProductAdd(){
       discountRate: discount
     });
 
-    window.location.href = './admin_product_list.html';
+    window.location.href = '../admin';
   });
 }
 
