@@ -1,41 +1,49 @@
-import Navigo from "navigo";
+import Navigo from 'navigo';
 
-import { authCheck } from "./api/certified/authcheck_api.js";
-import { logout } from "./api/certified/logout_api.js";
+import { authCheck } from './api/certified/authcheck_api.js';
+import { logout } from './api/certified/logout_api.js';
 
 // 페이지
-import { mainRender } from "../pages/user/main.js";
-import { loginRender } from "../pages/user/login.js";
-import { signupRender } from "../pages/user/signup";
-import { navRender, mypageRender } from "../pages/user/mypage";
-import { wishRender } from "../pages/user/wish_list";
-import { purchaseRender } from "../pages/user/purchase_history";
-import { cartRender } from "../pages/user/cart";
-import { productDetailRender } from "../pages/user/product_details.js";
-import { paymentRender } from "../pages/user/payment.js";
-import { orderCompletedRender } from "../pages/user/order_completed.js";
-import { accountRender } from "../pages/user/account";
-import { productListRender } from "../pages/user/product_list.js";
-import { productRender } from "./js/product_list.js";
+import { mainRender } from '../pages/user/main.js';
+import { loginRender } from '../pages/user/login.js';
+import { signupRender } from '../pages/user/signup';
+import { navRender, mypageRender } from '../pages/user/mypage';
+import { wishRender } from '../pages/user/wish_list';
+import { purchaseRender } from '../pages/user/purchase_history';
+import { cartRender } from '../pages/user/cart';
+import { productDetailRender } from '../pages/user/product_details.js';
+import { paymentRender } from '../pages/user/payment.js';
+import { orderCompletedRender } from '../pages/user/order_completed.js';
+import { accountRender } from '../pages/user/account';
+import { productRender } from './js/product_list.js';
+import { productListRender } from '../pages/user/product_list';
+import { userInfoRender } from '../pages/user/user_information.js';
+import { adminPageRender } from '../pages/admin/admin_product_list.js';
+import { adminProductAdd } from '../pages/admin/product_add.js';
+import { pwCheckRender } from '../pages/user/password_check.js';
+import { headerRender } from '../pages/header.js';
+import { searchListRender } from '../pages/user/product_search.js';
 
-
-export const router = new Navigo("/");
+export const router = new Navigo('/');
 
 router.hooks({
   before: async (done, match) => {
     const accessToken = JSON.parse(localStorage.getItem('accessToken'));
     const auth = await authCheck(accessToken);
-    const onlyUserPages = ["mypage", "mypage/wish", "cart", "account"];
+    headerRender()
+    const onlyUserPages = ['mypage', 'mypage/wish', 'cart', 'account'];
+    const checkInfo = ['mypage/changeInfo', 'mypage/account'];
     if (onlyUserPages.includes(match.url) && !auth) {
-      router.navigate("login");
+      router.navigate('login');
       done();
     }
-    if ((match.url === "login" || match.url === "signup") && auth) {
-      router.navigate("");
+    if ((match.url === 'login' || match.url === 'signup') && auth) {
+      router.navigate('/');
       done();
+    }
+    if (checkInfo.includes(match.url) && auth){
+    }
 
-    }
-    
     // 로그인 로그아웃시 헤더 변경
     const loginEl = document.querySelector('.header_login');
     const logoutEl = document.querySelector('.header_logout');
@@ -48,7 +56,7 @@ router.hooks({
       loginNameEl.innerHTML = `${auth.displayName}님, 안녕하세요`;
       logoutBtn.addEventListener('click', async () => {
         await logout(accessToken);
-        localStorage.removeItem("accessToken");
+        localStorage.removeItem('accessToken');
         loginEl.style.display = 'flex';
         logoutEl.style.display = 'none';
       });
@@ -56,7 +64,6 @@ router.hooks({
       loginEl.style.display = 'flex';
       logoutEl.style.display = 'none';
     }
-    // router.navigate("/");
     done();
   },
   after: (match) => {
@@ -65,7 +72,7 @@ router.hooks({
 });
 router
   .on({
-    "/": () => {
+    '/': () => {
       mainRender();
     },
 
@@ -82,38 +89,48 @@ router
       navRender();
       mypageRender();
     },
-    "mypage/wish": () => {
+    'mypage/wish': () => {
       navRender();
       wishRender();
     },
-    "mypage/purchase": () => {
+    'mypage/purchase': () => {
       navRender();
       purchaseRender();
     },
-    "mypage/account": () => {
+    'mypage/changeInfo': (match) => {
+      navRender()
+      pwCheckRender(match.url)
+    },
+    'mypage/account': (match) => {
       navRender();
-      accountRender();
+      pwCheckRender(match.url)
     },
-    "product_list/:id": (match) => {
-      
-      productListRender(match.data.id)
-      productRender("",[match.data.id])
+    'product_list/:id': (match) => {
+      productListRender(match.data.id);
     },
-    "product_search/:id":(match) => {
-      productListRender(match.data.id)
-      productRender(match.data.id,[])
+    'product_search/:id': (match) => {
+      searchListRender(match.data.id);
+      productRender(match.data.id, []);
     },
-    "/order_completed": () => {
+    '/order_completed': () => {
       orderCompletedRender();
-    }
-
+    },
+    'product_details/:id': (match) => {
+      productDetailRender(match);
+    },
+    '/payment': () => {
+      paymentRender();
+    },
+    '/order_completed': () => {
+      orderCompletedRender();
+    },
+    "admin": () => {
+      adminPageRender();
+    },
+    'admin/product_add': () => {
+      adminProductAdd();
+    },
   })
   .resolve();
 
-const search = document.querySelector(".search");
-const searchInput = document.querySelector(".search input")
-
-search.addEventListener("submit",(e)=>{
-  e.preventDefault()
-  router.navigate(`product_search/${searchInput.value}`)
-})
+;

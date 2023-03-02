@@ -1,78 +1,127 @@
-import { searchProduct } from "../api/products/user/product_search"
+import { searchProduct } from "../api/products/user/product_search";
+import { loading } from "./loading";
+
+
+function sleep (ms=500) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve('')
+    },ms);
+  })
+}
+
 
 export async function productRender(searchs, tag){
   const body = {
+    
     "searchText" : searchs,
     "searchTags" : [...tag]
   }  
   const search = await searchProduct(body);
-  rendProduct(search)
   console.log(search)
+  loading()
+  await sleep();
+  rendProduct(search)
 }
 
 // 상품목록 렌더링 과정
-function rendProduct(product) {
-  const ulEl = document.querySelector(".products_lists")
-  product.map(function(e){
-    const liEl = document.createElement("li")
-    const aEl = document.createElement("a")
-    const divEl = document.createElement("div")
-    const imgEl = document.createElement("img")
-    const pEl = document.createElement("p")
-    const codeEl = document.createElement("p")
-    const disEl = document.createElement("p")
-    const priceEl = document.createElement("p")
-    const spanEl = document.createElement("span")
-    const iconEl = document.createElement("div")
-    // 제목과 코드 분류
-    const titleCode = e.title.split("/")
-    // 상세페이지 링크
-    aEl.setAttribute("href","javascript:void(0)")
-    aEl.classList.add("product")
-    // 썸네일 이미지
-    divEl.classList.add("product_img")
-    if(e.thumbnail != null){
-      imgEl.setAttribute("src",e.thumbnail)
-    }else{
-      imgEl.setAttribute("src","https://via.placeholder.com/200x200?text=NO+IMAGE")
-    }
-    divEl.append(imgEl)
-    // 제품 이름 및 코드
-    pEl.classList.add("product_name")
-    pEl.textContent=titleCode[0]
-    codeEl.classList.add("product_code")
-    if(titleCode[1] != undefined){
-      codeEl.textContent=titleCode[1]
-    }else{
-      codeEl.textContent="0000-0000"
-    }
-    // 제품 설명
-    disEl.classList.add("product_discription")
-    disEl.textContent = e.description
-    // 제품 가격
-    priceEl.classList.add("product_price")
-    priceEl.textContent = e.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-    if(e.discountRate){
-      spanEl.classList.add("product_price_sale")
-      spanEl.textContent = ` ${e.discountRate}%`
-      priceEl.append(spanEl)
-    }
-    // 찜 아이콘
-    iconEl.classList.add("icons")
-    iconEl.innerHTML = "<i class='fa-regular fa-heart'></i>"
+function rendProduct(products) {
+  const ulEl = document.querySelector(".products_lists");
+  const productSection = document.querySelector(".products")
+  const dot = document.querySelector(".dot-wrap")
+  if(products.length === 0 ){
+    productSection.innerHTML = /*html*/`
+      <div class="no_result">
+        <img src="../image/icon_exclamation.png" alt="느낌표 이미지">
+        <p class="no_result_ment">검색된 결과가 없습니다.</p>
+        <p class="no_result_try">검색어를 정확하게 다시 입력해주세요.</p> 
+      </div>
+    `
+  }else{
+    let wishList  = localStorage.getItem('wish') ? JSON.parse(localStorage.getItem('wish')) : [];
+    const liEls = products.map((product) => {
+      const isCartItem = wishList.find(wishItem => wishItem.id === product.id);
+      const liEl = document.createElement("li");
+      liEl.dataset.id = product.id;
+      const titleCode = product.title.split("/");
+      liEl.innerHTML = /*html*/ `
+                  <a href="/product_details/${product.id}" data-navigo class="product">
+                    <div class="product_img">
+                      ${
+                        product.thumbnail === null
+                          ? `<img src=${"https://via.placeholder.com/200x200?text=NO+IMAGE"} alt="product">`
+                          : `<img src=${product.thumbnail} alt="product">`
+                      }
+                    </div>
+                    <p class="product_name">${titleCode[0]}</p>
+                    <p class="product_code">${
+                      titleCode[1] !== undefined ? titleCode[1] : titleCode[0]
+                    }</p>
+                    <p class="product_discription">${product.description}</p>
+                    <p class="product_price">${product.price
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+                    ${
+                      product.discountRate
+                        ? `<span class="product_price_sale">${product.discountRate}%</span>`
+                        : ""
+                    }
 
-    iconEl.addEventListener("click",(e)=>{
-      const iEl = e.target
-      console.log(e)
-      if(iEl.classList.contains("fa-regular")){
-        iEl.classList.replace("fa-regular","fa-solid")
-      }else{
-        iEl.classList.replace("fa-solid","fa-regular")
-      }
-    })
-    // EL 밀어넣기
-    aEl.append(divEl,pEl,codeEl,disEl,priceEl)
-    liEl.append(aEl,iconEl)
-    ulEl.append(liEl)
-  })
+                  </div>
+                  <p class="product_name">${titleCode[0]}</p>
+                  <p class="product_code">${
+                    titleCode[1] !== undefined ? titleCode[1] : titleCode[0]
+                  }</p>
+                  <p class="product_discription">${product.description}</p>
+                  <p class="product_price">${product.price
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+                  ${
+                    product.discountRate
+                      ? `<span class="product_price_sale">${product.discountRate}%</span>`
+                      : ""
+                  }
+                  </p>
+                </a>
+                <div class="icons">
+                  <i class="${isCartItem ? 'fa-solid':'fa-regular'} fa-heart"></i>
+                </div>`;
+    const iconsEl = liEl.querySelector(".icons");
+                  
+    iconsEl.addEventListener("click", (e) => {
+      const iEl = e.target;
+      
+      const isCartItem = wishList.find(wishItem => wishItem.id === product.id);
+      
+      iEl.classList.toggle('fa-regular', isCartItem)
+      iEl.classList.toggle('fa-solid', !isCartItem)
+      if(isCartItem) {
+        wishList = wishList.filter(wishItem => wishItem.id !== product.id);
+
+          localStorage.setItem("wish", JSON.stringify(wishList));
+          return;
+        }
+
+        const wish = {
+          id: product.id,
+          price: product.price,
+          code: titleCode[1] !== undefined ? titleCode[1] : titleCode[0],
+          thumbnail: product.thumbnail,
+          title: titleCode[0],
+          discountRate: product.discountRate,
+          description: product.description,
+          
+        };
+        wishList.push(wish)  
+
+        localStorage.setItem("wish", JSON.stringify(wishList));
+
+      });
+
+      return liEl;
+    });
+    dot.style.display = "none"
+    ulEl.innerHTML = "";
+    ulEl.append(...liEls);
+  }
 }

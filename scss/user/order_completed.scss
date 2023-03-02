@@ -1,91 +1,82 @@
-#wrap {
-  
+.order_completed {
+  display: flex;
+  margin: 3rem 0;
 
-  .container {
-    // display: flex;
-    // margin: 3rem 0;
-    // justify-content: center;
+  img {
+    display: block;
+    width: 100%;
+  }
 
-    .order_completed {
-      // display: flex;
+  h2 {
+    width: 100%;
+    line-height: 4.6rem;
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 4rem;
+  }
 
-      img {
-        display: block;
-        width: 100%;
-      }
+  .order_completed_inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 134rem;
+    margin: 0 auto;
+    padding: 0 3rem;
+    width: 85rem;
 
-      h2 {
-        width: 100%;
-        line-height: 4.6rem;
-        font-size: 3.2rem;
-        font-weight: 700;
-        margin-bottom: 4rem;
-      }
+    // 상단제목
+    .title {
+      display: flex;
 
-      .order_completed_inner {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        max-width: 134rem;
+      .title_text {
+        font-size: 3rem;
         margin: 0 auto;
-        padding: 0 3rem;
-        width: 85rem;
+      }
+    }
 
-        // 상단제목
-        .title {
-          display: flex;
+    // 주문내용
+    .content {
+      display: flex;
+      flex-direction: column;
+      margin: 2rem 0;
 
-          .title_text {
-            font-size: 3rem;
-            margin: 0 auto;
-          }
+      .content_name {
+        border-bottom: 2px solid var(--pink-color);
+        padding-bottom: 0.5rem;
+        font-weight: var(--font-bold);
+      }
+
+      .content_bank {
+        margin: 1rem;
+        padding-top: 3rem;
+      }
+
+      .content_ordernum,
+      .content_addres,
+      .content_method,
+      .content_memo {
+        margin: 1rem;
+      }
+
+      .content_btn {
+        display: flex;
+        justify-content: center;
+
+        .content_mypagebtn,
+        .content_homebtn {
+          width: 35rem;
+          margin: 5rem 3rem 1rem 3rem;
+          border-radius: 10px;
+          font-size: 2rem;
+          padding: 0.5rem;
+          cursor: pointer;
+          transition: .7s;
         }
 
-        // 주문내용
-        .content {
-          display: flex;
-          flex-direction: column;
-          margin: 2rem 0;
-
-          .content_name {
-            border-bottom: 2px solid var(--pink-color);
-            padding-bottom: 0.5rem;
-            font-weight: var(--font-bold);
-          }
-
-          .content_bank {
-            margin: 1rem;
-            padding-top: 3rem;
-          }
-
-          .content_ordernum,
-          .content_addres,
-          .content_method,
-          .content_memo {
-            margin: 1rem;
-          }
-
-          .content_btn {
-            display: flex;
-            justify-content: center;
-
-            .content_mypagebtn,
-            .content_homebtn {
-              width: 35rem;
-              margin: 5rem 3rem 1rem 3rem;
-              border-radius: 10px;
-              font-size: 2rem;
-              padding: 0.5rem;
-              cursor: pointer;
-              transition: .7s;
-            }
-
-            .content_mypagebtn:hover,
-            .content_homebtn:hover {
-              background-color: var(--pink-color);
-              color: var(--white-color);
-            }
-          }
+        .content_mypagebtn:hover,
+        .content_homebtn:hover {
+          background-color: var(--pink-color);
+          color: var(--white-color);
         }
       }
     }
