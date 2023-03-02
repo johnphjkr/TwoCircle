@@ -5,7 +5,7 @@ export async function userupdate(data) {
     method: "PUT",
     headers: {
       ...headers,
-      authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU0WnFvSFRhVERBbmlrWkdaQlYyIiwiaWF0IjoxNjc3NTkyNTA4LCJleHAiOjE2Nzc2Nzg5MDgsImlzcyI6InRoZXNlY29uQGdtYWlsLmNvbSJ9.-7tsxBXDcpqRNGNVsa9Nj3GPi0wXkIqcHOhNy5snixo `,
+      authorization: `Bearer ${JSON.parse(localStorage.getItem("accessToken"))}`,
     },
     body: JSON.stringify({
       displayName: data.displayName,
