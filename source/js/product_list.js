@@ -1,21 +1,21 @@
 import { searchProduct } from "../api/products/user/product_search";
 
 
-export async function productRender(searchs, tag){
+export async function productRender(searchs, tag) {
   const body = {
-    
-    "searchText" : searchs,
-    "searchTags" : [...tag]
-  }  
+
+    "searchText": searchs,
+    "searchTags": [...tag]
+  };
   const search = await searchProduct(body);
-  console.log(search)
-  rendProduct(search)
+  console.log(search);
+  rendProduct(search);
 }
 
 // 상품목록 렌더링 과정
 function rendProduct(products) {
   const ulEl = document.querySelector(".products_lists");
-  let wishList  = localStorage.getItem('wish') ? JSON.parse(localStorage.getItem('wish')) : [];
+  let wishList = localStorage.getItem('wish') ? JSON.parse(localStorage.getItem('wish')) : [];
   const liEls = products.map((product) => {
     const isCartItem = wishList.find(wishItem => wishItem.id === product.id);
     const liEl = document.createElement("li");
@@ -25,43 +25,50 @@ function rendProduct(products) {
                             
                 <a href="/product_details/${product.id}" data-navigo class="product">
                   <div class="product_img">
-                    ${
-                      product.thumbnail === null
-                        ? `<img src=${"https://via.placeholder.com/200x200?text=NO+IMAGE"} alt="product">`
-                        : `<img src=${product.thumbnail} alt="product">`
-                    }
+                    ${product.thumbnail === null
+        ? `<img src=${"https://via.placeholder.com/200x200?text=NO+IMAGE"} alt="product">`
+        : `<img src=${product.thumbnail} alt="product">`
+      }
+                <div class="icons">
+                  <i class="${isCartItem ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+                </div>
                   </div>
                   <p class="product_name">${titleCode[0]}</p>
-                  <p class="product_code">${
-                    titleCode[1] !== undefined ? titleCode[1] : titleCode[0]
-                  }</p>
+                  <p class="product_code">${titleCode[1] !== undefined ? titleCode[1] : titleCode[0]
+      }</p>
                   <p class="product_discription">${product.description}</p>
                   <p class="product_price">${product.price
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
-                  ${
-                    product.discountRate
-                      ? `<span class="product_price_sale">${product.discountRate}%</span>`
-                      : ""
-                  }
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+                  ${product.discountRate
+        ? `<span class="product_price_sale">${product.discountRate}%</span>`
+        : ""
+      }
                   </p>
-                </a>
-                <div class="icons">
-                  <i class="${isCartItem ? 'fa-solid':'fa-regular'} fa-heart"></i>
-                </div>`;
+                </a>`;
     const iconsEl = liEl.querySelector(".icons");
-                  
+
     iconsEl.addEventListener("click", (e) => {
+      e.preventDefault();
       const iEl = e.target;
-      
+
       const isCartItem = wishList.find(wishItem => wishItem.id === product.id);
-      
-      iEl.classList.toggle('fa-regular', isCartItem)
-      iEl.classList.toggle('fa-solid', !isCartItem)
-      console.log(isCartItem)
-      if(isCartItem) {
+
+      iEl.classList.toggle('fa-regular', isCartItem);
+      iEl.classList.toggle('fa-solid', !isCartItem);
+      // console.log(isCartItem)
+
+
+      // 찜하기 개수
+      const heartNum = document.querySelector('.heart_num');
+
+      if (isCartItem) {
         wishList = wishList.filter(wishItem => wishItem.id !== product.id);
         localStorage.setItem("wish", JSON.stringify(wishList));
+
+        if (localStorage.getItem('wish')) {
+          heartNum.innerText = JSON.parse(localStorage.getItem('wish')).length;
+        }
         return;
       }
 
@@ -73,10 +80,14 @@ function rendProduct(products) {
         title: titleCode[0],
         discountRate: product.discountRate,
         description: product.description,
-        
+
       };
-      wishList.push(wish)  
+      wishList.push(wish);
       localStorage.setItem("wish", JSON.stringify(wishList));
+
+      if (localStorage.getItem('wish')) {
+        heartNum.innerText = JSON.parse(localStorage.getItem('wish')).length;
+      }
 
     });
 
