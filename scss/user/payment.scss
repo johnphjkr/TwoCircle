@@ -9,10 +9,10 @@
   align-items: center;
   font-size: 2rem;
   font-weight: var(--font-bold);
-  margin: 3rem 0 0 3rem;
-  padding-bottom: 1rem;
+  margin: 3rem 0 0 0;
+  padding: 1rem 0;
   height: 4rem;
-  border-bottom: 0.2rem solid var(--pink-color);
+  border-bottom: 1px solid var(--black-color);
 }
 
 @mixin order_info_style {
@@ -24,8 +24,6 @@
 }
 
 #wrap {
-
-
   .wrap_container {
     display: flex;
     margin: 3rem 0;
@@ -66,6 +64,8 @@
 
           .orderinfo_navbar {
             @include window_default;
+            font-size: 1.8rem;
+            border-bottom: 1px solid var(--black-color);
           }
 
           .orderinfo_navbar>div {
@@ -78,7 +78,7 @@
           .orderinfo_list {
             display: flex;
             justify-content: center;
-            margin-bottom: 2rem;
+            margin-top: 2rem;
 
             .list_image {
               display: flex;
@@ -88,17 +88,6 @@
                 height: 9rem;
               }
             }
-
-            .price {
-              display: flex;
-              flex-direction: column;
-
-              .list_price {
-                color: var(--gray-color);
-                text-decoration: line-through;
-              }
-            }
-
           }
 
           .orderinfo_list>div {
@@ -117,17 +106,29 @@
             justify-content: center;
             flex-direction: column;
             padding: 1.5rem 0;
-            margin-left: 3rem;
             padding-bottom: 5rem;
 
             .orderinfo_name,
-            .orderinfo_email {
+            .orderinfo_email,
+            .orderinfo_account {
               @include order_info_style;
             }
 
-            .orderinfo_account {
-              @include order_info_style;
+            .orderinfo_name {
+              .orderinfo_name_text {
+                margin-left: 7rem;
+                font-size: 1.6rem;
+              }
+            }
 
+            .orderinfo_email {
+              .orderinfo_email_text {
+                margin-left: 5rem;
+                font-size: 1.6rem;
+              }
+            }
+
+            .orderinfo_account {
               .account_text {
                 display: flex;
                 margin-right: 1rem;
@@ -139,7 +140,6 @@
                 display: flex;
                 width: 30em;
                 height: 4rem;
-                border-radius: 15px;
               }
 
               .account_search {
@@ -150,23 +150,32 @@
                 background-color: var(--pink-color);
                 color: var(--white-color);
                 border: transparent;
-                border-radius: 15px;
               }
             }
           }
 
-          .account_info {
+          .user_account_info {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            margin-top: 2rem;
+            border: 0.2rem solid var(--lightgray-color);
+            width: 40rem;
+            height: 20rem;
+            padding: 4rem 3rem;
+            margin: 2rem 0 0 10rem;
 
-            .account_info_totalbalance,
-            .account_info_balance {
+            .bank_name {
               display: flex;
-              align-items: center;
-              height: 3rem;
-              margin-bottom: 1rem;
+              font-size: 2rem;
+              margin-bottom: 3rem;
+              justify-content: space-between;
+            }
+
+            .account_number,
+            .bank_balance {
+              display: flex;
+              margin-bottom: 2rem;
+              font-size: 1.6rem;
+              justify-content: space-between;
             }
           }
         }
@@ -177,12 +186,11 @@
     .inner_summary {
       display: flex;
       flex-direction: column;
-      width: 30rem;
-      height: 35rem;
-      background-color: var(--lightgray-color);
-      padding: 1.5rem;
+      width: 35rem;
+      height: 40rem;
+      background-color: var(--more-lightgray-color);
+      padding: 3rem;
       margin: 12rem 0 0 12rem;
-      border-radius: 15px;
 
       .summary_info {
         display: flex;
@@ -190,9 +198,27 @@
         justify-content: space-between;
         height: 20rem;
 
+        .info_totalprice {
+          justify-content: space-between;
+        }
+
         .info_totaldiscount {
-          border-bottom: 0.2rem solid var(--pink-color);
+          justify-content: space-between;
+          border-bottom: 1px solid var(--black-color);
           padding-bottom: 3rem;
+
+          .info_totaldiscount_text {
+            color: red;
+          }
+        }
+
+        .info_totalpayment {
+          justify-content: space-between;
+
+          .info_totalpayment_text {
+            font-weight: var(--font-bold);
+
+          }
         }
       }
 
@@ -209,7 +235,6 @@
           background-color: var(--pink-color);
           color: var(--white-color);
           border: transparent;
-          border-radius: 15px;
           height: 4rem;
           margin: 2rem 0;
           cursor: pointer;
@@ -217,8 +242,9 @@
 
         .btn_cancel {
           height: 4rem;
-          border-radius: 15px;
           cursor: pointer;
+          border: 1px solid var(--black-color);
+          background-color: #fff;
         }
       }
     }

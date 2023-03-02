@@ -15,10 +15,10 @@ export async function productDetailHandler(id) {
   const smallTagEl = document.querySelector(".smalltag");
   const discountEl = document.querySelector(".product_info_discount");
   const discountPriceEl = document.querySelector(".option_content_discount");
+  const optionPriceEl = document.querySelector(".option_content_price");
 
   // 초기화
   const INITIAL_COUNT_VALUE = 1;
-
   let countTotalPrice = calculateTotalPrice(
     id.price,
     id.discountRate,
@@ -26,9 +26,11 @@ export async function productDetailHandler(id) {
   );
   const discountPrice = id.price - id.price * (id.discountRate * 0.01);
 
-
+  if (!id.discountRate) {
+    discountPriceEl.innerHTML = formatPrice(id.price);
+    optionPriceEl.style.display = "none";
+  }
   discountPriceEl.innerHTML = formatPrice(countTotalPrice);
-
   countEl.value = INITIAL_COUNT_VALUE;
   countEl.innerHTML = countEl.value;
 
