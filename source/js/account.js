@@ -23,6 +23,11 @@ export function accountHandler() {
     phoneNumber: '',
     signature: false,
   };
+ /**은행 해지시 필요 정보담는 객체*/
+ let deleteCheckInfo = {
+   accountId: '',
+   signature: false
+ };
 
   (async () => {
     const banks = await ableAccount();
@@ -34,6 +39,7 @@ export function accountHandler() {
   function renderOption(banks) {
     const optionList = banks.map((bank) => {
       const optionEl = document.createElement('option');
+      
       optionEl.value = bank.code;
       optionEl.textContent = bank.name;
       if (bank.disabled) {
@@ -72,6 +78,8 @@ export function accountHandler() {
     dimmedLayer.classList.add('_hidden');
     modal.classList.add('_hidden');
     addAccount(accountInfo);
+    checkAccount()
+    
   });
 
   /**계좌 추가하기 누를 시 모달창및 딤드레이어 나타나게 하기 */
@@ -105,9 +113,10 @@ export function accountHandler() {
 
   /**계좌 등록후 정보 화면에 계좌 정보 랜더링 하는 함수 */
 
-  function renderAccount({ accounts }) {
+  async function renderAccount() {
+    const addAccounts = await checkAccount();
     const listEl = document.createElement('ul');
-    const liEls = accounts.map((account) => {
+    const liEls = addAccounts.accounts.map((account) => {
       const liEl = document.createElement('li');
 
       liEl.dataset.id = account.id;
@@ -127,7 +136,7 @@ export function accountHandler() {
       delBtnEl.addEventListener('click', () => {
         renderModal(account);
       });
-
+  
       return liEl;
     });
     listEl.innerHTML = '';
@@ -152,16 +161,21 @@ export function accountHandler() {
         deleteCheckInfo.signature = true;
       }
     });
+   
     modalTextDiv.append(modalInputEl);
     modalDivEl.append(modalTextDiv, modalBtnEl);
     sectionEl.append(modalDivEl);
+    
+    
+
 
     modalBtnEl.addEventListener('click', async () => {
       deleteCheckInfo.accountId = account.id;
-
+      
       modalDivEl.classList.add('_hidden');
       dimmedLayer.classList.add('_hidden');
       await deleteAccount(deleteCheckInfo);
+    
     });
   }
 
