@@ -1,3 +1,5 @@
+import { admin } from "../source/js/admin/admin";
+
 export function adminWrap() {
   const wrap = document.querySelector("#wrap");
   wrap.innerHTML = /* html */ `
@@ -25,4 +27,5 @@ export function adminWrap() {
       <div id="admin"></div>
     </div>
   `;
+  admin();
 }
