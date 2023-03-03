@@ -1,5 +1,6 @@
 import { product } from "../../api/products/admin/product.js";
 import { productDelete } from "../../api/products/admin/product_delete.js";
+import { router } from "../../route.js";
 
 
 
@@ -30,7 +31,7 @@ function renderProduct(data) {
       <img src=${data.photo} alt="상세설명" />
     </div>
     <div>
-      <a href="update/${data.id}">수정하기</a>
+      <a href="/admin/update/${data.id}">수정하기</a>
       <button type="button" class="delete_btn">삭제하기</button>
     </div>
   `;
@@ -58,7 +59,7 @@ function renderProduct(data) {
   const deleteBtn = document.querySelector('.delete_btn');
   deleteBtn.addEventListener('click', async function () {
     await productDelete(id);
-    window.location.href = './product_list.html';
+    router.navigate("admin")
   });
 }
 
