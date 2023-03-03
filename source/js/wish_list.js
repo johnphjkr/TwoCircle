@@ -3,17 +3,17 @@
 // console.log(wishList)
 
 export function renderWishList(wishList) {
-  const ulEl = document.querySelector('.list');
+  const ulEl = document.querySelector(".list");
   const liEls = wishList.map((wish) => {
     const isCartItem = wishList.find((wishItem) => wishItem.id === wish.id);
     const liEl = document.createElement("li");
     liEl.classList = "wish_item";
     liEl.dataset.id = wish.id;
     liEl.innerHTML = /*html*/ `
-                      <a href="/product_details/${
-                        wish.id
-                      }" data-navigo class="wish">
-                    <div class="wish_img">
+                    <a href="/product_details/${
+                      wish.id
+                    }" data-navigo class="wish product">
+                    <div class="product_img">
 
                     ${
                       wish.thumbnail === null
@@ -40,13 +40,17 @@ export function renderWishList(wishList) {
                       ? `<span class="product_sale">${wish.discountRate}%</span>`
                       : ""
                   }
+                
                   </p>
                 </a>
                 `;
 
     const iconsEl = liEl.querySelector(".icons");
-
+  
     iconsEl.addEventListener("click", (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      
       const iEl = e.target;
 
       const isCartItem = wishList.find((wishItem) => wishItem.id === wish.id);
