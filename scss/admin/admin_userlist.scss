@@ -1,0 +1,64 @@
+
+.admin_userlist {
+  background-color: var(--white-color);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  .navbar {
+    display: flex;
+    padding: 10px;
+    font-weight: bold;
+
+    .navbar_number {
+      flex: 1;
+      text-align: center;
+    }
+
+    .navbar_name {
+      flex: 2;
+      text-align: center;
+    }
+
+    .navbar_email {
+      flex: 3;
+      text-align: center;
+    }
+
+    .navbar_profile {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  .list {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    .list_number {
+      flex: 1;
+      text-align: center;
+    }
+
+    .list_name {
+      flex: 2;
+      text-align: center;
+    }
+
+    .list_email {
+      flex: 3;
+      text-align: center;
+    }
+
+    .list_profile {
+      flex: 1;
+      text-align: center;
+    }
+  }
+    .list:nth-child(2n) {
+      background-color: var(--pink-color);
+    }
+    .list>div {
+      height: 10rem;
+      width: 10rem;
+    }
+}
