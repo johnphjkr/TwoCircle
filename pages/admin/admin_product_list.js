@@ -11,7 +11,7 @@ export function adminPageRender() {
             <button type="button" class="select_delete">
               삭제하기
             </button>
-            <a href="admin/product_add" class="select_add">추가하기</a>
+            <a href="/admin/product_add" class="select_add">추가하기</a>
           </div>
           <!-- <div class="search_box">
             <input type="text" placeholder="Search">

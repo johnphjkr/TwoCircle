@@ -12,8 +12,8 @@ export function navRender() {
           <div class="shipping_info_title">쇼핑 정보</div>
           <ul class="shipping_info_list">
             <li class="item">
-              <a class="item_purchase" href="mypage/purchase" data-navigo>구매 목록 / 배송조회</a>
-              <a class="item_wish_list" href="mypage/wish" data-navigo>찜리스트</a>
+              <a class="item_purchase" href="/mypage/purchase" data-navigo>구매 목록 / 배송조회</a>
+              <a class="item_wish_list" href="/mypage/wish" data-navigo>찜리스트</a>
             </li>
           </ul>
         </div>
@@ -22,8 +22,8 @@ export function navRender() {
           <div class="user_info_title">회원 정보</div>
           <ul class="user_info_list">
             <li class="item">
-              <a class="item_info_change" href="mypage/changeInfo" data-navigo>회원 정보 변경</a>
-              <a class="item_info_account" href="mypage/account" data-navigo>계좌 관리</a>
+              <a class="item_info_change" href="/mypage/changeInfo" data-navigo>회원 정보 변경</a>
+              <a class="item_info_account" href="/mypage/account" data-navigo>계좌 관리</a>
             </li>
           </ul>
         </div>
