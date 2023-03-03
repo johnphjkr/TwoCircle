@@ -23,9 +23,9 @@ export function loginRender() {
         <button class="login_form_btn btn">로그인</button>
       </form>
       <!-- 회원가입 버튼 -->
-      <div class="login_section_signup btn">
-        <a href="./signup.html">회원가입</a>
-      </div>
+      <a href="/signup">
+        <div class="login_section_signup btn">회원가입</div>
+      </a>
     </div>
   </section>
   `;

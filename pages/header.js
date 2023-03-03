@@ -22,7 +22,7 @@ export function headerRender() {
         <div class="inner">
           <h1 class="logo">
             <a href="/" data-navigo>
-              <img class="header_logo" src="../image/logo.png" alt="로고" />
+              <img class="header_logo" src="../image/main_logo.svg" alt="로고" />
             </a>
           </h1>
           <form class="search">

@@ -15,10 +15,10 @@ export async function productDetailHandler(id) {
   const smallTagEl = document.querySelector(".smalltag");
   const discountEl = document.querySelector(".product_info_discount");
   const discountPriceEl = document.querySelector(".option_content_discount");
+  const optionPriceEl = document.querySelector(".option_content_price");
 
   // 초기화
   const INITIAL_COUNT_VALUE = 1;
-
   let countTotalPrice = calculateTotalPrice(
     id.price,
     id.discountRate,
@@ -26,9 +26,11 @@ export async function productDetailHandler(id) {
   );
   const discountPrice = id.price - id.price * (id.discountRate * 0.01);
 
-
+  if (!id.discountRate) {
+    discountPriceEl.innerHTML = formatPrice(id.price);
+    optionPriceEl.style.display = "none";
+  }
   discountPriceEl.innerHTML = formatPrice(countTotalPrice);
-
   countEl.value = INITIAL_COUNT_VALUE;
   countEl.innerHTML = countEl.value;
 
@@ -164,5 +166,35 @@ export async function productDetailHandler(id) {
       discountPrice: discountPrice,
     };
     getStorage.push(itemEl);
+  }
+
+  const shareBtnEl = document.querySelector("#kakaotalk-sharing-btn");
+  shareBtnEl.addEventListener("click", () => {
+    shareMessage();
+  });
+
+  function shareMessage() {
+    Kakao.Share.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "TwoCircle",
+        description: "패스트캠퍼스 4기 프론트엔드 프로젝트",
+        imageUrl: "https://avatars.githubusercontent.com/u/124231330?s=200&v=4",
+        link: {
+          // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+          mobileWebUrl: "http://localhost:1234",
+          webUrl: "http://localhost:1234",
+        },
+      },
+      buttons: [
+        {
+          title: "웹사이트로 이동",
+          link: {
+            mobileWebUrl: "http://localhost:1234",
+            webUrl: "http://localhost:1234",
+          },
+        },
+      ],
+    });
   }
 }

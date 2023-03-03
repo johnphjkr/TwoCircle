@@ -34,7 +34,7 @@ export function cartRender(){
             <div class="list_info">
               <div class="info_wrap">
                 <div class="checkbox_wrap">
-                  <input type="checkbox" class="info_total_checkbox" />
+                  ${!isEmpty?'<input type="checkbox" class="info_total_checkbox" checked/>':''}
                 </div>
                 <div class="info_option_product">상품 / 옵션 정보</div>
                 <div class="info_amount">수량</div>
