@@ -49,7 +49,7 @@
 
         &_input {
           font-size: 1.8rem;
-          width: 40rem;
+          width: 41rem;
           height: 5.5rem;
           padding: 0 1rem;
           border: 1px solid var(--gray-color);
@@ -83,15 +83,41 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-
+        position: relative;
         h3 {
           font-size: 1.8rem;
           width: 13rem;
           text-align: start;
         }
-        &_input{
-          width: 15rem;
-          margin-right: 25rem;
+        .upload_name {
+          font-size: 1.8rem;  
+          height: 4rem;
+          padding: 0 10px;
+          vertical-align: middle;
+          border: 1px solid var(--gray-color);
+          width: 41rem;
+          color: var(--gray-color);
+        }
+        label {
+          position: absolute;
+          top: 0rem;
+          right: 0;
+          padding: 1rem 2rem;
+          color: #fff;
+          vertical-align: middle;
+          background-color: var(--pink-color);
+          cursor: pointer;
+          height: 4rem;
+          margin-left: 1rem;
+          line-height: 2.2rem;
+        }
+        input[type="file"] {
+          position: absolute;
+          width: 0;
+          height: 0;
+          padding: 0;
+          overflow: hidden;
+          border: 0;
         }
         &_alert{
           margin:1.2rem 4rem 0 13rem;

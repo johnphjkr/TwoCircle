@@ -11,7 +11,9 @@ export function accountRender(){
         <div class="title">계좌 추가하기</div>
         <div class="bank_code_wrap">
           <div class="bank_code">은행코드</div>
-          <select class="bank_code_select"></select>
+          <select class="bank_code_select">
+            <option selected="selected">은행을 선택해주세요</option>
+          </select>
         </div>
         <div class="bank_account_wrap">
           <div class="bank_account">계좌번호</div>
