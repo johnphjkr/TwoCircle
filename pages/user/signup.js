@@ -36,7 +36,9 @@ export function signupRender(){
         <!-- 프로필 -->
         <div class="signup_form_profil">
           <h3>프로필</h3>
-          <input type="file" class="signup_form_profil_input">
+          <input class="upload_name" value="첨부파일" placeholder="첨부파일" disabled>
+          <label for="file">파일찾기</label>
+          <input type="file" id="file" class="signup_form_profil_input">
           <p class="signup_form_profil_alert">1MB 이하의 사진만 가능합니다.</p>
           <figure class="signup_form_profil_img"></figure>
         </div>
@@ -113,13 +115,13 @@ export function signupRender(){
   })
 
   // 이미지 파일 업로드
-
+  const uploadName = document.querySelector(".upload_name")
   const inputImgEl = document.querySelector(".signup_form_profil_input[type='file']")
   const figureEl = document.querySelector(".signup_form_profil_img")
   inputImgEl.addEventListener("change", ()=>{
     const file = inputImgEl.files[0]
-    figureEl.innerHTML = ""
     if(file.size <= 1000000){
+      uploadName.setAttribute("value",file.name)
       figureEl.style.border = "1px solid #2DB400"
       const reader = new FileReader()
       reader.readAsDataURL(file)
@@ -127,9 +129,11 @@ export function signupRender(){
         const imgEl = document.createElement("img")
         imgEl.src = e.target.result
         profileImgBase64 = e.target.result
+        figureEl.innerHTML = ""
         figureEl.append(imgEl)
       }) 
     }else{
+      figureEl.innerHTML = ""
       figureEl.style.border = "1px solid var(--pink-color)"
     }
   })

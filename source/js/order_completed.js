@@ -6,19 +6,24 @@ export async function orderCompletedHandler() {
   const bank = JSON.parse(localStorage.getItem("bank"));
   const item = JSON.parse(localStorage.getItem("payment"));
 
-  const nameEl = document.querySelector(".content_name");
-  const dateEl = document.querySelector(".content_date");
-  const infoEl = document.querySelector(".content_info");
-  const listEl = document.querySelector(".content_list");
+  const nameEl = document.querySelector(".name_text");
+  const dateEl = document.querySelector(".date_text");
+  const bankEl = document.querySelector(".bank_text");
+  const accountEl = document.querySelector(".account_text");
+  const priceEl = document.querySelector(".price_text");
+  const listEl = document.querySelector(".list_text");
   const mypageBtnEl = document.querySelector(".content_mypagebtn");
   const homeBtnEl = document.querySelector(".content_homebtn");
 
-  nameEl.innerHTML = `주문자 ${auth.displayName}님 ${auth.email}`;
-  dateEl.innerHTML = `주문일자 ${new Date().toLocaleDateString()}`;
-  infoEl.innerHTML = `결제정보 ${bank.bankName} ${bank.accountNumber} ${
-    bank.balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + "₩"
+  nameEl.innerHTML = `${auth.displayName}`;
+  dateEl.innerHTML = `${new Date().toLocaleDateString()}`;
+  bankEl.innerHTML = `${bank.bankName}`;
+  accountEl.innerHTML = `${bank.accountNumber}`;
+  priceEl.innerHTML = `${
+    item[item.length - 1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+    "원"
   }`;
-  listEl.innerHTML = `주문상품 ${item.length}개의 상품`;
+  listEl.innerHTML = `${item.length}개의 상품을 주문하였습니다`;
 
   mypageBtnEl.addEventListener("click", () => {
     removeItemStorage();
