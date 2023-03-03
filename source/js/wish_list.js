@@ -1,5 +1,7 @@
 // const wishList = JSON.parse(localStorage.getItem('wish'));
 
+import { wishRender } from "../../pages/user/wish_list";
+
 // console.log(wishList)
 
 export function renderWishList(wishList) {
@@ -65,6 +67,7 @@ export function renderWishList(wishList) {
         if (localStorage.getItem("wish")) {
           heartNum.innerText = JSON.parse(localStorage.getItem("wish")).length;
         }
+        wishRender()
         renderWishList(wishList);
         return;
       }

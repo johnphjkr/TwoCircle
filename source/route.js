@@ -26,6 +26,7 @@ import { adminWrap } from '../pages/admin_wrap.js';
 import { searchListRender } from '../pages/user/product_search.js';
 import { adminProduct } from '../pages/admin/product.js';
 import { productUpdate } from '../pages/admin/product_update.js';
+import { userListRender } from '../pages/admin/admin_userlist.js';
 
 export const router = new Navigo('/');
 
@@ -149,6 +150,9 @@ router
     "admin/update/:id" : (match)=>{
       adminWrap()
       productUpdate(match.data.id)
+    }
+    'admin/user_list': () => {
+      userListRender();
     }
   })
   .resolve();

@@ -1,5 +1,7 @@
+import { authCheck } from "../../source/api/certified/authcheck_api.js";
+
 export function navRender() {
-  const app = document.querySelector('#app');
+  const app = document.querySelector("#app");
   app.innerHTML = /*html*/ `
   <section class="mypage">
     <div class="inner">
@@ -33,13 +35,16 @@ export function navRender() {
   </section>;`;
 }
 
-export function mypageRender() {
-  const mypage = document.querySelector('#mypage');
+export async function mypageRender() {
+  const mypage = document.querySelector("#mypage");
+  const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+  const auth = await authCheck(accessToken);
+  
   mypage.innerHTML = /*html*/ `
   <div>
     <div class="info_user">
       <div class="user_name">
-        <span class="name">안녕하세요. <br />OOO </span>
+        <span class="name">안녕하세요. <br />${auth.displayName} 님</span>
       </div>
     </div>
 

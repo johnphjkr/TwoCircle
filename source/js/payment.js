@@ -136,7 +136,7 @@ export async function paymentHandler() {
       return;
     }
     dataList.pop();
-    
+
     dataList.map(async (data) => {
       await payment(data, bankList);
     });
@@ -155,4 +155,5 @@ export async function paymentHandler() {
       localStorage.removeItem("bank");
     });
   });
+
 }

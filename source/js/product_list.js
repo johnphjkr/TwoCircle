@@ -52,6 +52,11 @@ function rendProduct(products) {
                           ? `<img src=${"https://via.placeholder.com/200x200?text=NO+IMAGE"} alt="product">`
                           : `<img src=${product.thumbnail} alt="product">`
                       }
+                      <div class="icons">
+                        <i class="${
+                          isCartItem ? "fa-solid" : "fa-regular"
+                        } fa-heart"></i>
+                      </div>
                     </div>
                     <p class="product_name">${titleCode[0]}</p>
                     <p class="product_code">${
