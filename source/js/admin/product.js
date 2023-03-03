@@ -1,13 +1,12 @@
 import { product } from "../../api/products/admin/product.js";
 import { productDelete } from "../../api/products/admin/product_delete.js";
 
-const id = location.href.split('?')[1];
 
 
-(async () => {
+export async function adminProductHandler(id){
   const data = await product(id);
   renderProduct(data);
-})();
+}
 
 function renderProduct(data) {
   console.log(data);
@@ -31,7 +30,7 @@ function renderProduct(data) {
       <img src=${data.photo} alt="상세설명" />
     </div>
     <div>
-      <a href="./product_update.html?${id}">수정하기</a>
+      <a href="update/${data.id}">수정하기</a>
       <button type="button" class="delete_btn">삭제하기</button>
     </div>
   `;
