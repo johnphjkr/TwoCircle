@@ -27,6 +27,6 @@
     "navigo": "^8.11.1"
   },
   "staticFiles": {
-    "staticPath": "static/image"
+    "staticPath": "static"
   }
 }
