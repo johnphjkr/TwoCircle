@@ -23,17 +23,19 @@ export async function mainListRender() {
 };
 
 function mainProduct(datas, ulEl, num) {
+  let wishList = localStorage.getItem("wish")? JSON.parse(localStorage.getItem("wish")): [];
   const liEls = datas.filter((data, index) => index < num).map((data) => {
+    const isCartItem = wishList.find((wishItem) => wishItem.id === data.id);
     const liEl = document.createElement('li');
     liEl.dataset.id = data.id;
     const titleCode = data.title.split('/');
 
     liEl.innerHTML = /* html */ `
-        <a href="/product_details/${data.id}" class="product">
+        <a href="/product_details/${data.id}" class="data">
           <div class="product_img">
-            <img src=${data.thumbnail ? data.thumbnail : 'https://via.placeholder.com/200x200?text=NO+IMAGE'} alt="product">
+            <img src=${data.thumbnail ? data.thumbnail : 'https://via.placeholder.com/200x200?text=NO+IMAGE'} alt="data">
         <div class="icons">
-          <i class="fa-regular fa-heart"></i>
+          <i class="${ isCartItem ? "fa-solid" : "fa-regular"} fa-heart"></i>
         </div>
           </div>
           <p class="product_name">${titleCode[0]}</p>
@@ -45,6 +47,44 @@ function mainProduct(datas, ulEl, num) {
           </p>
         </a>
       `;
+
+      const iconsEl = liEl.querySelector('.icons')
+      iconsEl.addEventListener('click', (e)=> {
+        e.preventDefault();
+        const iEl = e.target
+
+        const isCartItem = wishList.find((wishItem) => wishItem.id === data.id);
+        const heartNum = document.querySelector(".heart_num");
+        iEl.classList.toggle("fa-regular", isCartItem);
+        iEl.classList.toggle("fa-solid", !isCartItem);
+
+        if(isCartItem) {
+         
+          wishList = wishList.filter((wishItem) => wishItem.id !== data.id);
+
+          localStorage.setItem("wish", JSON.stringify(wishList));
+          heartNum.innerText = JSON.parse(localStorage.getItem("wish")).length;
+          return;
+     
+        }
+         
+        const wish = {
+          id: data.id,
+          price: data.price,
+          code: titleCode[1] !== undefined ? titleCode[1] : titleCode[0],
+          thumbnail: data.thumbnail,
+          title: titleCode[0],
+          discountRate: data.discountRate,
+          description: data.description,
+        };
+        wishList.push(wish);
+
+        localStorage.setItem("wish", JSON.stringify(wishList));
+        if (localStorage.getItem("wish")) {
+          heartNum.innerText = JSON.parse(localStorage.getItem("wish")).length;
+        }
+
+      })
 
     return liEl;
   });

@@ -1,7 +1,7 @@
 .mypage {
   padding: 10rem 0;
   .inner {
-    display: flex;
+    // display: flex;
     
     .mypage_nav {
       position: fixed;
@@ -19,23 +19,28 @@
         height: 15rem;
 
         .shipping_info_title {
-          font-size: 2rem;
+          font-size: 2.4rem;
           font-weight: var(--font-bold);
           margin-top: 5rem;
           margin-bottom: 4rem;
         }
 
         .shipping_info_list {
-          font-size: 1.4rem;
+          font-size: 2rem;
           font-weight: var(--font-basic);
           list-style: none;
           padding-left: 0px;
           .item {
+            
             &_purchase {
+            
+              display: block;
               margin-bottom: 2rem;
             }
             
             &_wish_list {
+              
+              display: block;
               margin-bottom: 2rem;
             }
           }
@@ -47,23 +52,27 @@
         height: 15rem;
 
         .user_info_title {
-          font-size: 2rem;
+          font-size: 2.4rem;
           font-weight: var(--font-bold);
           margin-top: 3rem;
           margin-bottom: 4rem;
         }
 
         .user_info_list {
-          font-size: 1.4rem;
+         font-size: 2rem;
           font-weight: var(--font-basic);
           list-style: none;
           padding-left: 0px;
           .item {
             &_info_change {
+              display: block;
               margin-bottom: 2rem;
+             
             }
             &_info_account {
+              display: block;
               margin-bottom: 2rem;
+          
             }
           }
         }
