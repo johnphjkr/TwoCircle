@@ -17,7 +17,7 @@ function renderList(data) {
   const liEls = data.map((prd, idx) => {
     const liEl = document.createElement('li');
     liEl.innerHTML = /* html */ `
-      <a href="./product.html?${prd.id}" class="admin_list">
+      <a href="./admin/${prd.id}" class="admin_list">
         <input type="checkbox" name="check" data-id=${prd.id} />
         <p>${idx + 1}</p>
         <div class="product_img">

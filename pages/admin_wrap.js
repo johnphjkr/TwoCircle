@@ -17,7 +17,7 @@ export function adminWrap() {
       <div class="menu">
         <ul class="menu_list">
           <li class="now_page">
-            <a href="admin" data-navigo>상품 리스트</a>
+            <a href="/admin" data-navigo>상품 리스트</a>
           </li>
           <li><a href="admin/product_add" data-navigo>상품추가</a></li>
           <li><a href="admin/user_list" data-navigo>회원 목록</a></li>

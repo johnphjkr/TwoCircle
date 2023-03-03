@@ -1,4 +1,5 @@
 import { productAdd } from "../../api/products/admin/product_add.js";
+import { router } from "../../route.js";
 
 export function productAddItem() {
   const nameEl = document.querySelector('.product_name');
@@ -83,7 +84,7 @@ export function productAddItem() {
       discountRate: discount
     });
 
-    window.location.href = '../admin';
+    router.navigate("admin")
   });
 }
 
