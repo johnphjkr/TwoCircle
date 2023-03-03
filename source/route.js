@@ -22,6 +22,7 @@ import { adminPageRender } from '../pages/admin/admin_product_list.js';
 import { adminProductAdd } from '../pages/admin/product_add.js';
 import { pwCheckRender } from '../pages/user/password_check.js';
 import { headerRender } from '../pages/header.js';
+import { adminWrap } from '../pages/admin_wrap.js';
 import { searchListRender } from '../pages/user/product_search.js';
 
 export const router = new Navigo('/');
@@ -62,6 +63,11 @@ router.hooks({
       loginEl.style.display = 'flex';
       logoutEl.style.display = 'none';
     }
+
+    // 관리자 페이지 확인
+    if (match.url.split('/')[0] === 'admin') {
+      adminWrap();
+    }
     done();
   },
   after: (match) => {
@@ -96,12 +102,12 @@ router
       purchaseRender();
     },
     'mypage/changeInfo': (match) => {
-      navRender()
-      pwCheckRender(match.url)
+      navRender();
+      pwCheckRender(match.url);
     },
     'mypage/account': (match) => {
       navRender();
-      pwCheckRender(match.url)
+      pwCheckRender(match.url);
     },
     'product_list/:id': (match) => {
       productListRender(match.data.id);

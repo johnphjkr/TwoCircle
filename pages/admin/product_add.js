@@ -1,10 +1,13 @@
 import { productAddItem } from "../../source/js/admin/product_add";
 
 export function adminProductAdd() {
-  const wrap = document.querySelector("#wrap");
-  wrap.innerHTML = /*html*/`
+  const admin = document.querySelector("#admin");
+  admin.innerHTML = /*html*/`
     <div class="container">
-      <div class="admin">
+      <div class="title">
+        <h2>상품추가</h2>
+      </div>
+      <div class="admin_wrap">
         <div>
           <p>제품이름</p>
           <input type="text" class="product_name" />
