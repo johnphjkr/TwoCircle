@@ -1,8 +1,8 @@
 .wish_list {
   .wish_inner {
+   
     .wish_wrap {
-      width: 99rem;
-      margin: 0 auto;
+     
       .wish_header {
         .header {
           font-size: 3.2rem;
@@ -10,7 +10,7 @@
           padding: 0 0 4rem;
         }
       }
-      
+
       .wish_none {
         display: flex;
         text-align: center;
@@ -19,9 +19,8 @@
         padding-top: 10rem;
         padding-bottom: 20rem;
         .wish_icon {
-          
           .heart_img {
-           width: 18rem;
+            width: 18rem;
           }
         }
         .empty_text {
@@ -29,7 +28,7 @@
           color: var(--darkgray-color);
           font-size: 2.4rem;
         }
-  
+
         .wish_btn {
           background-color: var(--font-color);
           width: 26rem;
@@ -37,27 +36,24 @@
           margin-top: 2rem;
           margin-bottom: 2rem;
           a {
-           
             text-align: center;
-             color: var(--white-color);
+            color: var(--white-color);
           }
         }
       }
-  
 
-      .list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        .wish_item {
-          .wish {
-            position: relative;
-            .wish_img {
-              width: 30.87rem;
-              height: 30.87rem;
-              overflow: hidden;
+      .products_lists {
+        gap: 2%;
+        li {
+          width: 32%;
 
-              img {
+          img {
+              width: 100%;
+              height: 100%;
+              transition: 0.2s ease-out;
+            }
+
+            img {
                 width: 100%;
                 height: 100%;
                 transition: 0.2s ease-out;
@@ -65,68 +61,134 @@
               &:hover img {
                 transform: scale(1.05);
               }
-            }
 
-            .product_name {
-              color: var(--font-color);
-              font-size: 1.6rem;
-              font-weight: var(--font-bold);
-              margin-top: 0.7rem;
-            }
-            .product_code {
-              height: 1.2rem;
-              color: var(--gray-color);
-              font-size: 1.2rem;
-            }
-            .product_discription {
-              width: 30.87rem;
-              height: 3.8rem;
-              font-size: 1.6rem;
-              margin: 1rem 0;
-              padding-right: 2.8rem;
-              word-wrap: break-word;
-            }
-            .product_name {
-              color: var(--font-color);
-              font-size: 1.6rem;
-              font-weight: var(--font-bold);
-              margin-top: 0.7rem;
-            }
-            .product_code {
-              height: 1.2rem;
-              color: var(--gray-color);
-              font-size: 1.2rem;
-            }
-            .product_discription {
-              width: 30.87rem;
-              height: 3.8rem;
-              font-size: 1.6rem;
-              margin: 1rem 0;
-              padding-right: 2.8rem;
-              word-wrap: break-word;
-            }
-            .product_price {
-              font-weight: var(--font-bold);
-              font-size: 1.8rem;
-              .product_sale {
-                color: var(--pink-color);
-                margin-right: 0.65rem;
+            .product_name{
+                // display: -webkit-box;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space:nowrap;
+                color: var(--font-color);
+                font-size: 1.6rem;
+                font-weight: var(--font-bold);
+                margin-top: 0.7rem;
               }
-            }
-          }
-          .icon {
-            width: 2.2rem;
-            i {
-              cursor: pointer;
-              font-size: 2.2rem;
-              margin: 0.5rem 0 4rem 0;
-            }
-            .fa-solid {
-              color: var(--pink-color);
-            }
-          }
+              // 상품 코드
+              .product_code{
+                height: 1.2rem;
+                color: var(--gray-color);
+                font-size: 1.2rem;
+              }
+              // 상품 설명
+             .product_discription{
+                display: -webkit-box;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                width: 100%;
+                height: 3.6rem;
+                font-size: 1.6rem;
+                margin: 1rem 0;
+                padding-right: 2.8rem;
+                word-wrap: break-word;
+              }
+              // 상품 가격 및 할인
+              .product_price{
+                font-weight: var(--font-bold);
+                font-size: 1.8rem;
+                .product_sale{
+                  color: var(--pink-color);
+                  margin-right: 0.65rem;
+                }
+              }
         }
       }
+
     }
   }
 }
+//       .list {
+//         display: flex;
+//         flex-wrap: wrap;
+//         gap: 1.5rem;
+//         .wish_item {
+//           .wish {
+//             position: relative;
+//             .wish_img {
+//               width: 30.87rem;
+//               height: 30.87rem;
+//               overflow: hidden;
+
+//               img {
+//                 width: 100%;
+//                 height: 100%;
+//                 transition: 0.2s ease-out;
+//               }
+//               &:hover img {
+//                 transform: scale(1.05);
+//               }
+//             }
+
+//             .product_name {
+//               color: var(--font-color);
+//               font-size: 1.6rem;
+//               font-weight: var(--font-bold);
+//               margin-top: 0.7rem;
+//             }
+//             .product_code {
+//               height: 1.2rem;
+//               color: var(--gray-color);
+//               font-size: 1.2rem;
+//             }
+//             .product_discription {
+//               width: 30.87rem;
+//               height: 3.8rem;
+//               font-size: 1.6rem;
+//               margin: 1rem 0;
+//               padding-right: 2.8rem;
+//               word-wrap: break-word;
+//             }
+//             .product_name {
+//               color: var(--font-color);
+//               font-size: 1.6rem;
+//               font-weight: var(--font-bold);
+//               margin-top: 0.7rem;
+//             }
+//             .product_code {
+//               height: 1.2rem;
+//               color: var(--gray-color);
+//               font-size: 1.2rem;
+//             }
+//             .product_discription {
+//               width: 30.87rem;
+//               height: 3.8rem;
+//               font-size: 1.6rem;
+//               margin: 1rem 0;
+//               padding-right: 2.8rem;
+//               word-wrap: break-word;
+//             }
+//             .product_price {
+//               font-weight: var(--font-bold);
+//               font-size: 1.8rem;
+//               .product_sale {
+//                 color: var(--pink-color);
+//                 margin-right: 0.65rem;
+//               }
+//             }
+//           }
+//           .icon {
+//             width: 2.2rem;
+//             i {
+//               cursor: pointer;
+//               font-size: 2.2rem;
+//               margin: 0.5rem 0 4rem 0;
+//             }
+//             .fa-solid {
+//               color: var(--pink-color);
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
