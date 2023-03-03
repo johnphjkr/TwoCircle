@@ -22,6 +22,7 @@ import { adminPageRender } from '../pages/admin/admin_product_list.js';
 import { adminProductAdd } from '../pages/admin/product_add.js';
 import { pwCheckRender } from '../pages/user/password_check.js';
 import { headerRender } from '../pages/header.js';
+import { adminWrap } from '../pages/admin_wrap.js';
 import { searchListRender } from '../pages/user/product_search.js';
 
 export const router = new Navigo('/');
@@ -30,7 +31,7 @@ router.hooks({
   before: async (done, match) => {
     const accessToken = JSON.parse(localStorage.getItem('accessToken'));
     const auth = await authCheck(accessToken);
-    headerRender()
+    headerRender();
     const onlyUserPages = ['mypage', 'mypage/wish', 'cart', 'account'];
     const checkInfo = ['mypage/changeInfo', 'mypage/account'];
     if (onlyUserPages.includes(match.url) && !auth) {
@@ -41,7 +42,7 @@ router.hooks({
       router.navigate('/');
       done();
     }
-    if (checkInfo.includes(match.url) && auth){
+    if (checkInfo.includes(match.url) && auth) {
     }
 
     // 로그인 로그아웃시 헤더 변경
@@ -63,6 +64,11 @@ router.hooks({
     } else {
       loginEl.style.display = 'flex';
       logoutEl.style.display = 'none';
+    }
+
+    // 관리자 페이지 확인
+    if (match.url.split('/')[0] === 'admin') {
+      adminWrap();
     }
     done();
   },
@@ -98,12 +104,12 @@ router
       purchaseRender();
     },
     'mypage/changeInfo': (match) => {
-      navRender()
-      pwCheckRender(match.url)
+      navRender();
+      pwCheckRender(match.url);
     },
     'mypage/account': (match) => {
       navRender();
-      pwCheckRender(match.url)
+      pwCheckRender(match.url);
     },
     'product_list/:id': (match) => {
       productListRender(match.data.id);
