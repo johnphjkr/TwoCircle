@@ -93,10 +93,6 @@
           .name {
             font-size: 3.4rem;
             font-weight: var(--font-basic);
-
-            &::after {
-              content: "님";
-            }
           }
         }
       }
