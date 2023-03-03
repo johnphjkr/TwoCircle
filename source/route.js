@@ -150,7 +150,7 @@ router
     "admin/update/:id" : (match)=>{
       adminWrap()
       productUpdate(match.data.id)
-    }
+    },
     'admin/user_list': () => {
       userListRender();
     }
