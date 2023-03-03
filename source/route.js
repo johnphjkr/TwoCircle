@@ -24,6 +24,8 @@ import { pwCheckRender } from '../pages/user/password_check.js';
 import { headerRender } from '../pages/header.js';
 import { adminWrap } from '../pages/admin_wrap.js';
 import { searchListRender } from '../pages/user/product_search.js';
+import { adminProduct } from '../pages/admin/product.js';
+import { productUpdate } from '../pages/admin/product_update.js';
 
 export const router = new Navigo('/');
 
@@ -32,8 +34,10 @@ router.hooks({
     const accessToken = JSON.parse(localStorage.getItem('accessToken'));
     const auth = await authCheck(accessToken);
     headerRender()
-    const onlyUserPages = ['mypage', 'mypage/wish', 'account','payment'];
-    const checkInfo = ['mypage/changeInfo', 'mypage/account'];
+    // 페이지 가드
+    const onlyUserPages = ['mypage', 'mypage/wish', 'account','payment','mypage/changeInfo', 'mypage/account','admin', 'admin/product_add'];
+    const onlyAdminPages = ['admin', 'admin/product_add']
+
     if (onlyUserPages.includes(match.url) && !auth) {
       router.navigate('login');
       done();
@@ -42,6 +46,11 @@ router.hooks({
       router.navigate('/');
       done();
     }
+    // 관리자 페이지
+    if(onlyAdminPages.includes(match.url) && auth.email != process.env.ADMIN ){
+      alert("유용한 사용자가 아닙니다.")
+      history.go(-1)
+    }
 
     // 로그인 로그아웃시 헤더 변경
     const loginEl = document.querySelector('.header_login');
@@ -49,7 +58,6 @@ router.hooks({
     const loginNameEl = document.querySelector('.login_name');
     const logoutBtn = document.querySelector('.logout_btn');
     if (auth) {
-      console.log('[auth sucess]', { user: auth });
       loginEl.style.display = 'none';
       logoutEl.style.display = 'flex';
       loginNameEl.innerHTML = `${auth.displayName}님, 안녕하세요`;
@@ -58,16 +66,14 @@ router.hooks({
         localStorage.removeItem('accessToken');
         loginEl.style.display = 'flex';
         logoutEl.style.display = 'none';
+        router.navigate("/")
+        done()
       });
     } else {
       loginEl.style.display = 'flex';
       logoutEl.style.display = 'none';
     }
 
-    // 관리자 페이지 확인
-    if (match.url.split('/')[0] === 'admin') {
-      adminWrap();
-    }
     done();
   },
   after: (match) => {
@@ -129,11 +135,21 @@ router
       orderCompletedRender();
     },
     "admin": () => {
+      adminWrap()
       adminPageRender();
     },
     'admin/product_add': () => {
+      adminWrap()
       adminProductAdd();
     },
+    'admin/:id':(match) =>{
+      adminWrap()
+      adminProduct(match.data.id)
+    },
+    "admin/update/:id" : (match)=>{
+      adminWrap()
+      productUpdate(match.data.id)
+    }
   })
   .resolve();
 
