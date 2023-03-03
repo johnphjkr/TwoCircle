@@ -24,6 +24,7 @@ import { pwCheckRender } from '../pages/user/password_check.js';
 import { headerRender } from '../pages/header.js';
 import { adminWrap } from '../pages/admin_wrap.js';
 import { searchListRender } from '../pages/user/product_search.js';
+import { userListRender } from '../pages/admin/admin_userlist.js';
 
 export const router = new Navigo('/');
 
@@ -133,6 +134,9 @@ router
     },
     'admin/product_add': () => {
       adminProductAdd();
+    },
+    'admin/user_list': () => {
+      userListRender();
     },
   })
   .resolve();
