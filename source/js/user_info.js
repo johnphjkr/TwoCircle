@@ -203,9 +203,14 @@ export async function userInfoHandler() {
         changeCancelBtnEl.addEventListener("click", modalOff);
 
         changeOkBtnEl.addEventListener("click", async (e) => {
-            await userupdate({ displayName });
-            nameEl.innerText = displayName;
-            modalOff();
+            if (validateName(displayName)) {
+                await userupdate({ displayName });
+                nameEl.innerText = displayName;
+                modalOff();
+            }
+            else {
+                alert('이름 형식이 유효하지 않습니다')
+            }
         });
         window.onclick = function (event) {
             if (event.target == changeModalEl) {
@@ -213,4 +218,10 @@ export async function userInfoHandler() {
             }
         }
     });
+
+    //이름 검사
+    function validateName(name) {
+        const regex = /^[가-힣]+$/;
+        return regex.test(name);
+    }
 }
