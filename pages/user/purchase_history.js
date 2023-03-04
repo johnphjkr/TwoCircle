@@ -43,6 +43,9 @@ export function purchaseRender() {
                 <div class="layerPopup">
                   <div class="spinner"></div>
                 </div>
+                <div class="no_list_container">
+                  <span class="no_list_span">해당 조건의 주문 내역이 없습니다.<span>
+                </div>
                 <ul class="list_item_list_select"></ul>
                 <ul class="list_item_list_confirm"></ul>
                 <ul class="list_item_list_cancel"></ul>
