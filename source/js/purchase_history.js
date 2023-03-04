@@ -19,6 +19,8 @@ export async function purchaseHandler() {
   const status2FilterEl = document.querySelector('.delivery_filter_status_2');
   const status3FilterEl = document.querySelector('.delivery_filter_status_3');
   const paginationContainer = document.querySelector('.list_item_pagination');
+  const noListContainerEl = document.querySelector('.no_list_container');
+  const noListSpanEl = document.querySelector('.no_list_span');
 
   let product_title = '';
   let product_price = 0;
@@ -198,6 +200,7 @@ export async function purchaseHandler() {
     filtered_items = dateFilter(list_items, days);
     console.log(filtered_items);
     if (filtered_items.length > 0) {
+      noListContainerEl.style.display = "none";
       const liEls = filtered_items.map(function (item) {
         const listItemEl = document.createElement('li');
 
@@ -294,6 +297,9 @@ export async function purchaseHandler() {
         return listItemEl;
       });
     }
+    else {
+      noListContainerEl.style.display = "flex";
+    }
     hideLoading();
     switch (status) {
       case 1:
@@ -301,10 +307,16 @@ export async function purchaseHandler() {
       case 2:
         listItemContainerEl.removeChild(listItemSelectEl);
         listItemContainerEl.removeChild(listItemCancelEl);
+        if (listItemConfirmEl.children.length === 0) {
+          noListContainerEl.style.display = "flex";
+        }
         break;
       case 3:
         listItemContainerEl.removeChild(listItemSelectEl);
         listItemContainerEl.removeChild(listItemConfirmEl);
+        if (listItemCancelEl.children.length === 0) {
+          noListContainerEl.style.display = "flex";
+        }
         break;
     }
 

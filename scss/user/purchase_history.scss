@@ -241,6 +241,20 @@
         }
       }
 
+      .no_list_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: inherit;
+        height: 40rem;
+        font-size: 3rem;
+        color: gray;
+
+        .no_list_span {
+          text-align: center;
+        }
+      }
+
       .list_item_list_select,
       .list_item_list_confirm,
       .list_item_list_cancel {
