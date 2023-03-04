@@ -1,15 +1,17 @@
 import { product } from "../../api/products/admin/product_update.js";
 
-export function productUpdateHandler(id){
+export function productUpdateHandler(id) {
   const nameEl = document.querySelector('.product_name');
   const priceEl = document.querySelector('.product_price');
   const textEl = document.querySelector('.product_text');
   const tagEl = document.querySelector('.product_tag');
-  const thumbnailEl = document.querySelector('.product_img');
+  const thumbnailEl = document.querySelector('.thumbnail_img');
+  const thumbnailBtn = document.querySelector('.thumbnail_btn');
   const thumbnailUpdate = document.querySelector('.product_update_img');
-  const photoEl = document.querySelector('.product_detail_img');
+  const photoEl = document.querySelector('.photo_img');
+  const photoBtn = document.querySelector('.photo_btn');
   const photoUpdate = document.querySelector('.detail_update_img');
-  const soldoutEl = document.querySelector('.soldout');
+  const soldoutEl = document.querySelector('.soldout_btn');
   const discountEl = document.querySelector('.product_discount');
   const product_update = document.querySelector('.product_update');
 
@@ -62,6 +64,7 @@ export function productUpdateHandler(id){
     soldout = data.isSoldOut;
     if (soldout) {
       soldoutEl.innerText = '매진';
+      soldoutEl.classList.add('sold');
     } else {
       soldoutEl.innerText = '판매중';
     }
@@ -85,6 +88,9 @@ export function productUpdateHandler(id){
   tagEl.addEventListener('input', e => {
     tag = e.target.value.split(', ');
   });
+
+  // 제품 사진 찾기
+  thumbnailBtn.addEventListener('click', () => thumbnailUpdate.click());
   thumbnailUpdate.addEventListener('change', event => {
     const file = thumbnailUpdate.files[0];
     const reader = new FileReader();
@@ -97,6 +103,8 @@ export function productUpdateHandler(id){
     });
   });
 
+  // 제품 상제 사진
+  photoBtn.addEventListener('click', () => photoUpdate.click());
   photoUpdate.addEventListener('change', event => {
     const file = photoUpdate.files[0];
     const reader = new FileReader();
@@ -112,9 +120,11 @@ export function productUpdateHandler(id){
     if (soldout) {
       soldout = false;
       soldoutEl.innerText = '판매중';
+      soldoutEl.classList.remove('sold');
     } else {
       soldout = true;
       soldoutEl.innerText = '매진';
+      soldoutEl.classList.add('sold');
     }
   });
 
