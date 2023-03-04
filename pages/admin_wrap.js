@@ -6,7 +6,7 @@ export function adminWrap() {
     <header>
       <div class="top">
         <h1 class="logo">
-          <a href="/" data-navigo><img src="../image/logo.png" alt="로고"
+          <a href="/" data-navigo><img src="/image/logo.png" alt="로고"
           /></a>
         </h1>
         <div class="top_inner">
