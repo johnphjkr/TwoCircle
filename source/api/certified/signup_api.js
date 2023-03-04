@@ -9,7 +9,6 @@ export async function signUp(method, data){
     body : JSON.stringify(data)
   })
   const json = await res.json()
-  console.log(json)
   if(res.status===401){
     alert("이미 존재하는 이메일 입니다.")
   }else if(res.status === 400){

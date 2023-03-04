@@ -18,7 +18,6 @@ export async function productRender(searchs, tag) {
     "searchTags": [...tag]
   };
   const search = await searchProduct(body);
-  console.log(search)
   loading()
   await sleep();
   rendProduct(search)

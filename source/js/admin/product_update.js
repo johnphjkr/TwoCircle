@@ -28,8 +28,6 @@ export function productUpdateHandler(id){
   })();
 
   function renderProduct(data) {
-    console.log(data);
-
     name = nameEl.value = data.title;
     price = priceEl.value = data.price;
     text = textEl.value = data.description;
@@ -90,7 +88,6 @@ export function productUpdateHandler(id){
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.addEventListener('load', e => {
-      // console.log(e.target.result); // base64
       thumbnailImgBase64 = e.target.result;
       const img = document.querySelector('.product_img img');
       img.src = thumbnailImgBase64;
@@ -137,7 +134,6 @@ export function productUpdateHandler(id){
       isSoldOut: soldout,
       discountRate: discount
     });
-    console.log('수정완료');
   });
 }
 

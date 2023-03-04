@@ -196,7 +196,6 @@ export async function purchaseHandler() {
     list_items = res;
 
     filtered_items = dateFilter(list_items, days);
-    console.log(filtered_items);
     if (filtered_items.length > 0) {
       const liEls = filtered_items.map(function (item) {
         const listItemEl = document.createElement('li');
@@ -248,7 +247,6 @@ export async function purchaseHandler() {
           listItemConfirmEl.appendChild(listItemEl);
         }
         if (deal_done == false && deal_canceled == false) {
-          console.log(detailId);
           const btnOkEl = document.createElement('div');
           btnOkEl.classList.add('btn_ok');
           btnOkEl.textContent = '확정';
@@ -261,7 +259,6 @@ export async function purchaseHandler() {
             alert('구매가 확정되었습니다!');
             deal_done = true;
             detailId = item.detailId;
-            console.log({ detailId });
             purchaseOk({ detailId });
             btnOkEl.style.display = 'none';
             btnCancelEl.style.display = 'none';
@@ -274,9 +271,7 @@ export async function purchaseHandler() {
             alert('구매가 취소되었습니다.');
             deal_canceled = true;
             detailId = item.detailId;
-            console.log(item.isCanceled);
             purchaseCancel({ detailId });
-            console.log(item.isCanceled);
             btnOkEl.style.display = 'none';
             btnCancelEl.style.display = 'none';
             btnEl.textContent = '구매 취소';
@@ -309,7 +304,6 @@ export async function purchaseHandler() {
     }
 
     const listItems = listItemContainerEl.querySelectorAll('ul li');
-    console.log(listItems);
 
     updatePagination(listItems.length, itemsPerPage, currentPage);
     displayPage(currentPage, itemsPerPage);
