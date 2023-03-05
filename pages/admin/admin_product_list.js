@@ -8,7 +8,7 @@ export function adminPageRender() {
         <div class="title">
           <h2>상품 리스트</h2>
           <div class="button_box">
-            <button type="button" class="select_delete">
+            <button type="button" class="delete_btn">
               삭제하기
             </button>
             <a href="/admin/product_add" class="select_add">추가하기</a>

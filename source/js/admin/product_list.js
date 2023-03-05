@@ -12,7 +12,7 @@ export async function adminProductList() {
 function renderList(data) {
   const listEl = document.querySelector('.product_admin_ul');
   const labelEl = document.querySelector('label');
-  const deleteBtn = document.querySelector('.select_delete');
+  const deleteBtn = document.querySelector('.delete_btn');
   console.log(data);
   const liEls = data.map((prd, idx) => {
     const liEl = document.createElement('li');
