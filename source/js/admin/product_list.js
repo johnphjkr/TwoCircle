@@ -12,12 +12,12 @@ export async function adminProductList() {
 function renderList(data) {
   const listEl = document.querySelector('.product_admin_ul');
   const labelEl = document.querySelector('label');
-  const deleteBtn = document.querySelector('.select_delete');
+  const deleteBtn = document.querySelector('.delete_btn');
   console.log(data);
   const liEls = data.map((prd, idx) => {
     const liEl = document.createElement('li');
     liEl.innerHTML = /* html */ `
-      <a href="./product.html?${prd.id}" class="admin_list">
+      <a href="./admin/${prd.id}" class="admin_list">
         <input type="checkbox" name="check" data-id=${prd.id} />
         <p>${idx + 1}</p>
         <div class="product_img">

@@ -23,7 +23,7 @@ export async function orderCompletedHandler() {
     item[item.length - 1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
     "원"
   }`;
-  listEl.innerHTML = `${item.length}개의 상품을 주문하였습니다`;
+  listEl.innerHTML = `${item.length-1}개의 상품을 주문하였습니다`;
 
   mypageBtnEl.addEventListener("click", () => {
     removeItemStorage();

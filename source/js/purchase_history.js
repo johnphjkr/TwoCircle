@@ -19,6 +19,8 @@ export async function purchaseHandler() {
   const status2FilterEl = document.querySelector('.delivery_filter_status_2');
   const status3FilterEl = document.querySelector('.delivery_filter_status_3');
   const paginationContainer = document.querySelector('.list_item_pagination');
+  const noListContainerEl = document.querySelector('.no_list_container');
+  const noListSpanEl = document.querySelector('.no_list_span');
 
   let product_title = '';
   let product_price = 0;
@@ -196,111 +198,125 @@ export async function purchaseHandler() {
     list_items = res;
 
     filtered_items = dateFilter(list_items, days);
+    console.log(filtered_items);
+    if (filtered_items.length > 0) {
+      noListContainerEl.style.display = "none";
+      const liEls = filtered_items.map(function (item) {
+        const listItemEl = document.createElement('li');
 
-    const liEls = filtered_items.map(function (item) {
-      const listItemEl = document.createElement('li');
+        listItemEl.classList.add('list_item');
+        listItemEl.setAttribute('data-status', 'select');
 
-      listItemEl.classList.add('list_item');
-      listItemEl.setAttribute('data-status', 'select');
+        //상품이미지
+        const imgEl = document.createElement('div');
+        imgEl.classList.add('list_item_productInfo');
+        var product_img = document.createElement('img');
+        product_img.src = item.product.thumbnail;
+        imgEl.append(product_img);
 
-      //상품이미지
-      const imgEl = document.createElement('div');
-      imgEl.classList.add('list_item_productInfo');
-      var product_img = document.createElement('img');
-      product_img.src = item.product.thumbnail;
-      imgEl.append(product_img);
+        //상품명
+        const titleEl = document.createElement('div');
+        titleEl.classList.add('list_item_orderNumber');
 
-      //상품명
-      const titleEl = document.createElement('div');
-      titleEl.classList.add('list_item_orderNumber');
+        //상품가격
+        const priceEl = document.createElement('div');
+        priceEl.classList.add('list_item_payAmount');
 
-      //상품가격
-      const priceEl = document.createElement('div');
-      priceEl.classList.add('list_item_payAmount');
+        //주문시간
+        const timeEl = document.createElement('div');
+        timeEl.classList.add('list_item_orderDate');
 
-      //주문시간
-      const timeEl = document.createElement('div');
-      timeEl.classList.add('list_item_orderDate');
+        //버튼
+        const btnEl = document.createElement('div');
+        btnEl.classList.add('list_item_btn');
 
-      //버튼
-      const btnEl = document.createElement('div');
-      btnEl.classList.add('list_item_btn');
+        detailId = item.detailId;
+        deal_canceled = item.isCanceled;
+        deal_done = item.done;
 
-      detailId = item.detailId;
-      deal_canceled = item.isCanceled;
-      deal_done = item.done;
+        titleEl.textContent = item.product.title;
+        priceEl.textContent = item.product.price + ' 원';
+        timeEl.textContent = getdate(item.timePaid);
+        const productInfoEl = document.createElement('div');
+        productInfoEl.classList.add('list_item_info');
+        productInfoEl.append(imgEl, titleEl);
+        listItemEl.append(timeEl, productInfoEl, priceEl, btnEl);
 
-      titleEl.textContent = item.product.title;
-      priceEl.textContent = item.product.price + ' 원';
-      timeEl.textContent = getdate(item.timePaid);
-      const productInfoEl = document.createElement('div');
-      productInfoEl.classList.add('list_item_info');
-      productInfoEl.append(imgEl, titleEl);
-      listItemEl.append(timeEl, productInfoEl, priceEl, btnEl);
-
-      if (deal_canceled == true && deal_done == false) {
-        btnEl.textContent = '구매 취소';
-        listItemCancelEl.appendChild(listItemEl);
-      }
-      if (deal_done == true && deal_canceled == false) {
-        btnEl.textContent = '구매 확정';
-        listItemConfirmEl.appendChild(listItemEl);
-      }
-      if (deal_done == false && deal_canceled == false) {
-        console.log(detailId);
-        const btnOkEl = document.createElement('div');
-        btnOkEl.classList.add('btn_ok');
-        btnOkEl.textContent = '확정';
-        const btnCancelEl = document.createElement('div');
-        btnCancelEl.classList.add('btn_cancel');
-        btnCancelEl.textContent = '취소';
-
-        btnOkEl.addEventListener('click', (e) => {
-          //구매 확정
-          alert('구매가 확정되었습니다!');
-          deal_done = true;
-          detailId = item.detailId;
-          console.log({ detailId });
-          purchaseOk({ detailId });
-          btnOkEl.style.display = 'none';
-          btnCancelEl.style.display = 'none';
-          btnEl.textContent = '구매 확정';
-          //listItemEl.setAttribute('data-status', 'confirm');
-        });
-
-        btnCancelEl.addEventListener('click', (e) => {
-          //구매 취소
-          alert('구매가 취소되었습니다.');
-          deal_canceled = true;
-          detailId = item.detailId;
-          console.log(item.isCanceled);
-          purchaseCancel({ detailId });
-          console.log(item.isCanceled);
-          btnOkEl.style.display = 'none';
-          btnCancelEl.style.display = 'none';
+        if (deal_canceled == true && deal_done == false) {
           btnEl.textContent = '구매 취소';
-          //listItemEl.setAttribute('data-status', 'cancel');
-          //listItemEl.style.display = "none";
-        });
+          listItemCancelEl.appendChild(listItemEl);
+        }
+        if (deal_done == true && deal_canceled == false) {
+          btnEl.textContent = '구매 확정';
+          listItemConfirmEl.appendChild(listItemEl);
+        }
+        if (deal_done == false && deal_canceled == false) {
+          console.log(detailId);
+          const btnOkEl = document.createElement('div');
+          btnOkEl.classList.add('btn_ok');
+          btnOkEl.textContent = '확정';
+          const btnCancelEl = document.createElement('div');
+          btnCancelEl.classList.add('btn_cancel');
+          btnCancelEl.textContent = '취소';
 
-        btnEl.append(btnOkEl, btnCancelEl);
+          btnOkEl.addEventListener('click', (e) => {
+            //구매 확정
+            alert('구매가 확정되었습니다!');
+            deal_done = true;
+            detailId = item.detailId;
+            console.log({ detailId });
+            purchaseOk({ detailId });
+            btnOkEl.style.display = 'none';
+            btnCancelEl.style.display = 'none';
+            btnEl.textContent = '구매 확정';
+            //listItemEl.setAttribute('data-status', 'confirm');
+          });
 
-        listItemSelectEl.appendChild(listItemEl);
-      }
+          btnCancelEl.addEventListener('click', (e) => {
+            //구매 취소
+            alert('구매가 취소되었습니다.');
+            deal_canceled = true;
+            detailId = item.detailId;
+            console.log(item.isCanceled);
+            purchaseCancel({ detailId });
+            console.log(item.isCanceled);
+            btnOkEl.style.display = 'none';
+            btnCancelEl.style.display = 'none';
+            btnEl.textContent = '구매 취소';
+            //listItemEl.setAttribute('data-status', 'cancel');
+            //listItemEl.style.display = "none";
+          });
 
-      hideLoading();
-      return listItemEl;
-    });
+          btnEl.append(btnOkEl, btnCancelEl);
+
+          listItemSelectEl.appendChild(listItemEl);
+        }
+      
+
+        hideLoading();
+        return listItemEl;
+      });
+    }
+    else {
+      noListContainerEl.style.display = "flex";
+    }
+    hideLoading();
     switch (status) {
       case 1:
         break;
       case 2:
         listItemContainerEl.removeChild(listItemSelectEl);
         listItemContainerEl.removeChild(listItemCancelEl);
+        if (listItemConfirmEl.children.length === 0) {
+          noListContainerEl.style.display = "flex";
+        }
         break;
       case 3:
         listItemContainerEl.removeChild(listItemSelectEl);
         listItemContainerEl.removeChild(listItemConfirmEl);
+        if (listItemCancelEl.children.length === 0) {
+          noListContainerEl.style.display = "flex";
+        }
         break;
     }
 

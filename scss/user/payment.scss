@@ -184,13 +184,15 @@
 
     // 결제정보요약
     .inner_summary {
+      position: sticky;
+      top: 0;
       display: flex;
       flex-direction: column;
       width: 35rem;
       height: 40rem;
       background-color: var(--more-lightgray-color);
       padding: 3rem;
-      margin: 12rem 0 0 12rem;
+      margin: 7rem 0 0 12rem;
 
       .summary_info {
         display: flex;
