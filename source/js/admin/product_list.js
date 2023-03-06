@@ -20,7 +20,7 @@ function renderList(data) {
         <input type="checkbox" name="check" data-id=${prd.id} />
         <p>${idx + 1}</p>
         <div class="product_img">
-          <img src="${prd.thumbnail}" alt="썸네일" />
+          <img src="${prd.thumbnail ? prd.thumbnail : 'https://via.placeholder.com/100x100?text=NO+IMAGE'}" alt="썸네일" />
         </div>
         <div class="product_text">
           <p>${prd.title}</p>
