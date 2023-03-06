@@ -46,62 +46,98 @@ PW : abcd1234
 - Deploy: `Netlify`
 - Bundler: `Parcel 1`
 
-
 ### 프로젝트 구조
+
 ```
 TwoCircle
+├─ .gitignore
 ├─ image
 ├─ index.html
 ├─ LICENSE
 ├─ package-lock.json
 ├─ package.json
 ├─ pages
-│  ├─ account.html
-│  ├─ cart.html
-│  ├─ login.html
-│  ├─ mypage.html
-│  ├─ order_completed.html
-│  ├─ password_change.html
-│  ├─ password_check.html
-│  ├─ payment.html
-│  ├─ product_details.html
-│  ├─ product_list.html
-│  ├─ purchase_history.html
-│  ├─ signup.html
-│  ├─ user_information.html
-│  └─ wish_list.html
+│  ├─ admin
+│  │  ├─ admin_product_list.js
+│  │  ├─ admin_userlist.js
+│  │  ├─ product.js
+│  │  ├─ product_add.js
+│  │  └─ product_update.js
+│  ├─ admin_wrap.js
+│  ├─ header.js
+│  └─ user
+│     ├─ account.js
+│     ├─ cart.js
+│     ├─ login.js
+│     ├─ main.js
+│     ├─ mypage.js
+│     ├─ order_completed.js
+│     ├─ password_check.js
+│     ├─ payment.js
+│     ├─ product_details.js
+│     ├─ product_list.js
+│     ├─ purchase_history.js
+│     ├─ signup.js
+│     ├─ user_information.js
+│     └─ wish_list.js
 ├─ README.md
 ├─ scss
 │  ├─ abstracts
-│  └─ base
-└─ source
-   ├─ api
-   │  ├─ account
-   │  │  └─ account_add.js
-   │  ├─ certified
-   │  │  ├─ authcheck_api.js
-   │  │  ├─ login_api.js
-   │  │  ├─ signup_api.js
-   │  │  └─ userupdate_api.js
-   │  ├─ products
-   │  │  ├─ admin
-   │  │  │  ├─ allProduct_api.js
-   │  │  │  └─ product_add.js
-   │  │  ├─ common
-   │  │  │  └─ product_detail_api.js
-   │  │  └─ user
-   │  │     ├─ payment_api.js
-   │  │     └─ purchase_history_api.js
-   │  ├─ requests.js
-   │  ├─ userAPI.js
-   │  └─ util.js
-   ├─ js
-   │  ├─ login.js
-   │  ├─ payment.js
-   │  ├─ product_details.js
-   │  ├─ purchase_history.js
-   │  └─ signup.js
-   └─ main.js
-
+│  ├─ admin
+│  ├─ base
+│  └─ user
+├─ source
+│  ├─ api
+│  │  ├─ account
+│  │  │  ├─ account_able_check.js
+│  │  │  ├─ account_add.js
+│  │  │  ├─ account_add_check.js
+│  │  │  └─ account_delete.js
+│  │  ├─ certified
+│  │  │  ├─ authcheck_api.js
+│  │  │  ├─ login_api.js
+│  │  │  ├─ pw_check_api.js
+│  │  │  ├─ signup_api.js
+│  │  │  └─ userupdate_api.js
+│  │  ├─ products
+│  │  │  ├─ admin
+│  │  │  │  ├─ allProduct_api.js
+│  │  │  │  ├─ product.js
+│  │  │  │  ├─ product_add.js
+│  │  │  │  ├─ product_delete.js
+│  │  │  │  ├─ product_update.js
+│  │  │  │  └─ user_list_api.js
+│  │  │  ├─ common
+│  │  │  │  └─ product_detail_api.js
+│  │  │  └─ user
+│  │  │     ├─ payment_api.js
+│  │  │     ├─ purchase_cancel_api.js
+│  │  │     ├─ purchase_history_api.js
+│  │  │     ├─ purchase_history_only_api.js
+│  │  │     └─ purchase_ok_api.js
+│  │  ├─ requests.js
+│  │  ├─ userAPI.js
+│  │  └─ util.js
+│  └─ js
+│     ├─ account.js
+│     ├─ admin
+│     │  ├─ admin.js
+│     │  ├─ product.js
+│     │  ├─ product_add.js
+│     │  ├─ product_list.js
+│     │  ├─ product_update.js
+│     │  └─ user_list.js
+│     ├─ cart.js
+│     ├─ loading.js
+│     ├─ login.js
+│     ├─ main.js
+│     ├─ order_completed.js
+│     ├─ payment.js
+│     ├─ product_details.js
+│     ├─ product_list.js
+│     ├─ purchase_history.js
+│     ├─ pw_check.js
+│     ├─ user_info.js
+│     └─ wish_list.js
+└─ static
 ```
-
