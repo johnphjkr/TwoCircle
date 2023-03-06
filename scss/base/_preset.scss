@@ -19,6 +19,13 @@ a {
   text-decoration: none;
 }
 
+button,
+input {
+  color: var(--font-color);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+  font-size: 1.6rem;
+}
+
 .inner {
   max-width: 134rem;
   margin: 0 auto;

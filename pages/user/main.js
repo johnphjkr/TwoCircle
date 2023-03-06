@@ -12,7 +12,7 @@ export function mainRender() {
                   <img src="./image/U1 (11).jpg" alt="배너" />
                 </div>
                 <div class="swiper_text text_black">
-                  <p>일상의 편안함<br/>라운즈 스탠다드</p>
+                  <p>일상의 편안함<br/>투써클 스탠다드</p>
                   <span>가볍고 편안하게, 또 자연스럽게<br />티타늄 & 베이직 컬렉션을 공개합니다.</span>
                 </div>
               </li>
@@ -21,8 +21,8 @@ export function mainRender() {
                   <img src="./image/U1 (12).jpg" alt="배너" />
                 </div>
                 <div class="swiper_text">
-                  <p>ROUNZ<br/>ABSOLUTE</p>
-                  <span>가장 섬세한 클래식<br />라운즈 앱솔루트</span>
+                  <p>TWOCIRCLE<br/>ABSOLUTE</p>
+                  <span>가장 섬세한 클래식<br />투써클 앱솔루트</span>
                 </div>
               </li>
               <li class="swiper-slide">
