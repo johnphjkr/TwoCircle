@@ -1,9 +1,11 @@
+import { cartRender } from "../../pages/user/cart";
+
 /**장바구니 로컬스토리지에 저장된 데이터 갖고오는 변수*/
 
 export function cartHandler() {
   const ulEl = document.querySelector(".cart_list");
   const totalCheckbox = document.querySelector(".info_total_checkbox");
-  const allCheckBox = document.querySelectorAll('input[checkbox]')
+  
   const cancelBtn = document.querySelector(".cancel_btn");
   const purchaseBtn = document.querySelector(".purchase_btn");
   const basketItem = JSON.parse(localStorage.getItem("basket"));
@@ -12,12 +14,13 @@ export function cartHandler() {
     
     const selectedItemList = Array.from(document.querySelectorAll(".want_checkbox:checked"))
     .map((selectedInput) => selectedInput.closest(".cart_list_item").dataset.id);
-
+     
     selectedItemList.forEach((id) => {
       cartItemList = cartItemList.filter((cartItem) => cartItem.id !== id);
     });
 
     localStorage.setItem("basket", JSON.stringify(cartItemList));
+    cartRender()
   });
 
   totalCheckbox?.addEventListener("change", (e) => {
@@ -40,18 +43,24 @@ export function cartHandler() {
       document.querySelectorAll(".want_checkbox:checked")
     )
    
-    const selectedItemList = Array.from(
-      document.querySelectorAll(".want_checkbox:checked")
-    ).map(
-      (selectedInput) => {
-        const id = selectedInput.closest(".cart_list_item").dataset.id;
-        return basketItem.find(item => item.id === id)
-      }
-    );
+    if(isChecked) {
 
-    // console.log(selectedItemList)
+      const selectedItem = Array.from(
+        document.querySelectorAll(".want_checkbox:checked")
+      ).map(
+        (selectedInput) => {
+          const id = selectedInput.closest(".cart_list_item").dataset.id;
+          return basketItem.find(item => item.id === id)
+          
+        }
+        );
+
+
+        localStorage.setItem("basket",JSON.stringify(selectedItem))
+        
+    }
+   
     
-    localStorage.setItem("basket", JSON.stringify(selectedItemList));
 
     if(!isChecked) {
 
@@ -91,7 +100,7 @@ export const renderCartList = () => {
         liEl.innerHTML = /*html*/ `
                         <div class="cart_card">
                             <div class="want_checkbox_wrap">
-                              <input type="checkbox" class="want_checkbox" />
+                             ${!isEmpty?`<input type="checkbox" class="want_checkbox" checked/>`: ''} 
                             </div>
                             <div class="img_wrap">
                               <img

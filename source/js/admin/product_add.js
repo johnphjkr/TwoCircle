@@ -1,11 +1,14 @@
 import { productAdd } from "../../api/products/admin/product_add.js";
+import { router } from "../../route.js";
 
 export function productAddItem() {
   const nameEl = document.querySelector('.product_name');
   const priceEl = document.querySelector('.product_price');
   const textEl = document.querySelector('.product_text');
   const tagEl = document.querySelector('.product_tag');
+  const thumbnailBtn = document.querySelector('.thumbnail_btn');
   const thumbnailEl = document.querySelector('.product_thumbnail');
+  const photoBtn = document.querySelector('.photo_btn');
   const photoEl = document.querySelector('.product_photo');
   const discountEl = document.querySelector('.product_discount');
   const registrationBtn = document.querySelector('.product_registration');
@@ -31,10 +34,14 @@ export function productAddItem() {
     text = e.target.value;
   });
   tagEl.addEventListener('input', e => {
-    console.log(e.target.value.split(', '));
+    // console.log(e.target.value.split(', '));
     tag = e.target.value.split(', ');
   });
 
+  // 제품 사진
+  thumbnailBtn.addEventListener('click', () => {
+    thumbnailEl.click();
+  });
   thumbnailEl.addEventListener('change', event => {
     const file = thumbnailEl.files[0];
     const reader = new FileReader();
@@ -42,14 +49,18 @@ export function productAddItem() {
     reader.addEventListener('load', e => {
       // console.log(e.target.result); // base64
       thumbnailImgBase64 = e.target.result;
-      console.log(thumbnailImgBase64);
-      const img = document.querySelector('.img');
+      // console.log(thumbnailImgBase64);
+      const img = document.querySelector('.thumbnail_img');
       img.innerHTML = /* html */ `
         <img src="${thumbnailImgBase64}" alt="썸네일" />
       `;
     });
   });
 
+  // 제품 상세 사진
+  photoBtn.addEventListener('click', () => {
+    photoEl.click();
+  });
   photoEl.addEventListener('change', event => {
     const file = photoEl.files[0];
     const reader = new FileReader();
@@ -57,7 +68,7 @@ export function productAddItem() {
     reader.addEventListener('load', e => {
       // console.log(e.target.result);
       photoImgBase64 = e.target.result;
-      const img = document.querySelector('.detail_img');
+      const img = document.querySelector('.photo_img');
       img.innerHTML = /* html */ `
         <img src="${photoImgBase64}" alt="상세이미지" />
       `;
@@ -83,7 +94,7 @@ export function productAddItem() {
       discountRate: discount
     });
 
-    window.location.href = '../admin';
+    router.navigate("admin")
   });
 }
 

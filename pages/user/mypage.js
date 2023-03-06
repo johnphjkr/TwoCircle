@@ -1,5 +1,7 @@
+import { authCheck } from "../../source/api/certified/authcheck_api.js";
+
 export function navRender() {
-  const app = document.querySelector('#app');
+  const app = document.querySelector("#app");
   app.innerHTML = /*html*/ `
   <section class="mypage">
     <div class="inner">
@@ -12,8 +14,8 @@ export function navRender() {
           <div class="shipping_info_title">쇼핑 정보</div>
           <ul class="shipping_info_list">
             <li class="item">
-              <a class="item_purchase" href="mypage/purchase" data-navigo>구매 목록 / 배송조회</a>
-              <a class="item_wish_list" href="mypage/wish" data-navigo>찜리스트</a>
+              <a class="item_purchase" href="/mypage/purchase" data-navigo>구매 목록 / 배송조회</a>
+              <a class="item_wish_list" href="/mypage/wish" data-navigo>찜리스트</a>
             </li>
           </ul>
         </div>
@@ -22,8 +24,8 @@ export function navRender() {
           <div class="user_info_title">회원 정보</div>
           <ul class="user_info_list">
             <li class="item">
-              <a class="item_info_change" href="mypage/changeInfo" data-navigo>회원 정보 변경</a>
-              <a class="item_info_account" href="mypage/account" data-navigo>계좌 관리</a>
+              <a class="item_info_change" href="/mypage/changeInfo" data-navigo>회원 정보 변경</a>
+              <a class="item_info_account" href="/mypage/account" data-navigo>계좌 관리</a>
             </li>
           </ul>
         </div>
@@ -33,13 +35,16 @@ export function navRender() {
   </section>;`;
 }
 
-export function mypageRender() {
-  const mypage = document.querySelector('#mypage');
+export async function mypageRender() {
+  const mypage = document.querySelector("#mypage");
+  const accessToken = JSON.parse(localStorage.getItem("accessToken"));
+  const auth = await authCheck(accessToken);
+  
   mypage.innerHTML = /*html*/ `
   <div>
     <div class="info_user">
       <div class="user_name">
-        <span class="name">안녕하세요. <br />OOO </span>
+        <span class="name">안녕하세요. <br />${auth.displayName} 님</span>
       </div>
     </div>
 
