@@ -158,8 +158,13 @@ export async function paymentHandler() {
     router.navigate("cart");
   });
 
-  const allLinks = document.querySelectorAll("a");
-  allLinks.forEach((link) => {
-    link.addEventListener("click", () => {});
+  const cardImg = document.querySelector(".card_img");
+  // cardImg.innerHTML = `<img src="${selectedBank.bankImage}" alt="은행">`;
+  
+  new Swiper(".bank_card", {
+    pagination: {
+      el: ".swiper-pagination",
+      dynamicBullets: true,
+    },
   });
 }
