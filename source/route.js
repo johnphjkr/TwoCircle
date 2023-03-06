@@ -168,7 +168,6 @@ router
       adminWrap();
       adminProduct(match.data.id);
       const ativeNav = document.querySelector('.menu_prd_list');
-      console.log({ ativeNav });
       ativeNav.classList.add('now_page');
     },
     "admin/update/:id": (match) => {
