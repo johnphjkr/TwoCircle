@@ -21,10 +21,13 @@ export async function productDetailRender(data) {
           </div>
             <!-- 제품 정보 -->
             <section class="product_info">
+              <div class="title">
               <div class="product_info_title">${id.title.replace(
                 /\/.*/,
                 ""
               )}</div>
+              <div class="product_info_code"></div>
+            </div>
               <!-- 평점, 찜 유뮤, share -->
               <section class="product_info_option">
                 <div class="option_stock">

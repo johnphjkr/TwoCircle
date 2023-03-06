@@ -25,6 +25,9 @@ export async function productDetailHandler(id) {
     INITIAL_COUNT_VALUE
   );
   const discountPrice = id.price - id.price * (id.discountRate * 0.01);
+  document.querySelector(".product_info_code").innerHTML = `${
+    id.title.match(/\/(.*)/)[1]
+  }`; // 제품 코드
 
   if (!id.discountRate) {
     discountPriceEl.innerHTML = formatPrice(id.price);
@@ -93,11 +96,10 @@ export async function productDetailHandler(id) {
     : "할인불가";
 
   // 태그 유무에 따른 태그 출력
-  if (id.tags[2] === undefined) {
+  if (id.tags[0] === undefined) {
     smallTagEl.style.display = "none";
-    midTagEl.innerHTML = `${id.tags[1]}`;
-    bigTagEl.innerHTML = `${id.tags[0]} >`;
-    midTagEl.style.color = "#181818";
+    midTagEl.style.display = "none";
+    bigTagEl.style.display = "none";
   }
   if (id.tags[1] === undefined) {
     smallTagEl.style.display = "none";
@@ -105,10 +107,11 @@ export async function productDetailHandler(id) {
     bigTagEl.innerHTML = `${id.tags[0]}`;
     bigTagEl.style.color = "#181818";
   }
-  if (id.tags[0] === undefined) {
+  if (id.tags[2] === undefined) {
     smallTagEl.style.display = "none";
-    midTagEl.style.display = "none";
-    bigTagEl.style.display = "none";
+    midTagEl.innerHTML = `${id.tags[1]}`;
+    bigTagEl.innerHTML = `${id.tags[0]} >`;
+    midTagEl.style.color = "#181818";
   }
 
   // 장바구니
