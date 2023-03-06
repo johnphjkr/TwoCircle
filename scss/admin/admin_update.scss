@@ -1,0 +1,14 @@
+// prodcut_add와 같은 scss 사용
+
+.soldout_btn {
+  width: 12rem;
+  line-height: 3.6rem;
+  padding: 0;
+  font-size: 1.5rem;
+  border: none;
+  background: #03c04a;
+  color: var(--white-color);
+  &.sold {
+    background: #d21404;;
+  }
+}

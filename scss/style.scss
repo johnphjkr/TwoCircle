@@ -1,4 +1,26 @@
-@import './abstracts/variable';
+@import "../scss/abstracts/_variable";
+@import "../scss/base/_preset";
+@import "../scss/base/loading.scss";
+@import "../scss/base/event.scss";
+@import "../scss/user/account.scss";
+@import "../scss/user/cart.scss";
+@import "../scss/user/login.scss";
+@import "../scss/user/main.scss";
+@import "../scss/user/my_page.scss";
+@import "../scss/user/order_completed.scss";
+@import "../scss/user/password_change.scss";
+@import "../scss/user/password_check.scss";
+@import "../scss/user/payment.scss";
+@import "../scss/user/product_details.scss";
+@import "../scss/user/product_list.scss";
+@import "../scss/user/purchase_history.scss";
+@import "../scss/user/signup.scss";
+@import "../scss/user/user_information.scss";
+@import "../scss/user/wish_list.scss";
 
-
-@import './base/preset';
+@import "../scss/admin/admin.scss";
+@import "../scss/admin/admin_product_list.scss";
+@import "../scss/admin/product_add.scss";
+@import "../scss/admin/admin_userlist.scss";
+@import "../scss/admin/product.scss";
+@import "../scss/admin/admin_update.scss"

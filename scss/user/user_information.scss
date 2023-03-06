@@ -1,0 +1,304 @@
+.user_info_inner {
+    display: flex;
+    flex-direction: column;
+    width: 97rem;
+    margin: 0 auto;
+
+
+    span {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #FF597B;
+    }
+
+
+    .user_info {
+        border-top: solid #FF597B;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 5rem;
+        justify-content: center;
+
+        span {
+            font-size: 2rem;
+            width: 10rem;
+            color: black;
+        }
+
+        button {
+            display: inline-block;
+            background-color: white;
+            border: 0.1rem solid lightgray;
+            cursor: pointer;
+            height: 3rem;
+            width: 10rem;
+            font-weight: 600;
+            margin-left: 3rem;
+
+            margin: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .user_info_picture {
+            margin-top: 2rem;
+            display: flex;
+            border-bottom: solid 0.1rem lightgray;
+            align-items: center;
+
+            span {
+                margin-bottom: 2rem;
+                display: inline-block;
+                width: 20rem;
+            }
+
+            .user_info_picture_section {
+                display: flex;
+
+                .user_info_img {
+                    width: 7rem;
+                    height: 7rem;
+                    margin-bottom: 1rem;
+                    margin-top: 0rem;
+                }
+
+                .user_info_img_span {
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 2rem;
+                    margin-top: 0rem;
+
+                    span {
+                        display: inline-block;
+                        width: 51rem;
+                        margin-bottom: 1rem;
+                        margin-top: 0.5rem;
+                    }
+                }
+            }
+
+            .upload_img {
+                display: none;
+            }
+
+            button {
+                display: inline-block;
+                height: 3rem;
+                margin: auto;
+                margin-bottom: 3.5rem;
+            }
+        }
+
+        .user_info_id {
+            display: flex;
+            margin-top: 1.5rem;
+            border-bottom: solid 0.1rem lightgray;
+            height: 4.6rem;
+            align-items: center;
+
+            span {
+                display: inline-block;
+                //margin-top: 0.8rem;
+                width: 20rem;
+            }
+
+            .user_info_id_span {
+                width: 60rem;
+            }
+        }
+
+        .user_info_pw {
+            display: flex;
+            margin-top: 1.5rem;
+            border-bottom: solid 0.1rem lightgray;
+            align-items: center;
+
+            span {
+                display: inline-block;
+                width: 20rem;
+                //margin-top: 0.8rem;
+            }
+
+            .user_info_pw_span {
+                width: 60rem;
+            }
+        }
+
+        .user_info_name {
+            display: flex;
+            margin-top: 1.5rem;
+            border-bottom: solid 0.1rem lightgray;
+            align-items: center;
+
+            span {
+                display: inline-block;
+                width: 20rem;
+                //margin-top: 0.8rem;
+            }
+
+            .user_info_name_span {
+                width: 60rem;
+            }
+        }
+    }
+
+    //이름변경 모달창
+    .change_modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: none;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 3;
+
+        .change_modal_box {
+            position: absolute;
+            background-color: white;
+            width: 60rem;
+            height: 40rem;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+
+            h1 {
+                font-size: 4rem;
+                margin-bottom: 2rem;
+            }
+
+            span {
+                font-size: 2rem;
+                color: black;
+            }
+
+            .new_name {
+                width: 40rem;
+                height: 4rem;
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+                margin-top: 1rem;
+                border: 0.1rem solid lightgray;
+            }
+
+            .new_name_section_btn {
+                justify-content: center;
+                display: flex;
+                padding: 3rem;
+                gap: 1rem;
+
+                .change_cancel_btn {
+                    background-color: white;
+                    border: 0.1rem solid lightgray;
+                    cursor: pointer;
+                    width: 8rem;
+                    height: 4rem;
+                }
+
+                .change_ok_btn {
+                    background-color: #FF597B;
+                    border: solid #FF597B;
+                    color: white;
+                    cursor: pointer;
+                    width: 8rem;
+                    height: 4rem;
+                }
+            }
+
+            .pw_change_inner {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                margin-top: 4rem;
+
+                .pw_change_notice_section {
+                    justify-content: center;
+                    width: 40rem;
+                    line-height: 1.5;
+
+                    h1 {
+                        justify-content: center;
+                        font-size: 3rem;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    h4 {
+                        font-size: 1.5rem;
+                    }
+                }
+
+                .pw_change_section {
+                    justify-content: center;
+                    display: flex;
+                    flex-direction: column;
+                    padding: 2rem;
+
+                    input {
+                        width: 40rem;
+                        height: 4rem;
+                        padding: 1.5rem;
+                        margin-bottom: 1rem;
+                        border: 0.1rem solid lightgray;
+
+                    }
+
+                    input::placeholder {
+                        color: #C8C8C8;
+                    }
+
+                    .pw_change_section_btn {
+
+                        justify-content: center;
+                        display: flex;
+                        padding: 3rem;
+                        gap: 1rem;
+
+                        button {
+                            background-color: white;
+                            border: 0.1rem solid lightgray;
+                            cursor: pointer;
+                            width: 8rem;
+                            height: 4rem;
+                        }
+
+                        .pw_change_ok_btn {
+
+                            background-color: #FF597B;
+                            border: solid #FF597B;
+                            color: white;
+                            cursor: pointer;
+                            width: 8rem;
+                            height: 4rem;
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .account_information {
+        border-top: solid #FF597B;
+        display: flex;
+        flex-direction: column;
+
+
+        span {
+            margin-top: 2rem;
+            width: 10rem;
+            font-size: 2rem;
+            color: black;
+        }
+
+        .account_information_list {
+            span {
+                display: inline-block;
+                width: 20rem;
+            }
+        }
+
+    }
+}

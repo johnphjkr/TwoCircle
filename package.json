@@ -1,0 +1,32 @@
+{
+  "name": "twocircle",
+  "version": "1.0.0",
+  "description": "- HTML, Scss, JavaScript\r - Bundler: Parcel",
+  "source": "index.html",
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyeon17/TwoCircle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hyeon17/TwoCircle/issues"
+  },
+  "homepage": "https://github.com/hyeon17/TwoCircle#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "sass": "^1.58.3"
+  },
+  "dependencies": {
+    "navigo": "^8.11.1"
+  },
+  "staticFiles": {
+    "staticPath": "static"
+  }
+}
