@@ -76,6 +76,13 @@ router.hooks({
       logoutEl.style.display = 'none';
     }
 
+    // 관리자
+    if (auth.email === process.env.ADMIN && match.url === '') {
+      loginNameEl.innerHTML = /* html */ `
+        <a href="/admin">관리자페이지로 이동</a>
+      `;
+    }
+
     done();
   },
   after: (match) => {
