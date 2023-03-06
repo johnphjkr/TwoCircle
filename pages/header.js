@@ -1,8 +1,8 @@
-import { router } from "../source/route";
+import { router } from '../source/route';
 
 export function headerRender() {
-  const wrap = document.querySelector("#wrap");
-  wrap.innerHTML = /*html*/`
+  const wrap = document.querySelector('#wrap');
+  wrap.innerHTML = /*html*/ `
   <header>
       <div class="header_top">
         <div class="inner">
@@ -74,12 +74,58 @@ export function headerRender() {
         </div>
       </nav>
     </header>
+    <section class="event">
+      <div class="event_wrap">
+        <div class="swiper-container event-swiper">
+          <p class="team">TEAM5<br><span>23.01.30<br>~ ING</span></p>
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="https://avatars.githubusercontent.com/u/110139098?v=4" alt="">
+              <p>박희수</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="https://avatars.githubusercontent.com/u/100131415?v=4" alt="">
+              <p>김선미</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="https://avatars.githubusercontent.com/u/71622691?v=4" alt="">
+              <p>송지윤</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="https://avatars.githubusercontent.com/u/83224463?v=4" alt="">
+              <p>장현준</p>
+            </div>
+            <div class="swiper-slide">
+              <img src="https://avatars.githubusercontent.com/u/69203535?v=4" alt="">
+              <p>박현준</p>
+            </div>
+          </div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </div>
+      <div class="up_button">
+        <a href="javascript:void(0)" class="resently">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8C16 12.4183 12.4183 16 8 16ZM8.00078 12.8C5.34981 12.8 3.20078 10.651 3.20078 8C3.20078 5.34903 5.34981 3.2 8.00078 3.2C10.6517 3.2 12.8008 5.34903 12.8008 8C12.8008 10.651 10.6517 12.8 8.00078 12.8Z"
+              fill="url(#paint0_linear)"></path>
+            <defs>
+              <linearGradient id="paint0_linear" x1="1" y1="3.5" x2="14.5" y2="13" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0076F7"></stop>
+                <stop offset="0.484375" stop-color="#6E25DD"></stop>
+                <stop offset="1" stop-color="#8837F5"></stop>
+              </linearGradient>
+            </defs>
+          </svg>최근 본 상품</a>
+        <a href="javascript:void(0)" class="scroll_top">TOP</a>
+      </div>
+    </section>
     <div id="app"></div>
     <footer>
       <div class="footer_container">
         <div class="inner">
           <div class="footer_left">
-            <h2><img src="../image/logo.png" alt="" /></h2>
+            <h2><img src="../image/main_logo.svg" alt=""/></h2>
             <p>
               <a href="#">개인정보처리방침</a>
               <a href="#">이용약관</a>
@@ -169,4 +215,34 @@ export function headerRender() {
   if (localStorage.getItem('wish')) {
     heartNum.innerText = JSON.parse(localStorage.getItem('wish')).length;
   }
+  // TOP
+  const top = document.querySelector(".scroll_top")
+  top.addEventListener("click",()=>{
+    window.scrollTo({top : 0, behavior: 'smooth'})
+  })
+  // 이벤트 베너
+  const eventBanner = new Swiper('.event-swiper', {
+    width: "100",
+    loop:true,
+    autoplay:true,
+    scrollbar: {
+      el: ".swiper-scrollbar"
+    },
+  });
+  // 스크롤 이벤트
+  const eventSection = document.querySelector(".event")
+  window.addEventListener('scroll',_.throttle(()=>{
+    console.log(window.scrollY)
+    if(window.scrollY<330){
+      gsap.to(eventSection,.4,{
+        opacity:0,
+        display:'none'
+      })
+    }else{
+      gsap.to(eventSection,.4,{
+        opacity:1,
+        display:'block'
+      })
+    }
+  },300))
 }
