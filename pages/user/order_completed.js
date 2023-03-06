@@ -17,11 +17,16 @@ export async function orderCompletedRender() {
             <div class="content_name">주문자<p class="name_text"></p></div>
             <div class="content_date">주문일자<p class="date_text"></p></div>
             <div class="content_info">주문정보
-              <div class="content_info_bank"><p>은행</p><p class="bank_text"></p></div>
-              <div class="content_info_account"><p>계좌번호</p><p class="account_text"></p></div>
-              <div class="content_info_price"><p>결제금액</p><p class="price_text"></p></div>
+              <div class="content_info_price">
+                <div class="price_info">
+                  <p>결제금액</p>
+                  <p class="price_text"></p>
+                </div>
+                <div class="price_info">
+                  <p>주문리스트</p>
+                  <p class="list_text"></p></div>
+                </div>
             </div>
-            <div class="content_list">주문 리스트<p class="list_text"></p></div>
             <div class="content_text">주문 리스트 자세히 보기는 마이페이지/구매목록에서 확인해주세요</div>
             <div class="content_btn">
               <button class="content_mypagebtn">마이페이지</button>

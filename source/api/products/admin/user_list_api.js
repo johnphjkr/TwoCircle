@@ -1,13 +1,12 @@
 import { headers, url } from "../../requests.js";
 
-export async function userList() {
+export async function userlist() {
   const res = await fetch(url + "/auth/users", {
     method: "GET",
     headers: {
       ...headers,
-      masterKey: true,
+      masterKey: true
     },
   });
-  const json = await res.json();
-  return json;
+  return await res.json();
 }

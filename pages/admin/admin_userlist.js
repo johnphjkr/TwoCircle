@@ -1,4 +1,3 @@
-
 import { userListHandler } from "../../source/js/admin/user_list.js";
 
 export async function userListRender() {

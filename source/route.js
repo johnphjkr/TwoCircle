@@ -37,7 +37,7 @@ router.hooks({
     headerRender()
     // 페이지 가드
     const onlyUserPages = ['mypage', 'mypage/wish', 'account','payment','mypage/changeInfo', 'mypage/account','admin', 'admin/product_add'];
-    const onlyAdminPages = ['admin', 'admin/product_add']
+    const onlyAdminPages = ['admin', 'admin/product_add', 'admin/user_list'];
 
     if (onlyUserPages.includes(match.url) && !auth) {
       router.navigate('login');
@@ -83,77 +83,78 @@ router.hooks({
 });
 router
   .on({
-    '/': () => {
+    "/": () => {
       mainRender();
     },
 
-    "login": () => {
+    login: () => {
       loginRender();
     },
-    "signup": () => {
+    signup: () => {
       signupRender();
     },
-    "cart": () => {
+    cart: () => {
       cartRender();
     },
-    "mypage": () => {
+    mypage: () => {
       navRender();
       mypageRender();
     },
-    'mypage/wish': () => {
+    "mypage/wish": () => {
       navRender();
       wishRender();
     },
-    'mypage/purchase': () => {
+    "mypage/purchase": () => {
       navRender();
       purchaseRender();
     },
-    'mypage/changeInfo': (match) => {
+    "mypage/changeInfo": (match) => {
       navRender();
       pwCheckRender(match.url);
     },
-    'mypage/account': (match) => {
+    "mypage/account": (match) => {
       navRender();
       pwCheckRender(match.url);
     },
-    'product_list/:id': (match) => {
+    "product_list/:id": (match) => {
       productListRender(match.data.id);
     },
-    'product_search/:id': (match) => {
+    "product_search/:id": (match) => {
       searchListRender(match.data.id);
       productRender(match.data.id, []);
     },
-    'order_completed': () => {
+    order_completed: () => {
       orderCompletedRender();
     },
-    'product_details/:id': (match) => {
+    "product_details/:id": (match) => {
       productDetailRender(match);
     },
-    'payment': () => {
+    payment: () => {
       paymentRender();
     },
-    'order_completed': () => {
+    order_completed: () => {
       orderCompletedRender();
     },
-    "admin": () => {
-      adminWrap()
+    admin: () => {
+      adminWrap();
       adminPageRender();
     },
-    'admin/product_add': () => {
-      adminWrap()
+    "admin/product_add": () => {
+      adminWrap();
       adminProductAdd();
     },
-    'admin/:id':(match) =>{
-      adminWrap()
-      adminProduct(match.data.id)
-    },
-    "admin/update/:id" : (match)=>{
-      adminWrap()
-      productUpdate(match.data.id)
-    },
-    'admin/user_list': () => {
+    "admin/user_list": () => {
+      adminWrap();
       userListRender();
-    }
+    },
+    "admin/:id": (match) => {
+      adminWrap();
+      adminProduct(match.data.id);
+    },
+    "admin/update/:id": (match) => {
+      adminWrap();
+      productUpdate(match.data.id);
+    },
   })
   .resolve();
 
