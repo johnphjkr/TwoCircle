@@ -20,7 +20,7 @@ PW : abcd1234
 
 ## 프로젝트 멤버 및 작업 목록
 
-| 박희수<조장> | 김선미 | 송지윤  | 장현준 | 박현준 |
+| <center>박희수<조장></center> | <center>김선미</center> |<center>송지윤</center>  | <center>장현준</center> | <center>박현준</center> |
 |:--:|:--:|:--:|:--:|:--:|
 | <img src="https://avatars.githubusercontent.com/u/110139098?v=4" width="100"> | <img src="https://avatars.githubusercontent.com/u/100131415?v=4" width=100> | <img src="https://avatars.githubusercontent.com/u/71622691?v=4" width=100> | <img src="https://avatars.githubusercontent.com/u/83224463?v=4" width=100> | <img src="https://avatars.githubusercontent.com/u/69203535?v=4" width=100> |
 | [박희수](https://github.com/Nevacat) | [김선미](https://github.com/janghwahyun/)  |   [송지윤](https://github.com/jiyoon29)                     | [장현준](https://github.com/hyeon17)   | [박현준](https://github.com/johnphjkr)  |
