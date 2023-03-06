@@ -10,7 +10,6 @@ export async function adminProductHandler(id) {
 }
 
 function renderProduct(data) {
-  console.log(data);
   const adminWrap = document.querySelector('.admin_wrap');
   const titleEl = document.querySelector('.title');
   let tag = false;
@@ -63,7 +62,6 @@ function renderProduct(data) {
     const tagBox = document.querySelector('.tag_box');
     const pEl = document.createElement('p');
     pEl.innerText = data.tags;
-    console.log(data.tags);
     tagBox.append(pEl);
   }
 

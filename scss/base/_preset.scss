@@ -134,7 +134,7 @@ header {
       font-size: 1.4rem;
 
       &:focus {
-        border: 1px solid #000;
+        border: 2px solid var(--pink-color);
         background: #fff;
       }
     }
@@ -229,6 +229,10 @@ footer {
       justify-content: space-between;
 
       .footer_left {
+        h2>img{
+          width: 15rem;
+          height: 6rem;
+        }
         >p {
           margin-bottom: 1rem;
 

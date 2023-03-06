@@ -1,9 +1,9 @@
 import { userListHandler } from "../../source/js/admin/user_list.js";
 
-export async function userListRender() {
+export function userListRender() {
   const admin = document.querySelector("#admin");
   admin.innerHTML = /* html */ `
-   <div class="container">
+  <div class="container">
     <div class="title">
       <h2>회원 목록</h2>
     </div>

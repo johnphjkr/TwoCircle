@@ -1,5 +1,5 @@
 ## 프로젝트 소개
-### 사용 기술 스택
+### 사용 기술 스택.
 - HTML, Scss, JavaScript
 - Bundler: Parcel
 

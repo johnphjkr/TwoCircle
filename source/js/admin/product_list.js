@@ -13,7 +13,6 @@ function renderList(data) {
   const listEl = document.querySelector('.product_admin_ul');
   const labelEl = document.querySelector('label');
   const deleteBtn = document.querySelector('.delete_btn');
-  console.log(data);
   const liEls = data.map((prd, idx) => {
     const liEl = document.createElement('li');
     liEl.innerHTML = /* html */ `
@@ -51,7 +50,6 @@ function renderList(data) {
     const choseDelete = async () => {
       for (const checkbox of checkboxs) {
         if (checkbox.checked) {
-          // console.log(checkbox.dataset.id);
           await productDelete(checkbox.dataset.id);
         }
       }
