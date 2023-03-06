@@ -27,6 +27,7 @@ import { searchListRender } from '../pages/user/product_search.js';
 import { adminProduct } from '../pages/admin/product.js';
 import { productUpdate } from '../pages/admin/product_update.js';
 import { userListRender } from '../pages/admin/admin_userlist.js';
+import { admin } from './js/admin/admin.js';
 
 export const router = new Navigo('/');
 
@@ -86,7 +87,6 @@ router
     '/': () => {
       mainRender();
     },
-
     "login": () => {
       loginRender();
     },
@@ -143,6 +143,10 @@ router
       adminWrap()
       adminProductAdd();
     },
+    'admin/user_list': () => {
+      adminWrap()
+      userListRender();
+    },
     'admin/:id':(match) =>{
       adminWrap()
       adminProduct(match.data.id)
@@ -151,9 +155,6 @@ router
       adminWrap()
       productUpdate(match.data.id)
     },
-    'admin/user_list': () => {
-      userListRender();
-    }
   })
   .resolve();
 
