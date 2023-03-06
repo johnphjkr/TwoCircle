@@ -23,6 +23,7 @@ export function adminWrap() {
           </li>
           <li><a href="/admin/product_add" data-navigo>상품추가</a></li>
           <li><a href="/admin/user_list" data-navigo>회원 목록</a></li>
+          <li><a href="/admin/dashboard" data-navigo>보고서</a></li>
         </ul>
       </div>
       <div id="admin"></div>
