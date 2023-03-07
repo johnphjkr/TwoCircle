@@ -19,6 +19,9 @@ export async function userListHandler() {
     numberEl.innerHTML = `${index + 1}`;
     nameEl.innerHTML = `${list.displayName}`;
     emailEl.innerHTML = `${list.email}`;
+    if (list.profileImg === null) {
+      list.profileImg = "https://via.placeholder.com/200x200?text=NO+IMAGE";
+    }
     profileEl.innerHTML = `<img src="${list.profileImg}" alt="프로필">`;
 
     listEl.append(numberEl, nameEl, emailEl, profileEl);

@@ -6,7 +6,7 @@ export function adminWrap() {
     <header>
       <div class="top">
         <h1 class="logo">
-          <a href="/" data-navigo><img src="../image/logo.png" alt="로고"
+          <a href="/" data-navigo><img src="/image/logo.png" alt="로고"
           /></a>
         </h1>
         <div class="top_inner">
@@ -21,8 +21,9 @@ export function adminWrap() {
           <li class="now_page">
             <a href="/admin" data-navigo>상품 리스트</a>
           </li>
-          <li><a href="admin/product_add" data-navigo>상품추가</a></li>
-          <li><a href="admin/user_list" data-navigo>회원 목록</a></li>
+          <li><a href="/admin/product_add" data-navigo>상품추가</a></li>
+          <li><a href="/admin/user_list" data-navigo>회원 목록</a></li>
+          <li><a href="/admin/dashboard" data-navigo>보고서</a></li>
         </ul>
       </div>
       <div id="admin"></div>

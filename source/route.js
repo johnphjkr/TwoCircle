@@ -27,6 +27,8 @@ import { searchListRender } from '../pages/user/product_search.js';
 import { adminProduct } from '../pages/admin/product.js';
 import { productUpdate } from '../pages/admin/product_update.js';
 import { userListRender } from '../pages/admin/admin_userlist.js';
+import { admin } from './js/admin/admin.js';
+import { dashBoardRender } from "../pages/admin/admin_dashboard.js";
 
 export const router = new Navigo('/');
 
@@ -87,16 +89,16 @@ router
       mainRender();
     },
 
-    login: () => {
+    "login": () => {
       loginRender();
     },
-    signup: () => {
+    "signup": () => {
       signupRender();
     },
-    cart: () => {
+    "cart": () => {
       cartRender();
     },
-    mypage: () => {
+    "mypage": () => {
       navRender();
       mypageRender();
     },
@@ -123,19 +125,19 @@ router
       searchListRender(match.data.id);
       productRender(match.data.id, []);
     },
-    order_completed: () => {
+    "order_completed": () => {
       orderCompletedRender();
     },
     "product_details/:id": (match) => {
       productDetailRender(match);
     },
-    payment: () => {
+    "payment": () => {
       paymentRender();
     },
-    order_completed: () => {
+    "order_completed": () => {
       orderCompletedRender();
     },
-    admin: () => {
+    "admin": () => {
       adminWrap();
       adminPageRender();
     },
@@ -146,6 +148,10 @@ router
     "admin/user_list": () => {
       adminWrap();
       userListRender();
+    },
+    "admin/dashboard": () => {
+      adminWrap();
+      dashBoardRender();
     },
     "admin/:id": (match) => {
       adminWrap();
