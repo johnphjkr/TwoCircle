@@ -28,6 +28,7 @@ import { adminProduct } from '../pages/admin/product.js';
 import { productUpdate } from '../pages/admin/product_update.js';
 import { userListRender } from '../pages/admin/admin_userlist.js';
 import { admin } from './js/admin/admin.js';
+import { dashBoardRender } from "../pages/admin/admin_dashboard.js";
 
 export const router = new Navigo('/');
 
@@ -147,6 +148,10 @@ router
     "admin/user_list": () => {
       adminWrap();
       userListRender();
+    },
+    "admin/dashboard": () => {
+      adminWrap();
+      dashBoardRender();
     },
     "admin/:id": (match) => {
       adminWrap();

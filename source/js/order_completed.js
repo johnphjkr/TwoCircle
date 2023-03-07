@@ -4,12 +4,8 @@ import { router } from "../../source/route.js";;
 export async function orderCompletedHandler() {
   const auth = await authCheck(JSON.parse(localStorage.getItem("accessToken")));
   const item = JSON.parse(localStorage.getItem("payment"));
-
-
   const nameEl = document.querySelector(".name_text");
   const dateEl = document.querySelector(".date_text");
-  const bankEl = document.querySelector(".bank_text");
-  const accountEl = document.querySelector(".account_text");
   const priceEl = document.querySelector(".price_text");
   const listEl = document.querySelector(".list_text");
   const myPageBtnEl = document.querySelector(".content_mypagebtn");
