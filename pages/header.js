@@ -80,24 +80,34 @@ export function headerRender() {
           <p class="team">TEAM5<br><span>23.01.30<br>~ ING</span></p>
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="https://avatars.githubusercontent.com/u/110139098?v=4" alt="">
-              <p>박희수</p>
+              <a href="https://github.com/Nevacat">
+                <img src="https://avatars.githubusercontent.com/u/110139098?v=4" alt="">
+                <p>박희수</p>
+              </a>
             </div>
             <div class="swiper-slide">
-              <img src="https://avatars.githubusercontent.com/u/100131415?v=4" alt="">
-              <p>김선미</p>
+              <a href="https://github.com/seon-mikim">
+                <img src="https://avatars.githubusercontent.com/u/100131415?v=4" alt="">
+                <p>김선미</p>
+              </a>
             </div>
             <div class="swiper-slide">
-              <img src="https://avatars.githubusercontent.com/u/71622691?v=4" alt="">
-              <p>송지윤</p>
+              <a href="https://github.com/jiyoon29">
+                <img src="https://avatars.githubusercontent.com/u/71622691?v=4" alt="">
+                <p>송지윤</p>
+              </a>
             </div>
             <div class="swiper-slide">
-              <img src="https://avatars.githubusercontent.com/u/83224463?v=4" alt="">
-              <p>장현준</p>
+              <a href="https://github.com/hyeon17">
+                <img src="https://avatars.githubusercontent.com/u/83224463?v=4" alt="">
+                <p>장현준</p>
+              </a>
             </div>
             <div class="swiper-slide">
-              <img src="https://avatars.githubusercontent.com/u/69203535?v=4" alt="">
-              <p>박현준</p>
+              <a href="https://github.com/johnphjkr">
+                <img src="https://avatars.githubusercontent.com/u/69203535?v=4" alt="">
+                <p>박현준</p>
+              </a>
             </div>
           </div>
           <div class="swiper-scrollbar"></div>
@@ -222,11 +232,12 @@ export function headerRender() {
   })
   // 이벤트 베너
   const eventBanner = new Swiper('.event-swiper', {
-    width: "100",
-    loop:true,
+    slidesPerView: 1,
+    width: 100,
     autoplay:true,
     scrollbar: {
-      el: ".swiper-scrollbar"
+      el: ".swiper-scrollbar",
+      draggable: true
     },
   });
   // 스크롤 이벤트
