@@ -30,9 +30,15 @@ export async function paymentRender() {
                 <button class="account_search">계좌조회</button>
               </div>
                 <div class ="user_account_info">
-                  <div class="bank_name"><p>은행</p><p class="bank_name_text"></p></div>
-                  <div class="account_number"><p>계좌번호</p><p class="account_number_text"></p></div>
-                  <div class="bank_balance"><p>잔액</p><p class="bank_balance_text"></p></div>
+                  <div class="bank">
+                    <div class="bank_name"><p>은행</p><p class="bank_name_text"></p></div>
+                    <div class="account_number"><p>계좌번호</p><p class="account_number_text"></p></div>
+                    <div class="bank_balance"><p>잔액</p><p class="bank_balance_text"></p></div>
+                  </div>
+                  <div class="bank_card">
+                    <div class="card_img"></div>
+                    <div class="swiper-pagination"></div>
+                  </div>
                 <div>
             </div>
           </section>

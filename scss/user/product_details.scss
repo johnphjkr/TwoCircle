@@ -115,10 +115,22 @@
             display: flex;
             flex-direction: column;
 
-            .product_info_title {
-              @include productDefault;
-              height: 20%;
-              font-size: 4rem;
+            .title {
+              display: flex;
+              flex-direction: column;
+              height: 10rem;
+
+              .product_info_title {
+                @include productDefault;
+                font-size: 4rem;
+                font-weight: bold;
+              }
+
+              .product_info_code {
+                @include productDefault;
+                margin-top: 1rem;
+                color: var(--gray-color);
+              }
             }
 
             // 평점, 찜 유뮤, share
@@ -161,7 +173,7 @@
               width: auto;
               height: 5rem;
               font-size: 1.8rem;
-              font-weight: var(---font-bold);
+              font-weight: bold;
               margin-right: 1rem;
               justify-content: end;
               white-space: nowrap;
@@ -248,9 +260,10 @@
                       width: 43rem;
                       justify-content: end;
                       margin-right: 1.5rem;
-                      font-weight: var(---font-bold);
+                      font-weight: bold;
                       color: var(--gray-color);
                       text-decoration: line-through;
+
                     }
 
                     .option_content_discount {
@@ -258,7 +271,7 @@
                       width: 43rem;
                       justify-content: end;
                       margin: 1rem 1.5rem 0 0;
-                      font-weight: var(---font-bold);
+                      font-weight: bold;
                     }
                   }
                 }
@@ -288,7 +301,7 @@
                 @include productDefault;
                 justify-content: end;
                 font-size: 3rem;
-                font-weight: var(---font-bold);
+                font-weight: bold;
               }
             }
 
@@ -315,7 +328,8 @@
                     justify-content: center;
                     align-items: center;
                     margin: 0 auto;
-                    .favorite_text{
+
+                    .favorite_text {
                       margin-left: 1rem;
                     }
 
