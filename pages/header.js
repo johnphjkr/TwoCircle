@@ -243,7 +243,6 @@ export function headerRender() {
   // 스크롤 이벤트
   const eventSection = document.querySelector(".event")
   window.addEventListener('scroll',_.throttle(()=>{
-    console.log(window.scrollY)
     if(window.scrollY<330){
       gsap.to(eventSection,.4,{
         opacity:0,
