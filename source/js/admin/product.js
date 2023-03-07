@@ -10,7 +10,6 @@ export async function adminProductHandler(id) {
 }
 
 function renderProduct(data) {
-  console.log(data);
   const adminWrap = document.querySelector('.admin_wrap');
   const titleEl = document.querySelector('.title');
   let tag = false;
@@ -26,7 +25,7 @@ function renderProduct(data) {
   adminWrap.innerHTML = /* html */ `
     <div>
       <div class="product_img">
-        <img src=${data.thumbnail} alt=${data.description} />
+        <img src=${data.thumbnail ? data.thumbnail : 'https://via.placeholder.com/400x400?text=NO+IMAGE'} alt=${data.description} />
       </div>
       <div class="product_text">
         <p><span>이름</span>${data.title}</p>
@@ -35,13 +34,13 @@ function renderProduct(data) {
         ${data.tags == '' ? '' :
       '<div class="tag_box"><span>태그</span></div>'
     }
-        <p><span>매진</span>${data.isSoldOut ? "매진" : "판매중"}</p>
+        <p><span>매진</span>${data.isSoldOut ? '<span class="sold">매진중</span>' : '<span class="sale">판매중</span>'}</p>
       </div>
     </div>
     <div class="product_detail">
       <span>상세 이미지</span>
       <div class="product_detail_img">
-        <img src=${data.photo} alt="상세설명" />
+        <img src=${data.photo ? data.photo : 'https://via.placeholder.com/400x650?text=NO+IMAGE'} alt="상세설명" />
       </div>
     </div>
   `;
@@ -63,7 +62,6 @@ function renderProduct(data) {
     const tagBox = document.querySelector('.tag_box');
     const pEl = document.createElement('p');
     pEl.innerText = data.tags;
-    console.log(data.tags);
     tagBox.append(pEl);
   }
 

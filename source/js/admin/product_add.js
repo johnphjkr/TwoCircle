@@ -34,7 +34,6 @@ export function productAddItem() {
     text = e.target.value;
   });
   tagEl.addEventListener('input', e => {
-    // console.log(e.target.value.split(', '));
     tag = e.target.value.split(', ');
   });
 
@@ -47,9 +46,7 @@ export function productAddItem() {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.addEventListener('load', e => {
-      // console.log(e.target.result); // base64
       thumbnailImgBase64 = e.target.result;
-      // console.log(thumbnailImgBase64);
       const img = document.querySelector('.thumbnail_img');
       img.innerHTML = /* html */ `
         <img src="${thumbnailImgBase64}" alt="썸네일" />
@@ -66,7 +63,6 @@ export function productAddItem() {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.addEventListener('load', e => {
-      // console.log(e.target.result);
       photoImgBase64 = e.target.result;
       const img = document.querySelector('.photo_img');
       img.innerHTML = /* html */ `
@@ -83,7 +79,6 @@ export function productAddItem() {
   });
 
   registrationBtn.addEventListener('click', async () => {
-    // console.log(name, price, text, tag, thumbnailImgBase64, photoImgBase64, discount);
     await productAdd({
       title: name,
       price: price,

@@ -27,6 +27,7 @@ import { searchListRender } from '../pages/user/product_search.js';
 import { adminProduct } from '../pages/admin/product.js';
 import { productUpdate } from '../pages/admin/product_update.js';
 import { userListRender } from '../pages/admin/admin_userlist.js';
+import { admin } from './js/admin/admin.js';
 
 export const router = new Navigo('/');
 
@@ -34,10 +35,10 @@ router.hooks({
   before: async (done, match) => {
     const accessToken = JSON.parse(localStorage.getItem('accessToken'));
     const auth = await authCheck(accessToken);
-    headerRender()
+    headerRender();
     // 페이지 가드
-    const onlyUserPages = ['mypage', 'mypage/wish', 'account','payment','mypage/changeInfo', 'mypage/account','admin', 'admin/product_add'];
-    const onlyAdminPages = ['admin', 'admin/product_add']
+    const onlyUserPages = ['mypage', 'mypage/wish', 'account', 'payment', 'mypage/changeInfo', 'mypage/account', 'admin', 'admin/product_add'];
+    const onlyAdminPages = ['admin', 'admin/product_add', 'admin/user_list'];
 
     if (onlyUserPages.includes(match.url) && !auth) {
       router.navigate('login');
@@ -48,9 +49,9 @@ router.hooks({
       done();
     }
     // 관리자 페이지
-    if(onlyAdminPages.includes(match.url) && auth.email != process.env.ADMIN ){
-      alert("유용한 사용자가 아닙니다.")
-      history.go(-1)
+    if (onlyAdminPages.includes(match.url) && auth.email != process.env.ADMIN) {
+      alert("유용한 사용자가 아닙니다.");
+      history.go(-1);
     }
 
     // 로그인 로그아웃시 헤더 변경
@@ -67,12 +68,19 @@ router.hooks({
         localStorage.removeItem('accessToken');
         loginEl.style.display = 'flex';
         logoutEl.style.display = 'none';
-        router.navigate("/")
-        done()
+        router.navigate("/");
+        done();
       });
     } else {
       loginEl.style.display = 'flex';
       logoutEl.style.display = 'none';
+    }
+
+    // 관리자
+    if (auth.email === process.env.ADMIN && match.url === '') {
+      loginNameEl.innerHTML = /* html */ `
+        <a href="/admin">관리자페이지로 이동</a>
+      `;
     }
 
     done();
@@ -83,7 +91,7 @@ router.hooks({
 });
 router
   .on({
-    '/': () => {
+    "/": () => {
       mainRender();
     },
 
@@ -100,60 +108,75 @@ router
       navRender();
       mypageRender();
     },
-    'mypage/wish': () => {
+    "mypage/wish": () => {
       navRender();
       wishRender();
     },
-    'mypage/purchase': () => {
+    "mypage/purchase": () => {
       navRender();
       purchaseRender();
     },
-    'mypage/changeInfo': (match) => {
+    "mypage/changeInfo": (match) => {
       navRender();
       pwCheckRender(match.url);
     },
-    'mypage/account': (match) => {
+    "mypage/account": (match) => {
       navRender();
       pwCheckRender(match.url);
     },
-    'product_list/:id': (match) => {
+    "product_list/:id": (match) => {
       productListRender(match.data.id);
     },
-    'product_search/:id': (match) => {
+    "product_search/:id": (match) => {
       searchListRender(match.data.id);
       productRender(match.data.id, []);
     },
-    'order_completed': () => {
+    "order_completed": () => {
       orderCompletedRender();
     },
-    'product_details/:id': (match) => {
+    "product_details/:id": (match) => {
       productDetailRender(match);
     },
-    'payment': () => {
+    "payment": () => {
       paymentRender();
     },
-    'order_completed': () => {
+    "order_completed": () => {
       orderCompletedRender();
     },
     "admin": () => {
-      adminWrap()
+      adminWrap();
       adminPageRender();
+      const ativeNav = document.querySelector('.menu_prd_list');
+      console.log({ ativeNav });
+      ativeNav.classList.add('now_page');
     },
-    'admin/product_add': () => {
-      adminWrap()
+    "admin/product_add": () => {
+      adminWrap();
       adminProductAdd();
+      const ativeNav = document.querySelector('.menu_prd_add');
+      console.log({ ativeNav });
+      ativeNav.classList.add('now_page');
     },
-    'admin/:id':(match) =>{
-      adminWrap()
-      adminProduct(match.data.id)
-    },
-    "admin/update/:id" : (match)=>{
-      adminWrap()
-      productUpdate(match.data.id)
-    },
-    'admin/user_list': () => {
+    "admin/user_list": () => {
+      adminWrap();
       userListRender();
-    }
+      const ativeNav = document.querySelector('.menu_user_list');
+      console.log({ ativeNav });
+      ativeNav.classList.add('now_page');
+    },
+    "admin/:id": (match) => {
+      adminWrap();
+      adminProduct(match.data.id);
+      const ativeNav = document.querySelector('.menu_prd_list');
+      ativeNav.classList.add('now_page');
+    },
+    "admin/update/:id": (match) => {
+      adminWrap();
+      productUpdate(match.data.id);
+      const ativeNav = document.querySelector('.menu_prd_list');
+      console.log({ ativeNav });
+      ativeNav.classList.add('now_page');
+    },
   })
   .resolve();
 

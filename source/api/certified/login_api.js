@@ -10,7 +10,6 @@ export async function login(method, data) {
     body: JSON.stringify(data)
   })
   const json = await res.json()
-  console.log(res.status)
   if (res.status === 200) {
     localStorage.setItem("accessToken", JSON.stringify(json.accessToken));
     if(json.user.email === process.env.ADMIN){

@@ -13,7 +13,6 @@ function renderList(data) {
   const listEl = document.querySelector('.product_admin_ul');
   const labelEl = document.querySelector('label');
   const deleteBtn = document.querySelector('.delete_btn');
-  console.log(data);
   const liEls = data.map((prd, idx) => {
     const liEl = document.createElement('li');
     liEl.innerHTML = /* html */ `
@@ -21,7 +20,7 @@ function renderList(data) {
         <input type="checkbox" name="check" data-id=${prd.id} />
         <p>${idx + 1}</p>
         <div class="product_img">
-          <img src="${prd.thumbnail}" alt="썸네일" />
+          <img src="${prd.thumbnail ? prd.thumbnail : 'https://via.placeholder.com/100x100?text=NO+IMAGE'}" alt="썸네일" />
         </div>
         <div class="product_text">
           <p>${prd.title}</p>
@@ -51,7 +50,6 @@ function renderList(data) {
     const choseDelete = async () => {
       for (const checkbox of checkboxs) {
         if (checkbox.checked) {
-          // console.log(checkbox.dataset.id);
           await productDelete(checkbox.dataset.id);
         }
       }
