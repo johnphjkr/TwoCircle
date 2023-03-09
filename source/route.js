@@ -165,6 +165,8 @@ router
     "admin/dashboard": () => {
       adminWrap();
       dashBoardRender();
+      const ativeNav = document.querySelector('.menu_dashboard');
+      ativeNav.classList.add('now_page');
     },
     "admin/:id": (match) => {
       adminWrap();
