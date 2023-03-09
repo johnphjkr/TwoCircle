@@ -1,4 +1,3 @@
-import { async } from "q";
 import { allProduct } from "../../api/products/admin/allProduct_api.js";
 import { productDelete } from "../../api/products/admin/product_delete.js";
 
@@ -27,7 +26,7 @@ function renderList(data) {
           <span>${prd.description}</span>
         </div>
         <p>${prd.price} 원</p>
-        <p>${prd.isSoldOut ? '<span class="sold_out">품절</span>' : '판매중'}</p>
+        <p class="sold">${prd.isSoldOut ? '<span class="sold_out">품절</span>' : '판매중'}</p>
       </a>
       `;
 
@@ -53,7 +52,7 @@ function renderList(data) {
           await productDelete(checkbox.dataset.id);
         }
       }
-      const list = await productList();
+      const list = await allProduct();
       renderList(list);
     };
     choseDelete();
