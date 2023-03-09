@@ -35,9 +35,8 @@ export async function paymentRender() {
                     <div class="account_number"><p>계좌번호</p><p class="account_number_text"></p></div>
                     <div class="bank_balance"><p>잔액</p><p class="bank_balance_text"></p></div>
                   </div>
-                  <div class="bank_card">
-                    <div class="card_img"></div>
-                    <div class="swiper-pagination"></div>
+                  <div class="bank_card_wrap">
+                    <div class="bank_card"></div>              
                   </div>
                 <div>
             </div>
