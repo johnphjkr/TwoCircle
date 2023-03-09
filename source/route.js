@@ -148,21 +148,18 @@ router
       adminWrap();
       adminPageRender();
       const ativeNav = document.querySelector('.menu_prd_list');
-      console.log({ ativeNav });
       ativeNav.classList.add('now_page');
     },
     "admin/product_add": () => {
       adminWrap();
       adminProductAdd();
       const ativeNav = document.querySelector('.menu_prd_add');
-      console.log({ ativeNav });
       ativeNav.classList.add('now_page');
     },
     "admin/user_list": () => {
       adminWrap();
       userListRender();
       const ativeNav = document.querySelector('.menu_user_list');
-      console.log({ ativeNav });
       ativeNav.classList.add('now_page');
     },
     "admin/dashboard": () => {
@@ -179,7 +176,6 @@ router
       adminWrap();
       productUpdate(match.data.id);
       const ativeNav = document.querySelector('.menu_prd_list');
-      console.log({ ativeNav });
       ativeNav.classList.add('now_page');
     },
   })
