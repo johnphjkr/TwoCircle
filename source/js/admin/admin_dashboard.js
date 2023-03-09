@@ -77,19 +77,19 @@ export async function dashBoardHandler() {
     const dateEl = document.createElement("div");
     const userEl = document.createElement("div");
     const bankEl = document.createElement("div");
-    const salepriceEl = document.createElement("div");
+    const salePriceEl = document.createElement("div");
     const itemEl = document.createElement("div");
-    const cancelpriceEl = document.createElement("div");
-    const totalpriceEl = document.createElement("div");
+    const cancelPriceEl = document.createElement("div");
+    const totalPriceEl = document.createElement("div");
 
     numberEl.classList.add("content_number");
     dateEl.classList.add("content_date");
     userEl.classList.add("content_user");
     bankEl.classList.add("content_bank");
-    salepriceEl.classList.add("content_saleprice");
+    salePriceEl.classList.add("content_saleprice");
     itemEl.classList.add("content_item");
-    cancelpriceEl.classList.add("content_cancelprice");
-    totalpriceEl.classList.add("content_totalprice");
+    cancelPriceEl.classList.add("content_cancelprice");
+    totalPriceEl.classList.add("content_totalprice");
 
     numberEl.innerHTML = `<div>${index + 1}</div>`;
     const formattedTimePaid = item.timePaid.replace(
@@ -108,27 +108,27 @@ export async function dashBoardHandler() {
     const formattedDiscountedPrice = discountedPrice
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    salepriceEl.innerHTML = `<div>${formattedDiscountedPrice}원</div>`;
+    salePriceEl.innerHTML = `<div>${formattedDiscountedPrice}원</div>`;
 
     const formattedTitle = item.product.title.replace(/\/.*/, "");
     itemEl.innerHTML = `<div>${formattedTitle}</div>`;
 
     if (item.isCanceled) {
-      salepriceEl.innerHTML = "<div>0원</div>";
+      salePriceEl.innerHTML = "<div>0원</div>";
       const cancelPrice = discountRate
         ? -1 * originalPrice * ((100 - discountRate) * 0.01)
         : -1 * originalPrice;
       const formattedCancelPrice = cancelPrice
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      cancelpriceEl.innerHTML = `<div>${formattedCancelPrice}원</div>`;
-      totalpriceEl.innerHTML = `<div>${formattedCancelPrice}원</div>`;
-      totalpriceEl.style.color = "blue";
+      cancelPriceEl.innerHTML = `<div>${formattedCancelPrice}원</div>`;
+      totalPriceEl.innerHTML = `<div>${formattedCancelPrice}원</div>`;
+      totalPriceEl.style.color = "blue";
       sum += cancelPrice;
     } else {
-      cancelpriceEl.innerHTML = "<div>0원</div>";
-      totalpriceEl.innerHTML = `+<div>${formattedDiscountedPrice}원</div>`;
-      totalpriceEl.style.color = "red";
+      cancelPriceEl.innerHTML = "<div>0원</div>";
+      totalPriceEl.innerHTML = `+<div>${formattedDiscountedPrice}원</div>`;
+      totalPriceEl.style.color = "red";
       sum += discountedPrice;
     }
 
@@ -138,10 +138,10 @@ export async function dashBoardHandler() {
         dateEl,
         userEl,
         bankEl,
-        salepriceEl,
+        salePriceEl,
         itemEl,
-        cancelpriceEl,
-        totalpriceEl
+        cancelPriceEl,
+        totalPriceEl
       );
       index++;
     } else {
@@ -154,11 +154,11 @@ export async function dashBoardHandler() {
   tableEl.append(...liEl);
 
 
-    const itemcontEl = document.querySelector(".summary_itemcount");
-    const salesumEl = document.querySelector(".summary_salesum");
+    const itemCountEl = document.querySelector(".summary_itemcount");
+    const saleSumEl = document.querySelector(".summary_salesum");
     const memberEl = document.querySelector(".summary_member");
-  itemcontEl.append(`판매 상품 갯수 : ${products.length}개`);
-  salesumEl.append(`총 판매 매출 : ${sum
+  itemCountEl.append(`판매 상품 갯수 : ${products.length}개`);
+  saleSumEl.append(`총 판매 매출 : ${sum
     .toString()
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`);
   memberEl.append( `회원 수 : ${users.length}명`);
