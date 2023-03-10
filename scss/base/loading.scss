@@ -1,6 +1,10 @@
 .dot-wrap{
   width: 7rem;
   margin: 20rem auto;
+  z-index: 4;
+  position: fixed;
+  top: 30%;
+  left: 50%;
 }
 
 .dot-spinner {

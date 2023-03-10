@@ -36,9 +36,9 @@ router.hooks({
   before: async (done, match) => {
     const accessToken = JSON.parse(localStorage.getItem('accessToken'));
     const auth = await authCheck(accessToken);
-    headerRender()
+    headerRender();
     // 페이지 가드
-    const onlyUserPages = ['mypage', 'mypage/wish', 'account','payment','mypage/changeInfo', 'mypage/account','admin', 'admin/product_add'];
+    const onlyUserPages = ['mypage', 'mypage/wish', 'account', 'payment', 'mypage/changeInfo', 'mypage/account', 'admin', 'admin/product_add'];
     const onlyAdminPages = ['admin', 'admin/product_add', 'admin/user_list'];
 
     if (onlyUserPages.includes(match.url) && !auth) {
@@ -50,9 +50,9 @@ router.hooks({
       done();
     }
     // 관리자 페이지
-    if(onlyAdminPages.includes(match.url) && auth.email != process.env.ADMIN ){
-      alert("유용한 사용자가 아닙니다.")
-      history.go(-1)
+    if (onlyAdminPages.includes(match.url) && auth.email != process.env.ADMIN) {
+      alert("유용한 사용자가 아닙니다.");
+      history.go(-1);
     }
 
     // 로그인 로그아웃시 헤더 변경
@@ -69,12 +69,19 @@ router.hooks({
         localStorage.removeItem('accessToken');
         loginEl.style.display = 'flex';
         logoutEl.style.display = 'none';
-        router.navigate("/")
-        done()
+        router.navigate("/");
+        done();
       });
     } else {
       loginEl.style.display = 'flex';
       logoutEl.style.display = 'none';
+    }
+
+    // 관리자
+    if (auth.email === process.env.ADMIN && match.url === '') {
+      loginNameEl.innerHTML = /* html */ `
+        <a href="/admin">관리자페이지로 이동</a>
+      `;
     }
 
     done();
@@ -140,14 +147,23 @@ router
     "admin": () => {
       adminWrap();
       adminPageRender();
+      const ativeNav = document.querySelector('.menu_prd_list');
+      console.log({ ativeNav });
+      ativeNav.classList.add('now_page');
     },
     "admin/product_add": () => {
       adminWrap();
       adminProductAdd();
+      const ativeNav = document.querySelector('.menu_prd_add');
+      console.log({ ativeNav });
+      ativeNav.classList.add('now_page');
     },
     "admin/user_list": () => {
       adminWrap();
       userListRender();
+      const ativeNav = document.querySelector('.menu_user_list');
+      console.log({ ativeNav });
+      ativeNav.classList.add('now_page');
     },
     "admin/dashboard": () => {
       adminWrap();
@@ -156,10 +172,15 @@ router
     "admin/:id": (match) => {
       adminWrap();
       adminProduct(match.data.id);
+      const ativeNav = document.querySelector('.menu_prd_list');
+      ativeNav.classList.add('now_page');
     },
     "admin/update/:id": (match) => {
       adminWrap();
       productUpdate(match.data.id);
+      const ativeNav = document.querySelector('.menu_prd_list');
+      console.log({ ativeNav });
+      ativeNav.classList.add('now_page');
     },
   })
   .resolve();
