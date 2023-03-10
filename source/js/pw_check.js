@@ -16,7 +16,6 @@ export async function pwCheck(url) {
   let loginResult = '';
   inputPwEl.addEventListener('input', (e) => {
     pw_check = e.target.value;
-    console.log(pw_check);
   });
 
   pwCheckBtnEl.addEventListener('click', async (e) => {

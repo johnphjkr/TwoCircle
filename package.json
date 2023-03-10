@@ -5,12 +5,7 @@
   "source": "index.html",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html",
-    "dev:3000": "parcel --port 3000 index.html",
-    "test": "parcel ./pages/user/user_information.html",
-    "test2": "parcel ./pages/user/purchase_history.html",
-    "test3": "parcel ./pages/user/password_check.html",
-    "test4": "parcel ./pages/user/password_change.html"
+    "build": "parcel build index.html"
   },
   "repository": {
     "type": "git",
@@ -29,6 +24,12 @@
     "sass": "^1.58.3"
   },
   "dependencies": {
+    "chart.js": "^4.2.1",
+    "chartjs-adapter-luxon": "^1.3.1",
+    "luxon": "^3.3.0",
     "navigo": "^8.11.1"
+  },
+  "staticFiles": {
+    "staticPath": "static"
   }
 }

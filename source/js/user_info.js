@@ -28,9 +28,7 @@ export async function userInfoHandler() {
         const accessToken = JSON.parse(localStorage.getItem('accessToken'));
         const res = await authCheck(accessToken);
         id = res.email;
-        console.log(id);
         name = res.displayName;
-        console.log(name);
         image = res.profileImg;
         idEl.innerText = id;
         nameEl.innerText = name;
@@ -127,17 +125,14 @@ export async function userInfoHandler() {
 
         inputCurrentPwEl.addEventListener("input", (e) => {
             pw_check = e.target.value;
-            console.log(pw_check);
         });
 
         inputNewPwEl.addEventListener("input", (e) => {
             newPassword = e.target.value;
-            console.log(newPassword);
         });
 
         inputNewPwCheckEl.addEventListener("input", (e) => {
             newPassword_check = e.target.value;
-            console.log(newPassword_check);
         });
 
         pwChangeOkBtnEl.addEventListener("click", async (e) => {
@@ -145,7 +140,6 @@ export async function userInfoHandler() {
             const accessToken = JSON.parse(localStorage.getItem('accessToken'));
             const res = await authCheck(accessToken);
             id = res.email;
-            console.log(id);
 
             const body = {
                 email: id,
@@ -155,7 +149,6 @@ export async function userInfoHandler() {
             const json = await pwCheckApi("POST", body);
 
             if (json.status === 200) {
-                console.log("비밀번호 확인 성공!")
                 if (newPassword != newPassword_check) {
                     alert("비밀번호 확인이 잘못되었습니다.");
                 }
@@ -198,7 +191,6 @@ export async function userInfoHandler() {
         const inputNameEl = document.querySelector(".new_name");
         inputNameEl.addEventListener("input", (e) => {
             displayName = e.target.value;
-            console.log(displayName);
         });
         changeCancelBtnEl.addEventListener("click", modalOff);
 

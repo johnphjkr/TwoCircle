@@ -1,7 +1,7 @@
 @import "../scss/abstracts/_variable";
 @import "../scss/base/_preset";
-@import "../scss/base/_up_button";
 @import "../scss/base/loading.scss";
+@import "../scss/base/event.scss";
 @import "../scss/user/account.scss";
 @import "../scss/user/cart.scss";
 @import "../scss/user/login.scss";
@@ -22,3 +22,6 @@
 @import "../scss/admin/admin_product_list.scss";
 @import "../scss/admin/product_add.scss";
 @import "../scss/admin/admin_userlist.scss";
+@import "../scss/admin/product.scss";
+@import "../scss/admin/admin_update.scss";
+@import "../scss/admin/admin_dashboard.scss";

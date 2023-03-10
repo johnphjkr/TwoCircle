@@ -2,11 +2,14 @@ import { router } from "../../source/route.js";
 import { payment } from "../../source/api/products/user/payment_api.js";
 import { authCheck } from "../../source/api/certified/authcheck_api.js";
 import { checkAccount } from "../../source/api/account/account_add_check.js";
+import { loading } from "../../source/js/loading.js";
 
 export async function paymentHandler() {
   const auth = await authCheck(JSON.parse(localStorage.getItem("accessToken")));
   const account = await checkAccount(auth);
   let banks = [...account.accounts];
+  loading();
+  const dot = document.querySelector(".dot-wrap");
 
   // 주문상품
   const orderNavBarEl = document.querySelector(".orderinfo_navbar");
@@ -59,7 +62,7 @@ export async function paymentHandler() {
   const bankNameEl = document.querySelector(".bank_name_text");
   const accountNumberEl = document.querySelector(".account_number_text");
   const balanceEl = document.querySelector(".bank_balance_text");
-  let bankCheck = false;
+  const payBtnEl = document.querySelector(".btn_payment");
 
   orderNameEl.innerHTML = `${auth.displayName}`;
   orderEmailEl.innerHTML = `${auth.email}`;
@@ -69,16 +72,31 @@ export async function paymentHandler() {
     accountOptionEl.textContent = `${bank.bankName}`;
     accountOptionEl.value = `${bank.id}`;
     accountSelectEl.append(accountOptionEl);
-    accountSearchEl.addEventListener("click", () => {
-      if (accountSelectEl.value === `${bank.id}`) {
-        localStorage.setItem("bank", JSON.stringify(bank));
-        bankCheck = true;
-        bankNameEl.innerHTML = `${bank.bankName}`;
-        accountNumberEl.innerHTML = `${bank.accountNumber}`;
-        balanceEl.innerHTML = `${formatPrice(bank.balance)}`;
-      }
-    });
+
     return accountOptionEl, bankNameEl, accountNumberEl, balanceEl;
+  });
+  const cardImg = document.querySelector(".bank_card");
+  let bankCheck = false;
+  let selectedBank = null; // 선택된 계좌 정보를 저장할 변수
+  accountSearchEl.addEventListener("click", () => {
+    const selectedBankId = accountSelectEl.value; // 선택된 계좌 ID
+
+    // banks 배열에서 선택된 계좌 정보를 찾음
+    selectedBank = banks.find((bank) => bank.id === selectedBankId);
+    bankCheck = true;
+
+    if (selectedBank) {
+      // 선택된 계좌 정보가 존재할 경우
+      bankNameEl.innerHTML = `${selectedBank.bankName}`;
+      accountNumberEl.innerHTML = `${selectedBank.accountNumber}`;
+      balanceEl.innerHTML = `${formatPrice(selectedBank.balance)}`;
+      if (selectedBank.bankName === "KB국민은행") {
+        cardImg.innerHTML = `<img src="https://img1.kbcard.com/ST/img/cxc/kbcard/upload/img/product/01664_img.png" alt="KB국민은행">`;
+      }
+    } else {
+      // 선택된 계좌 정보가 존재하지 않을 경우
+      alert("계좌를 선택해주세요");
+    }
   });
 
   // 결제정보
@@ -93,7 +111,6 @@ export async function paymentHandler() {
     totalDiscountEl.append(`-${formatPrice(originSum - sum)}`);
   }
 
-  const payBtnEl = document.querySelector(".btn_payment");
   payBtnEl.addEventListener("click", async () => {
     if (!bankCheck) {
       alert("계좌를 선택해주세요");
@@ -128,32 +145,23 @@ export async function paymentHandler() {
     liEl.push(sum);
     localStorage.setItem("payment", JSON.stringify(liEl));
     const data = JSON.parse(localStorage.getItem("payment"));
-    const bankList = JSON.parse(localStorage.getItem("bank"));
     const dataList = [...data];
 
-    if (bankList.balance < sum) {
+    if (selectedBank.balance < sum) {
       alert("잔액이 부족합니다.");
       return;
     }
     dataList.pop();
 
     dataList.map(async (data) => {
-      await payment(data, bankList);
+      await payment(data, selectedBank);
     });
     router.navigate("order_completed");
   });
 
   const cancelBtnEl = document.querySelector(".btn_cancel");
   cancelBtnEl.addEventListener("click", () => {
-    localStorage.removeItem("bank");
     router.navigate("cart");
   });
-
-  const allLinks = document.querySelectorAll("a");
-  allLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      localStorage.removeItem("bank");
-    });
-  });
-
+  dot.style.display = "none";
 }

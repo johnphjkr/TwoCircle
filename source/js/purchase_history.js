@@ -203,7 +203,6 @@ export async function purchaseHandler() {
     list_items = res;
 
     filtered_items = dateFilter(list_items, days);
-    console.log(filtered_items);
     if (filtered_items.length > 0) {
       noListContainerEl.style.display = "none";
       const liEls = filtered_items.map(function (item) {
@@ -276,7 +275,6 @@ export async function purchaseHandler() {
             alert('구매가 확정되었습니다!');
             dealDone = true;
             detailId = item.detailId;
-            console.log({ detailId });
             purchaseOk({ detailId });
             btnOkEl.style.display = 'none';
             btnCancelEl.style.display = 'none';
@@ -289,9 +287,7 @@ export async function purchaseHandler() {
             alert('구매가 취소되었습니다.');
             dealCanceled = true;
             detailId = item.detailId;
-            console.log(item.isCanceled);
             purchaseCancel({ detailId });
-            console.log(item.isCanceled);
             btnOkEl.style.display = 'none';
             btnCancelEl.style.display = 'none';
             btnEl.textContent = '구매 취소';

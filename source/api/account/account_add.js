@@ -18,7 +18,6 @@ export async function addAccount(data) {
     }),
   });
   const json = await res.json();
-  console.log(json);
 }
 
 
