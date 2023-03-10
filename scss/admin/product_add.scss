@@ -12,15 +12,36 @@
     > p {
       margin-bottom: 1rem;
       font-weight: 700;
+      b {
+        color: var(--pink-color);
+      }
     }
-    input {
+    input[type="text"] {
       border: 1px solid var(--gray-color);
       width: 35rem;
       height: 4rem;
       padding: 0 1rem;
       outline: none;
-      &[type="file"] {
-        display: none;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    .main_tag {
+      display: flex;
+      li {
+        margin-right: 2rem;
+      }
+    }
+    .tag_list {
+      display: flex;
+      flex-wrap: wrap;
+      li {
+        margin-right: 2rem;
+        margin-bottom: 1rem;
+        &:nth-child(4),
+        &:nth-child(5) {
+          margin-bottom: 0;
+        }
       }
     }
     span {
