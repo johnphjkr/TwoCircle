@@ -2,7 +2,7 @@ import { userlist } from "../../api/products/admin/user_list_api.js";
 
 export async function userListHandler() {
   const users = await userlist();
-
+  const dot = document.querySelector(".dot-wrap");
   const liEl = users.map((list, index) => {
     const listEl = document.createElement("div");
     listEl.classList.add("list");
@@ -28,4 +28,5 @@ export async function userListHandler() {
   });
   const adminUserListEl = document.querySelector(".admin_userlist");
   adminUserListEl.append(...liEl);
+  dot.style.display = "none";
 }

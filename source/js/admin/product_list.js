@@ -13,6 +13,8 @@ function renderList(data) {
   const listEl = document.querySelector('.product_admin_ul');
   const labelEl = document.querySelector('label');
   const deleteBtn = document.querySelector('.delete_btn');
+  const dot = document.querySelector(".dot-wrap");
+  
   const liEls = data.map((prd, idx) => {
     const liEl = document.createElement('li');
     liEl.innerHTML = /* html */ `
@@ -58,6 +60,7 @@ function renderList(data) {
     };
     choseDelete();
   });
+  dot.style.display = "none";
 }
 
 

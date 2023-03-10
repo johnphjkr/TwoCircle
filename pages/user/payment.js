@@ -7,6 +7,9 @@ export async function paymentRender() {
   <div id="wrap">
     <div class="wrap_container">
       <div class="payment">
+        <div class="dot-wrap">
+          <div class="dot-spinner"></div>
+        </div>
         <div class="payment_inner">
           <!-- 주문정보 -->
           <section class="inner_orderinfo">

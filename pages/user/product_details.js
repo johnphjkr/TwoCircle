@@ -7,6 +7,9 @@ export async function productDetailRender(data) {
   app.innerHTML = /* html */ `
     <div class="wrap_container">
       <div class="product_detail">
+        <div class="dot-wrap">
+          <div class="dot-spinner"></div>
+        </div>
         <div class="product_detail_inner">
           <!-- 제품 태그 -->
           <div class="product_tag">

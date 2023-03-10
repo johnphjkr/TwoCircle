@@ -1,6 +1,4 @@
-import {
-  productDataHandler
-} from "../admin/admin_products_data.js";
+import { productDataHandler } from "../admin/admin_products_data.js";
 import { transactionDetail } from "../../api/products/admin/product_transactions_api.js";
 import { allProduct } from "../../api/products/admin/allProduct_api.js";
 import { userlist } from "../../api/products/admin/user_list_api.js";
@@ -11,7 +9,7 @@ export async function dashBoardHandler() {
   const products = await allProduct();
   const users = await userlist();
   const items = await transactionDetail();
-
+  const dot = document.querySelector(".dot-wrap");
 
   // 차트를 그릴 캔버스 요소
   const canvas = document.querySelector("#myChart");
@@ -153,13 +151,14 @@ export async function dashBoardHandler() {
   const tableEl = document.querySelector(".table_content");
   tableEl.append(...liEl);
 
-
-    const itemCountEl = document.querySelector(".summary_itemcount");
-    const saleSumEl = document.querySelector(".summary_salesum");
-    const memberEl = document.querySelector(".summary_member");
+  const itemCountEl = document.querySelector(".summary_itemcount");
+  const saleSumEl = document.querySelector(".summary_salesum");
+  const memberEl = document.querySelector(".summary_member");
   itemCountEl.append(`판매 상품 갯수 : ${products.length}개`);
-  saleSumEl.append(`총 판매 매출 : ${sum
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`);
-  memberEl.append( `회원 수 : ${users.length}명`);
+  saleSumEl.append(
+    `총 판매 매출 : ${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
+  );
+  memberEl.append(`회원 수 : ${users.length}명`);
+  dot.style.display = "none";
 }
+

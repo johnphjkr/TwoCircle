@@ -2,11 +2,14 @@ import { router } from "../../source/route.js";
 import { payment } from "../../source/api/products/user/payment_api.js";
 import { authCheck } from "../../source/api/certified/authcheck_api.js";
 import { checkAccount } from "../../source/api/account/account_add_check.js";
+import { loading } from "../../source/js/loading.js";
 
 export async function paymentHandler() {
   const auth = await authCheck(JSON.parse(localStorage.getItem("accessToken")));
   const account = await checkAccount(auth);
   let banks = [...account.accounts];
+  loading();
+  const dot = document.querySelector(".dot-wrap");
 
   // 주문상품
   const orderNavBarEl = document.querySelector(".orderinfo_navbar");
@@ -160,4 +163,5 @@ export async function paymentHandler() {
   cancelBtnEl.addEventListener("click", () => {
     router.navigate("cart");
   });
+  dot.style.display = "none";
 }

@@ -10,6 +10,7 @@ export async function adminProductHandler(id) {
 }
 
 function renderProduct(data) {
+  const dot = document.querySelector(".dot-wrap");
   const adminWrap = document.querySelector('.admin_wrap');
   const titleEl = document.querySelector('.title');
   let tag = false;
@@ -72,5 +73,6 @@ function renderProduct(data) {
     await productDelete(id);
     router.navigate("admin");
   });
+  dot.style.display = "none";
 }
 
