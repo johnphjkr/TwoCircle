@@ -13,6 +13,8 @@ function renderProduct(data) {
   const adminWrap = document.querySelector('.admin_wrap');
   const titleEl = document.querySelector('.title');
   let tag = false;
+  const mainTag = Array.from(data.tags).filter(ele => ['best', 'md', 'new'].includes(ele));
+  const productTag = Array.from(data.tags).filter(ele => !mainTag.includes(ele));
 
   titleEl.innerHTML = /* html */ `
     <h2>${data.title}</h2>
@@ -31,6 +33,12 @@ function renderProduct(data) {
         <p><span>이름</span>${data.title}</p>
         <p><span>가격</span>${data.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원</p>
         <p><span>설명</span>${data.description}</p>
+        ${data.tags.includes('best') || data.tags.includes('md') || data.tags.includes('new') ?
+      `
+        <div class="main_tag_box">
+          <span>메인상품 진열</span>
+        </div>
+        ` : ''}
         ${data.tags == '' ? '' :
       '<div class="tag_box"><span>태그</span></div>'
     }
@@ -45,12 +53,27 @@ function renderProduct(data) {
     </div>
   `;
 
-  if (Array.isArray(data.tags)) {
+  // 메인상품 진열
+  if (data.tags.includes('best') || data.tags.includes('md') || data.tags.includes('new')) {
+    const mainTagEl = document.querySelector('.main_tag_box');
+    const divEl = document.createElement('div');
+    divEl.classList = 'tag_box_list';
+    const tags = mainTag.map((e) => {
+      const pEl = document.createElement('p');
+      pEl.innerText = e;
+      return pEl;
+    });
+    divEl.append(...tags);
+    mainTagEl.append(divEl);
+  }
+
+  // 태그
+  if (Array.isArray(data.tags) && data.tags.length !== 0) {
     tag = true;
     const tagBox = document.querySelector('.tag_box');
     const divEl = document.createElement('div');
     divEl.classList = 'tag_box_list';
-    const tags = data.tags.map((e) => {
+    const tags = productTag.map((e) => {
       const pEl = document.createElement('p');
       pEl.innerText = e;
       return pEl;
