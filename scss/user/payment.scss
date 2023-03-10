@@ -22,12 +22,7 @@
   height: 5rem;
   margin-bottom: 1rem;
 }
-header{
-  position: relative;
-}
-#app{
-  padding-top: 0;
-}
+
 #wrap {
   .wrap_container {
     display: flex;
@@ -163,25 +158,50 @@ header{
             display: flex;
             flex-direction: column;
             border: 0.2rem solid var(--lightgray-color);
-            width: 40rem;
-            height: 20rem;
-            padding: 4rem 3rem;
-            margin: 2rem 0 0 10rem;
+            width: 50rem;
+            height: 30rem;
+            padding: 2rem 3rem;
+            margin: 2rem 0 0 5rem;
 
-            .bank_name {
+            .bank {
               display: flex;
-              font-size: 2rem;
-              margin-bottom: 3rem;
-              justify-content: space-between;
+              flex-direction: column;
+
+              .bank_name {
+                display: flex;
+                font-size: 2rem;
+                margin-bottom: 3rem;
+                justify-content: space-between;
+              }
+
+              .account_number,
+              .bank_balance {
+                display: flex;
+                margin-bottom: 2rem;
+                font-size: 1.6rem;
+                justify-content: space-between;
+              }
+            }
+            .bank_card{
+              border: 1px solid var(--black-color);
+              display: flex;
+              flex-direction: column;
+              height: 100%;
+    padding: 2rem;
+              .card_img{
+                width: 11rem;
+                height: 10rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .img{
+                  width:80%;
+                  height: 80%;
+                }
+              }
             }
 
-            .account_number,
-            .bank_balance {
-              display: flex;
-              margin-bottom: 2rem;
-              font-size: 1.6rem;
-              justify-content: space-between;
-            }
+
           }
         }
       }

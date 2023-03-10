@@ -1,8 +1,5 @@
-// const wishList = JSON.parse(localStorage.getItem('wish'));
-
 import { wishRender } from "../../pages/user/wish_list";
 
-// console.log(wishList)
 
 export function renderWishList(wishList) {
   const ulEl = document.querySelector(".list");
@@ -60,7 +57,6 @@ export function renderWishList(wishList) {
 
       iEl.classList.toggle("fa-regular", isCartItem);
       iEl.classList.toggle("fa-solid", !isCartItem);
-      // console.log(isCartItem);
       if (isCartItem) {
         wishList = wishList.filter((wishItem) => wishItem.id !== wish.id);
         localStorage.setItem("wish", JSON.stringify(wishList));
