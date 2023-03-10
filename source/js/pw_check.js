@@ -35,6 +35,7 @@ export async function pwCheck(url) {
     }
     if (res.status === 200) {
       alert('비밀번호 확인 성공!');
+      localStorage.setItem("pwCheck",true)
       if(url === "mypage/account"){
         accountRender()
       }else{
