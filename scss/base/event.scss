@@ -2,7 +2,7 @@
   display: none;
   width: 100px;
   position: fixed;
-  right: 5rem;
+  right: 1rem;
   bottom: 5rem;
   z-index: 2;
   .swiper-container{
@@ -90,6 +90,9 @@
       font-size: 13px;
       font-weight: 700;
       color: #fff;
+      padding: 0;
+      border: none;
+      outline: none;
     }
   }
 }
