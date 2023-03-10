@@ -181,6 +181,19 @@
         }
       }
     }
+    .table_pagination{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      button{
+        width: 8rem;
+        height: 5rem;
+        margin: 2rem 8rem;
+        cursor: pointer;
+        border: 2px solid var(--pink-color);
+        background-color: #fff
+      }
+    }
   }
 
   .dashboard_summary {

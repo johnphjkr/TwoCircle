@@ -34,9 +34,11 @@ export function dashBoardRender() {
             <div class="navbar_totalprice">매출 합계</div>
           </div>
           <div class="table_content"></div>
-          <div class="table_pagination"></div>
+          <div class="table_pagination">
+            <button class="pagination_prev">이전</button>
+            <button class="pagination_next">다음</button>
+          </div>
       </div>
-      
     </div> 
   </div>
   `;

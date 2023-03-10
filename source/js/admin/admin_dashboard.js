@@ -10,7 +10,8 @@ export async function dashBoardHandler() {
   const users = await userlist();
   const items = await transactionDetail();
   const dot = document.querySelector(".dot-wrap");
-
+  const prevEl = document.querySelector(".pagination_prev");
+  const nextEl = document.querySelector(".pagination_next");
   // 차트를 그릴 캔버스 요소
   const canvas = document.querySelector("#myChart");
 
@@ -159,6 +160,11 @@ export async function dashBoardHandler() {
     `총 판매 매출 : ${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
   );
   memberEl.append(`회원 수 : ${users.length}명`);
+
+  
+
+  prevEl.addEventListener("click", () => {});
+  nextEl.addEventListener("click", () => {});
+
   dot.style.display = "none";
 }
-
