@@ -1,4 +1,6 @@
-import { router } from '../source/route';
+import { eventBadgeHandler } from '../source/js/event_badge';
+import { headerHandler } from '../source/js/header';
+
 
 export function headerRender() {
   const wrap = document.querySelector('#wrap');
@@ -127,7 +129,7 @@ export function headerRender() {
               </linearGradient>
             </defs>
           </svg>최근 본 상품</a>
-        <a href="javascript:void(0)" class="scroll_top">TOP</a>
+        <button class="scroll_top">TOP</button>
       </div>
     </section>
     <div id="app"></div>
@@ -181,7 +183,7 @@ export function headerRender() {
               <h3>SNS</h3>
               <ul class="footer_sns">
                 <li class="product_list_item">
-                  <img src="../image/kcp_icon.png" alt="" />
+                  <img src="../image/kcp_icon.png" alt="TwoCircle_logo" />
                 </li>
                 <li class="product_list_item">
                   <a href="https://www.facebook.com" class="facebook"> </a>
@@ -205,54 +207,6 @@ export function headerRender() {
       </div>
     </footer>
   `;
-
-  // 검색기능
-  const search = document.querySelector('.search');
-  const searchInput = document.querySelector('.search input');
-
-  search.addEventListener('submit', (e) => {
-    e.preventDefault();
-    router.navigate(`product_search/${searchInput.value}`);
-  });
-
-  // 카트, 찜하기 개수
-  const cartNum = document.querySelector('.cart_num');
-  const heartNum = document.querySelector('.heart_num');
-
-  if (localStorage.getItem('basket')) {
-    cartNum.innerText = JSON.parse(localStorage.getItem('basket')).length;
-  }
-  if (localStorage.getItem('wish')) {
-    heartNum.innerText = JSON.parse(localStorage.getItem('wish')).length;
-  }
-  // TOP
-  const top = document.querySelector(".scroll_top")
-  top.addEventListener("click",()=>{
-    window.scrollTo({top : 0, behavior: 'smooth'})
-  })
-  // 이벤트 베너
-  const eventBanner = new Swiper('.event-swiper', {
-    slidesPerView: 1,
-    width: 100,
-    autoplay:true,
-    scrollbar: {
-      el: ".swiper-scrollbar",
-      draggable: true
-    },
-  });
-  // 스크롤 이벤트
-  const eventSection = document.querySelector(".event")
-  window.addEventListener('scroll',_.throttle(()=>{
-    if(window.scrollY<330){
-      gsap.to(eventSection,.4,{
-        opacity:0,
-        display:'none'
-      })
-    }else{
-      gsap.to(eventSection,.4,{
-        opacity:1,
-        display:'block'
-      })
-    }
-  },300))
+  headerHandler()
+  eventBadgeHandler()
 }
