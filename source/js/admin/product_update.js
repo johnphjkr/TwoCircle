@@ -30,6 +30,7 @@ export function productUpdateHandler(id) {
   })();
 
   function renderProduct(data) {
+    const dot = document.querySelector(".dot-wrap");
     name = nameEl.value = data.title;
     price = priceEl.value = data.price;
     text = textEl.value = data.description;
@@ -145,5 +146,6 @@ export function productUpdateHandler(id) {
       discountRate: discount
     });
   });
+  dot.style.display = "none";
 }
 
