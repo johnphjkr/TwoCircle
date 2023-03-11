@@ -40,6 +40,7 @@
   .dashboard_table {
     border: 1px solid #ddd;
     padding: 1rem;
+    margin-bottom: 1rem;
 
     /* 테이블 타이틀 스타일링 */
     .table_title {
@@ -67,7 +68,7 @@
       }
 
       .navbar_date {
-        flex: 2;
+        flex: 1.5;
       }
 
       .navbar_user {
@@ -123,7 +124,7 @@
         }
 
         .content_date {
-          flex: 2;
+          flex: 1.5;
         }
 
         .content_user {
@@ -181,18 +182,29 @@
         }
       }
     }
-    .table_pagination{
-      display:flex;
+
+    .table_pagination {
+      display: flex;
       justify-content: center;
       align-items: center;
-      button{
-        width: 8rem;
-        height: 5rem;
-        margin: 2rem 8rem;
-        cursor: pointer;
-        border: 2px solid var(--pink-color);
-        background-color: #fff
+      margin: 2rem;
+
+      .dashboard-link {
+        text-align: center;
+        width: 4rem;
+        padding: 1rem;
+        margin: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        color: black;
+        transition: .5s;
+        &:hover {
+          background-color: var(--pink-color);
+          color: #eee;
+        }
       }
+     
     }
   }
 

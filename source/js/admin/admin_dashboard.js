@@ -8,10 +8,15 @@ export async function dashBoardHandler() {
     await productDataHandler();
   const products = await allProduct();
   const users = await userlist();
-  const items = await transactionDetail();
+  const itemList = await transactionDetail();
   const dot = document.querySelector(".dot-wrap");
-  const prevEl = document.querySelector(".pagination_prev");
-  const nextEl = document.querySelector(".pagination_next");
+  const pageNationEl = document.querySelector(".table_pagination");
+  let itemLength = 0;
+  let currentPage = 1;
+  let itemsPerPage = 10;
+  let sum = 0;
+  let index = 0;
+
   // 차트를 그릴 캔버스 요소
   const canvas = document.querySelector("#myChart");
 
@@ -67,9 +72,7 @@ export async function dashBoardHandler() {
     },
   });
 
-  let index = 0;
-  let sum = 0;
-  const liEl = items.map((item) => {
+  const liEl = itemList.map((item) => {
     const listEl = document.createElement("div");
     listEl.classList.add("list");
     const numberEl = document.createElement("div");
@@ -152,6 +155,125 @@ export async function dashBoardHandler() {
   const tableEl = document.querySelector(".table_content");
   tableEl.append(...liEl);
 
+  const listItems = document.querySelectorAll(".list");
+  itemLength = listItems.length;
+  updatePageNation(itemLength, itemsPerPage, currentPage);
+  displayPage(currentPage, itemsPerPage);
+
+  function updatePageNation(numItems, itemsPerPage, currentPage) {
+    const numPages = Math.ceil(numItems / itemsPerPage);
+    pageNationEl.innerHTML = "";
+
+    const groupSize = 5;
+    const groupIndex = Math.floor((currentPage - 1) / groupSize);
+    const startPage = groupIndex * groupSize + 1;
+    const endPage = Math.min(startPage + groupSize - 1, numPages);
+
+    const firstLink = createPageNation(currentPage - groupSize, "<<");
+    pageNationEl.appendChild(firstLink);
+
+    const prevLink = createPageNation(currentPage - groupSize, "<");
+    pageNationEl.appendChild(prevLink);
+    if (currentPage === 1) {
+      disableLink(firstLink);
+      disableLink(prevLink);
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      const link = createPageNation(i, i);
+      pageNationEl.appendChild(link);
+    }
+
+    const nextLink = createPageNation(currentPage + 1, ">");
+    pageNationEl.appendChild(nextLink);
+
+    const lastLink = createPageNation(numPages, ">>");
+    pageNationEl.appendChild(lastLink);
+    if (currentPage === numPages) {
+      disableLink(nextLink);
+      disableLink(lastLink);
+    }
+  }
+
+  function createPageNation(pageNumber, label) {
+    const link = document.createElement("a");
+    link.classList.add("dashboard-link");
+    link.href = "#";
+    if (typeof label === "number") {
+      link.classList.add("page-link");
+      if (label === currentPage) {
+        link.classList.add("active-link");
+      }
+    } else {
+      link.classList.add("arrow-link");
+    }
+    link.dataset.page = pageNumber;
+    link.textContent = label;
+    return link;
+  }
+
+  function disableLink(link) {
+    link.disabled = true;
+    link.classList.add("arrow-link-unactive");
+  }
+
+  function displayPage(pageNum, itemsPerPage) {
+    const startIndex = (pageNum - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+
+    listItems.forEach((item) => {
+      item.style.display = "none";
+    });
+
+    for (let i = startIndex; i < endIndex && i < listItems.length; i++) {
+      listItems[i].style.display = "flex";
+    }
+  }
+
+  pageNationEl.addEventListener("click", (event) => {
+    event.preventDefault();
+    const link = event.target;
+
+    if (link.classList.contains("page-link")) {
+      const pageNum = parseInt(link.dataset.page, 10);
+      currentPage = pageNum;
+      updatePageNation(itemLength, itemsPerPage, currentPage);
+      displayPage(pageNum, itemsPerPage);
+    }
+    if (link.textContent === "<<") {
+      if (currentPage === 1) {
+        return;
+      }
+      currentPage = 1;
+      updatePageNation(itemLength, itemsPerPage, currentPage);
+      displayPage(currentPage, itemsPerPage);
+    }
+    if (link.textContent === "<") {
+      if (currentPage === 1) {
+        return;
+      }
+      currentPage -= 1;
+      updatePageNation(itemLength, itemsPerPage, currentPage);
+      displayPage(currentPage, itemsPerPage);
+    }
+    if (link.textContent === ">") {
+      if (currentPage === Math.ceil(itemLength / itemsPerPage)) {
+        return;
+      }
+      currentPage += 1;
+      updatePageNation(itemLength, itemsPerPage, currentPage);
+      displayPage(currentPage, itemsPerPage);
+    }
+    if (link.textContent === ">>") {
+      if (currentPage === Math.ceil(itemLength / itemsPerPage)) {
+        return;
+      }
+      currentPage = Math.ceil(itemLength / itemsPerPage, currentPage);
+      updatePageNation(itemLength, itemsPerPage, currentPage);
+      displayPage(currentPage, itemsPerPage);
+    }
+  });
+  
   const itemCountEl = document.querySelector(".summary_itemcount");
   const saleSumEl = document.querySelector(".summary_salesum");
   const memberEl = document.querySelector(".summary_member");
@@ -160,11 +282,6 @@ export async function dashBoardHandler() {
     `총 판매 매출 : ${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
   );
   memberEl.append(`회원 수 : ${users.length}명`);
-
-  
-
-  prevEl.addEventListener("click", () => {});
-  nextEl.addEventListener("click", () => {});
 
   dot.style.display = "none";
 }
