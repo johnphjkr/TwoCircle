@@ -274,9 +274,10 @@ export async function dashBoardHandler() {
     }
   });
   
-  const itemCountEl = document.querySelector(".summary_itemcount");
-  const saleSumEl = document.querySelector(".summary_salesum");
-  const memberEl = document.querySelector(".summary_member");
+  // 요약 정보
+  const itemCountEl = document.querySelector(".itemcount");
+  const saleSumEl = document.querySelector(".salesum");
+  const memberEl = document.querySelector(".member");
   itemCountEl.append(`판매 상품 갯수 : ${products.length}개`);
   saleSumEl.append(
     `총 판매 매출 : ${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`

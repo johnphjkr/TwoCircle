@@ -5,17 +5,16 @@
 }
 
 @mixin summary-item {
-  width: 100%;
-  height: 100%;
-  border-radius: 100%;
+  width: 30rem;
+  height: 18rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 3rem 10rem;
-  font-size: 1.5rem;
+  margin: 3rem 5rem;
+  font-size: 2rem;
   font-weight: bold;
   text-align: center;
-  background-color: var(--more-lightgray-color);
 }
 
 .admin_dashboard {
@@ -203,8 +202,7 @@
           background-color: var(--pink-color);
           color: #eee;
         }
-      }
-     
+      }   
     }
   }
 
@@ -235,8 +233,12 @@
       }
 
       .summary_member {
-        color: red;
+        color: var(--pink-color);
         @include summary-item();
+      }
+      img{
+        width:5rem;
+        height: 5rem;
       }
     }
   }
