@@ -30,6 +30,7 @@ import { userListRender } from '../pages/admin/admin_userlist.js';
 import { admin } from './js/admin/admin.js';
 import { dashBoardRender } from "../pages/admin/admin_dashboard.js";
 
+
 export const router = new Navigo('/');
 
 router.hooks({
@@ -67,6 +68,7 @@ router.hooks({
       logoutBtn.addEventListener('click', async () => {
         await logout(accessToken);
         localStorage.removeItem('accessToken');
+        localStorage.removeItem('payment');
         loginEl.style.display = 'flex';
         logoutEl.style.display = 'none';
         router.navigate("/");
@@ -76,14 +78,6 @@ router.hooks({
       loginEl.style.display = 'flex';
       logoutEl.style.display = 'none';
     }
-
-    // 관리자
-    if (auth.email === process.env.ADMIN && match.url === '') {
-      loginNameEl.innerHTML = /* html */ `
-        <a href="/admin">관리자페이지로 이동</a>
-      `;
-    }
-
     done();
   },
   after: (match) => {
@@ -184,4 +178,5 @@ router
     },
   })
   .resolve();
+
 
