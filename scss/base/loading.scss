@@ -1,10 +1,14 @@
 .dot-wrap{
   width: 7rem;
   margin: 20rem auto;
+  // z-index: 4;
+  // position: fixed;
+  // top: 30%;
+  // left: 50%;
   .dot-spinner {
     --uib-size: 7rem;
     --uib-speed: .9s;
-    --uib-color: black;
+    --uib-color: var(--pink-color);
   
     position: relative;
     display: flex;
@@ -76,9 +80,6 @@
     }
   }
 }
-
-
-
 
 
 @keyframes pulse {

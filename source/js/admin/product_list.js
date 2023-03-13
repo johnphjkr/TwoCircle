@@ -1,4 +1,3 @@
-import { async } from "q";
 import { allProduct } from "../../api/products/admin/allProduct_api.js";
 import { productDelete } from "../../api/products/admin/product_delete.js";
 
@@ -13,6 +12,8 @@ function renderList(data) {
   const listEl = document.querySelector('.product_admin_ul');
   const labelEl = document.querySelector('label');
   const deleteBtn = document.querySelector('.delete_btn');
+  const dot = document.querySelector(".dot-wrap");
+  
   const liEls = data.map((prd, idx) => {
     const liEl = document.createElement('li');
     liEl.innerHTML = /* html */ `
@@ -27,7 +28,7 @@ function renderList(data) {
           <span>${prd.description}</span>
         </div>
         <p>${prd.price} 원</p>
-        <p>${prd.isSoldOut ? '<span class="sold_out">품절</span>' : '판매중'}</p>
+        <p class="sold">${prd.isSoldOut ? '<span class="sold_out">품절</span>' : '판매중'}</p>
       </a>
       `;
 
@@ -53,11 +54,12 @@ function renderList(data) {
           await productDelete(checkbox.dataset.id);
         }
       }
-      const list = await productList();
+      const list = await allProduct();
       renderList(list);
     };
     choseDelete();
   });
+  dot.style.display = "none";
 }
 
 

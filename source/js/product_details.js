@@ -1,4 +1,5 @@
 import { router } from "../../source/route.js";
+import { loading } from "../../source/js/loading.js";
 
 export async function productDetailHandler(id) {
   // DOM 요소 변수
@@ -16,6 +17,8 @@ export async function productDetailHandler(id) {
   const discountEl = document.querySelector(".product_info_discount");
   const discountPriceEl = document.querySelector(".option_content_discount");
   const optionPriceEl = document.querySelector(".option_content_price");
+  loading();
+  const dot = document.querySelector(".dot-wrap");
 
   // 초기화
   const INITIAL_COUNT_VALUE = 1;
@@ -200,4 +203,5 @@ export async function productDetailHandler(id) {
       ],
     });
   }
+  dot.style.display = "none";
 }
