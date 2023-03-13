@@ -9,7 +9,7 @@ export function cartHandler() {
   const cancelBtn = document.querySelector(".cancel_btn");
   const purchaseBtn = document.querySelector(".purchase_btn");
   const basketItem = JSON.parse(localStorage.getItem("basket"));
-  cancelBtn?.addEventListener("click", () => {
+  cancelBtn.addEventListener("click", () => {
     let cartItemList = [...basketItem];
     
     const selectedItemList = Array.from(document.querySelectorAll(".want_checkbox:checked"))
@@ -23,7 +23,7 @@ export function cartHandler() {
     cartRender()
   });
 
-  totalCheckbox?.addEventListener("change", (e) => {
+  totalCheckbox.addEventListener("change", (e) => {
     const checkBox = ulEl.querySelectorAll(".want_checkbox");
     const { checked } = e.target;
 
@@ -36,13 +36,14 @@ export function cartHandler() {
     });
   });
 
-  purchaseBtn?.addEventListener("click", () => {
+  purchaseBtn.addEventListener("click", () => {
     let cartItemList = [...basketItem];
 
     const isChecked = Array.from(
       document.querySelectorAll(".want_checkbox:checked")
     )
    
+    
     if(isChecked) {
 
       const selectedItem = Array.from(
@@ -50,15 +51,15 @@ export function cartHandler() {
       ).map(
         (selectedInput) => {
           const id = selectedInput.closest(".cart_list_item").dataset.id;
-          return basketItem.find(item => item.id === id)
+            return basketItem.find(item => item.id === id)
           
-        }
-        );
-
-
+        });
         localStorage.setItem("basket",JSON.stringify(selectedItem))
+       
         
     }
+        
+   
    
     
 
@@ -88,13 +89,13 @@ export const renderCartList = () => {
   const ulEl = document.querySelector(".cart_list");
   const basketItem = JSON.parse(localStorage.getItem("basket"));
   const isEmpty = basketItem === null || basketItem.length === 0 
-  
+  console.log(basketItem)
     if(!isEmpty){
 
       const liEls = basketItem.map((item) => {
         const liEl = document.createElement("li");
-    
-        liEl.dataset.id = item?.id;
+       
+        liEl.dataset.id = item.id;
         liEl.classList = "cart_list_item";
        
         liEl.innerHTML = /*html*/ `
@@ -132,7 +133,7 @@ export const renderCartList = () => {
       ulEl.innerHTML = "";
       ulEl.append(...liEls);
     }                      
-
+ 
   renderTotalPrice()
   ulEl?.addEventListener('click',clickHandler)
 };
@@ -143,7 +144,7 @@ const renderTotalPrice = () => {
 
   const basketItem = JSON.parse(localStorage.getItem("basket"));
   const totalPriceArea = document.querySelector(".cart_total_price_area");
-  const isEmpty = basketItem === null ||basketItem.length === 0
+  const isEmpty = !basketItem?.length
   if(!isEmpty) {
   totalPriceArea.classList.remove('_hidden')
   const divEl = document.createElement("div");
@@ -165,6 +166,7 @@ const renderTotalPrice = () => {
   totalPriceArea.append(divEl);
   }
   getToTalPrice();
+  
 };
 
 /** 장바구니 총 합계 구하는 함수*/
@@ -204,7 +206,6 @@ const  clickHandler = (e) => {
     decrease(liEls)
     
    
-  
  }
  if(e.target.matches('.increase_btn')) {
     increase(liEls)
@@ -241,7 +242,7 @@ const decrease = (liEls) => {
         targetItem.totalPrice =  targetItem.count * targetItem.price;
         localStorage.setItem('basket',JSON.stringify(basketItem))  
      }
-   
+     cartHandler()
      getToTalPrice()
     
 }
@@ -274,7 +275,7 @@ const increase = (liEls) => {
         targetItem.totalPrice =  targetItem.count * targetItem.price;
         localStorage.setItem('basket',JSON.stringify(basketItem))  
       }
+    cartHandler()
    getToTalPrice()
-  
 }
 

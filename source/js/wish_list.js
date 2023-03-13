@@ -1,8 +1,4 @@
-// const wishList = JSON.parse(localStorage.getItem('wish'));
-
 import { wishRender } from "../../pages/user/wish_list";
-
-// console.log(wishList)
 
 export function renderWishList(wishList) {
   const ulEl = document.querySelector(".list");

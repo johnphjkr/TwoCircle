@@ -38,7 +38,7 @@ function rendProduct(products) {
       </div>
     `
   }else{
-    let wishList  = localStorage.getItem('wish') ? JSON.parse(localStorage.getItem('wish')) : [];
+    let wishList  = localStorage.getItem('wish') ?? [];
     const liEls = products.map((product) => {
       const isCartItem = wishList.find(wishItem => wishItem.id === product.id);
       const liEl = document.createElement("li");
@@ -60,7 +60,7 @@ function rendProduct(products) {
                     </div>
                     <p class="product_name">${titleCode[0]}</p>
                     <p class="product_code">${
-                      titleCode[1] !== undefined ? titleCode[1] : titleCode[0]
+                      titleCode[1] ??  titleCode[0]
                     }</p>
                     <p class="product_discription">${product.description}</p>
                     <p class="product_price">${product.price

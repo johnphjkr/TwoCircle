@@ -25,6 +25,7 @@
     "sass": "^1.58.3"
   },
   "dependencies": {
-    "navigo": "^8.11.1"
+    "navigo": "^8.11.1",
+    "source": "^0.0.3"
   }
 }

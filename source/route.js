@@ -1,78 +1,87 @@
-import Navigo from 'navigo';
+import Navigo from "navigo";
 
-import { authCheck } from './api/certified/authcheck_api.js';
-import { logout } from './api/certified/logout_api.js';
+import { authCheck } from "./api/certified/authcheck_api.js";
+import { logout } from "./api/certified/logout_api.js";
 
 // 페이지
-import { mainRender } from '../pages/user/main.js';
-import { loginRender } from '../pages/user/login.js';
-import { signupRender } from '../pages/user/signup';
-import { navRender, mypageRender } from '../pages/user/mypage';
-import { wishRender } from '../pages/user/wish_list';
-import { purchaseRender } from '../pages/user/purchase_history';
-import { cartRender } from '../pages/user/cart';
-import { productDetailRender } from '../pages/user/product_details.js';
-import { paymentRender } from '../pages/user/payment.js';
-import { orderCompletedRender } from '../pages/user/order_completed.js';
-import { accountRender } from '../pages/user/account';
-import { productRender } from './js/product_list.js';
-import { productListRender } from '../pages/user/product_list';
-import { userInfoRender } from '../pages/user/user_information.js';
-import { adminPageRender } from '../pages/admin/admin_product_list.js';
-import { adminProductAdd } from '../pages/admin/product_add.js';
-import { pwCheckRender } from '../pages/user/password_check.js';
-import { headerRender } from '../pages/header.js';
-import { adminWrap } from '../pages/admin_wrap.js';
-import { searchListRender } from '../pages/user/product_search.js';
-import { adminProduct } from '../pages/admin/product.js';
-import { productUpdate } from '../pages/admin/product_update.js';
-import { userListRender } from '../pages/admin/admin_userlist.js';
+import { mainRender } from "../pages/user/main.js";
+import { loginRender } from "../pages/user/login.js";
+import { signupRender } from "../pages/user/signup";
+import { navRender, mypageRender } from "../pages/user/mypage";
+import { wishRender } from "../pages/user/wish_list";
+import { purchaseRender } from "../pages/user/purchase_history";
+import { cartRender } from "../pages/user/cart";
+import { productDetailRender } from "../pages/user/product_details.js";
+import { paymentRender } from "../pages/user/payment.js";
+import { orderCompletedRender } from "../pages/user/order_completed.js";
+import { accountRender } from "../pages/user/account";
+import { productRender } from "./js/product_list.js";
+import { productListRender } from "../pages/user/product_list";
+import { userInfoRender } from "../pages/user/user_information.js";
+import { adminPageRender } from "../pages/admin/admin_product_list.js";
+import { adminProductAdd } from "../pages/admin/product_add.js";
+import { pwCheckRender } from "../pages/user/password_check.js";
+import { headerRender } from "../pages/header.js";
+import { adminWrap } from "../pages/admin_wrap.js";
+import { searchListRender } from "../pages/user/product_search.js";
+import { adminProduct } from "../pages/admin/product.js";
+import { productUpdate } from "../pages/admin/product_update.js";
+import { userListRender } from "../pages/admin/admin_userlist.js";
 
-export const router = new Navigo('/');
+export const router = new Navigo("/");
 
 router.hooks({
   before: async (done, match) => {
-    const accessToken = JSON.parse(localStorage.getItem('accessToken'));
+    const accessToken = JSON.parse(localStorage.getItem("accessToken"));
     const auth = await authCheck(accessToken);
-    headerRender()
+    headerRender();
     // 페이지 가드
-    const onlyUserPages = ['mypage', 'mypage/wish', 'account','payment','mypage/changeInfo', 'mypage/account','admin', 'admin/product_add'];
-    const onlyAdminPages = ['admin', 'admin/product_add']
+    const onlyUserPages = [
+      "mypage",
+      "mypage/wish",
+      "account",
+      "payment",
+      "mypage/changeInfo",
+      // "mypage/account",
+      "admin",
+      "admin/product_add",
+    ];
+    const onlyAdminPages = ["admin", "admin/product_add"];
 
     if (onlyUserPages.includes(match.url) && !auth) {
-      router.navigate('login');
+      router.navigate("login");
       done();
     }
-    if ((match.url === 'login' || match.url === 'signup') && auth) {
-      router.navigate('/');
+    if ((match.url === "login" || match.url === "signup") && auth) {
+      router.navigate("/");
       done();
     }
     // 관리자 페이지
-    if(onlyAdminPages.includes(match.url) && auth.email != process.env.ADMIN ){
-      alert("유용한 사용자가 아닙니다.")
-      history.go(-1)
+    if (onlyAdminPages.includes(match.url) && auth.email != process.env.ADMIN) {
+      alert("유용한 사용자가 아닙니다.");
+      history.go(-1);
     }
 
     // 로그인 로그아웃시 헤더 변경
-    const loginEl = document.querySelector('.header_login');
-    const logoutEl = document.querySelector('.header_logout');
-    const loginNameEl = document.querySelector('.login_name');
-    const logoutBtn = document.querySelector('.logout_btn');
+    const loginEl = document.querySelector(".header_login");
+    const logoutEl = document.querySelector(".header_logout");
+    const loginNameEl = document.querySelector(".login_name");
+    const logoutBtn = document.querySelector(".logout_btn");
     if (auth) {
-      loginEl.style.display = 'none';
-      logoutEl.style.display = 'flex';
+      loginEl.style.display = "none";
+      logoutEl.style.display = "flex";
       loginNameEl.innerHTML = `${auth.displayName}님, 안녕하세요`;
-      logoutBtn.addEventListener('click', async () => {
+      logoutBtn.addEventListener("click", async () => {
         await logout(accessToken);
-        localStorage.removeItem('accessToken');
-        loginEl.style.display = 'flex';
-        logoutEl.style.display = 'none';
-        router.navigate("/")
-        done()
+        localStorage.removeItem("accessToken");
+        loginEl.style.display = "flex";
+        logoutEl.style.display = "none";
+        router.navigate("/");
+        done();
       });
     } else {
-      loginEl.style.display = 'flex';
-      logoutEl.style.display = 'none';
+      loginEl.style.display = "flex";
+      logoutEl.style.display = "none";
     }
 
     done();
@@ -83,77 +92,77 @@ router.hooks({
 });
 router
   .on({
-    '/': () => {
+    "/": () => {
       mainRender();
     },
 
-    "login": () => {
+    login: () => {
       loginRender();
     },
-    "signup": () => {
+    signup: () => {
       signupRender();
     },
-    "cart": () => {
+    cart: () => {
       cartRender();
     },
-    "mypage": () => {
+    mypage: () => {
       navRender();
       mypageRender();
     },
-    'mypage/wish': () => {
+    "mypage/wish": () => {
       navRender();
       wishRender();
     },
-    'mypage/purchase': () => {
+    "mypage/purchase": () => {
       navRender();
       purchaseRender();
     },
-    'mypage/changeInfo': (match) => {
+    "mypage/changeInfo": (match) => {
       navRender();
       pwCheckRender(match.url);
     },
-    'mypage/account': (match) => {
+    "mypage/account": (match) => {
       navRender();
-      pwCheckRender(match.url);
+      // pwCheckRender(match.url);
+      accountRender();
     },
-    'product_list/:id': (match) => {
+    "product_list/:id": (match) => {
       productListRender(match.data.id);
     },
-    'product_search/:id': (match) => {
+    "product_search/:id": (match) => {
       searchListRender(match.data.id);
       productRender(match.data.id, []);
     },
-    'order_completed': () => {
+    order_completed: () => {
       orderCompletedRender();
     },
-    'product_details/:id': (match) => {
+    "product_details/:id": (match) => {
       productDetailRender(match);
     },
-    'payment': () => {
+    payment: () => {
       paymentRender();
     },
-    'order_completed': () => {
+    order_completed: () => {
       orderCompletedRender();
     },
-    "admin": () => {
-      adminWrap()
+    admin: () => {
+      adminWrap();
       adminPageRender();
     },
-    'admin/product_add': () => {
-      adminWrap()
+    "admin/product_add": () => {
+      adminWrap();
       adminProductAdd();
     },
-    'admin/:id':(match) =>{
-      adminWrap()
-      adminProduct(match.data.id)
+    "admin/:id": (match) => {
+      adminWrap();
+      adminProduct(match.data.id);
     },
-    "admin/update/:id" : (match)=>{
-      adminWrap()
-      productUpdate(match.data.id)
-    }
-    'admin/user_list': () => {
+    "admin/update/:id": (match) => {
+      adminWrap();
+      productUpdate(match.data.id);
+    },
+    "admin/user_list": () => {
       userListRender();
-    }
+    },
   })
   .resolve();
-
