@@ -25,8 +25,8 @@ export async function purchaseHandler() {
   let product_title = '';
   let product_price = 0;
   let product_time = '';
-  let deal_done = false;
-  let deal_canceled = false;
+  let dealDone = false;
+  let dealCanceled = false;
   let list_items = '';
   let detailId = '';
   let filtered_items = '';
@@ -235,8 +235,8 @@ export async function purchaseHandler() {
         btnEl.classList.add('list_item_btn');
 
         detailId = item.detailId;
-        deal_canceled = item.isCanceled;
-        deal_done = item.done;
+        dealCanceled = item.isCanceled;
+        dealDone = item.done;
 
         let result = item.product.title;
 
@@ -253,15 +253,16 @@ export async function purchaseHandler() {
         productInfoEl.append(imgEl, titleEl);
         listItemEl.append(timeEl, productInfoEl, priceEl, btnEl);
 
-        if (deal_canceled == true && deal_done == false) {
+        if (dealCanceled == true && dealDone == false) {
           btnEl.textContent = '구매 취소';
           listItemCancelEl.appendChild(listItemEl);
         }
-        if (deal_done == true && deal_canceled == false) {
+        if (dealDone == true && dealCanceled == false) {
           btnEl.textContent = '구매 확정';
           listItemConfirmEl.appendChild(listItemEl);
         }
-        if (deal_done == false && deal_canceled == false) {
+        if (dealDone == false && dealCanceled == false) {
+          console.log(detailId);
           const btnOkEl = document.createElement('div');
           btnOkEl.classList.add('btn_ok');
           btnOkEl.textContent = '확정';
@@ -272,7 +273,7 @@ export async function purchaseHandler() {
           btnOkEl.addEventListener('click', (e) => {
             //구매 확정
             alert('구매가 확정되었습니다!');
-            deal_done = true;
+            dealDone = true;
             detailId = item.detailId;
             purchaseOk({ detailId });
             btnOkEl.style.display = 'none';
@@ -284,7 +285,7 @@ export async function purchaseHandler() {
           btnCancelEl.addEventListener('click', (e) => {
             //구매 취소
             alert('구매가 취소되었습니다.');
-            deal_canceled = true;
+            dealCanceled = true;
             detailId = item.detailId;
             purchaseCancel({ detailId });
             btnOkEl.style.display = 'none';
