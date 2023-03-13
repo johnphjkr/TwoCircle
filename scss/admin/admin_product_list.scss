@@ -37,6 +37,7 @@
     }
     :nth-child(6) {
       width: 15%;
+      
     }
   }
 
@@ -60,6 +61,12 @@
           font-size: 1.5rem;
           color: var(--gray-color);
         }
+      }
+      .sold {
+        color: #03c04a;
+      }
+      .sold_out {
+        color: #d21404;
       }
     }
   }
