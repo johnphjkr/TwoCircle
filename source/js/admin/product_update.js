@@ -42,21 +42,21 @@ export function productUpdateHandler(id) {
 
     if (data.thumbnail !== null) {
       thumbnailEl.innerHTML = /* html */ `
-        <img src=${data.thumbnail} alt="" />
+        <img src=${data.thumbnail} alt="ThumbNail" />
       `;
     } else {
       thumbnailEl.innerHTML = /* html */ `
-        <img src="https://via.placeholder.com/200x200?text=NO+IMAGE" alt="" />
+        <img src="https://via.placeholder.com/200x200?text=NO+IMAGE" alt="NO IMAGE" />
       `;
     }
 
     if (data.photo !== null) {
       photoEl.innerHTML = /* html */ `
-        <img src=${data.photo} alt="" />
+        <img src=${data.photo} alt="PHOTO" />
       `;
     } else {
       photoEl.innerHTML = /* html */ `
-        <img src="https://via.placeholder.com/200x250?text=NO+IMAGE" alt="" />
+        <img src="https://via.placeholder.com/200x250?text=NO+IMAGE" alt="NO IMAGE" />
       `;
     }
 

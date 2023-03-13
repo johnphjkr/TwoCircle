@@ -110,7 +110,7 @@ export async function mypageRender() {
               <div class="product_item_img">
                 <img
                   src="https://via.placeholder.com/200x200?text=NO+IMAGE"
-                  alt=""
+                  alt="NO IMAGE"
                   class="img" />
               </div>
               <div class="product_item_wrap">

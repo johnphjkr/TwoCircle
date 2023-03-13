@@ -82,32 +82,32 @@ export function headerRender() {
           <p class="team">TEAM5<br><span>23.01.30<br>~ ING</span></p>
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <a href="https://github.com/Nevacat">
-                <img src="https://avatars.githubusercontent.com/u/110139098?v=4" alt="">
+              <a href="https://github.com/Nevacat" target="_blank">
+                <img src="https://avatars.githubusercontent.com/u/110139098?v=4" alt="박희수 프로필">
                 <p>박희수</p>
               </a>
             </div>
             <div class="swiper-slide">
-              <a href="https://github.com/seon-mikim">
-                <img src="https://avatars.githubusercontent.com/u/100131415?v=4" alt="">
+              <a href="https://github.com/seon-mikim" target="_blank">
+                <img src="https://avatars.githubusercontent.com/u/100131415?v=4" alt="김선미 프로필">
                 <p>김선미</p>
               </a>
             </div>
             <div class="swiper-slide">
-              <a href="https://github.com/jiyoon29">
-                <img src="https://avatars.githubusercontent.com/u/71622691?v=4" alt="">
+              <a href="https://github.com/jiyoon29" target="_blank">
+                <img src="https://avatars.githubusercontent.com/u/71622691?v=4" alt="송지윤 프로필">
                 <p>송지윤</p>
               </a>
             </div>
             <div class="swiper-slide">
-              <a href="https://github.com/hyeon17">
-                <img src="https://avatars.githubusercontent.com/u/83224463?v=4" alt="">
+              <a href="https://github.com/hyeon17" target="_blank">
+                <img src="https://avatars.githubusercontent.com/u/83224463?v=4" alt="장현준 프로필">
                 <p>장현준</p>
               </a>
             </div>
             <div class="swiper-slide">
-              <a href="https://github.com/johnphjkr">
-                <img src="https://avatars.githubusercontent.com/u/69203535?v=4" alt="">
+              <a href="https://github.com/johnphjkr" target="_blank">
+                <img src="https://avatars.githubusercontent.com/u/69203535?v=4" alt="박현준 프로필">
                 <p>박현준</p>
               </a>
             </div>
@@ -137,7 +137,7 @@ export function headerRender() {
       <div class="footer_container">
         <div class="inner">
           <div class="footer_left">
-            <h2><img src="../image/main_logo.svg" alt=""/></h2>
+            <h2><img src="../image/main_logo.svg" alt="Logo Image"/></h2>
             <p>
               <a href="#">개인정보처리방침</a>
               <a href="#">이용약관</a>
