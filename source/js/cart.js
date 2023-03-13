@@ -85,7 +85,7 @@ export const renderCartList = () => {
                             <div class="img_wrap">
                               <img
                                 src=${item.thumbnail}
-                                alt=""
+                                alt="Item ThumbNail"
                                 class="card_img" />
                             </div>
                             <div class="product_name_wrap">
