@@ -78,7 +78,7 @@ router.hooks({
     }
 
     // 관리자
-    if (auth.email === process.env.ADMIN && match.url === '') {
+    if (auth && auth.email === process.env.ADMIN && match.url === '') {
       loginNameEl.innerHTML = /* html */ `
         <a href="/admin">관리자페이지로 이동</a>
       `;
@@ -148,26 +148,25 @@ router
       adminWrap();
       adminPageRender();
       const ativeNav = document.querySelector('.menu_prd_list');
-      console.log({ ativeNav });
       ativeNav.classList.add('now_page');
     },
     "admin/product_add": () => {
       adminWrap();
       adminProductAdd();
       const ativeNav = document.querySelector('.menu_prd_add');
-      console.log({ ativeNav });
       ativeNav.classList.add('now_page');
     },
     "admin/user_list": () => {
       adminWrap();
       userListRender();
       const ativeNav = document.querySelector('.menu_user_list');
-      console.log({ ativeNav });
       ativeNav.classList.add('now_page');
     },
     "admin/dashboard": () => {
       adminWrap();
       dashBoardRender();
+      const ativeNav = document.querySelector('.menu_dashboard');
+      ativeNav.classList.add('now_page');
     },
     "admin/:id": (match) => {
       adminWrap();
@@ -179,7 +178,6 @@ router
       adminWrap();
       productUpdate(match.data.id);
       const ativeNav = document.querySelector('.menu_prd_list');
-      console.log({ ativeNav });
       ativeNav.classList.add('now_page');
     },
   })
