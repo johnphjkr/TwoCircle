@@ -93,6 +93,24 @@ export async function paymentHandler() {
       if (selectedBank.bankName === "KB국민은행") {
         cardImg.innerHTML = `<img src="https://img1.kbcard.com/ST/img/cxc/kbcard/upload/img/product/01664_img.png" alt="KB국민은행">`;
       }
+      if (selectedBank.bankName === "신한은행") {
+        cardImg.innerHTML = `<img src="https://www.shinhancard.com/pconts/images/contents/card/plate/cdCheckBJBBE4.png" alt="신한은행">`;
+      }
+      if (selectedBank.bankName === "우리은행") {
+        cardImg.innerHTML = `<img src="https://pc.wooricard.com/webcontent/cdPrdImgFileList/2020/6/30/255f5006-67c4-485c-9b14-efb1d75c25c2.png" alt="우리은행">`;
+      }
+      if (selectedBank.bankName === "하나은행") {
+        cardImg.innerHTML = `<img src="https://m.hanacard.co.kr/ATTACH/NEW_HOMEPAGE/images/cardinfo/card_img/10041.png" alt="하나은행">`;
+      }
+      if (selectedBank.bankName === "케이뱅크") {
+        cardImg.innerHTML = `<img src="https://api.card-gorilla.com:8080/storage/card/438/card_img/20941/438card.png" alt="케이뱅크">`;
+      }
+      if (selectedBank.bankName === "카카오뱅크") {
+        cardImg.innerHTML = `<img src="https://cdnimage.ebn.co.kr/news/202112/news_1639523663_1512116_m_1.jpeg" alt="카카오뱅크">`;
+      }
+      if (selectedBank.bankName === "NH농협은행") {
+        cardImg.innerHTML = `<img src="https://api.card-gorilla.com:8080/storage/card/666/card_img/21431/666card.png" alt="NH농협은행">`;
+      }
     } else {
       // 선택된 계좌 정보가 존재하지 않을 경우
       alert("계좌를 선택해주세요");

@@ -30,6 +30,7 @@ import { userListRender } from '../pages/admin/admin_userlist.js';
 import { admin } from './js/admin/admin.js';
 import { dashBoardRender } from "../pages/admin/admin_dashboard.js";
 
+
 export const router = new Navigo('/');
 
 router.hooks({
@@ -67,6 +68,7 @@ router.hooks({
       logoutBtn.addEventListener('click', async () => {
         await logout(accessToken);
         localStorage.removeItem('accessToken');
+        localStorage.removeItem('payment');
         loginEl.style.display = 'flex';
         logoutEl.style.display = 'none';
         router.navigate("/");
@@ -182,4 +184,5 @@ router
     },
   })
   .resolve();
+
 
