@@ -16,7 +16,6 @@ export async function pwCheck(url) {
   let loginResult = '';
   inputPwEl.addEventListener('input', (e) => {
     pw_check = e.target.value;
-    console.log(pw_check);
   });
 
   pwCheckBtnEl.addEventListener('click', async (e) => {
@@ -27,18 +26,18 @@ export async function pwCheck(url) {
     };
 
     const res = await pwCheckApi('POST', body);
-    try {
-        loginResult = await pwCheckApi("POST", body, login_check);
-        console.log(loginResult);
-        login_check = loginResult.status;
-        console.log(login_check);
-    }
-    catch (error) {
+    // try {
+    //     loginResult = await pwCheckApi("POST", body, login_check);
+    //     console.log(loginResult);
+    //     login_check = loginResult.status;
+    //     console.log(login_check);
+    // }
+    // catch (error) {
 
-    }
+    // }
     console.log(url)
     if (res.status === 200) {
-      alert('비밀번호 확인 성공!');
+      //alert('비밀번호 확인 성공!');
       if(url === "mypage/account"){
         accountRender()
       }else{

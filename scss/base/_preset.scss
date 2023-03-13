@@ -19,6 +19,13 @@ a {
   text-decoration: none;
 }
 
+button,
+input {
+  color: var(--font-color);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
+  font-size: 1.6rem;
+}
+
 .inner {
   max-width: 134rem;
   margin: 0 auto;
@@ -71,8 +78,11 @@ header {
   &_right {
     >div {
       display: flex;
+      .login_name a:hover {
+        border-bottom: 1px solid var(--font-color);
+      }
 
-      :first-child::after {
+      >:first-child::after {
         display: inline-block;
         content: "";
         border-left: 1px solid var(--gray-color);
@@ -115,7 +125,7 @@ header {
     display: flex;
     justify-content: space-between;
     width: 48rem;
-    background: var(--lightgray-color);
+    background: var(--more-lightgray-color);
 
     input {
       width: 100%;
@@ -127,7 +137,7 @@ header {
       font-size: 1.4rem;
 
       &:focus {
-        border: 1px solid #000;
+        border: 2px solid var(--pink-color);
         background: #fff;
       }
     }
@@ -222,6 +232,10 @@ footer {
       justify-content: space-between;
 
       .footer_left {
+        h2>img{
+          width: 15rem;
+          height: 6rem;
+        }
         >p {
           margin-bottom: 1rem;
 

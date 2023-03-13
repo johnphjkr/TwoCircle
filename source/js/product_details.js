@@ -1,4 +1,5 @@
 import { router } from "../../source/route.js";
+import { loading } from "../../source/js/loading.js";
 
 export async function productDetailHandler(id) {
   // DOM 요소 변수
@@ -16,6 +17,8 @@ export async function productDetailHandler(id) {
   const discountEl = document.querySelector(".product_info_discount");
   const discountPriceEl = document.querySelector(".option_content_discount");
   const optionPriceEl = document.querySelector(".option_content_price");
+  loading();
+  const dot = document.querySelector(".dot-wrap");
 
   // 초기화
   const INITIAL_COUNT_VALUE = 1;
@@ -25,6 +28,9 @@ export async function productDetailHandler(id) {
     INITIAL_COUNT_VALUE
   );
   const discountPrice = id.price - id.price * (id.discountRate * 0.01);
+  document.querySelector(".product_info_code").innerHTML = `${
+    id.title.match(/\/(.*)/)[1]
+  }`; // 제품 코드
 
   if (!id.discountRate) {
     discountPriceEl.innerHTML = formatPrice(id.price);
@@ -93,11 +99,10 @@ export async function productDetailHandler(id) {
     : "할인불가";
 
   // 태그 유무에 따른 태그 출력
-  if (id.tags[2] === undefined) {
+  if (id.tags[0] === undefined) {
     smallTagEl.style.display = "none";
-    midTagEl.innerHTML = `${id.tags[1]}`;
-    bigTagEl.innerHTML = `${id.tags[0]} >`;
-    midTagEl.style.color = "#181818";
+    midTagEl.style.display = "none";
+    bigTagEl.style.display = "none";
   }
   if (id.tags[1] === undefined) {
     smallTagEl.style.display = "none";
@@ -105,10 +110,11 @@ export async function productDetailHandler(id) {
     bigTagEl.innerHTML = `${id.tags[0]}`;
     bigTagEl.style.color = "#181818";
   }
-  if (id.tags[0] === undefined) {
+  if (id.tags[2] === undefined) {
     smallTagEl.style.display = "none";
-    midTagEl.style.display = "none";
-    bigTagEl.style.display = "none";
+    midTagEl.innerHTML = `${id.tags[1]}`;
+    bigTagEl.innerHTML = `${id.tags[0]} >`;
+    midTagEl.style.color = "#181818";
   }
 
   // 장바구니
@@ -197,4 +203,5 @@ export async function productDetailHandler(id) {
       ],
     });
   }
+  dot.style.display = "none";
 }

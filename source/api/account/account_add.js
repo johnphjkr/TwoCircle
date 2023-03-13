@@ -13,7 +13,6 @@ export async function addAccount(data) {
     body: JSON.stringify(data),
   });
   const json = await res.json();
-  console.log(json);
 }
 
 

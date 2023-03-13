@@ -7,6 +7,9 @@ export async function paymentRender() {
   <div id="wrap">
     <div class="wrap_container">
       <div class="payment">
+        <div class="dot-wrap">
+          <div class="dot-spinner"></div>
+        </div>
         <div class="payment_inner">
           <!-- 주문정보 -->
           <section class="inner_orderinfo">
@@ -30,9 +33,14 @@ export async function paymentRender() {
                 <button class="account_search">계좌조회</button>
               </div>
                 <div class ="user_account_info">
-                  <div class="bank_name"><p>은행</p><p class="bank_name_text"></p></div>
-                  <div class="account_number"><p>계좌번호</p><p class="account_number_text"></p></div>
-                  <div class="bank_balance"><p>잔액</p><p class="bank_balance_text"></p></div>
+                  <div class="bank">
+                    <div class="bank_name"><p>은행</p><p class="bank_name_text"></p></div>
+                    <div class="account_number"><p>계좌번호</p><p class="account_number_text"></p></div>
+                    <div class="bank_balance"><p>잔액</p><p class="bank_balance_text"></p></div>
+                  </div>
+                  <div class="bank_card_wrap">
+                    <div class="bank_card"></div>              
+                  </div>
                 <div>
             </div>
           </section>

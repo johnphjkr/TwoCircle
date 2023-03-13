@@ -1,4 +1,3 @@
-
 .admin_userlist {
   background-color: var(--white-color);
   border: 1px solid #ddd;
@@ -10,55 +9,63 @@
     font-weight: bold;
 
     .navbar_number {
-      flex: 1;
-      text-align: center;
+      flex: 0.5;
     }
 
     .navbar_name {
-      flex: 2;
-      text-align: center;
+      flex: 1;
     }
 
     .navbar_email {
-      flex: 3;
-      text-align: center;
+      flex: 2;
     }
 
     .navbar_profile {
-      flex: 1;
-      text-align: center;
+      flex: 2;
     }
+  }
+  .navbar>div{
+    text-align: center;
   }
 
   .list {
     display: flex;
+    justify-content: center;
+    align-items: center;
     border-top: 1px solid #ddd;
     padding: 10px;
+
     .list_number {
-      flex: 1;
-      text-align: center;
+      flex: 0.5;
     }
 
     .list_name {
-      flex: 2;
-      text-align: center;
+      flex: 1;
     }
 
     .list_email {
-      flex: 3;
-      text-align: center;
+      flex: 2;
     }
 
     .list_profile {
-      flex: 1;
-      text-align: center;
+      flex: 2;
+
+      img {
+        width: 7rem;
+        height: 7rem;
+      }
     }
   }
-    .list:nth-child(2n) {
-      background-color: var(--pink-color);
-    }
-    .list>div {
-      height: 10rem;
-      width: 10rem;
-    }
+
+  .list:nth-child(2n) {
+    background-color: var(--more-lightgray-color);
+  }
+
+  .list>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 8rem;
+  }
 }
