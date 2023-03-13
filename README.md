@@ -57,6 +57,7 @@ TwoCircle
 ├─ package.json
 ├─ pages
 │  ├─ admin
+│  │  ├─ admin_dashboard.js
 │  │  ├─ admin_product_list.js
 │  │  ├─ admin_userlist.js
 │  │  ├─ product.js
@@ -104,6 +105,7 @@ TwoCircle
 │  │  │  │  ├─ product.js
 │  │  │  │  ├─ product_add.js
 │  │  │  │  ├─ product_delete.js
+│  │  │  │  ├─ product_transactions_api.js
 │  │  │  │  ├─ product_update.js
 │  │  │  │  └─ user_list_api.js
 │  │  │  ├─ common
@@ -114,19 +116,21 @@ TwoCircle
 │  │  │     ├─ purchase_history_api.js
 │  │  │     ├─ purchase_history_only_api.js
 │  │  │     └─ purchase_ok_api.js
-│  │  ├─ requests.js
-│  │  ├─ userAPI.js
-│  │  └─ util.js
+│  │  └─ requests.js
 │  └─ js
 │     ├─ account.js
 │     ├─ admin
 │     │  ├─ admin.js
+│     │  ├─ admin_dashboard.js
+│     │  ├─ admin_products_data.js
 │     │  ├─ product.js
 │     │  ├─ product_add.js
 │     │  ├─ product_list.js
 │     │  ├─ product_update.js
 │     │  └─ user_list.js
 │     ├─ cart.js
+│     ├─ event_badge.js
+│     ├─ header.js
 │     ├─ loading.js
 │     ├─ login.js
 │     ├─ main.js
@@ -136,6 +140,7 @@ TwoCircle
 │     ├─ product_list.js
 │     ├─ purchase_history.js
 │     ├─ pw_check.js
+│     ├─ signup.js
 │     ├─ user_info.js
 │     └─ wish_list.js
 └─ static
