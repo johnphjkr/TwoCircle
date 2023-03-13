@@ -2,11 +2,14 @@ import { router } from "../../source/route.js";
 import { payment } from "../../source/api/products/user/payment_api.js";
 import { authCheck } from "../../source/api/certified/authcheck_api.js";
 import { checkAccount } from "../../source/api/account/account_add_check.js";
+import { loading } from "../../source/js/loading.js";
 
 export async function paymentHandler() {
   const auth = await authCheck(JSON.parse(localStorage.getItem("accessToken")));
   const account = await checkAccount(auth);
   let banks = [...account.accounts];
+  loading();
+  const dot = document.querySelector(".dot-wrap");
 
   // 주문상품
   const orderNavBarEl = document.querySelector(".orderinfo_navbar");
@@ -72,7 +75,7 @@ export async function paymentHandler() {
 
     return accountOptionEl, bankNameEl, accountNumberEl, balanceEl;
   });
-
+  const cardImg = document.querySelector(".bank_card");
   let bankCheck = false;
   let selectedBank = null; // 선택된 계좌 정보를 저장할 변수
   accountSearchEl.addEventListener("click", () => {
@@ -87,6 +90,9 @@ export async function paymentHandler() {
       bankNameEl.innerHTML = `${selectedBank.bankName}`;
       accountNumberEl.innerHTML = `${selectedBank.accountNumber}`;
       balanceEl.innerHTML = `${formatPrice(selectedBank.balance)}`;
+      if (selectedBank.bankName === "KB국민은행") {
+        cardImg.innerHTML = `<img src="https://img1.kbcard.com/ST/img/cxc/kbcard/upload/img/product/01664_img.png" alt="KB국민은행">`;
+      }
     } else {
       // 선택된 계좌 정보가 존재하지 않을 경우
       alert("계좌를 선택해주세요");
@@ -157,14 +163,5 @@ export async function paymentHandler() {
   cancelBtnEl.addEventListener("click", () => {
     router.navigate("cart");
   });
-
-  const cardImg = document.querySelector(".card_img");
-  // cardImg.innerHTML = `<img src="${selectedBank.bankImage}" alt="은행">`;
-  
-  new Swiper(".bank_card", {
-    pagination: {
-      el: ".swiper-pagination",
-      dynamicBullets: true,
-    },
-  });
+  dot.style.display = "none";
 }

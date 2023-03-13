@@ -12,6 +12,7 @@ export function productAddItem() {
   const photoEl = document.querySelector('.product_photo');
   const discountEl = document.querySelector('.product_discount');
   const registrationBtn = document.querySelector('.product_registration');
+  const dot = document.querySelector(".dot-wrap");
 
   let name = '';
   let price = '';
@@ -91,5 +92,7 @@ export function productAddItem() {
 
     router.navigate("admin")
   });
+  dot.style.display = "none";
+
 }
 
