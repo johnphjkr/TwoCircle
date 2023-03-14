@@ -45,6 +45,13 @@
         margin-bottom: 4rem;
       }
 
+      .dot_loading {
+        z-index: 4;
+        position: fixed;
+        top: 15rem;
+        left: 50%;
+      }
+
       .payment_inner {
         display: flex;
         max-width: 134rem;
@@ -191,7 +198,8 @@
                 height: 13rem;
                 display: flex;
                 justify-content: center;
-                img{
+
+                img {
                   width: 15rem;
                   height: 10rem;
                 }
