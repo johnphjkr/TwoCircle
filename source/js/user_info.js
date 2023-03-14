@@ -28,9 +28,7 @@ export async function userInfoHandler() {
         const accessToken = JSON.parse(localStorage.getItem('accessToken'));
         const res = await authCheck(accessToken);
         id = res.email;
-        console.log(id);
         name = res.displayName;
-        console.log(name);
         image = res.profileImg;
         idEl.innerText = id;
         nameEl.innerText = name;
@@ -127,17 +125,14 @@ export async function userInfoHandler() {
 
         inputCurrentPwEl.addEventListener("input", (e) => {
             pw_check = e.target.value;
-            console.log(pw_check);
         });
 
         inputNewPwEl.addEventListener("input", (e) => {
             newPassword = e.target.value;
-            console.log(newPassword);
         });
 
         inputNewPwCheckEl.addEventListener("input", (e) => {
             newPassword_check = e.target.value;
-            console.log(newPassword_check);
         });
 
         pwChangeOkBtnEl.addEventListener("click", async (e) => {
@@ -145,7 +140,6 @@ export async function userInfoHandler() {
             const accessToken = JSON.parse(localStorage.getItem('accessToken'));
             const res = await authCheck(accessToken);
             id = res.email;
-            console.log(id);
 
             const body = {
                 email: id,
@@ -155,7 +149,6 @@ export async function userInfoHandler() {
             const json = await pwCheckApi("POST", body);
 
             if (json.status === 200) {
-                console.log("비밀번호 확인 성공!")
                 if (newPassword != newPassword_check) {
                     alert("비밀번호 확인이 잘못되었습니다.");
                 }
@@ -185,7 +178,7 @@ export async function userInfoHandler() {
         changeModalEl.innerHTML = /* HTML */`
         <div class="change_modal_box">
             <h1>이름 변경</h1>
-            <span>변경하실 이름을 입력하세요.</span>
+            <span>변경하실 이름을 입력하세요. (이름은 한글만 가능합니다.)</span>
             <input class="new_name" placeholder="새 이름">
             <div class="new_name_section_btn">
                 <button class="change_cancel_btn">취소</button>
@@ -198,14 +191,18 @@ export async function userInfoHandler() {
         const inputNameEl = document.querySelector(".new_name");
         inputNameEl.addEventListener("input", (e) => {
             displayName = e.target.value;
-            console.log(displayName);
         });
         changeCancelBtnEl.addEventListener("click", modalOff);
 
         changeOkBtnEl.addEventListener("click", async (e) => {
-            await userupdate({ displayName });
-            nameEl.innerText = displayName;
-            modalOff();
+            if (validateName(displayName)) {
+                await userupdate({ displayName });
+                nameEl.innerText = displayName;
+                modalOff();
+            }
+            else {
+                alert('이름 형식이 유효하지 않습니다')
+            }
         });
         window.onclick = function (event) {
             if (event.target == changeModalEl) {
@@ -213,4 +210,10 @@ export async function userInfoHandler() {
             }
         }
     });
+
+    //이름 검사
+    function validateName(name) {
+        const regex = /^[가-힣]+$/;
+        return regex.test(name);
+    }
 }

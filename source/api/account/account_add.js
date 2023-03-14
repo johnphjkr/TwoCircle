@@ -10,15 +10,9 @@ export async function addAccount(data) {
       ...headers,
       authorization: `Bearer ${JSON.parse(localStorage.getItem("accessToken"))}`,
     },
-    body: JSON.stringify({
-      bankCode: data.bankCode,
-      accountNumber: data.accountNumber,
-      phoneNumber: data.phoneNumber,
-      signature: data.signature,
-    }),
+    body: JSON.stringify(data),
   });
   const json = await res.json();
-  console.log(json);
 }
 
 

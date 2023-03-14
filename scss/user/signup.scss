@@ -7,7 +7,7 @@
 .error {
   font-size: 1.4rem;
   font-weight: var(--font-bold);
-  margin: 0.5rem 0 0 13rem;
+  margin-top: 0.5rem;
   color: var(--pink-color);
 }
 
@@ -15,17 +15,17 @@
 .signup_section {
   &_inner {
     position: relative;
-    max-width: 64rem;
+    max-width: 41rem;
     margin: 0 auto;
-    text-align: center;
-    margin-top: 9rem;
-    margin-bottom: 6rem;
+    text-align: start;
+    padding: 9rem 0;
 
     // 회원가입 제목
     .signup_section_title {
       font-size: 2.65rem;
       font-weight: var(--font-bold);
       padding-bottom: 3.5rem;
+      text-align: center;
     }
 
     // 회원가입 폼
@@ -36,15 +36,13 @@
       &_id,
       &_pw,
       &_check {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
         margin-bottom: 2.2rem;
 
         h3 {
           font-size: 1.8rem;
           width: 13rem;
           text-align: start;
+          margin-bottom: 1rem;
         }
 
         &_input {
@@ -88,10 +86,11 @@
           font-size: 1.8rem;
           width: 13rem;
           text-align: start;
+          margin-bottom: 0.8rem;
         }
         .upload_name {
           font-size: 1.8rem;  
-          height: 4rem;
+          height: 4.4rem;
           padding: 0 10px;
           vertical-align: middle;
           border: 1px solid var(--gray-color);
@@ -100,14 +99,14 @@
         }
         label {
           position: absolute;
-          top: 0rem;
+          top: 2.6rem;
           right: 0;
           padding: 1rem 2rem;
           color: #fff;
           vertical-align: middle;
           background-color: var(--pink-color);
           cursor: pointer;
-          height: 4rem;
+          height: 4.4rem;
           margin-left: 1rem;
           line-height: 2.2rem;
         }
@@ -120,14 +119,14 @@
           border: 0;
         }
         &_alert{
-          margin:1.2rem 4rem 0 13rem;
+          margin-top: 0.8rem;
         }
 
         &_img {
           width: 15rem;
           height: 16rem;
           border: 1px solid var(--gray-color);
-          margin: 2rem 0 8rem 13rem;
+          margin: 0 0 2.4rem 26rem;
           overflow: hidden;
           img{
             width: 15rem;
@@ -143,7 +142,7 @@
         background-color: var(--pink-color);
         font-size: 1.8rem;
         font-weight: var(--font-bold);
-        width: 60rem;
+        width: 41rem;
         height: 6rem;
         border: none;
         cursor: pointer;

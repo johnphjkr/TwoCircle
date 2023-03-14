@@ -158,24 +158,44 @@
             display: flex;
             flex-direction: column;
             border: 0.2rem solid var(--lightgray-color);
-            width: 40rem;
-            height: 20rem;
-            padding: 4rem 3rem;
-            margin: 2rem 0 0 10rem;
+            width: 50rem;
+            height: 30rem;
+            padding: 2rem 3rem;
+            margin: 2rem 0 0 5rem;
 
-            .bank_name {
+            .bank {
               display: flex;
-              font-size: 2rem;
-              margin-bottom: 3rem;
-              justify-content: space-between;
+              flex-direction: column;
+
+              .bank_name {
+                display: flex;
+                font-size: 2rem;
+                margin-bottom: 3rem;
+                justify-content: space-between;
+              }
+
+              .account_number,
+              .bank_balance {
+                display: flex;
+                margin-bottom: 2rem;
+                font-size: 1.6rem;
+                justify-content: space-between;
+              }
             }
 
-            .account_number,
-            .bank_balance {
-              display: flex;
-              margin-bottom: 2rem;
-              font-size: 1.6rem;
-              justify-content: space-between;
+            .bank_card_wrap {
+              height: 15rem;
+              padding: 2rem;
+
+              .bank_card {
+                height: 13rem;
+                display: flex;
+                justify-content: center;
+                img{
+                  width: 15rem;
+                  height: 10rem;
+                }
+              }
             }
           }
         }
@@ -184,13 +204,15 @@
 
     // 결제정보요약
     .inner_summary {
+      position: sticky;
+      top: 18rem;
       display: flex;
       flex-direction: column;
       width: 35rem;
       height: 40rem;
       background-color: var(--more-lightgray-color);
       padding: 3rem;
-      margin: 12rem 0 0 12rem;
+      margin: 7rem 0 0 12rem;
 
       .summary_info {
         display: flex;
