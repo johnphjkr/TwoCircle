@@ -4,8 +4,7 @@ import { allProduct } from "../../api/products/admin/allProduct_api.js";
 import { userlist } from "../../api/products/admin/user_list_api.js";
 
 export async function dashBoardHandler() {
-  const { sunGlass, goggles, glassesFrame, best, newItem, md } =
-    await productDataHandler();
+  const { sunGlass, goggles, glassesFrame, best, newItem, md } = await productDataHandler();
   const products = await allProduct();
   const users = await userlist();
   const itemList = await transactionDetail();
@@ -17,7 +16,7 @@ export async function dashBoardHandler() {
   let sum = 0;
   let index = 0;
 
-  // 차트를 그릴 캔버스 요소
+  // 차트
   const canvas = document.querySelector("#myChart");
 
   // 데이터
@@ -26,14 +25,7 @@ export async function dashBoardHandler() {
     datasets: [
       {
         label: "수량",
-        data: [
-          sunGlass.length,
-          goggles.length,
-          glassesFrame.length,
-          best.length,
-          newItem.length,
-          md.length,
-        ],
+        data: [sunGlass.length, goggles.length, glassesFrame.length, best.length, newItem.length, md.length],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -72,6 +64,7 @@ export async function dashBoardHandler() {
     },
   });
 
+  // 판매 상품 정보
   const liEl = itemList.map((item) => {
     const listEl = document.createElement("div");
     listEl.classList.add("list");
@@ -94,22 +87,15 @@ export async function dashBoardHandler() {
     totalPriceEl.classList.add("content_totalprice");
 
     numberEl.innerHTML = `<div>${index + 1}</div>`;
-    const formattedTimePaid = item.timePaid.replace(
-      /T\d{2}:\d{2}:\d{2}\.\d{3}Z/,
-      " "
-    );
+    const formattedTimePaid = item.timePaid.replace(/T\d{2}:\d{2}:\d{2}\.\d{3}Z/, " ");
     dateEl.innerHTML = `<div>${formattedTimePaid}</div>`;
     userEl.innerHTML = `<div>${item.user.email}</div>`;
     bankEl.innerHTML = `<div>${item.account.bankName}</div>`;
 
     const originalPrice = item.product.price;
     const discountRate = item.product.discountRate;
-    const discountedPrice = discountRate
-      ? originalPrice * ((100 - discountRate) * 0.01)
-      : originalPrice;
-    const formattedDiscountedPrice = discountedPrice
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const discountedPrice = discountRate ? originalPrice * ((100 - discountRate) * 0.01) : originalPrice;
+    const formattedDiscountedPrice = discountedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     salePriceEl.innerHTML = `<div>${formattedDiscountedPrice}원</div>`;
 
     const formattedTitle = item.product.title.replace(/\/.*/, "");
@@ -117,12 +103,8 @@ export async function dashBoardHandler() {
 
     if (item.isCanceled) {
       salePriceEl.innerHTML = "<div>0원</div>";
-      const cancelPrice = discountRate
-        ? -1 * originalPrice * ((100 - discountRate) * 0.01)
-        : -1 * originalPrice;
-      const formattedCancelPrice = cancelPrice
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      const cancelPrice = discountRate ? -1 * originalPrice * ((100 - discountRate) * 0.01) : -1 * originalPrice;
+      const formattedCancelPrice = cancelPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       cancelPriceEl.innerHTML = `<div>${formattedCancelPrice}원</div>`;
       totalPriceEl.innerHTML = `<div>${formattedCancelPrice}원</div>`;
       totalPriceEl.style.color = "blue";
@@ -134,17 +116,9 @@ export async function dashBoardHandler() {
       sum += discountedPrice;
     }
 
+    // 관리자 계정은 제외
     if (item.user.email !== "admin@naver.com") {
-      listEl.append(
-        numberEl,
-        dateEl,
-        userEl,
-        bankEl,
-        salePriceEl,
-        itemEl,
-        cancelPriceEl,
-        totalPriceEl
-      );
+      listEl.append(numberEl, dateEl, userEl, bankEl, salePriceEl, itemEl, cancelPriceEl, totalPriceEl);
       index++;
     } else {
       return [];
@@ -155,11 +129,13 @@ export async function dashBoardHandler() {
   const tableEl = document.querySelector(".table_content");
   tableEl.append(...liEl);
 
+  // 페이지네이션
   const listItems = document.querySelectorAll(".list");
   itemLength = listItems.length;
   updatePageNation(itemLength, itemsPerPage, currentPage);
   displayPage(currentPage, itemsPerPage);
 
+  // 페이지 업데이트
   function updatePageNation(numItems, itemsPerPage, currentPage) {
     const numPages = Math.ceil(numItems / itemsPerPage);
     pageNationEl.innerHTML = "";
@@ -195,6 +171,7 @@ export async function dashBoardHandler() {
     }
   }
 
+  // 페이지 생성
   function createPageNation(pageNumber, label) {
     const link = document.createElement("a");
     link.classList.add("dashboard-link");
@@ -230,6 +207,7 @@ export async function dashBoardHandler() {
     }
   }
 
+  // 페이지 클릭 이벤트
   pageNationEl.addEventListener("click", (event) => {
     event.preventDefault();
     const link = event.target;
@@ -273,15 +251,13 @@ export async function dashBoardHandler() {
       displayPage(currentPage, itemsPerPage);
     }
   });
-  
+
   // 요약 정보
   const itemCountEl = document.querySelector(".itemcount");
   const saleSumEl = document.querySelector(".salesum");
   const memberEl = document.querySelector(".member");
   itemCountEl.append(`판매 상품 갯수 : ${products.length}개`);
-  saleSumEl.append(
-    `총 판매 매출 : ${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
-  );
+  saleSumEl.append(`총 판매 매출 : ${sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`);
   memberEl.append(`회원 수 : ${users.length}명`);
 
   dot.style.display = "none";
