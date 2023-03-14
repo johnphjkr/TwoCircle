@@ -93,7 +93,7 @@ function renderProduct(data) {
   // 삭제하기
   const deleteBtn = document.querySelector('.delete_btn');
   deleteBtn.addEventListener('click', async function () {
-    await productDelete(id);
+    await productDelete(data.id);
     router.navigate("admin");
   });
   dot.style.display = "none";
