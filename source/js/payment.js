@@ -67,6 +67,7 @@ export async function paymentHandler() {
   orderNameEl.innerHTML = `${auth.displayName}`;
   orderEmailEl.innerHTML = `${auth.email}`;
 
+  // 선택된 은행 정보 나타내기
   banks.map((bank) => {
     const accountOptionEl = document.createElement("option");
     accountOptionEl.textContent = `${bank.bankName}`;
@@ -90,6 +91,8 @@ export async function paymentHandler() {
       bankNameEl.innerHTML = `${selectedBank.bankName}`;
       accountNumberEl.innerHTML = `${selectedBank.accountNumber}`;
       balanceEl.innerHTML = `${formatPrice(selectedBank.balance)}`;
+
+      // 선택된 은행에 따른 카드 이미지
       if (selectedBank.bankName === "KB국민은행") {
         cardImg.innerHTML = `<img src="https://img1.kbcard.com/ST/img/cxc/kbcard/upload/img/product/01664_img.png" alt="KB국민은행">`;
       }
@@ -129,6 +132,7 @@ export async function paymentHandler() {
     totalDiscountEl.append(`-${formatPrice(originSum - sum)}`);
   }
 
+  // 결제 이벤트 핸들러
   payBtnEl.addEventListener("click", async () => {
     if (!bankCheck) {
       alert("계좌를 선택해주세요");
@@ -146,6 +150,7 @@ export async function paymentHandler() {
         thumbnail: list.thumbnail,
       };
 
+      // 주어진 api에 count가 없으므로 count의 기능을 동작할 수 있게 만든 코드
       if (list.count > 1) {
         for (let i = 0; i < list.count; i++) {
           arrList.push(order);
@@ -171,6 +176,7 @@ export async function paymentHandler() {
     }
     dataList.pop();
 
+    // 결제api로 데이터를 전송
     dataList.map(async (data) => {
       await payment(data, selectedBank);
     });
