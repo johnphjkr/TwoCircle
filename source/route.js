@@ -80,7 +80,7 @@ router.hooks({
     }
 
     // 관리자
-    if (auth && auth.email === process.env.ADMIN && match.url === '') {
+    if (auth && auth.email === process.env.ADMIN) {
       loginNameEl.innerHTML = /* html */ `
         <a href="/admin">관리자페이지로 이동</a>
       `;
