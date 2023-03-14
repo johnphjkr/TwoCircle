@@ -1,7 +1,6 @@
-import Navigo from "navigo";
-
-import { authCheck } from "./api/certified/authcheck_api.js";
-import { logout } from "./api/certified/logout_api.js";
+import Navigo from 'navigo';
+import { authCheck } from './api/certified/authcheck_api.js';
+import { logout } from './api/certified/logout_api.js';
 
 // 페이지
 import { mainRender } from '../pages/user/main.js';
@@ -31,7 +30,7 @@ import { admin } from './js/admin/admin.js';
 import { dashBoardRender } from "../pages/admin/admin_dashboard.js";
 
 
-export const router = new Navigo("/");
+export const router = new Navigo('/');
 
 router.hooks({
   before: async (done, match) => {
@@ -40,7 +39,7 @@ router.hooks({
     headerRender();
     // 페이지 가드
     const onlyUserPages = ['mypage', 'mypage/wish', 'account', 'payment', 'mypage/changeInfo', 'mypage/account', 'admin', 'admin/product_add'];
-    const onlyAdminPages = ['admin', 'admin/product_add', 'admin/user_list'];
+    const onlyAdminPages = ["admin", "admin/product_add", "admin/user_list", 'admin/dashboard'];
 
     if (onlyUserPages.includes(match.url) && !auth) {
       router.navigate("login");
@@ -85,7 +84,6 @@ router.hooks({
         <a href="/admin">관리자페이지로 이동</a>
       `;
     }
-
     done();
   },
   after: (match) => {
@@ -185,5 +183,3 @@ router
     },
   })
   .resolve();
-
-

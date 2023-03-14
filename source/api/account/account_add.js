@@ -1,7 +1,5 @@
 import { headers, url } from "../requests.js";
 
-
-
 /** 계좌 등록및 추가하는 함수 */
 export async function addAccount(data) {
   const res = await fetch(url + "/account ", {
@@ -14,8 +12,3 @@ export async function addAccount(data) {
   });
   const json = await res.json();
 }
-
-
-
-
-

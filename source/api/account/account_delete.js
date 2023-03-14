@@ -1,6 +1,5 @@
 import { headers, url } from "../requests.js";
 
-
 export async function deleteAccount(data) {
   const res = await fetch(url + `/account`, {
     method: "DELETE",
@@ -13,5 +12,3 @@ export async function deleteAccount(data) {
   const json = await res.json();
   return json;
 }
-
-
