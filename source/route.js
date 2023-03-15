@@ -29,6 +29,15 @@ import { userListRender } from '../pages/admin/admin_userlist.js';
 import { admin } from './js/admin/admin.js';
 import { dashBoardRender } from "../pages/admin/admin_dashboard.js";
 
+// const userSystemPreferColorThemeQuery = "(prefers-color-scheme: dark)";
+// const userSystemTheme = window.matchMedia(userSystemPreferColorThemeQuery).matches ? 'dark' : 'light';
+// const userTheme = localStorage.getItem('mode')
+
+// userTheme === 'dark' ? : ;
+
+// function setDarkMode() {}
+
+
 
 export const router = new Navigo('/');
 

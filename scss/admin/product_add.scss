@@ -1,7 +1,7 @@
 .admin_wrap {
   display: flex;
-  padding: 8rem;
-  background: var(--white-color);
+  padding: 5rem;
+  background: var(--nav-bg);
   font-size: 1.8rem;
   line-height: 1.5;
 
@@ -17,11 +17,15 @@
       }
     }
     input[type="text"] {
+      background-color: transparent;
       border: 1px solid var(--gray-color);
       width: 42rem;
       height: 4rem;
       padding: 0 1rem;
       outline: none;
+      &:focus{
+        border: 1px solid var(--pink-color);
+      }
     }
     input[type="file"] {
       display: none;
@@ -66,7 +70,7 @@
     .button {
       width: 12rem;
       line-height: 3.6rem;
-      background: var(--font-color);
+      background: #181818;
       color: var(--white-color);
       font-size: 1.4rem;
       text-align: center;

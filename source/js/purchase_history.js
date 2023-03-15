@@ -262,7 +262,6 @@ export async function purchaseHandler() {
           listItemConfirmEl.appendChild(listItemEl);
         }
         if (dealDone == false && dealCanceled == false) {
-          console.log(detailId);
           const btnOkEl = document.createElement('div');
           btnOkEl.classList.add('btn_ok');
           btnOkEl.textContent = '확정';
@@ -329,11 +328,9 @@ export async function purchaseHandler() {
     }
 
     const listItems = listItemContainerEl.querySelectorAll('ul li');
-    console.log(listItems);
     itemLength = listItems.length;
     updatePagination(itemLength, itemsPerPage, currentPage);
     displayPage(currentPage, itemsPerPage);
-    console.log(currentPage);
   }
 
   //페이지네이션
@@ -402,7 +399,6 @@ export async function purchaseHandler() {
       link.classList.add('page-link');
       if (label === currentPage) {
         link.classList.add('active-link');
-        console.log("링크이동 "+currentPage);
       }
     }
     else {
@@ -430,7 +426,6 @@ export async function purchaseHandler() {
   paginationContainer.addEventListener('click', (event) => {
     event.preventDefault();
     const link = event.target;
-    console.log(link);
     if (link.classList.contains('page-link')) {
       const pageNum = parseInt(link.dataset.page, 10);
       currentPage = pageNum;
