@@ -1,17 +1,17 @@
-import shinhan from "../../static/image/shinhanbank_logo.png";
-import kBank from "../../static/image/Kbank_logo.png";
-import KBbank from "../../static/image/KBbank_logo.png";
-import kakaoBank from "../../static/image/kakaobank_logo.png";
-import NHBank from "../../static/image/NHbank_logo.png";
-import hanaBank from "../../static/image/hanaBank_logo.png";
-import wooriBank from "../../static/image/wooriBank_logo.png";
-import whiteKbBank from "../../static/image/KBbank_logo.svg"
-import whiteShinhan from "../../static/image/shinhanbank_logo.svg"
-import whiteWoori from "../../static/image/wooribank_logo.svg"
-import whiteHana from "../../static/image/hanabank_logo.svg"
-import whiteKbank from "../../static/image/Kbank_logo.svg"
-import whiteKakao from "../../static/image/kakaobank_logo.svg"
-import whiteNH from "../../static/image/NHbank_logo.svg"
+import shinhan from "../../image/shinhanbank_logo.png";
+import kBank from "../../image/Kbank_logo.png";
+import KBbank from "../../image/KBbank_logo.png";
+import kakaoBank from "../../image/kakaobank_logo.png";
+import NHBank from "../../image/NHbank_logo.png";
+import hanaBank from "../../image/hanaBank_logo.png";
+import wooriBank from "../../image/wooriBank_logo.png";
+import whiteKbBank from "../../image/KBbank_logo.svg"
+import whiteShinhan from "../../image/shinhanbank_logo.svg"
+import whiteWoori from "../../image/wooribank_logo.svg"
+import whiteHana from "../../image/hanabank_logo.svg"
+import whiteKbank from "../../image/Kbank_logo.svg"
+import whiteKakao from "../../image/kakaobank_logo.svg"
+import whiteNH from "../../image/NHbank_logo.svg"
 
 export let bankLogo = [
     { name: "KB국민은행", src: KBbank, card:"#6E6053",svg:whiteKbBank},
