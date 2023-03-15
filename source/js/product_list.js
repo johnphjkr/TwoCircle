@@ -37,9 +37,10 @@ function rendProduct(products) {
       </div>
     `
   }else{
-    let wishList  = localStorage.getItem('wish') ?? [];
+    let wishList  = JSON.parse(localStorage.getItem('wish')) ?? [];
     const liEls = products.map((product) => {
       const isCartItem = wishList.find(wishItem => wishItem.id === product.id);
+     
       const liEl = document.createElement("li");
       liEl.dataset.id = product.id;
       const titleCode = product.title.split("/");
