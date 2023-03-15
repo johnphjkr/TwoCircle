@@ -44,7 +44,7 @@
       flex-wrap: wrap;
       > p {
         line-height: 3rem;
-        background: var(--font-color);
+        background: var(--tag-color);
         color: var(--white-color);
         padding: 0 1rem;
         margin-right: 1rem;
@@ -54,6 +54,7 @@
   }
 
   .product_detail {
+    display: block;
     width: 40rem;
     margin-left: 5rem;
     font-size: 2rem;

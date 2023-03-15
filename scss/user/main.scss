@@ -32,7 +32,7 @@
     top: 15%;
     left: 13.5%;
     &.text_black {
-      color: var(--font-color);
+      color: var(--black-color);
     }
     p {
       line-height: 6.2rem;
@@ -54,7 +54,6 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-
   .list_main {
     width: 33%;
     overflow: hidden;

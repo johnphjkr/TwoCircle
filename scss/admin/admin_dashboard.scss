@@ -18,9 +18,8 @@
 }
 
 .admin_dashboard {
-  background-color: var(--white-color);
+  background-color: var(--nav-bg);
   padding: 1rem;
-
   .chart_title {
     @include title;
   }
@@ -37,7 +36,7 @@
 
   /* 테이블 스타일링 */
   .dashboard_table {
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-line);
     padding: 1rem;
     margin-bottom: 1rem;
 
@@ -49,7 +48,7 @@
     /* 테이블 내비게이션 바 스타일링 */
     .table_navbar {
       display: flex;
-      background-color: #eee;
+      background-color: var(--product-hover);
       font-weight: bold;
 
       /* 내비게이션 요소 스타일링 */
@@ -104,7 +103,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-top: 1px solid #ddd;
+        border-top: 1px solid var(--border-line);
         height: 5rem;
         font-size: 1.2rem;
 
@@ -152,7 +151,7 @@
 
         /* 짝수 행의 색깔 변경 */
         &:nth-child(even) {
-          background-color: #f9f9f9;
+          background-color: var(--product-hover);
         }
 
         /* 매출 합계 요소 스타일링 */
@@ -165,7 +164,7 @@
         .content_footer_totalsum {
           font-weight: bold;
           padding: 1rem;
-          border-top: 1px solid #ddd;
+          border-top: 1px solid var(--border-line);
           display: flex;
 
           /* 페이지 합계 요소 스타일링 */
@@ -196,7 +195,7 @@
         border: 1px solid #ddd;
         border-radius: 0.5rem;
         text-decoration: none;
-        color: black;
+        color: var(--font-color);
         transition: .5s;
         &:hover {
           background-color: var(--pink-color);
@@ -223,12 +222,12 @@
       margin: 3rem;
 
       .summary_itemcount {
-        color: blue;
+        color: #ADD8E6;
         @include summary-item();
       }
 
       .summary_salesum {
-        color: green;
+        color: #8aeb8f;
         @include summary-item();
       }
 
