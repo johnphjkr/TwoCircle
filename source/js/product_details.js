@@ -78,21 +78,29 @@ export async function productDetailHandler(id) {
   const isCartItem = wishList.find((wish) => wish.id === id.id);
   heartBtnEl.innerHTML = /*html*/ `
   <div class="favorite_icons">
-    <i class="${isCartItem ? "fa-solid" : "fa-regular"} fa-heart favorite"></i><p class="favorite_text">찜</p>
+    <i class="${isCartItem ? "fa-solid" : "fa-regular"
+    } fa-heart favorite"></i><p class="favorite_text">찜</p>
   </div>
 `;
   const favoriteEl = heartBtnEl.querySelector(".favorite");
   heartBtnEl.addEventListener("click", () => {
     const isCart = wishList.find((wish) => wish.id === id.id);
+    const heartNum = document.querySelector(".heart_num");
     favoriteEl.classList.toggle("fa-regular", isCart);
     favoriteEl.classList.toggle("fa-solid", !isCart);
     if (isCart) {
       wishList = wishList.filter((wish) => wish.id !== id.id);
       localStorage.setItem("wish", JSON.stringify(wishList));
+      if (localStorage.getItem("wish")) {
+        heartNum.innerText = JSON.parse(localStorage.getItem("wish")).length;
+      }
       return;
     }
     addItemToStorage(wishList, id);
     localStorage.setItem("wish", JSON.stringify(wishList));
+    if (localStorage.getItem("wish")) {
+      heartNum.innerText = JSON.parse(localStorage.getItem("wish")).length;
+    }
   });
 
   // 품절 여부 출력
@@ -148,6 +156,8 @@ export async function productDetailHandler(id) {
   // basket 로컬스토리지에 담기
   function addToBasket() {
     let getBasketItems = JSON.parse(localStorage.getItem("basket"));
+    const cartNum = document.querySelector('.cart_num');
+
     if (!getBasketItems) {
       getBasketItems = [];
     }
@@ -161,6 +171,9 @@ export async function productDetailHandler(id) {
       addItemToStorage(getBasketItems);
     }
     localStorage.setItem("basket", JSON.stringify(getBasketItems));
+    if (localStorage.getItem('basket')) {
+      cartNum.innerText = JSON.parse(localStorage.getItem('basket')).length;
+    }
   }
 
   // 로컬스토리지로 데이터 담기

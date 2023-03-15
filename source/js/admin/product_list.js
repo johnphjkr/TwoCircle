@@ -13,7 +13,7 @@ function renderList(data) {
   const labelEl = document.querySelector('label');
   const deleteBtn = document.querySelector('.delete_btn');
   const dot = document.querySelector(".dot-wrap");
-  
+
   const liEls = data.map((prd, idx) => {
     const liEl = document.createElement('li');
     liEl.innerHTML = /* html */ `
@@ -59,6 +59,20 @@ function renderList(data) {
     };
     choseDelete();
   });
+
+  // 메인 진열 상품 개수 알기
+  function countTags(data, tag) {
+    return data.reduce((count, item) => {
+      return item.tags.includes(tag) ? count + 1 : count;
+    }, 0);
+  }
+  const mainTagCount = {
+    bestCount: countTags(data, "best"),
+    mdCount: countTags(data, "md"),
+    newCount: countTags(data, "new")
+  };
+  localStorage.setItem('mainTagCount', JSON.stringify(mainTagCount));
+
   dot.style.display = "none";
 }
 
