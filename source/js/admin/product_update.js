@@ -16,7 +16,6 @@ export function productUpdateHandler(id) {
   const discountEl = document.querySelector('.product_discount');
   const product_update = document.querySelector('.product_update');
   const dot = document.querySelector(".dot-wrap");
-
   let title = '';
   let price = '';
   let description = '';
