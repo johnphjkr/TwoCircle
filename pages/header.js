@@ -24,7 +24,8 @@ export function headerRender() {
         <div class="inner">
           <h1 class="logo">
             <a href="/" data-navigo>
-              <img class="header_logo" src="../image/main_logo.svg" alt="로고" />
+              <img class="header_logo dark_logo" src="../image/logo_dark.svg" alt="다크모드 로고" />
+              <img class="header_logo light_logo" src="../image/main_logo.svg" alt="기본 로고" />
             </a>
           </h1>
           <form class="search">
@@ -36,19 +37,19 @@ export function headerRender() {
           <ul class="header_right">
             <li>
               <a id="mypageBtn" href="/mypage" data-navigo>
-                <img src="../image/mypage_icon.svg" alt="마이페이지" />
+                <img class="filter_icon" src="../image/mypage_icon.svg" alt="마이페이지" />
               </a>
             </li>
             <li>
               <a href="/cart" data-navigo>
                 <span class="cart_num">0</span>
-                <img src="../image/cart_icon.svg" alt="장바구니" />
+                <img class="filter_icon" src="../image/cart_icon.svg" alt="장바구니" />
               </a>
             </li>
             <li>
               <a href="/mypage/wish" data-navigo>
                 <span class="heart_num">0</span>
-                <img src="../image/heart_icon.svg" alt="찜하기" />
+                <img class="filter_icon" src="../image/heart_icon.svg" alt="찜하기" />
               </a>
             </li>
           </ul>
@@ -116,19 +117,13 @@ export function headerRender() {
         </div>
       </div>
       <div class="up_button">
-        <a href="javascript:void(0)" class="resently">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-              d="M8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8C16 12.4183 12.4183 16 8 16ZM8.00078 12.8C5.34981 12.8 3.20078 10.651 3.20078 8C3.20078 5.34903 5.34981 3.2 8.00078 3.2C10.6517 3.2 12.8008 5.34903 12.8008 8C12.8008 10.651 10.6517 12.8 8.00078 12.8Z"
-              fill="url(#paint0_linear)"></path>
-            <defs>
-              <linearGradient id="paint0_linear" x1="1" y1="3.5" x2="14.5" y2="13" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#0076F7"></stop>
-                <stop offset="0.484375" stop-color="#6E25DD"></stop>
-                <stop offset="1" stop-color="#8837F5"></stop>
-              </linearGradient>
-            </defs>
-          </svg>최근 본 상품</a>
+        <div class="mode">
+          <span class="mode_name">DARK</span>
+          <input type="checkbox" id="toggle" hidden> 
+            <label for="toggle" class="toggleSwitch">
+              <span class="toggleButton"></span>
+          </label>
+        </div>
         <button class="scroll_top">TOP</button>
       </div>
     </section>
@@ -137,7 +132,10 @@ export function headerRender() {
       <div class="footer_container">
         <div class="inner">
           <div class="footer_left">
-            <h2><img src="../image/main_logo.svg" alt="Logo Image"/></h2>
+            <h2>
+              <img class="light_logo" src="../image/main_logo.svg" alt="Logo Image"/>
+              <img class="dark_logo" src="../image/logo_dark.svg" alt="Logo Image"/>
+            </h2>
             <p>
               <a href="#">개인정보처리방침</a>
               <a href="#">이용약관</a>

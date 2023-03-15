@@ -21,11 +21,11 @@ export function loginRender() {
         </i>
         <!-- 로그인 버튼 -->
         <button class="login_form_btn btn">로그인</button>
+        <a href="/signup">
+          <div class="login_section_signup btn">회원가입</div>
+        </a>
       </form>
       <!-- 회원가입 버튼 -->
-      <a href="/signup">
-        <div class="login_section_signup btn">회원가입</div>
-      </a>
     </div>
   </section>
   `;

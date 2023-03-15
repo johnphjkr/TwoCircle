@@ -86,10 +86,8 @@
     .mypage_main {
       width: 128rem;
       .info_user {
-    
-        
         height: 16rem;
-        background-color: var(--more-lightgray-color);
+        background-color: var(--border-line);
 
         .user_name {
           padding:5rem;
@@ -203,7 +201,7 @@
             align-items: center;
             margin-top: 0;
             padding: 2rem 0;
-            background-color: var(--lightgray-color);
+            background-color: var(--border-line);
             font-size: 1.4rem;
             color: var(--font-color);
 

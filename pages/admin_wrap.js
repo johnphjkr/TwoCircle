@@ -1,13 +1,13 @@
-import { admin } from "../source/js/admin/admin";
+import { admin } from '../source/js/admin/admin';
 
 export function adminWrap() {
-  const wrap = document.querySelector("#wrap");
+  const wrap = document.querySelector('#wrap');
   wrap.innerHTML = /* html */ `
     <header>
       <div class="top">
         <h1 class="logo">
-          <a href="/" data-navigo><img src="/image/logo.png" alt="로고"
-          /></a>
+          <a href="/" data-navigo>
+            <img src="/image/logo.png" alt="로고"/></a>
         </h1>
         <div class="top_inner">
           <span class="email">admin@naver.com</span>
@@ -29,7 +29,7 @@ export function adminWrap() {
       </div>
       <div id="admin"></div>
     </div>
-   
+  
   `;
   admin();
 }
