@@ -24,7 +24,8 @@ export function headerRender() {
         <div class="inner">
           <h1 class="logo">
             <a href="/" data-navigo>
-              <img class="header_logo" src="../image/main_logo.svg" alt="로고" />
+              <img class="header_logo dark_logo" src="../image/logo_dark.svg" alt="다크모드 로고" />
+              <img class="header_logo light_logo" src="../image/main_logo.svg" alt="기본 로고" />
             </a>
           </h1>
           <form class="search">
@@ -36,19 +37,19 @@ export function headerRender() {
           <ul class="header_right">
             <li>
               <a id="mypageBtn" href="/mypage" data-navigo>
-                <img src="../image/mypage_icon.svg" alt="마이페이지" />
+                <img class="filter_icon" src="../image/mypage_icon.svg" alt="마이페이지" />
               </a>
             </li>
             <li>
               <a href="/cart" data-navigo>
                 <span class="cart_num">0</span>
-                <img src="../image/cart_icon.svg" alt="장바구니" />
+                <img class="filter_icon" src="../image/cart_icon.svg" alt="장바구니" />
               </a>
             </li>
             <li>
               <a href="/mypage/wish" data-navigo>
                 <span class="heart_num">0</span>
-                <img src="../image/heart_icon.svg" alt="찜하기" />
+                <img class="filter_icon" src="../image/heart_icon.svg" alt="찜하기" />
               </a>
             </li>
           </ul>
@@ -137,7 +138,10 @@ export function headerRender() {
       <div class="footer_container">
         <div class="inner">
           <div class="footer_left">
-            <h2><img src="../image/main_logo.svg" alt="Logo Image"/></h2>
+            <h2>
+              <img class="light_logo" src="../image/main_logo.svg" alt="Logo Image"/>
+              <img class="dark_logo" src="../image/logo_dark.svg" alt="Logo Image"/>
+            </h2>
             <p>
               <a href="#">개인정보처리방침</a>
               <a href="#">이용약관</a>

@@ -35,7 +35,6 @@ export async function pwCheck(url) {
     // catch (error) {
 
     // }
-    console.log(url)
     if (res.status === 200) {
       //alert('비밀번호 확인 성공!');
       if(url === "mypage/account"){
