@@ -4,6 +4,7 @@ import { headerHandler } from '../source/js/header';
 
 export function headerRender() {
   const wrap = document.querySelector('#wrap');
+  
   wrap.innerHTML = /*html*/ `
   <header>
       <div class="header_top">
