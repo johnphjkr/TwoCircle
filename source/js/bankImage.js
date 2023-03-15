@@ -3,7 +3,7 @@ import kBank from "/image/Kbank_logo.png";
 import KBbank from "/image/KBbank_logo.png";
 import kakaoBank from "/image/kakaobank_logo.png";
 import NHBank from "/image/NHbank_logo.png";
-import hanaBank from "/image/hanaBank_logo.png";
+import hanaBank from "/image/hanabank_logo.png";
 import wooriBank from "/image/wooriBank_logo.png";
 import whiteKbBank from "/image/KBbank_logo.svg"
 import whiteShinhan from "/image/shinhanbank_logo.svg"
