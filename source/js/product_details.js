@@ -17,6 +17,9 @@ export async function productDetailHandler(id) {
   const discountEl = document.querySelector(".product_info_discount");
   const discountPriceEl = document.querySelector(".option_content_discount");
   const optionPriceEl = document.querySelector(".option_content_price");
+  const productImgEl = document.querySelector(".container_content_productImg");
+  const photoImgEl = document.querySelector(".photo");
+  const codeEl = document.querySelector(".product_info_code");
   loading();
   const dot = document.querySelector(".dot-wrap");
 
@@ -24,9 +27,15 @@ export async function productDetailHandler(id) {
   const INITIAL_COUNT_VALUE = 1;
   let countTotalPrice = calculateTotalPrice(id.price, id.discountRate, INITIAL_COUNT_VALUE);
   const discountPrice = id.price - id.price * (id.discountRate * 0.01);
-  // 제품 코드
-  document.querySelector(".product_info_code").innerHTML = `${id.title.match(/\/(.*)/)[1]}`;
 
+  // 제품 코드
+  if (id.title.match(/\/(.*)/) !== null) {
+    codeEl.innerHTML = `${id.title.match(/\/(.*)/)[1]}`;
+  } else {
+    codeEl.innerHTML = "";
+  }
+
+  // 할인율
   if (!id.discountRate) {
     discountPriceEl.innerHTML = formatPrice(id.price);
     optionPriceEl.style.display = "none";
@@ -34,6 +43,18 @@ export async function productDetailHandler(id) {
   discountPriceEl.innerHTML = formatPrice(countTotalPrice);
   countEl.value = INITIAL_COUNT_VALUE;
   countEl.innerHTML = countEl.value;
+
+  // 제품 이미지
+  if (id.thumbnail && typeof id.thumbnail === "string") {
+    productImgEl.innerHTML = `<img src="${id.thumbnail}" alt="상품이미지">`;
+  } else {
+    productImgEl.innerHTML = `<img src="https://via.placeholder.com/200x200?text=NO+IMAGE" alt="상품이미지">`;
+  }
+  if (id.photo && typeof id.photo === "string") {
+    photoImgEl.innerHTML = `<img src="${id.photo}" alt="상세이미지">`;
+  } else {
+    photoImgEl.innerHTML = `<img src="https://via.placeholder.com/200x200?text=NO+IMAGE" alt="상세이미지">`;
+  }
 
   // 수량 버튼 이벤트 리스너
   minusBtnEl.addEventListener("click", () => {
@@ -57,21 +78,29 @@ export async function productDetailHandler(id) {
   const isCartItem = wishList.find((wish) => wish.id === id.id);
   heartBtnEl.innerHTML = /*html*/ `
   <div class="favorite_icons">
-    <i class="${isCartItem ? "fa-solid" : "fa-regular"} fa-heart favorite"></i><p class="favorite_text">찜</p>
+    <i class="${isCartItem ? "fa-solid" : "fa-regular"
+    } fa-heart favorite"></i><p class="favorite_text">찜</p>
   </div>
 `;
   const favoriteEl = heartBtnEl.querySelector(".favorite");
   heartBtnEl.addEventListener("click", () => {
     const isCart = wishList.find((wish) => wish.id === id.id);
+    const heartNum = document.querySelector(".heart_num");
     favoriteEl.classList.toggle("fa-regular", isCart);
     favoriteEl.classList.toggle("fa-solid", !isCart);
     if (isCart) {
       wishList = wishList.filter((wish) => wish.id !== id.id);
       localStorage.setItem("wish", JSON.stringify(wishList));
+      if (localStorage.getItem("wish")) {
+        heartNum.innerText = JSON.parse(localStorage.getItem("wish")).length;
+      }
       return;
     }
     addItemToStorage(wishList, id);
     localStorage.setItem("wish", JSON.stringify(wishList));
+    if (localStorage.getItem("wish")) {
+      heartNum.innerText = JSON.parse(localStorage.getItem("wish")).length;
+    }
   });
 
   // 품절 여부 출력
@@ -127,6 +156,8 @@ export async function productDetailHandler(id) {
   // basket 로컬스토리지에 담기
   function addToBasket() {
     let getBasketItems = JSON.parse(localStorage.getItem("basket"));
+    const cartNum = document.querySelector('.cart_num');
+
     if (!getBasketItems) {
       getBasketItems = [];
     }
@@ -140,6 +171,9 @@ export async function productDetailHandler(id) {
       addItemToStorage(getBasketItems);
     }
     localStorage.setItem("basket", JSON.stringify(getBasketItems));
+    if (localStorage.getItem('basket')) {
+      cartNum.innerText = JSON.parse(localStorage.getItem('basket')).length;
+    }
   }
 
   // 로컬스토리지로 데이터 담기
@@ -174,16 +208,16 @@ export async function productDetailHandler(id) {
         imageUrl: "https://avatars.githubusercontent.com/u/124231330?s=200&v=4",
         link: {
           // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-          mobileWebUrl: "http://localhost:1234",
-          webUrl: "http://localhost:1234",
+          mobileWebUrl: "https://magical-babka-4591f3.netlify.app",
+          webUrl: "https://magical-babka-4591f3.netlify.app",
         },
       },
       buttons: [
         {
           title: "웹사이트로 이동",
           link: {
-            mobileWebUrl: "http://localhost:1234",
-            webUrl: "http://localhost:1234",
+            mobileWebUrl: "https://magical-babka-4591f3.netlify.app",
+            webUrl: "https://magical-babka-4591f3.netlify.app",
           },
         },
       ],

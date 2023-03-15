@@ -9,6 +9,7 @@ export async function dashBoardHandler() {
   const users = await userlist();
   const itemList = await transactionDetail();
   const dot = document.querySelector(".dot-wrap");
+  const bodyEl = document.querySelector("body");
   const pageNationEl = document.querySelector(".table_pagination");
   let itemLength = 0;
   let currentPage = 1;
@@ -47,6 +48,12 @@ export async function dashBoardHandler() {
     ],
   };
 
+  // 그리드 색상 변경
+  if (bodyEl.classList.contains("dark")) {
+    Chart.defaults.backgroundColor = "#363738";
+  } else {
+    Chart.defaults.borderColor = "#e6e6e6";
+  }
   // 차트 객체 생성
   const myChart = new Chart(canvas, {
     type: "bar",

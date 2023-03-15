@@ -1,4 +1,21 @@
 export function eventBadgeHandler() {
+  const body = document.querySelector("body")
+  const darkLogo = document.querySelector(".dark_logo")
+  const lightLogo = document.querySelector(".light_logo")
+  const toggle = document.querySelector("#toggle")
+  const mode = localStorage.getItem("mode")
+  toggle.addEventListener("click",()=>{
+    body.classList.toggle("dark")
+    if(body.className==="dark"){
+      localStorage.setItem("mode","dark")
+    }else{
+      localStorage.setItem("mode","light")
+    }
+  })
+  if(mode === "dark"){
+    body.classList.add("dark")
+    toggle.checked = true
+  }
   // TOP
   const top = document.querySelector('.scroll_top');
   top.addEventListener('click', () => {

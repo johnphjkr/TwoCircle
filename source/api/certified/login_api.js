@@ -15,10 +15,8 @@ export async function login(method, data) {
   localStorage.setItem('accessToken', JSON.stringify(json.accessToken));
 
   if (json.user.email === process.env.ADMIN) {
-    alert('관리자님 환영합니다.');
     return router.navigate('admin');
   }
-  alert('로그인 성공!');
   history.go(-1);
   return res;
 }

@@ -37,7 +37,6 @@
       &_pw,
       &_check {
         margin-bottom: 2.2rem;
-
         h3 {
           font-size: 1.8rem;
           width: 13rem;
@@ -51,7 +50,7 @@
           height: 5.5rem;
           padding: 0 1rem;
           border: 1px solid var(--gray-color);
-
+          background: transparent;
           &:focus {
             outline: none;
           }

@@ -22,7 +22,7 @@ export function cartRender(){
         ${isEmpty ?/*html*/`
         <div class ="cart_none">
           <div class="cart_icon">
-            <img src="../../image/cart_img.png" alt="cart_img">
+            <img class="filter_icon" src="../../image/cart_img.png" alt="cart_img">
           </div>  
           <div class ="empty_text">장바구니가 비었습니다.</div>
           <div class="cart_btn">
