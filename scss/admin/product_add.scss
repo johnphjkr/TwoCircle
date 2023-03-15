@@ -19,7 +19,7 @@
     input[type="text"] {
       background-color: transparent;
       border: 1px solid var(--gray-color);
-      width: 35rem;
+      width: 42rem;
       height: 4rem;
       padding: 0 1rem;
       outline: none;
@@ -33,22 +33,27 @@
     .main_tag {
       display: flex;
       li {
-        margin-right: 2rem;
+        margin-right: 1.5rem;
+        &:last-child {
+          margin-right: 0;
+        }
+        span {
+          font-size: 1.6rem;
+        }
       }
     }
     .tag_list {
       display: flex;
       flex-wrap: wrap;
       li {
-        margin-right: 2rem;
+        margin-right: 1.5rem;
         margin-bottom: 1rem;
-        &:nth-child(4),
-        &:nth-child(5) {
-          margin-bottom: 0;
+        &:last-child {
+          margin-right: 0;
         }
       }
     }
-    span {
+    >span {
       display: block;
       margin-top: 0.5rem;
       font-size: 1.5rem;
@@ -89,7 +94,7 @@
   .product_update_img {
     display: flex;
     width: 100%;
-    padding: 5rem;
+    padding: 5rem 0 5rem 5rem;
 
     img {
       display: block;
@@ -98,13 +103,12 @@
 
     .thumbnail_img {
       width: 40%;
-      margin-right: 3rem;
+      margin-right: 5rem;
     }
 
     .photo_img {
       width: 60%;
-      height: 70rem;
-      padding: 0 1rem;
+      max-height: 90rem;
       overflow: auto;
     }
   }

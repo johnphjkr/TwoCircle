@@ -16,7 +16,7 @@ export function adminWrap() {
       </div>
     </header>
     <div class="admin_container">
-      <div class="dot-wrap">
+       <div class="dot-wrap admin_dot">
         <div class="dot-spinner"></div>
       </div>
       <div class="menu">
