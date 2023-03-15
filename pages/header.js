@@ -4,7 +4,7 @@ import { headerHandler } from '../source/js/header';
 
 export function headerRender() {
   const wrap = document.querySelector('#wrap');
-  
+
   wrap.innerHTML = /*html*/ `
   <header>
       <div class="header_top">
@@ -32,7 +32,7 @@ export function headerRender() {
           <form class="search">
             <input type="text" />
             <button>
-              <img class="search_icon" src="../image/search_icon.svg" alt="검색" />
+              <img class="search_icon filter_icon" src="../image/search_icon.svg" alt="검색" />
             </button>
           </form>
           <ul class="header_right">
