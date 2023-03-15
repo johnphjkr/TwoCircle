@@ -14,6 +14,10 @@ export function productAddItem() {
   const discountEl = document.querySelector('.product_discount');
   const registrationBtn = document.querySelector('.product_registration');
   const dot = document.querySelector(".dot-wrap");
+  const mainTagCount = JSON.parse(localStorage.getItem('mainTagCount'));
+  const bestCount = document.querySelector('.best_count');
+  const mdCount = document.querySelector('.md_count');
+  const newCount = document.querySelector('.new_count');
 
   let title = '';
   let price = '';
@@ -37,6 +41,9 @@ export function productAddItem() {
   });
 
   // 메인상품 진열
+  bestCount.innerHTML = `(${mainTagCount.bestCount})`;
+  mdCount.innerHTML = `(${mainTagCount.mdCount})`;;
+  newCount.innerHTML = `(${mainTagCount.newCount})`;;
   mainTagEl.forEach(function (mainTag) {
     mainTag.addEventListener('change', function (event) {
       if (event.target.checked) {
