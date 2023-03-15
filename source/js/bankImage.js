@@ -5,7 +5,7 @@ import kakaoBank from "/image/kakaobank_logo.png";
 import NHBank from "/image/NHbank_logo.png";
 import hanaBank from "/image/hanabank_logo.png";
 import wooriBank from "/image/wooriBank_logo.png";
-import whiteKbBank from "/image/KBbank_logo.svg"
+import whiteKbBank from "/image/kbbank_logo.svg"
 import whiteShinhan from "/image/shinhanbank_logo.svg"
 import whiteWoori from "/image/wooribank_logo.svg"
 import whiteHana from "/image/hanabank_logo.svg"
