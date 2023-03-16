@@ -16,6 +16,7 @@ export async function pwCheck(url) {
   let loginResult = '';
   inputPwEl.addEventListener('input', (e) => {
     pw_check = e.target.value;
+    console.log("비번 : " + pw_check);
   });
 
   pwCheckBtnEl.addEventListener('click', async (e) => {
@@ -35,6 +36,7 @@ export async function pwCheck(url) {
     // catch (error) {
 
     // }
+    console.log("api status : " + res.status);
     if (res.status === 200) {
       //alert('비밀번호 확인 성공!');
       if(url === "mypage/account"){

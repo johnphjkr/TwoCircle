@@ -8,7 +8,7 @@ export async function pwCheckApi(method, data) {
       headers,
       body: JSON.stringify(data),
     });
-    return await res.json();
+    return res;
   } catch (e) {
     console.log(e);
   }
