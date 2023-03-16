@@ -211,7 +211,7 @@
     flex-direction: column;
     width: 35rem;
     height: 40rem;
-    background-color: var(--more-lightgray-color);
+    background-color: var(--border-line);
     padding: 3rem;
     margin: 7rem 0 0 12rem;
 
@@ -267,7 +267,7 @@
         height: 4rem;
         cursor: pointer;
         border: 1px solid var(--black-color);
-        background-color: #fff;
+        background-color: var(--body-bg);
       }
     }
   }
